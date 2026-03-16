@@ -1,0 +1,56 @@
+aid: ampersand
+name: Ampersand
+description: >-
+  Ampersand is a developer-first platform for building native SaaS integrations.
+  It provides an embeddable UI component and managed infrastructure that lets
+  developers add product integrations quickly, handling OAuth, data sync,
+  webhooks, and field mapping out of the box.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Integrations
+  - SaaS
+  - Developer Tools
+  - Platform
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/apis.yml
+created: '2026-03-16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: ampersand:ampersand-api
+    name: Ampersand API
+    description: >-
+      The Ampersand API enables developers to programmatically manage
+      integrations, connections, and data flows for SaaS-to-SaaS connectivity.
+      It provides endpoints for managing installations, destinations, and
+      integration configurations within the Ampersand platform.
+    humanURL: https://docs.withampersand.com/
+    baseURL: https://api.withampersand.com
+    tags:
+      - Integrations
+      - SaaS
+      - Platform
+    properties:
+      - type: Documentation
+        url: https://docs.withampersand.com/
+      - type: Getting Started
+        url: https://docs.withampersand.com/getting-started
+      - type: Authentication
+        url: https://docs.withampersand.com/reference/authentication
+common:
+  - type: Website
+    url: https://www.withampersand.com/
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GitHub Organization
+    url: https://github.com/amp-labs
+  - type: Blog
+    url: https://www.withampersand.com/blog
+  - type: Sign Up
+    url: https://dashboard.withampersand.com/sign-up
+  - type: Login
+    url: https://dashboard.withampersand.com/sign-in
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
