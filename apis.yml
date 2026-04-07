@@ -8,10 +8,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Integrations
-  - SaaS
   - Developer Tools
+  - Integrations
   - Platform
+  - SaaS
 url: >-
   https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -29,8 +29,8 @@ apis:
     baseURL: https://api.withampersand.com
     tags:
       - Integrations
-      - SaaS
       - Platform
+      - SaaS
     properties:
       - type: Documentation
         url: https://docs.withampersand.com/
