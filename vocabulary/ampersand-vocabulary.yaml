@@ -1,0 +1,246 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Ampersand"
+  description: "Unified vocabulary mapping the operational (OpenAPI) and capability (Naftiko) dimensions of the Ampersand SaaS integration platform."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: ampersand-api
+      version: "1.0.0"
+      baseUrl: https://api.withampersand.com
+      status: active
+
+  resources:
+    - name: installations
+      description: Integration installations mapping end-user groups to integration configurations.
+      apis:
+        - ampersand-api
+      actions:
+        - list-installations
+        - get-installation
+        - create-installation
+        - update-installation
+        - delete-installation
+        - batch-update-installations
+
+    - name: connections
+      description: OAuth connections to third-party SaaS providers established by end users.
+      apis:
+        - ampersand-api
+      actions:
+        - list-connections
+        - get-connection
+        - delete-connection
+        - revoke-connection
+        - regenerate-connection
+
+    - name: destinations
+      description: Data destinations for integration data delivery to webhooks, databases, or other targets.
+      apis:
+        - ampersand-api
+      actions:
+        - list-destinations
+        - get-destination
+        - create-destination
+        - update-destination
+        - delete-destination
+
+    - name: integrations
+      description: SaaS integration definitions configured within Ampersand projects.
+      apis:
+        - ampersand-api
+      actions:
+        - list-integrations
+        - get-integration
+
+    - name: providers
+      description: Available SaaS provider connectors including Salesforce, HubSpot, and hundreds more.
+      apis:
+        - ampersand-api
+      actions:
+        - list-providers
+        - get-provider
+
+    - name: projects
+      description: Ampersand project containers for integrations, connections, and destinations.
+      apis:
+        - ampersand-api
+      actions:
+        - list-projects
+        - get-project
+        - create-project
+
+    - name: api-keys
+      description: API keys for authenticating programmatic access to the Ampersand API.
+      apis:
+        - ampersand-api
+      actions:
+        - list-api-keys
+        - create-api-key
+        - delete-api-key
+
+  actions:
+    - name: list
+      method: GET
+      pattern: read
+      description: Retrieve a collection of resources.
+    - name: get
+      method: GET
+      pattern: read
+      description: Retrieve a single resource by identifier.
+    - name: create
+      method: POST
+      pattern: write
+      description: Create a new resource.
+    - name: update
+      method: PATCH
+      pattern: write
+      description: Update an existing resource.
+    - name: delete
+      method: DELETE
+      pattern: destructive
+      description: Delete a resource.
+
+  schemas:
+    core:
+      - name: Installation
+        description: An integration installation connecting a user group to an integration configuration.
+        properties:
+          - id
+          - integrationId
+          - projectId
+          - groupRef
+          - config
+          - enabled
+      - name: Connection
+        description: An OAuth connection between an end user and a third-party SaaS provider.
+        properties:
+          - id
+          - providerId
+          - projectId
+          - groupRef
+          - status
+      - name: Destination
+        description: A data destination for receiving integration output data.
+        properties:
+          - id
+          - name
+          - type
+          - config
+          - projectId
+      - name: Integration
+        description: An integration definition specifying provider, read/write operations, and field mappings.
+        properties:
+          - id
+          - name
+          - provider
+          - projectId
+      - name: Provider
+        description: A SaaS provider connector available through Ampersand.
+        properties:
+          - name
+          - displayName
+          - authType
+          - apiVersion
+
+  parameters:
+    identifiers:
+      - name: projectIdOrName
+        description: Project identifier or name for scoping API operations.
+        in: path
+        type: string
+      - name: integrationId
+        description: Integration identifier.
+        in: path
+        type: string
+
+  authentication:
+    schemes:
+      - type: apiKey
+        name: X-Api-Key
+        in: header
+        description: API key for authenticating Ampersand API requests.
+
+capability:
+  workflows:
+    - name: Integration Management
+      file: capabilities/integration-management.yaml
+      description: Workflow for managing SaaS integrations, connections, and installations.
+      apis:
+        - ampersand-api
+      toolCount: 6
+      personas:
+        - Product Developer
+        - Platform Engineer
+
+  personas:
+    - id: product-developer
+      name: Product Developer
+      description: SaaS product developer building native integrations with third-party tools using Ampersand.
+      workflows:
+        - Integration Management
+
+    - id: platform-engineer
+      name: Platform Engineer
+      description: Infrastructure engineer automating integration deployment and managing connections at scale.
+      workflows:
+        - Integration Management
+
+  domains:
+    - name: SaaS Integration
+      description: Native product integrations between SaaS applications using managed OAuth, data sync, and field mapping.
+      resources:
+        - installations
+        - connections
+        - integrations
+        - providers
+      workflows:
+        - Integration Management
+
+  namespaces:
+    consumed:
+      - name: ampersand-api
+        baseUri: https://api.withampersand.com
+    rest:
+      - name: integration-management-api
+        port: 8080
+    mcp:
+      - name: integration-management-mcp
+        port: 9090
+
+  binds:
+    - name: AMPERSAND_API_KEY
+      description: API key for authenticating requests to the Ampersand API.
+      workflows:
+        - Integration Management
+
+crossReference:
+  - resource: installations
+    operations:
+      - list-installations
+      - create-installation
+    workflows:
+      - Integration Management
+    personas:
+      - Product Developer
+      - Platform Engineer
+
+  - resource: connections
+    operations:
+      - list-connections
+    workflows:
+      - Integration Management
+    personas:
+      - Product Developer
+      - Platform Engineer
+
+  - resource: providers
+    operations:
+      - list-providers
+    workflows:
+      - Integration Management
+    personas:
+      - Product Developer

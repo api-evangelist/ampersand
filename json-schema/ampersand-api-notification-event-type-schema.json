@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-notification-event-type-schema.json",
+  "title": "NotificationEventType",
+  "description": "The type of notification event.",
+  "type": "string",
+  "enum": [
+    "connection.created",
+    "connection.error",
+    "connection.refreshed",
+    "connection.deleted",
+    "installation.created",
+    "installation.updated",
+    "installation.deleted",
+    "read.schedule.paused",
+    "read.backfill.done",
+    "read.triggered.done",
+    "read.triggered.error",
+    "write.async.done",
+    "destination.webhook.disabled"
+  ]
+}

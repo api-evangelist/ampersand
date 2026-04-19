@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-jwt-key-structure.json",
+  "name": "JWTKey",
+  "description": "JWTKey schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "uuid",
+      "description": "Unique identifier for the JWT key",
+      "example": "550e8400-e29b-41d4-a716-446655440000"
+    },
+    "projectId": {
+      "type": "uuid",
+      "description": "The project this JWT key belongs to",
+      "example": "123e4567-e89b-12d3-a456-426614174000"
+    },
+    "label": {
+      "type": "string",
+      "description": "Human-readable name for the JWT key",
+      "example": "production-key-1"
+    },
+    "algorithm": {
+      "type": "string",
+      "description": "The cryptographic algorithm used",
+      "enum": [
+        "RSA"
+      ],
+      "example": "RSA"
+    },
+    "publicKeyPem": {
+      "type": "string",
+      "description": "RSA public key in PEM format",
+      "format": "pem",
+      "example": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\n-----END PUBLIC KEY-----\n"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the JWT key is currently active and can be used for verification",
+      "example": true
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "Timestamp when the JWT key was created",
+      "example": "2024-01-15T10:30:00Z"
+    },
+    "updateTime": {
+      "type": "datetime",
+      "description": "Timestamp when the JWT key was last updated",
+      "example": "2024-01-15T10:30:00Z"
+    }
+  },
+  "required": [
+    "id",
+    "projectId",
+    "label",
+    "algorithm",
+    "publicKeyPem",
+    "active",
+    "createTime",
+    "updateTime"
+  ]
+}

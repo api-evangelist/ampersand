@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-invite-structure.json",
+  "name": "Invite",
+  "description": "Invite schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The invite ID."
+    },
+    "invitedEmail": {
+      "type": "string",
+      "description": "The email address of the person invited."
+    },
+    "parentType": {
+      "type": "string",
+      "enum": [
+        "org"
+      ],
+      "description": "The type of entity that the person is invited to."
+    },
+    "parentId": {
+      "type": "string",
+      "description": "The ID of the parent (e.g. org ID)."
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the invite.",
+      "enum": [
+        "pending",
+        "accepted",
+        "revoked",
+        "expired"
+      ]
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time the invite was created."
+    },
+    "updateTime": {
+      "type": "datetime",
+      "description": "The time the invite was updated."
+    }
+  },
+  "required": [
+    "id",
+    "invitedEmail",
+    "createTime",
+    "parentId",
+    "parentType",
+    "status"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "projectId": "123e4567-e89b-12d3-a456-426614174000",
+  "label": "production-key-1",
+  "algorithm": "RSA",
+  "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\n-----END PUBLIC KEY-----\n",
+  "active": true,
+  "createTime": "2024-01-15T10:30:00Z",
+  "updateTime": "2024-01-15T10:30:00Z"
+}

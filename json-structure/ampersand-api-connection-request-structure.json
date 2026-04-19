@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-connection-request-structure.json",
+  "name": "ConnectionRequest",
+  "description": "ConnectionRequest schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "providerWorkspaceRef": {
+      "type": "string",
+      "description": "The ID of the provider workspace that this connection belongs to."
+    },
+    "providerMetadata": {
+      "$ref": "#/components/schemas/ProviderMetadata"
+    },
+    "groupName": {
+      "type": "string",
+      "description": "The name of the user group that has access to this installation."
+    },
+    "groupRef": {
+      "type": "string",
+      "description": "The ID of the user group that has access to this installation.",
+      "example": "group-123"
+    },
+    "consumerName": {
+      "type": "string",
+      "description": "The name of the consumer that has access to this installation."
+    },
+    "consumerRef": {
+      "type": "string",
+      "description": "The consumer reference."
+    },
+    "provider": {
+      "type": "string",
+      "description": "The provider name (e.g. \"salesforce\", \"hubspot\")"
+    },
+    "apiKey": {
+      "type": "string",
+      "description": "The API key to use for the connection."
+    },
+    "customAuth": {
+      "type": "object",
+      "description": "Values used for custom auth input variables.",
+      "additionalProperties": {
+        "type": "string",
+        "nullable": false
+      },
+      "example": {
+        "apiKey": "abcd1234",
+        "password": "secret"
+      }
+    },
+    "basicAuth": {
+      "type": "object",
+      "required": [
+        "username",
+        "password"
+      ],
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "The username to use for the connection."
+        },
+        "password": {
+          "type": "string",
+          "description": "The password to use for the connection."
+        }
+      }
+    },
+    "oauth2ClientCredentials": {
+      "type": "object",
+      "required": [
+        "clientId",
+        "clientSecret"
+      ],
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "description": "The client ID to use for the connection."
+        },
+        "clientSecret": {
+          "type": "string",
+          "description": "The client secret to use for the connection."
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The scopes for the tokens."
+        }
+      }
+    },
+    "oauth2PasswordCredentials": {
+      "type": "object",
+      "required": [
+        "username",
+        "password",
+        "clientId",
+        "clientSecret"
+      ],
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "The username to use for the connection."
+        },
+        "password": {
+          "type": "string",
+          "description": "The password to use for the connection."
+        },
+        "clientId": {
+          "type": "string",
+          "description": "The client ID to use for the connection."
+        },
+        "clientSecret": {
+          "type": "string",
+          "description": "The client secret to use for the connection."
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The scopes for the tokens."
+        }
+      }
+    },
+    "oauth2AuthorizationCode": {
+      "$ref": "#/components/schemas/Oauth2AuthorizationCode"
+    }
+  }
+}

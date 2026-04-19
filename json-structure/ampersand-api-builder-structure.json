@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-builder-structure.json",
+  "name": "Builder",
+  "description": "Builder schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The builder ID.",
+      "example": "builder-id-123"
+    },
+    "idpProvider": {
+      "type": "string",
+      "description": "The identity provider",
+      "example": "clerk"
+    },
+    "idpRef": {
+      "type": "string",
+      "description": "ID used by the identity provider"
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time that the builder joined Ampersand."
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "primaryEmail": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "idpProvider",
+    "idpRef",
+    "createTime"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-signed-url-schema.json",
+  "title": "SignedUrl",
+  "description": "SignedUrl schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "The signed URL to upload the zip file to."
+    },
+    "bucket": {
+      "type": "string",
+      "description": "The bucket (will match the bucket part of the url)."
+    },
+    "path": {
+      "type": "string",
+      "description": "The path (will match the path part of the url)."
+    }
+  },
+  "required": [
+    "url",
+    "bucket",
+    "path"
+  ]
+}

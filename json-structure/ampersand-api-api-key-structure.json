@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-api-key-structure.json",
+  "name": "ApiKey",
+  "description": "ApiKey schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "The API key.",
+      "example": "api-key-123"
+    },
+    "label": {
+      "type": "string",
+      "description": "A short name for the API key.",
+      "example": "MailMonkey API Key"
+    },
+    "scopes": {
+      "$ref": "#/components/schemas/ApiKeyScopes"
+    },
+    "projectId": {
+      "type": "string",
+      "description": "The project ID.",
+      "example": "my-project"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the API key is active.",
+      "example": true
+    }
+  },
+  "required": [
+    "key",
+    "projectId",
+    "label",
+    "scopes"
+  ]
+}

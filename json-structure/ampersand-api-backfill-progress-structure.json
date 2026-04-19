@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-backfill-progress-structure.json",
+  "name": "BackfillProgress",
+  "description": "BackfillProgress schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "installationId": {
+      "type": "string",
+      "description": "The installation ID."
+    },
+    "objectName": {
+      "type": "string",
+      "description": "The object being synced (e.g., contact, account)."
+    },
+    "operationId": {
+      "type": "string",
+      "description": "The ID of the backfill operation."
+    },
+    "recordsProcessed": {
+      "type": "int32",
+      "description": "The number of records processed so far. Updates as more records are read during the backfill.",
+      "example": 1250
+    },
+    "recordsEstimatedTotal": {
+      "type": "int32",
+      "description": "The estimated total number of records to process. Only present for Salesforce and HubSpot; other connectors omit this field.",
+      "example": 5000
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "When the backfill operation started."
+    },
+    "updateTime": {
+      "type": "datetime",
+      "description": "When progress was last updated."
+    }
+  },
+  "required": [
+    "installationId",
+    "objectName",
+    "operationId",
+    "recordsProcessed"
+  ]
+}

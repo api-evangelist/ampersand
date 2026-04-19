@@ -1,0 +1,10 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "projectId": "project-456",
+  "integrationId": "550e8400-e29b-41d4-a716-446655440000",
+  "healthStatus": "healthy",
+  "lastOperationStatus": "success",
+  "createTime": "2025-03-15T14:30:00Z",
+  "createdBy": "consumer:consumer-123",
+  "updateTime": "2025-03-15T14:30:00Z"
+}

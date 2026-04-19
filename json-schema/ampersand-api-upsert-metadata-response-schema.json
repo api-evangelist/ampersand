@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-upsert-metadata-response-schema.json",
+  "title": "UpsertMetadataResponse",
+  "description": "Response containing results for all created/updated fields",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "description": "Indicates if the upsert operation was successful"
+    },
+    "fields": {
+      "type": "object",
+      "description": "Maps object name -> field name -> upsert result",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/FieldUpsertResult"
+        }
+      }
+    }
+  },
+  "required": [
+    "success",
+    "fields"
+  ]
+}

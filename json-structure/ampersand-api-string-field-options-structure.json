@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-string-field-options-structure.json",
+  "name": "StringFieldOptions",
+  "description": "Additional options for string fields",
+  "type": "object",
+  "properties": {
+    "length": {
+      "type": "int32",
+      "description": "Maximum length of the string field"
+    },
+    "pattern": {
+      "type": "string",
+      "description": "Regex pattern that the string field value must match"
+    },
+    "values": {
+      "type": "array",
+      "description": "List of allowed values for enum fields",
+      "items": {
+        "type": "string"
+      }
+    },
+    "valuesRestricted": {
+      "type": "boolean",
+      "description": "Indicates if the field value must be limited to what's in Values"
+    },
+    "defaultValue": {
+      "type": "string",
+      "description": "Default value for the field"
+    }
+  }
+}

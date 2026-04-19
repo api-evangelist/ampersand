@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-pagination-info-structure.json",
+  "name": "PaginationInfo",
+  "description": "PaginationInfo schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "done": {
+      "type": "boolean",
+      "description": "If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.",
+      "example": false
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.",
+      "example": "Q9JT+2qfys28V4ODN+UayA=="
+    }
+  },
+  "required": [
+    "done"
+  ]
+}

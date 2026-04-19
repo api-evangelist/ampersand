@@ -1,0 +1,273 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Ampersand API"
+  description: "Ampersand public API for managing SaaS integrations, connections, installations, destinations, projects, and organizations programmatically."
+  tags:
+    - Ampersand
+    - Integrations
+    - SaaS
+    - Developer Tools
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AMPERSAND_API_KEY: AMPERSAND_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: ampersand-api
+      baseUri: https://api.withampersand.com
+      description: "Ampersand public REST API for managing integrations and connections."
+      authentication:
+        type: apikey
+        key: X-Api-Key
+        value: "{{AMPERSAND_API_KEY}}"
+        placement: header
+      resources:
+        - name: installations
+          path: /1/projects/{projectIdOrName}/integrations/{integrationId}/installations
+          description: "Manage integration installations for end-user connections."
+          operations:
+            - name: list-installations
+              method: GET
+              description: "List all installations for an integration."
+              inputParameters:
+                - name: projectIdOrName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Project ID or name."
+                - name: integrationId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Integration ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-installation
+              method: POST
+              description: "Create a new installation for an integration."
+              inputParameters:
+                - name: projectIdOrName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Project ID or name."
+                - name: integrationId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Integration ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  groupRef: "{{tools.groupRef}}"
+                  config: "{{tools.config}}"
+
+        - name: connections
+          path: /1/projects/{projectIdOrName}/connections
+          description: "Manage OAuth connections to third-party SaaS providers."
+          operations:
+            - name: list-connections
+              method: GET
+              description: "List all connections in a project."
+              inputParameters:
+                - name: projectIdOrName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Project ID or name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: destinations
+          path: /1/projects/{projectIdOrName}/destinations
+          description: "Manage data destinations for integration data delivery."
+          operations:
+            - name: list-destinations
+              method: GET
+              description: "List all destinations in a project."
+              inputParameters:
+                - name: projectIdOrName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Project ID or name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-destination
+              method: POST
+              description: "Create a new destination for integration data delivery."
+              inputParameters:
+                - name: projectIdOrName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Project ID or name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  type: "{{tools.type}}"
+                  config: "{{tools.config}}"
+
+        - name: integrations
+          path: /1/projects/{projectIdOrName}/integrations
+          description: "Manage SaaS integration definitions."
+          operations:
+            - name: list-integrations
+              method: GET
+              description: "List all integrations in a project."
+              inputParameters:
+                - name: projectIdOrName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Project ID or name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: providers
+          path: /1/providers
+          description: "List available SaaS provider connectors."
+          operations:
+            - name: list-providers
+              method: GET
+              description: "List all available SaaS providers supported by Ampersand."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: ampersand-rest
+      resources:
+        - path: /v1/projects/{projectIdOrName}/installations
+          name: installations
+          description: "Manage integration installations."
+          operations:
+            - method: GET
+              name: list-installations
+              description: "List installations for an integration."
+              call: "ampersand-api.list-installations"
+              with:
+                projectIdOrName: "rest.projectIdOrName"
+                integrationId: "rest.integrationId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-installation
+              description: "Create a new integration installation."
+              call: "ampersand-api.create-installation"
+              with:
+                projectIdOrName: "rest.projectIdOrName"
+                integrationId: "rest.integrationId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/providers
+          name: providers
+          description: "List available SaaS providers."
+          operations:
+            - method: GET
+              name: list-providers
+              description: "List all available Ampersand SaaS provider connectors."
+              call: "ampersand-api.list-providers"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: ampersand-mcp
+      transport: http
+      tools:
+        - name: list-installations
+          description: "List all integration installations for a given project and integration in Ampersand."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ampersand-api.list-installations"
+          with:
+            projectIdOrName: "tools.projectIdOrName"
+            integrationId: "tools.integrationId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-connections
+          description: "List all OAuth connections to third-party SaaS providers in an Ampersand project."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ampersand-api.list-connections"
+          with:
+            projectIdOrName: "tools.projectIdOrName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-providers
+          description: "List all available SaaS provider connectors supported by Ampersand."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ampersand-api.list-providers"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-integrations
+          description: "List all integration definitions configured in an Ampersand project."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ampersand-api.list-integrations"
+          with:
+            projectIdOrName: "tools.projectIdOrName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-destinations
+          description: "List all data destinations for integration data delivery in an Ampersand project."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ampersand-api.list-destinations"
+          with:
+            projectIdOrName: "tools.projectIdOrName"
+          outputParameters:
+            - type: object
+              mapping: "$."

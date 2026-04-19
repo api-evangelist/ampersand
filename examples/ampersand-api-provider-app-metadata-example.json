@@ -1,0 +1,12 @@
+{
+  "authQueryParams": {
+    "optional_scope": [
+      "automation.sequences.read"
+    ]
+  },
+  "providerParams": {
+    "packageInstallURL": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789",
+    "gcpProjectId": "my-gcp-project",
+    "gcpPubSubTopicName": "my-topic"
+  }
+}

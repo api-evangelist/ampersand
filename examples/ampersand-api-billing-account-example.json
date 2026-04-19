@@ -1,0 +1,8 @@
+{
+  "id": "billing-account-123",
+  "displayName": "Acme Inc",
+  "billingProvider": "stripe",
+  "billingProviderRef": "acct_1J2k3l4m5n6o7p8q9r0s",
+  "createTime": "2025-03-15T14:30:00Z",
+  "updateTime": "2025-03-15T14:30:00Z"
+}

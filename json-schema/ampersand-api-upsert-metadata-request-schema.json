@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-upsert-metadata-request-schema.json",
+  "title": "UpsertMetadataRequest",
+  "description": "Request payload for upserting metadata (fields only)",
+  "type": "object",
+  "properties": {
+    "groupRef": {
+      "type": "string",
+      "description": "The ID that your app uses to identify the group of users for this request.",
+      "example": "group-123"
+    },
+    "fields": {
+      "type": "object",
+      "description": "Maps object names to field definitions",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/FieldDefinition"
+        }
+      }
+    }
+  },
+  "required": [
+    "groupRef",
+    "fields"
+  ]
+}

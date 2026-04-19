@@ -1,0 +1,9 @@
+{
+  "associationType": "foreignKey",
+  "targetObject": "Account",
+  "targetField": "example-targetField",
+  "cardinality": "many-to-one",
+  "onDelete": "setNull",
+  "required": true,
+  "reverseLookupFieldName": "example-reverseLookupFieldName"
+}

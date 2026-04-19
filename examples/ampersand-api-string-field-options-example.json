@@ -1,0 +1,9 @@
+{
+  "length": 1,
+  "pattern": "2025-03-15T14:30:00Z",
+  "values": [
+    "example-values_item"
+  ],
+  "valuesRestricted": true,
+  "defaultValue": "example-defaultValue"
+}

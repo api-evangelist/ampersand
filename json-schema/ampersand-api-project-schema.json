@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-project-schema.json",
+  "title": "Project",
+  "description": "Project schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the project.",
+      "example": "proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
+    },
+    "name": {
+      "type": "string",
+      "description": "The unique name for the project.",
+      "example": "mailmonkey-staging"
+    },
+    "appName": {
+      "type": "string",
+      "description": "The display name of the application, shown to end users during the connection flow.",
+      "example": "MailMonkey"
+    },
+    "orgId": {
+      "type": "string",
+      "description": "The ID of the organization that this project belongs to.",
+      "example": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79"
+    },
+    "createTime": {
+      "type": "string",
+      "description": "The time the project was created.",
+      "format": "date-time"
+    },
+    "updateTime": {
+      "type": "string",
+      "description": "The time the project was updated.",
+      "format": "date-time"
+    },
+    "entitlements": {
+      "type": "object",
+      "description": "Plan-based feature flags for the project. These are managed by Ampersand and cannot be set via the API.",
+      "properties": {
+        "brandingRemoval": {
+          "type": "object",
+          "required": [
+            "value"
+          ],
+          "x-go-type-skip-optional-pointer": true,
+          "description": "Controls whether Ampersand branding is removed from the embeddable UI components.",
+          "properties": {
+            "value": {
+              "type": "boolean",
+              "description": "True if Ampersand branding has been removed for this project."
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "appName",
+    "createTime",
+    "id",
+    "name",
+    "orgId"
+  ]
+}

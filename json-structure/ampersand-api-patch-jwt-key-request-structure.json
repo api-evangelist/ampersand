@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-patch-jwt-key-request-structure.json",
+  "name": "PatchJWTKeyRequest",
+  "description": "PatchJWTKeyRequest schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "updateMask": {
+      "type": "array",
+      "description": "List of field paths to update (currently supports 'active' and 'name')",
+      "items": {
+        "type": "string",
+        "enum": [
+          "active",
+          "label"
+        ]
+      },
+      "minItems": 1,
+      "example": [
+        "active",
+        "label"
+      ]
+    },
+    "jwtKey": {
+      "type": "object",
+      "description": "Object containing the fields to update with their new values",
+      "additionalProperties": true,
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "description": "New active status for the JWT key",
+          "example": false
+        },
+        "label": {
+          "type": "string",
+          "description": "New label for the JWT key",
+          "example": "updated-key-name"
+        }
+      },
+      "example": {
+        "active": false,
+        "name": "updated-key-name"
+      }
+    }
+  },
+  "required": [
+    "updateMask",
+    "jwtKey"
+  ]
+}

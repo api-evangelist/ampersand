@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-field-upsert-result-schema.json",
+  "title": "FieldUpsertResult",
+  "description": "Result of an upsert operation for a single field",
+  "type": "object",
+  "properties": {
+    "fieldName": {
+      "type": "string",
+      "description": "Name of the field"
+    },
+    "action": {
+      "type": "string",
+      "description": "Action taken (create, update, none)"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Provider-specific metadata about the field",
+      "additionalProperties": true
+    },
+    "warnings": {
+      "type": "array",
+      "description": "Warnings that occurred during the upsert operation",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "fieldName",
+    "action"
+  ]
+}

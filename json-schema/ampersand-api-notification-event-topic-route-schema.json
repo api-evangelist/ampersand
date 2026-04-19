@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-notification-event-topic-route-schema.json",
+  "title": "NotificationEventTopicRoute",
+  "description": "NotificationEventTopicRoute schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The event-topic route ID."
+    },
+    "eventType": {
+      "$ref": "#/components/schemas/NotificationEventType"
+    },
+    "topicId": {
+      "type": "string",
+      "description": "The ID of the topic to route events to."
+    },
+    "projectId": {
+      "type": "string",
+      "description": "The Ampersand project ID."
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time when the event-topic route was created."
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time when the event-topic route was last updated."
+    }
+  },
+  "required": [
+    "id",
+    "eventType",
+    "topicId",
+    "projectId",
+    "createTime"
+  ]
+}

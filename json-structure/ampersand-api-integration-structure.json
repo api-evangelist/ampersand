@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-integration-structure.json",
+  "name": "Integration",
+  "description": "Integration schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The integration ID."
+    },
+    "projectId": {
+      "type": "string",
+      "description": "The Ampersand project ID.",
+      "example": "project-456"
+    },
+    "name": {
+      "type": "string",
+      "description": "The integration name.",
+      "example": "read-accounts"
+    },
+    "provider": {
+      "type": "string",
+      "description": "The SaaS provider that this integration connects to.",
+      "example": "salesforce"
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time the integration was created."
+    },
+    "updateTime": {
+      "type": "datetime",
+      "description": "The time the integration was last updated."
+    },
+    "latestRevision": {
+      "$ref": "#/components/schemas/Revision"
+    }
+  },
+  "required": [
+    "createTime",
+    "id",
+    "latestRevision",
+    "name",
+    "projectId",
+    "provider"
+  ]
+}

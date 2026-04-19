@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-destination-structure.json",
+  "name": "Destination",
+  "description": "Destination schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The destination ID."
+    },
+    "name": {
+      "type": "string",
+      "description": "User-defined name for the destination",
+      "example": "leadConvertedWebhook"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of the destination",
+      "example": "webhook"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Webhook URL",
+          "example": "https://webhooks.mailmonkey.com/salesforce-lead-converted"
+        },
+        "headers": {
+          "$ref": "#/components/schemas/WebhookHeaders"
+        },
+        "streamName": {
+          "type": "string",
+          "description": "The name of the Kinesis stream",
+          "example": "my-data-stream"
+        },
+        "region": {
+          "type": "string",
+          "description": "The AWS region for the destination",
+          "example": "us-east-1"
+        },
+        "partitionKeyTemplate": {
+          "type": "string",
+          "description": "Template for generating partition keys",
+          "example": "{{.integration_id}}"
+        }
+      }
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time the destination was created."
+    },
+    "updateTime": {
+      "type": "datetime",
+      "description": "The time the destination was updated."
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type",
+    "metadata",
+    "createTime"
+  ]
+}

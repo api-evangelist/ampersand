@@ -1,0 +1,16 @@
+{
+  "providerWorkspaceRef": "example-providerWorkspaceRef",
+  "groupName": "example-groupName",
+  "groupRef": "group-123",
+  "consumerName": "example-consumerName",
+  "consumerRef": "example-consumerRef",
+  "provider": "example-provider",
+  "apiKey": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+  "customAuth": {
+    "apiKey": "abcd1234",
+    "password": "secret"
+  },
+  "basicAuth": {},
+  "oauth2ClientCredentials": {},
+  "oauth2PasswordCredentials": {}
+}

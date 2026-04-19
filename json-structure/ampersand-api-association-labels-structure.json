@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-association-labels-structure.json",
+  "name": "AssociationLabels",
+  "description": "UI labels for an association",
+  "type": "object",
+  "properties": {
+    "singular": {
+      "type": "string",
+      "description": "Singular display label"
+    },
+    "plural": {
+      "type": "string",
+      "description": "Plural display label"
+    }
+  }
+}

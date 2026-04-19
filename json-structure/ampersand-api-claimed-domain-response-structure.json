@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-claimed-domain-response-structure.json",
+  "name": "ClaimedDomainResponse",
+  "description": "ClaimedDomainResponse schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the claimed domain",
+      "example": "00000000-0000-0000-0000-000000000001"
+    },
+    "parentType": {
+      "type": "string",
+      "description": "Type of the parent entity that claimed the domain",
+      "example": "org"
+    },
+    "parentId": {
+      "type": "string",
+      "description": "ID of the parent entity that claimed the domain",
+      "example": "00000000-0000-0000-0000-000000000001"
+    },
+    "domain": {
+      "type": "string",
+      "description": "The normalized domain name",
+      "example": "xyz.com"
+    }
+  },
+  "required": [
+    "id",
+    "parentType",
+    "parentId",
+    "domain"
+  ]
+}

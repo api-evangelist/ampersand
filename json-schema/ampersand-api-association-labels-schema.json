@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-association-labels-schema.json",
+  "title": "AssociationLabels",
+  "description": "UI labels for an association",
+  "type": "object",
+  "properties": {
+    "singular": {
+      "type": "string",
+      "description": "Singular display label"
+    },
+    "plural": {
+      "type": "string",
+      "description": "Plural display label"
+    }
+  }
+}

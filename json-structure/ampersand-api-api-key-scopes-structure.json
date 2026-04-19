@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-api-key-scopes-structure.json",
+  "name": "ApiKeyScopes",
+  "description": "The scopes for the API key.",
+  "type": "array",
+  "items": {
+    "type": "string",
+    "example": [
+      "full",
+      "frontend"
+    ]
+  }
+}

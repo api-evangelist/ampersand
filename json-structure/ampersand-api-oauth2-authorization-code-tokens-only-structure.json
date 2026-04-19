@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-oauth2-authorization-code-tokens-only-structure.json",
+  "name": "Oauth2AuthorizationCodeTokensOnly",
+  "description": "Oauth2AuthorizationCodeTokensOnly schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "accessToken": {
+      "type": "object",
+      "required": [
+        "token"
+      ],
+      "description": "The access token for the connection.",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "issuedAt": {
+          "type": "datetime",
+          "example": "2024-04-22T18:55:28.456076Z"
+        },
+        "expiresAt": {
+          "type": "datetime",
+          "example": "2024-10-22T18:55:28.456076Z"
+        }
+      }
+    },
+    "refreshToken": {
+      "type": "object",
+      "required": [
+        "token"
+      ],
+      "description": "The refresh token to use for the connection.",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "issuedAt": {
+          "type": "datetime",
+          "example": "2024-04-22T18:55:28.456076Z"
+        },
+        "expiresAt": {
+          "type": "datetime",
+          "example": "2024-10-22T18:55:28.456076Z"
+        }
+      }
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The scopes for the tokens."
+    }
+  }
+}

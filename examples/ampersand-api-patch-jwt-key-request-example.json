@@ -1,0 +1,10 @@
+{
+  "updateMask": [
+    "active",
+    "label"
+  ],
+  "jwtKey": {
+    "active": false,
+    "name": "updated-key-name"
+  }
+}

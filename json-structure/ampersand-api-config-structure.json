@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-config-structure.json",
+  "name": "Config",
+  "description": "Config schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The config ID.",
+      "example": "config-123"
+    },
+    "revisionId": {
+      "type": "string",
+      "description": "The ID of the revision that was current when this config was created or last updated. \n",
+      "example": "revision-123"
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time the config was created."
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "The person who created the config, in the format of \"consumer:{consumer-id}\" or \"builder:{builder-id}\".",
+      "example": "builder:builder-123"
+    },
+    "content": {
+      "$ref": "../config/config.yaml#/components/schemas/ConfigContent"
+    }
+  },
+  "required": [
+    "content",
+    "createTime",
+    "createdBy",
+    "id",
+    "revisionId"
+  ]
+}

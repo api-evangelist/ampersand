@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-topic-destination-route-structure.json",
+  "name": "TopicDestinationRoute",
+  "description": "TopicDestinationRoute schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The topic destination route ID."
+    },
+    "topicId": {
+      "type": "string",
+      "description": "The ID of the topic."
+    },
+    "destinationId": {
+      "type": "string",
+      "description": "The ID of the destination."
+    },
+    "projectId": {
+      "type": "string",
+      "description": "The Ampersand project ID."
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time when the topic destination route was created."
+    }
+  },
+  "required": [
+    "id",
+    "topicId",
+    "destinationId",
+    "projectId",
+    "createTime"
+  ]
+}

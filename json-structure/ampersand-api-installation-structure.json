@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-installation-structure.json",
+  "name": "Installation",
+  "description": "Installation schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The installation ID."
+    },
+    "projectId": {
+      "type": "string",
+      "description": "The Ampersand project ID.",
+      "example": "project-456"
+    },
+    "integrationId": {
+      "type": "string",
+      "description": "The integration ID."
+    },
+    "group": {
+      "$ref": "#/components/schemas/Group"
+    },
+    "healthStatus": {
+      "type": "string",
+      "enum": [
+        "healthy",
+        "unhealthy"
+      ],
+      "description": "The health status of the installation.",
+      "example": "healthy"
+    },
+    "lastOperationStatus": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure",
+        "in_progress"
+      ],
+      "description": "The status of the latest operation for this installation.\n",
+      "example": "success"
+    },
+    "connection": {
+      "$ref": "#/components/schemas/Connection"
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time the installation was created."
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "The person who did the installation, in the format of \"consumer:{consumer-id}\".",
+      "example": "consumer:consumer-123"
+    },
+    "updateTime": {
+      "type": "datetime",
+      "description": "The time the installation was last updated with a new config."
+    },
+    "config": {
+      "$ref": "#/components/schemas/Config"
+    }
+  },
+  "required": [
+    "config",
+    "connection",
+    "createTime",
+    "createdBy",
+    "healthStatus",
+    "id",
+    "integrationId",
+    "projectId"
+  ]
+}

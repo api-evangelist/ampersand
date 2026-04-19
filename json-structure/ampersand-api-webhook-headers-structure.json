@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-webhook-headers-structure.json",
+  "name": "WebhookHeaders",
+  "description": "Additional headers to add when Ampersand sends a webhook message",
+  "type": "object",
+  "additionalProperties": {
+    "type": "string",
+    "nullable": false
+  },
+  "example": {
+    "Authorization": "Bearer 1234"
+  }
+}

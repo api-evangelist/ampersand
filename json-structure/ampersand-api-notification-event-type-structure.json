@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-notification-event-type-structure.json",
+  "name": "NotificationEventType",
+  "description": "The type of notification event.",
+  "type": "string",
+  "enum": [
+    "connection.created",
+    "connection.error",
+    "connection.refreshed",
+    "connection.deleted",
+    "installation.created",
+    "installation.updated",
+    "installation.deleted",
+    "read.schedule.paused",
+    "read.backfill.done",
+    "read.triggered.done",
+    "read.triggered.error",
+    "write.async.done",
+    "destination.webhook.disabled"
+  ]
+}

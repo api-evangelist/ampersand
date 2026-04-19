@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-provider-metadata-structure.json",
+  "name": "ProviderMetadata",
+  "description": "ProviderMetadata schema from Ampersand API",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/ProviderMetadataInfo"
+  }
+}

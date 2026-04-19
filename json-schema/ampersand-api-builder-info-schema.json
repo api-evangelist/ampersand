@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-builder-info-schema.json",
+  "title": "BuilderInfo",
+  "description": "BuilderInfo schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "builder": {
+      "$ref": "#/components/schemas/Builder"
+    },
+    "projectRoles": {
+      "type": "object",
+      "description": "A map of project IDs to project roles for the builder.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "role",
+          "principalType",
+          "principalId",
+          "project"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "description": "The role of the builder in the project.",
+            "example": "admin"
+          },
+          "principalType": {
+            "type": "string",
+            "description": "The type of the principal.",
+            "enum": [
+              "team",
+              "builder"
+            ]
+          },
+          "principalId": {
+            "type": "string",
+            "description": "The ID of the team or builder.",
+            "example": "builder-id-123"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
+          }
+        }
+      }
+    },
+    "orgRole": {
+      "type": "object",
+      "required": [
+        "role",
+        "principalType",
+        "principalId",
+        "org"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "The role of the builder in the org.",
+          "example": "admin"
+        },
+        "principalType": {
+          "type": "string",
+          "description": "The type of the principal.",
+          "enum": [
+            "team",
+            "builder"
+          ]
+        },
+        "principalId": {
+          "type": "string",
+          "description": "The ID of the team or builder.",
+          "example": "builder-id-123"
+        },
+        "org": {
+          "$ref": "#/components/schemas/Org"
+        }
+      }
+    }
+  },
+  "required": [
+    "builder",
+    "projectRoles"
+  ]
+}

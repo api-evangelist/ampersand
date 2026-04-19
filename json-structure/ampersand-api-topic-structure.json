@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-topic-structure.json",
+  "name": "Topic",
+  "description": "Topic schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The topic ID."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the topic. Must contain only letters, numbers, and dashes.",
+      "example": "system-alerts",
+      "maxLength": 64
+    },
+    "projectId": {
+      "type": "string",
+      "description": "The Ampersand project ID."
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time when the topic was created."
+    },
+    "updateTime": {
+      "type": "datetime",
+      "description": "The time when the topic was last updated."
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "projectId",
+    "createTime"
+  ]
+}

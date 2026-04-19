@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-create-jwt-key-request-schema.json",
+  "title": "CreateJWTKeyRequest",
+  "description": "CreateJWTKeyRequest schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Human-readable label for the JWT key",
+      "minLength": 1,
+      "maxLength": 255,
+      "example": "production-key-1"
+    },
+    "algorithm": {
+      "type": "string",
+      "description": "The cryptographic JWT signing algorithm (currently only RS256 is supported)",
+      "enum": [
+        "RS256"
+      ],
+      "example": "RS256"
+    },
+    "publicKeyPem": {
+      "type": "string",
+      "description": "RSA public key in PEM format for JWT signature verification",
+      "format": "pem",
+      "example": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\nfGnJm6gOdrj8ym3rFkEjWT2btf2QisEgQG5WQwTfEUvUNR8JW5FQ0mKJ5I4LhXq6\nV5gN6kSKs2cUdD8Ky7Lj7kqn6I3l3r3F2fK9MFjZ8tU5z4z4yHdF6W2C3k5vf3f\n-----END PUBLIC KEY-----\n"
+    }
+  },
+  "required": [
+    "label",
+    "algorithm",
+    "publicKeyPem"
+  ]
+}

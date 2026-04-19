@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-patch-api-key-request-schema.json",
+  "title": "PatchApiKeyRequest",
+  "description": "PatchApiKeyRequest schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "updateMask": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of field paths specifying which fields to update. Allowed values include:\n- active\n- label\n- scopes\n",
+      "example": [
+        "active",
+        "label"
+      ]
+    },
+    "apiKey": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "A short name for the API key.",
+          "example": "MailMonkey API Key"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the API key is active.",
+          "example": true
+        },
+        "scopes": {
+          "$ref": "#/components/schemas/ApiKeyScopes"
+        }
+      }
+    }
+  },
+  "required": [
+    "updateMask",
+    "apiKey"
+  ]
+}

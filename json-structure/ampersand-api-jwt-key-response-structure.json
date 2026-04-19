@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-jwt-key-response-structure.json",
+  "name": "JWTKeyResponse",
+  "description": "JWTKeyResponse schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "kid": {
+      "type": "uuid",
+      "description": "The unique key identifier (key ID) for the created JWT key",
+      "example": "550e8400-e29b-41d4-a716-446655440000"
+    }
+  },
+  "required": [
+    "kid"
+  ]
+}

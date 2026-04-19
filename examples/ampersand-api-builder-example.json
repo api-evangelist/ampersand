@@ -1,0 +1,10 @@
+{
+  "id": "builder-id-123",
+  "idpProvider": "clerk",
+  "idpRef": "example-idpRef",
+  "createTime": "2025-03-15T14:30:00Z",
+  "firstName": "example-firstName",
+  "lastName": "example-lastName",
+  "fullName": "example-fullName",
+  "primaryEmail": "user@example.com"
+}

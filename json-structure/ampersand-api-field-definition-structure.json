@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-field-definition-structure.json",
+  "name": "FieldDefinition",
+  "description": "Field definition for creating or updating custom fields",
+  "type": "object",
+  "properties": {
+    "fieldName": {
+      "type": "string",
+      "description": "The identifier of the field",
+      "example": "My_Custom_Field"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The human-readable name of the field",
+      "example": "My Custom Field"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the field"
+    },
+    "valueType": {
+      "type": "string",
+      "description": "The data type of the field. Valid values are string, boolean, date, datetime, singleSelect, multiSelect, int, float, reference",
+      "example": "string"
+    },
+    "required": {
+      "type": "boolean",
+      "description": "Indicates if the field is required"
+    },
+    "unique": {
+      "type": "boolean",
+      "description": "Indicates if the field must be unique across all records"
+    },
+    "indexed": {
+      "type": "boolean",
+      "description": "Indicates if the field should be indexed for faster search"
+    },
+    "stringOptions": {
+      "$ref": "#/components/schemas/StringFieldOptions"
+    },
+    "numericOptions": {
+      "$ref": "#/components/schemas/NumericFieldOptions"
+    },
+    "association": {
+      "$ref": "#/components/schemas/AssociationDefinition"
+    }
+  },
+  "required": [
+    "fieldName",
+    "displayName",
+    "valueType"
+  ]
+}

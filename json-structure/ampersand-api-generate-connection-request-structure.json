@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-generate-connection-request-structure.json",
+  "name": "GenerateConnectionRequest",
+  "description": "GenerateConnectionRequest schema from Ampersand API",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/ConnectionRequest"
+    },
+    {
+      "type": "object",
+      "required": [
+        "groupRef",
+        "consumerRef",
+        "provider"
+      ]
+    }
+  ]
+}

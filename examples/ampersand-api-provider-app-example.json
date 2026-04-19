@@ -1,0 +1,16 @@
+{
+  "id": "provider-app-123",
+  "projectId": "project-456",
+  "externalRef": "external-id-123",
+  "provider": "salesforce",
+  "clientId": "client-id-123",
+  "scopes": [
+    [
+      "oauth",
+      "offline",
+      "crm.read"
+    ]
+  ],
+  "createTime": "2025-03-15T14:30:00Z",
+  "updateTime": "2025-03-15T14:30:00Z"
+}

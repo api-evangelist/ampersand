@@ -1,0 +1,9 @@
+{
+  "fieldName": "My_Custom_Field",
+  "displayName": "My Custom Field",
+  "description": "example-description",
+  "valueType": "string",
+  "required": true,
+  "unique": true,
+  "indexed": true
+}

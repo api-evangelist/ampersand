@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-association-definition-structure.json",
+  "name": "AssociationDefinition",
+  "description": "Relationship information for a field to another object",
+  "type": "object",
+  "properties": {
+    "associationType": {
+      "type": "string",
+      "description": "High-level association variety (e.g., 'foreignKey', 'lookup', 'ref')",
+      "example": "foreignKey"
+    },
+    "targetObject": {
+      "type": "string",
+      "description": "Name of the referenced/parent object",
+      "example": "Account"
+    },
+    "targetField": {
+      "type": "string",
+      "description": "Name of the referenced field on the target object"
+    },
+    "cardinality": {
+      "type": "string",
+      "description": "Association cardinality from the referencing field's perspective",
+      "example": "many-to-one"
+    },
+    "onDelete": {
+      "type": "string",
+      "description": "Behavior upon foreign object deletion",
+      "example": "setNull"
+    },
+    "required": {
+      "type": "boolean",
+      "description": "If true, a referenced record must exist"
+    },
+    "reverseLookupFieldName": {
+      "type": "string",
+      "description": "Optional inverse relationship/property name exposed on the target object"
+    },
+    "labels": {
+      "$ref": "#/components/schemas/AssociationLabels"
+    }
+  },
+  "required": [
+    "associationType",
+    "targetObject"
+  ]
+}

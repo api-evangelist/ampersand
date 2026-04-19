@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-numeric-field-options-structure.json",
+  "name": "NumericFieldOptions",
+  "description": "Additional options for numeric fields",
+  "type": "object",
+  "properties": {
+    "precision": {
+      "type": "int32",
+      "description": "Total number of digits (for decimal types)"
+    },
+    "scale": {
+      "type": "int32",
+      "description": "Number of digits to the right of the decimal point (for decimal types)"
+    },
+    "min": {
+      "type": "double",
+      "description": "Minimum value for numeric fields"
+    },
+    "max": {
+      "type": "double",
+      "description": "Maximum value for numeric fields"
+    },
+    "defaultValue": {
+      "type": "double",
+      "description": "Default value for the field"
+    }
+  }
+}

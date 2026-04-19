@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-revision-schema.json",
+  "title": "Revision",
+  "description": "Revision schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The revision ID.",
+      "example": "revision-id-1"
+    },
+    "specVersion": {
+      "type": "string",
+      "description": "The spec version string.",
+      "example": "1.0.0"
+    },
+    "createTime": {
+      "type": "string",
+      "description": "The time the revision was created.",
+      "format": "date-time"
+    },
+    "content": {
+      "$ref": "../manifest/manifest.yaml#/components/schemas/Integration"
+    }
+  },
+  "required": [
+    "content",
+    "createTime",
+    "id",
+    "specVersion"
+  ]
+}

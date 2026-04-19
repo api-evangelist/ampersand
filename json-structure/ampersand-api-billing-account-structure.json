@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-structure/ampersand-api-billing-account-structure.json",
+  "name": "BillingAccount",
+  "description": "BillingAccount schema from Ampersand API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The billing account ID.",
+      "example": "billing-account-123"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the billing account.",
+      "example": "Acme Inc"
+    },
+    "billingProvider": {
+      "type": "string",
+      "description": "The billing provider that this account is associated with.",
+      "example": "stripe"
+    },
+    "billingProviderRef": {
+      "type": "string",
+      "description": "The ID used by the billing provider to identify the account.",
+      "example": "acct_1J2k3l4m5n6o7p8q9r0s"
+    },
+    "createTime": {
+      "type": "datetime",
+      "description": "The time the billing account was created."
+    },
+    "updateTime": {
+      "type": "datetime",
+      "description": "The time the billing account was last updated."
+    }
+  },
+  "required": [
+    "id",
+    "displayName",
+    "billingProvider",
+    "billingProviderRef"
+  ]
+}

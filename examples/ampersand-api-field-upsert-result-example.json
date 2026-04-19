@@ -1,0 +1,8 @@
+{
+  "fieldName": "example-fieldName",
+  "action": "example-action",
+  "metadata": {},
+  "warnings": [
+    "example-warnings_item"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ampersand/refs/heads/main/json-schema/ampersand-api-update-connection-request-schema.json",
+  "title": "UpdateConnectionRequest",
+  "description": "Specify which fields to update in `updateMask` and provide corresponding values in `connection`. Fields in `connection` not listed in `updateMask` are ignored.",
+  "type": "object",
+  "properties": {
+    "updateMask": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "providerWorkspaceRef",
+          "providerMetadata",
+          "apiKey",
+          "basicAuth",
+          "oauth2ClientCredentials",
+          "oauth2PasswordCredentials"
+        ]
+      },
+      "description": "Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme.",
+      "example": [
+        "apiKey"
+      ]
+    },
+    "connection": {
+      "$ref": "#/components/schemas/ConnectionRequest"
+    }
+  },
+  "required": [
+    "updateMask",
+    "connection"
+  ]
+}

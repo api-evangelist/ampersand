@@ -1,0 +1,514 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amp": "https://withampersand.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AssociationLabels": "amp:AssociationLabels",
+    "singular": {
+      "@id": "amp:singular",
+      "@type": "xsd:string"
+    },
+    "plural": {
+      "@id": "amp:plural",
+      "@type": "xsd:string"
+    },
+    "Oauth2AuthorizationCode": "amp:Oauth2AuthorizationCode",
+    "accessToken": {
+      "@id": "amp:accessToken",
+      "@type": "@id"
+    },
+    "refreshToken": {
+      "@id": "amp:refreshToken",
+      "@type": "@id"
+    },
+    "scopes": {
+      "@id": "amp:scopes",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "PatchApiKeyRequest": "amp:PatchApiKeyRequest",
+    "updateMask": {
+      "@id": "amp:updateMask",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "apiKey": {
+      "@id": "amp:apiKey",
+      "@type": "@id"
+    },
+    "Project": "amp:Project",
+    "id": {
+      "@id": "amp:id",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "appName": {
+      "@id": "amp:appName",
+      "@type": "xsd:string"
+    },
+    "orgId": {
+      "@id": "amp:orgId",
+      "@type": "xsd:string"
+    },
+    "createTime": {
+      "@id": "amp:createTime",
+      "@type": "xsd:dateTime"
+    },
+    "updateTime": {
+      "@id": "amp:updateTime",
+      "@type": "xsd:dateTime"
+    },
+    "entitlements": {
+      "@id": "amp:entitlements",
+      "@type": "@id"
+    },
+    "HydratedRevision": "amp:HydratedRevision",
+    "specVersion": {
+      "@id": "amp:specVersion",
+      "@type": "xsd:string"
+    },
+    "content": {
+      "@id": "amp:content",
+      "@type": "xsd:string"
+    },
+    "Destination": "amp:Destination",
+    "type": {
+      "@id": "amp:type",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "amp:metadata",
+      "@type": "@id"
+    },
+    "FieldDefinition": "amp:FieldDefinition",
+    "fieldName": {
+      "@id": "amp:fieldName",
+      "@type": "xsd:string"
+    },
+    "displayName": {
+      "@id": "amp:displayName",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "valueType": {
+      "@id": "amp:valueType",
+      "@type": "xsd:string"
+    },
+    "required": {
+      "@id": "amp:required",
+      "@type": "xsd:boolean"
+    },
+    "unique": {
+      "@id": "amp:unique",
+      "@type": "xsd:boolean"
+    },
+    "indexed": {
+      "@id": "amp:indexed",
+      "@type": "xsd:boolean"
+    },
+    "stringOptions": {
+      "@id": "amp:stringOptions",
+      "@type": "xsd:string"
+    },
+    "numericOptions": {
+      "@id": "amp:numericOptions",
+      "@type": "xsd:string"
+    },
+    "association": {
+      "@id": "amp:association",
+      "@type": "xsd:string"
+    },
+    "UpsertMetadataRequest": "amp:UpsertMetadataRequest",
+    "groupRef": {
+      "@id": "amp:groupRef",
+      "@type": "xsd:string"
+    },
+    "fields": {
+      "@id": "amp:fields",
+      "@type": "@id"
+    },
+    "NotificationEventTopicRoute": "amp:NotificationEventTopicRoute",
+    "eventType": {
+      "@id": "amp:eventType",
+      "@type": "xsd:string"
+    },
+    "topicId": {
+      "@id": "amp:topicId",
+      "@type": "xsd:string"
+    },
+    "projectId": {
+      "@id": "amp:projectId",
+      "@type": "xsd:string"
+    },
+    "BillingAccount": "amp:BillingAccount",
+    "billingProvider": {
+      "@id": "amp:billingProvider",
+      "@type": "xsd:string"
+    },
+    "billingProviderRef": {
+      "@id": "amp:billingProviderRef",
+      "@type": "xsd:string"
+    },
+    "BuilderInfo": "amp:BuilderInfo",
+    "builder": {
+      "@id": "amp:builder",
+      "@type": "xsd:string"
+    },
+    "projectRoles": {
+      "@id": "amp:projectRoles",
+      "@type": "@id"
+    },
+    "orgRole": {
+      "@id": "amp:orgRole",
+      "@type": "@id"
+    },
+    "WebhookHeaders": "amp:WebhookHeaders",
+    "ProviderAppMetadata": "amp:ProviderAppMetadata",
+    "authQueryParams": {
+      "@id": "amp:authQueryParams",
+      "@type": "@id"
+    },
+    "providerParams": {
+      "@id": "amp:providerParams",
+      "@type": "@id"
+    },
+    "JWTKeyResponse": "amp:JWTKeyResponse",
+    "kid": {
+      "@id": "amp:kid",
+      "@type": "xsd:string"
+    },
+    "Oauth2AuthorizationCodeTokensOnly": "amp:Oauth2AuthorizationCodeTokensOnly",
+    "StringFieldOptions": "amp:StringFieldOptions",
+    "length": {
+      "@id": "amp:length",
+      "@type": "xsd:integer"
+    },
+    "pattern": {
+      "@id": "amp:pattern",
+      "@type": "xsd:string"
+    },
+    "values": {
+      "@id": "amp:values",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "valuesRestricted": {
+      "@id": "amp:valuesRestricted",
+      "@type": "xsd:boolean"
+    },
+    "defaultValue": {
+      "@id": "amp:defaultValue",
+      "@type": "xsd:string"
+    },
+    "Org": "amp:Org",
+    "label": {
+      "@id": "amp:label",
+      "@type": "xsd:string"
+    },
+    "defaultTeamId": {
+      "@id": "amp:defaultTeamId",
+      "@type": "xsd:string"
+    },
+    "UpsertMetadataResponse": "amp:UpsertMetadataResponse",
+    "success": {
+      "@id": "amp:success",
+      "@type": "xsd:boolean"
+    },
+    "UpdateConnectionRequest": "amp:UpdateConnectionRequest",
+    "connection": {
+      "@id": "amp:connection",
+      "@type": "xsd:string"
+    },
+    "Topic": "amp:Topic",
+    "ProviderMetadataInfo": "amp:ProviderMetadataInfo",
+    "value": {
+      "@id": "amp:value",
+      "@type": "xsd:string"
+    },
+    "source": {
+      "@id": "amp:source",
+      "@type": "xsd:string"
+    },
+    "BackfillProgress": "amp:BackfillProgress",
+    "installationId": {
+      "@id": "amp:installationId",
+      "@type": "xsd:string"
+    },
+    "objectName": {
+      "@id": "amp:objectName",
+      "@type": "xsd:string"
+    },
+    "operationId": {
+      "@id": "amp:operationId",
+      "@type": "xsd:string"
+    },
+    "recordsProcessed": {
+      "@id": "amp:recordsProcessed",
+      "@type": "xsd:integer"
+    },
+    "recordsEstimatedTotal": {
+      "@id": "amp:recordsEstimatedTotal",
+      "@type": "xsd:integer"
+    },
+    "ConnectionRequest": "amp:ConnectionRequest",
+    "providerWorkspaceRef": {
+      "@id": "amp:providerWorkspaceRef",
+      "@type": "xsd:string"
+    },
+    "providerMetadata": {
+      "@id": "amp:providerMetadata",
+      "@type": "xsd:string"
+    },
+    "groupName": {
+      "@id": "amp:groupName",
+      "@type": "xsd:string"
+    },
+    "consumerName": {
+      "@id": "amp:consumerName",
+      "@type": "xsd:string"
+    },
+    "consumerRef": {
+      "@id": "amp:consumerRef",
+      "@type": "xsd:string"
+    },
+    "provider": {
+      "@id": "amp:provider",
+      "@type": "xsd:string"
+    },
+    "customAuth": {
+      "@id": "amp:customAuth",
+      "@type": "@id"
+    },
+    "basicAuth": {
+      "@id": "amp:basicAuth",
+      "@type": "@id"
+    },
+    "oauth2ClientCredentials": {
+      "@id": "amp:oauth2ClientCredentials",
+      "@type": "@id"
+    },
+    "oauth2PasswordCredentials": {
+      "@id": "amp:oauth2PasswordCredentials",
+      "@type": "@id"
+    },
+    "oauth2AuthorizationCode": {
+      "@id": "amp:oauth2AuthorizationCode",
+      "@type": "xsd:string"
+    },
+    "ApiKeyRequest": "amp:ApiKeyRequest",
+    "PatchJWTKeyRequest": "amp:PatchJWTKeyRequest",
+    "jwtKey": {
+      "@id": "amp:jwtKey",
+      "@type": "@id"
+    },
+    "ApiKey": "amp:ApiKey",
+    "key": {
+      "@id": "amp:key",
+      "@type": "xsd:string"
+    },
+    "active": {
+      "@id": "amp:active",
+      "@type": "xsd:boolean"
+    },
+    "SignedUrl": "amp:SignedUrl",
+    "url": "schema:url",
+    "bucket": {
+      "@id": "amp:bucket",
+      "@type": "xsd:string"
+    },
+    "path": {
+      "@id": "amp:path",
+      "@type": "xsd:string"
+    },
+    "ProviderMetadata": "amp:ProviderMetadata",
+    "DestinationWithSecrets": "amp:DestinationWithSecrets",
+    "secrets": {
+      "@id": "amp:secrets",
+      "@type": "@id"
+    },
+    "Integration": "amp:Integration",
+    "latestRevision": {
+      "@id": "amp:latestRevision",
+      "@type": "xsd:string"
+    },
+    "Config": "amp:Config",
+    "revisionId": {
+      "@id": "amp:revisionId",
+      "@type": "xsd:string"
+    },
+    "createdBy": {
+      "@id": "amp:createdBy",
+      "@type": "xsd:string"
+    },
+    "AssociationDefinition": "amp:AssociationDefinition",
+    "associationType": {
+      "@id": "amp:associationType",
+      "@type": "xsd:string"
+    },
+    "targetObject": {
+      "@id": "amp:targetObject",
+      "@type": "xsd:string"
+    },
+    "targetField": {
+      "@id": "amp:targetField",
+      "@type": "xsd:string"
+    },
+    "cardinality": {
+      "@id": "amp:cardinality",
+      "@type": "xsd:string"
+    },
+    "onDelete": {
+      "@id": "amp:onDelete",
+      "@type": "xsd:string"
+    },
+    "reverseLookupFieldName": {
+      "@id": "amp:reverseLookupFieldName",
+      "@type": "xsd:string"
+    },
+    "labels": {
+      "@id": "amp:labels",
+      "@type": "xsd:string"
+    },
+    "Installation": "amp:Installation",
+    "integrationId": {
+      "@id": "amp:integrationId",
+      "@type": "xsd:string"
+    },
+    "group": {
+      "@id": "amp:group",
+      "@type": "xsd:string"
+    },
+    "healthStatus": {
+      "@id": "amp:healthStatus",
+      "@type": "xsd:string"
+    },
+    "lastOperationStatus": {
+      "@id": "amp:lastOperationStatus",
+      "@type": "xsd:string"
+    },
+    "config": {
+      "@id": "amp:config",
+      "@type": "xsd:string"
+    },
+    "TopicDestinationRoute": "amp:TopicDestinationRoute",
+    "destinationId": {
+      "@id": "amp:destinationId",
+      "@type": "xsd:string"
+    },
+    "Revision": "amp:Revision",
+    "FieldUpsertResult": "amp:FieldUpsertResult",
+    "action": {
+      "@id": "amp:action",
+      "@type": "xsd:string"
+    },
+    "warnings": {
+      "@id": "amp:warnings",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "NumericFieldOptions": "amp:NumericFieldOptions",
+    "precision": {
+      "@id": "amp:precision",
+      "@type": "xsd:integer"
+    },
+    "scale": {
+      "@id": "amp:scale",
+      "@type": "xsd:integer"
+    },
+    "min": {
+      "@id": "amp:min",
+      "@type": "xsd:decimal"
+    },
+    "max": {
+      "@id": "amp:max",
+      "@type": "xsd:decimal"
+    },
+    "JSONPatchOperation": "amp:JSONPatchOperation",
+    "op": {
+      "@id": "amp:op",
+      "@type": "xsd:string"
+    },
+    "ClaimedDomainResponse": "amp:ClaimedDomainResponse",
+    "parentType": {
+      "@id": "amp:parentType",
+      "@type": "xsd:string"
+    },
+    "parentId": {
+      "@id": "amp:parentId",
+      "@type": "xsd:string"
+    },
+    "domain": {
+      "@id": "amp:domain",
+      "@type": "xsd:string"
+    },
+    "PaginationInfo": "amp:PaginationInfo",
+    "done": {
+      "@id": "amp:done",
+      "@type": "xsd:boolean"
+    },
+    "nextPageToken": {
+      "@id": "amp:nextPageToken",
+      "@type": "xsd:string"
+    },
+    "Builder": "amp:Builder",
+    "idpProvider": {
+      "@id": "amp:idpProvider",
+      "@type": "xsd:string"
+    },
+    "idpRef": {
+      "@id": "amp:idpRef",
+      "@type": "xsd:string"
+    },
+    "firstName": {
+      "@id": "amp:firstName",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "amp:lastName",
+      "@type": "xsd:string"
+    },
+    "fullName": {
+      "@id": "amp:fullName",
+      "@type": "xsd:string"
+    },
+    "primaryEmail": {
+      "@id": "amp:primaryEmail",
+      "@type": "xsd:string"
+    },
+    "CreateJWTKeyRequest": "amp:CreateJWTKeyRequest",
+    "algorithm": {
+      "@id": "amp:algorithm",
+      "@type": "xsd:string"
+    },
+    "publicKeyPem": {
+      "@id": "amp:publicKeyPem",
+      "@type": "xsd:string"
+    },
+    "ProviderApp": "amp:ProviderApp",
+    "externalRef": {
+      "@id": "amp:externalRef",
+      "@type": "xsd:string"
+    },
+    "clientId": {
+      "@id": "amp:clientId",
+      "@type": "xsd:string"
+    },
+    "Invite": "amp:Invite",
+    "invitedEmail": {
+      "@id": "amp:invitedEmail",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "amp:status",
+      "@type": "xsd:string"
+    },
+    "ObjectMetadata": "amp:ObjectMetadata",
+    "mappedObjectName": {
+      "@id": "amp:mappedObjectName",
+      "@type": "xsd:string"
+    },
+    "JWTKey": "amp:JWTKey"
+  }
+}
