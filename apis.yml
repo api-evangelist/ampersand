@@ -122,6 +122,109 @@ common:
         description: Customer support integration with Zendesk for tickets, users, organizations, and support metrics.
       - name: Gong
         description: Conversation intelligence integration with Gong for call recordings, transcripts, and revenue insights.
+  - type: Integrations
+    url: https://www.withampersand.com/integrations
+integrations:
+  - name: CRM Salesforce
+  - name: CRM HubSpot
+  - name: CRM Microsoft Dynamics CRM
+  - name: ERP, Billing & Commerce Netsuite
+  - name: CRM Pipedrive
+  - name: CRM Attio
+  - name: CRM Zoho
+  - name: Conversational Intelligence & Notetakers Gong
+  - name: Sales Outreach
+  - name: ERP, Billing & Commerce Stripe
+  - name: ERP, Billing & Commerce QuickBooks
+  - name: ERP, Billing & Commerce Sage Intacct
+  - name: Ticketing & Support Zendesk Support
+  - name: Ticketing & Support ServiceNow
+  - name: Ticketing & Support Intercom
+  - name: Productivity & Collaboration Google
+  - name: Productivity & Collaboration Slack
+  - name: Developer & Infrastructure GitHub
+  - name: Productivity & Collaboration Asana
+  - name: Ticketing & Support Atlassian
+  - name: CRM Microsoft Dynamics Business Central
+  - name: CRM Capsule
+  - name: CRM Insightly
+  - name: CRM Sellsy
+  - name: CRM Monday
+  - name: CRM Teamwork
+  - name: CRM Teamleader
+  - name: CRM Blackbaud
+  - name: CRM Salesflare
+  - name: CRM Close
+  - name: CRM Copper
+  - name: CRM Keap
+  - name: CRM Nutshell
+  - name: CRM Freshdesk
+  - name: CRM Highlevel Standard
+  - name: CRM Highlevel White Label
+  - name: CRM Jobber
+  - name: CRM Breakcold
+  - name: CRM Loxo
+  - name: CRM Procore
+  - name: Sales Smartlead
+  - name: Sales Apollo
+  - name: Sales Salesloft
+  - name: Sales Instantly (Legacy V1)
+  - name: Sales Hunter
+  - name: Sales Drift
+  - name: Sales Calendly
+  - name: Sales Seismic
+  - name: Sales Acuity Scheduling
+  - name: Sales Mixmax
+  - name: Sales Dropbox Sign
+  - name: Sales Lemlist
+  - name: Sales HeyReach
+  - name: Sales Outplay
+  - name: Sales Chili Piper
+  - name: Marketing Customer.io Journeys App
+  - name: Marketing Brevo
+  - name: Marketing Blueshift
+  - name: Marketing Pinterest
+  - name: Marketing Klaviyo
+  - name: Marketing Braze
+  - name: Marketing LinkedIn
+  - name: Marketing Constant Contact
+  - name: Marketing Snapchat Ads
+  - name: Marketing GetResponse
+  - name: Marketing Marketo
+  - name: Marketing Iterable
+  - name: Marketing Kit
+  - name: Conversational Intelligence & Notetakers Fireflies
+  - name: Conversational Intelligence & Notetakers Avoma
+  - name: Conversational Intelligence & Notetakers Clari Copilot
+  - name: Conversational Intelligence & Notetakers Fathom
+  - name: Conversational Intelligence & Notetakers Chorus
+  - name: Conversational Intelligence & Notetakers Granola
+  - name: Conversational Intelligence & Notetakers Four/Four
+  - name: Ticketing & Support RingCentral
+  - name: Ticketing & Support Zendesk Chat
+  - name: Ticketing & Support Dixa
+  - name: Ticketing & Support Help Scout Mailbox
+  - name: Ticketing & Support Aircall
+  - name: Ticketing & Support Talkdesk
+  - name: Ticketing & Support Gorgias
+  - name: Ticketing & Support Front
+  - name: Ticketing & Support Groove
+  - name: Ticketing & Support HappyFox
+  - name: Ticketing & Support Linear
+  - name: Ticketing & Support Pylon
+  - name: Ticketing & Support DevRev
+  - name: ERP, Billing & Commerce Chargebee
+  - name: ERP, Billing & Commerce Shopify
+  - name: ERP, Billing & Commerce Recurly
+  - name: ERP, Billing & Commerce Xero
+  - name: ERP, Billing & Commerce Paddle
+  - name: ERP, Billing & Commerce Braintree
+  - name: ERP, Billing & Commerce Bentley
+  - name: ERP, Billing & Commerce Housecall Pro
+  - name: Analytics & AI Amplitude
+  - name: Developer & Infrastructure Bitbucket
+  - name: Developer & Infrastructure Okta
+  - name: Developer & Infrastructure Flatfile
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
