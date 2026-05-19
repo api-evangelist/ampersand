@@ -1,0 +1,268 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ampersand public API — Operation
+  description: 'Ampersand public API — Operation. 4 operations. Lead operation: Ampersand Get Backfill Progress. Self-contained
+    Naftiko capability covering one Ampersand business surface.'
+  tags:
+  - Ampersand
+  - Operation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMPERSAND_API_KEY: AMPERSAND_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ampersand-operation
+    baseUri: https://api.withampersand.com/v1
+    description: Ampersand public API — Operation business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectIdOrName-integrations-integrationId-installations-installationId
+      path: /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/objects/{objectName}/backfill-progress
+      operations:
+      - name: getbackfillprogress
+        method: GET
+        description: Ampersand Get Backfill Progress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: integrationId
+          in: path
+          type: string
+          description: The Ampersand integration ID.
+          required: true
+        - name: installationId
+          in: path
+          type: string
+          description: The Ampersand installation ID.
+          required: true
+        - name: objectName
+          in: path
+          type: string
+          description: Name of the object being synced (e.g., "contact", "account").
+          required: true
+    - name: projects-projectIdOrName-integrations-integrationId-installations-installationId
+      path: /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/operations
+      operations:
+      - name: listoperations
+        method: GET
+        description: Ampersand List Operations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: integrationId
+          in: path
+          type: string
+          description: The integration ID.
+          required: true
+        - name: installationId
+          in: path
+          type: string
+          description: The Ampersand installation ID.
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+          description: The number of operations to return.
+        - name: pageToken
+          in: query
+          type: string
+          description: A cursor that can be passed to paginate through multiple pages of operations.
+    - name: projects-projectIdOrName-operations-operationId
+      path: /projects/{projectIdOrName}/operations/{operationId}
+      operations:
+      - name: getoperation
+        method: GET
+        description: Ampersand Get an Operation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: operationId
+          in: path
+          type: string
+          description: Unique identifier for the operation. Obtain from the list operations API endpoint, the Ampersand dashboard,
+            or webhook payloads.
+          required: true
+    - name: projects-projectIdOrName-operations-operationId-logs
+      path: /projects/{projectIdOrName}/operations/{operationId}/logs
+      operations:
+      - name: listoperationlogs
+        method: GET
+        description: Ampersand List Logs for an Operation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: operationId
+          in: path
+          type: string
+          description: Operation ID.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.AMPERSAND_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ampersand-operation-rest
+    port: 8080
+    description: REST adapter for Ampersand public API — Operation. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectidorname}/integrations/{integrationid}/installations/{installationid}/objects/{objectname}/backfill-progress
+      name: projects-projectidorname-integrations-integrationid-installations-installationid
+      description: REST surface for projects-projectIdOrName-integrations-integrationId-installations-installationId.
+      operations:
+      - method: GET
+        name: getbackfillprogress
+        description: Ampersand Get Backfill Progress
+        call: ampersand-operation.getbackfillprogress
+        with:
+          projectIdOrName: rest.projectIdOrName
+          integrationId: rest.integrationId
+          installationId: rest.installationId
+          objectName: rest.objectName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/integrations/{integrationid}/installations/{installationid}/operations
+      name: projects-projectidorname-integrations-integrationid-installations-installationid
+      description: REST surface for projects-projectIdOrName-integrations-integrationId-installations-installationId.
+      operations:
+      - method: GET
+        name: listoperations
+        description: Ampersand List Operations
+        call: ampersand-operation.listoperations
+        with:
+          projectIdOrName: rest.projectIdOrName
+          integrationId: rest.integrationId
+          installationId: rest.installationId
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/operations/{operationid}
+      name: projects-projectidorname-operations-operationid
+      description: REST surface for projects-projectIdOrName-operations-operationId.
+      operations:
+      - method: GET
+        name: getoperation
+        description: Ampersand Get an Operation
+        call: ampersand-operation.getoperation
+        with:
+          projectIdOrName: rest.projectIdOrName
+          operationId: rest.operationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/operations/{operationid}/logs
+      name: projects-projectidorname-operations-operationid-logs
+      description: REST surface for projects-projectIdOrName-operations-operationId-logs.
+      operations:
+      - method: GET
+        name: listoperationlogs
+        description: Ampersand List Logs for an Operation
+        call: ampersand-operation.listoperationlogs
+        with:
+          projectIdOrName: rest.projectIdOrName
+          operationId: rest.operationId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ampersand-operation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ampersand public API — Operation. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: ampersand-get-backfill-progress
+      description: Ampersand Get Backfill Progress
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-operation.getbackfillprogress
+      with:
+        projectIdOrName: tools.projectIdOrName
+        integrationId: tools.integrationId
+        installationId: tools.installationId
+        objectName: tools.objectName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-list-operations
+      description: Ampersand List Operations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-operation.listoperations
+      with:
+        projectIdOrName: tools.projectIdOrName
+        integrationId: tools.integrationId
+        installationId: tools.installationId
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-get-operation
+      description: Ampersand Get an Operation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-operation.getoperation
+      with:
+        projectIdOrName: tools.projectIdOrName
+        operationId: tools.operationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-list-logs-operation
+      description: Ampersand List Logs for an Operation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-operation.listoperationlogs
+      with:
+        projectIdOrName: tools.projectIdOrName
+        operationId: tools.operationId
+      outputParameters:
+      - type: object
+        mapping: $.

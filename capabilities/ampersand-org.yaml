@@ -1,0 +1,548 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ampersand public API — Org
+  description: 'Ampersand public API — Org. 12 operations. Lead operation: Ampersand Check if a Domain is Claimed. Self-contained
+    Naftiko capability covering one Ampersand business surface.'
+  tags:
+  - Ampersand
+  - Org
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMPERSAND_API_KEY: AMPERSAND_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ampersand-org
+    baseUri: https://api.withampersand.com/v1
+    description: Ampersand public API — Org business capability. Self-contained, no shared references.
+    resources:
+    - name: claimed-domains
+      path: /claimed-domains
+      operations:
+      - name: checkclaimeddomain
+        method: GET
+        description: Ampersand Check if a Domain is Claimed
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain
+          in: query
+          type: string
+          description: 'Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails,
+            the portion after @ is used (e.g., "user@example.com" bec'
+          required: true
+      - name: claimdomain
+        method: POST
+        description: Ampersand Claim a Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: orgs
+      path: /orgs
+      operations:
+      - name: createorg
+        method: POST
+        description: Ampersand Create a New Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: orgs-orgId
+      path: /orgs/{orgId}
+      operations:
+      - name: getorg
+        method: GET
+        description: Ampersand Get an Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: ID of the organization.
+          required: true
+      - name: updateorg
+        method: PATCH
+        description: Ampersand Update an Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: ID of the organization.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: orgs-orgId-builders
+      path: /orgs/{orgId}/builders
+      operations:
+      - name: listorgbuilders
+        method: GET
+        description: Ampersand List Builders for an Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: ID of the organization.
+          required: true
+    - name: orgs-orgId-claimed-domains
+      path: /orgs/{orgId}/claimed-domains
+      operations:
+      - name: listorgclaimeddomains
+        method: GET
+        description: Ampersand List Organization's Claimed Domains
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+    - name: orgs-orgId-invites
+      path: /orgs/{orgId}/invites
+      operations:
+      - name: createorginvite
+        method: POST
+        description: Ampersand Invite a User to an Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: ID of the organization.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: listorginvites
+        method: GET
+        description: Ampersand List Invites for an Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: ID of the organization.
+          required: true
+    - name: orgs-orgId-invites-inviteId
+      path: /orgs/{orgId}/invites/{inviteId}
+      operations:
+      - name: getorginvite
+        method: GET
+        description: Ampersand Get an Invite
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: ID of the organization.
+          required: true
+        - name: inviteId
+          in: path
+          type: string
+          required: true
+      - name: deleteorginvite
+        method: DELETE
+        description: Ampersand Revoke an Invite
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: ID of the organization.
+          required: true
+        - name: inviteId
+          in: path
+          type: string
+          required: true
+    - name: orgs-orgId-memberships
+      path: /orgs/{orgId}/memberships
+      operations:
+      - name: addusertoorg
+        method: POST
+        description: Ampersand Add User to an Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: ID of the organization.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.AMPERSAND_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ampersand-org-rest
+    port: 8080
+    description: REST adapter for Ampersand public API — Org. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/claimed-domains
+      name: claimed-domains
+      description: REST surface for claimed-domains.
+      operations:
+      - method: GET
+        name: checkclaimeddomain
+        description: Ampersand Check if a Domain is Claimed
+        call: ampersand-org.checkclaimeddomain
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: claimdomain
+        description: Ampersand Claim a Domain
+        call: ampersand-org.claimdomain
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs
+      name: orgs
+      description: REST surface for orgs.
+      operations:
+      - method: POST
+        name: createorg
+        description: Ampersand Create a New Organization
+        call: ampersand-org.createorg
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{orgid}
+      name: orgs-orgid
+      description: REST surface for orgs-orgId.
+      operations:
+      - method: GET
+        name: getorg
+        description: Ampersand Get an Organization
+        call: ampersand-org.getorg
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateorg
+        description: Ampersand Update an Organization
+        call: ampersand-org.updateorg
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{orgid}/builders
+      name: orgs-orgid-builders
+      description: REST surface for orgs-orgId-builders.
+      operations:
+      - method: GET
+        name: listorgbuilders
+        description: Ampersand List Builders for an Organization
+        call: ampersand-org.listorgbuilders
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{orgid}/claimed-domains
+      name: orgs-orgid-claimed-domains
+      description: REST surface for orgs-orgId-claimed-domains.
+      operations:
+      - method: GET
+        name: listorgclaimeddomains
+        description: Ampersand List Organization's Claimed Domains
+        call: ampersand-org.listorgclaimeddomains
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{orgid}/invites
+      name: orgs-orgid-invites
+      description: REST surface for orgs-orgId-invites.
+      operations:
+      - method: POST
+        name: createorginvite
+        description: Ampersand Invite a User to an Organization
+        call: ampersand-org.createorginvite
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listorginvites
+        description: Ampersand List Invites for an Organization
+        call: ampersand-org.listorginvites
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{orgid}/invites/{inviteid}
+      name: orgs-orgid-invites-inviteid
+      description: REST surface for orgs-orgId-invites-inviteId.
+      operations:
+      - method: GET
+        name: getorginvite
+        description: Ampersand Get an Invite
+        call: ampersand-org.getorginvite
+        with:
+          orgId: rest.orgId
+          inviteId: rest.inviteId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteorginvite
+        description: Ampersand Revoke an Invite
+        call: ampersand-org.deleteorginvite
+        with:
+          orgId: rest.orgId
+          inviteId: rest.inviteId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{orgid}/memberships
+      name: orgs-orgid-memberships
+      description: REST surface for orgs-orgId-memberships.
+      operations:
+      - method: POST
+        name: addusertoorg
+        description: Ampersand Add User to an Organization
+        call: ampersand-org.addusertoorg
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ampersand-org-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ampersand public API — Org. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: ampersand-check-if-domain-is
+      description: Ampersand Check if a Domain is Claimed
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-org.checkclaimeddomain
+      with:
+        domain: tools.domain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-claim-domain
+      description: Ampersand Claim a Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ampersand-org.claimdomain
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-create-new-organization
+      description: Ampersand Create a New Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ampersand-org.createorg
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-get-organization
+      description: Ampersand Get an Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-org.getorg
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-update-organization
+      description: Ampersand Update an Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ampersand-org.updateorg
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-list-builders-organization
+      description: Ampersand List Builders for an Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-org.listorgbuilders
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-list-organization-s-claimed-domains
+      description: Ampersand List Organization's Claimed Domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-org.listorgclaimeddomains
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-invite-user-organization
+      description: Ampersand Invite a User to an Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ampersand-org.createorginvite
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-list-invites-organization
+      description: Ampersand List Invites for an Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-org.listorginvites
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-get-invite
+      description: Ampersand Get an Invite
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-org.getorginvite
+      with:
+        orgId: tools.orgId
+        inviteId: tools.inviteId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-revoke-invite
+      description: Ampersand Revoke an Invite
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ampersand-org.deleteorginvite
+      with:
+        orgId: tools.orgId
+        inviteId: tools.inviteId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-add-user-organization
+      description: Ampersand Add User to an Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ampersand-org.addusertoorg
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

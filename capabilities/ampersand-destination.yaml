@@ -1,0 +1,601 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ampersand public API — Destination
+  description: 'Ampersand public API — Destination. 12 operations. Lead operation: Ampersand Create a New Destination. Self-contained
+    Naftiko capability covering one Ampersand business surface.'
+  tags:
+  - Ampersand
+  - Destination
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMPERSAND_API_KEY: AMPERSAND_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ampersand-destination
+    baseUri: https://api.withampersand.com/v1
+    description: Ampersand public API — Destination business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectIdOrName-destinations
+      path: /projects/{projectIdOrName}/destinations
+      operations:
+      - name: createdestination
+        method: POST
+        description: Ampersand Create a New Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listdestinations
+        method: GET
+        description: Ampersand List Destinations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+    - name: projects-projectIdOrName-destinations-destination
+      path: /projects/{projectIdOrName}/destinations/{destination}
+      operations:
+      - name: getdestination
+        method: GET
+        description: Ampersand Get a Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: destination
+          in: path
+          type: string
+          description: The destination name.
+          required: true
+        - name: includeSecrets
+          in: query
+          type: boolean
+          description: Include secrets in the response
+        - name: rotate
+          in: query
+          type: boolean
+          description: Rotate the destination secrets
+      - name: updatedestination
+        method: PATCH
+        description: Ampersand Update a Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: destination
+          in: path
+          type: string
+          description: The destination ID.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletedestination
+        method: DELETE
+        description: Ampersand Delete a Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: destination
+          in: path
+          type: string
+          description: The destination ID
+          required: true
+    - name: projects-projectIdOrName-topic-destination-routes
+      path: /projects/{projectIdOrName}/topic-destination-routes
+      operations:
+      - name: createtopicdestinationroute
+        method: POST
+        description: Ampersand Create a Topic Destination Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listtopicdestinationroutes
+        method: GET
+        description: Ampersand List Topic Destination Routes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: topicId
+          in: query
+          type: string
+          description: Filter by topic ID.
+        - name: destinationId
+          in: query
+          type: string
+          description: Filter by destination ID.
+    - name: projects-projectIdOrName-topic-destination-routes-routeId
+      path: /projects/{projectIdOrName}/topic-destination-routes/{routeId}
+      operations:
+      - name: deletetopicdestinationroute
+        method: DELETE
+        description: Ampersand Delete a Topic Destination Route
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: routeId
+          in: path
+          type: string
+          description: The topic destination route ID.
+          required: true
+    - name: projects-projectIdOrName-topics
+      path: /projects/{projectIdOrName}/topics
+      operations:
+      - name: createtopic
+        method: POST
+        description: Ampersand Create a Topic
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listtopics
+        method: GET
+        description: Ampersand List Topics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+    - name: projects-projectIdOrName-topics-topicId
+      path: /projects/{projectIdOrName}/topics/{topicId}
+      operations:
+      - name: updatetopic
+        method: PATCH
+        description: Ampersand Update a Topic
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: topicId
+          in: path
+          type: string
+          description: The topic ID.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetopic
+        method: DELETE
+        description: Ampersand Delete a Topic
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: topicId
+          in: path
+          type: string
+          description: The topic ID.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.AMPERSAND_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ampersand-destination-rest
+    port: 8080
+    description: REST adapter for Ampersand public API — Destination. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectidorname}/destinations
+      name: projects-projectidorname-destinations
+      description: REST surface for projects-projectIdOrName-destinations.
+      operations:
+      - method: POST
+        name: createdestination
+        description: Ampersand Create a New Destination
+        call: ampersand-destination.createdestination
+        with:
+          projectIdOrName: rest.projectIdOrName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listdestinations
+        description: Ampersand List Destinations
+        call: ampersand-destination.listdestinations
+        with:
+          projectIdOrName: rest.projectIdOrName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/destinations/{destination}
+      name: projects-projectidorname-destinations-destination
+      description: REST surface for projects-projectIdOrName-destinations-destination.
+      operations:
+      - method: GET
+        name: getdestination
+        description: Ampersand Get a Destination
+        call: ampersand-destination.getdestination
+        with:
+          projectIdOrName: rest.projectIdOrName
+          destination: rest.destination
+          includeSecrets: rest.includeSecrets
+          rotate: rest.rotate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatedestination
+        description: Ampersand Update a Destination
+        call: ampersand-destination.updatedestination
+        with:
+          projectIdOrName: rest.projectIdOrName
+          destination: rest.destination
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedestination
+        description: Ampersand Delete a Destination
+        call: ampersand-destination.deletedestination
+        with:
+          projectIdOrName: rest.projectIdOrName
+          destination: rest.destination
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/topic-destination-routes
+      name: projects-projectidorname-topic-destination-routes
+      description: REST surface for projects-projectIdOrName-topic-destination-routes.
+      operations:
+      - method: POST
+        name: createtopicdestinationroute
+        description: Ampersand Create a Topic Destination Route
+        call: ampersand-destination.createtopicdestinationroute
+        with:
+          projectIdOrName: rest.projectIdOrName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listtopicdestinationroutes
+        description: Ampersand List Topic Destination Routes
+        call: ampersand-destination.listtopicdestinationroutes
+        with:
+          projectIdOrName: rest.projectIdOrName
+          topicId: rest.topicId
+          destinationId: rest.destinationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/topic-destination-routes/{routeid}
+      name: projects-projectidorname-topic-destination-routes-routeid
+      description: REST surface for projects-projectIdOrName-topic-destination-routes-routeId.
+      operations:
+      - method: DELETE
+        name: deletetopicdestinationroute
+        description: Ampersand Delete a Topic Destination Route
+        call: ampersand-destination.deletetopicdestinationroute
+        with:
+          projectIdOrName: rest.projectIdOrName
+          routeId: rest.routeId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/topics
+      name: projects-projectidorname-topics
+      description: REST surface for projects-projectIdOrName-topics.
+      operations:
+      - method: POST
+        name: createtopic
+        description: Ampersand Create a Topic
+        call: ampersand-destination.createtopic
+        with:
+          projectIdOrName: rest.projectIdOrName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listtopics
+        description: Ampersand List Topics
+        call: ampersand-destination.listtopics
+        with:
+          projectIdOrName: rest.projectIdOrName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/topics/{topicid}
+      name: projects-projectidorname-topics-topicid
+      description: REST surface for projects-projectIdOrName-topics-topicId.
+      operations:
+      - method: PATCH
+        name: updatetopic
+        description: Ampersand Update a Topic
+        call: ampersand-destination.updatetopic
+        with:
+          projectIdOrName: rest.projectIdOrName
+          topicId: rest.topicId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetopic
+        description: Ampersand Delete a Topic
+        call: ampersand-destination.deletetopic
+        with:
+          projectIdOrName: rest.projectIdOrName
+          topicId: rest.topicId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ampersand-destination-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ampersand public API — Destination. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: ampersand-create-new-destination
+      description: Ampersand Create a New Destination
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ampersand-destination.createdestination
+      with:
+        projectIdOrName: tools.projectIdOrName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-list-destinations
+      description: Ampersand List Destinations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-destination.listdestinations
+      with:
+        projectIdOrName: tools.projectIdOrName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-get-destination
+      description: Ampersand Get a Destination
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-destination.getdestination
+      with:
+        projectIdOrName: tools.projectIdOrName
+        destination: tools.destination
+        includeSecrets: tools.includeSecrets
+        rotate: tools.rotate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-update-destination
+      description: Ampersand Update a Destination
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ampersand-destination.updatedestination
+      with:
+        projectIdOrName: tools.projectIdOrName
+        destination: tools.destination
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-delete-destination
+      description: Ampersand Delete a Destination
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ampersand-destination.deletedestination
+      with:
+        projectIdOrName: tools.projectIdOrName
+        destination: tools.destination
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-create-topic-destination-route
+      description: Ampersand Create a Topic Destination Route
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ampersand-destination.createtopicdestinationroute
+      with:
+        projectIdOrName: tools.projectIdOrName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-list-topic-destination-routes
+      description: Ampersand List Topic Destination Routes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-destination.listtopicdestinationroutes
+      with:
+        projectIdOrName: tools.projectIdOrName
+        topicId: tools.topicId
+        destinationId: tools.destinationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-delete-topic-destination-route
+      description: Ampersand Delete a Topic Destination Route
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ampersand-destination.deletetopicdestinationroute
+      with:
+        projectIdOrName: tools.projectIdOrName
+        routeId: tools.routeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-create-topic
+      description: Ampersand Create a Topic
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ampersand-destination.createtopic
+      with:
+        projectIdOrName: tools.projectIdOrName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-list-topics
+      description: Ampersand List Topics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-destination.listtopics
+      with:
+        projectIdOrName: tools.projectIdOrName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-update-topic
+      description: Ampersand Update a Topic
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ampersand-destination.updatetopic
+      with:
+        projectIdOrName: tools.projectIdOrName
+        topicId: tools.topicId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-delete-topic
+      description: Ampersand Delete a Topic
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ampersand-destination.deletetopic
+      with:
+        projectIdOrName: tools.projectIdOrName
+        topicId: tools.topicId
+      outputParameters:
+      - type: object
+        mapping: $.

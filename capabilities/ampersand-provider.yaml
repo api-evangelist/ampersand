@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ampersand public API — Provider
+  description: 'Ampersand public API — Provider. 2 operations. Lead operation: Ampersand List Providers. Self-contained Naftiko
+    capability covering one Ampersand business surface.'
+  tags:
+  - Ampersand
+  - Provider
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMPERSAND_API_KEY: AMPERSAND_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ampersand-provider
+    baseUri: https://api.withampersand.com/v1
+    description: Ampersand public API — Provider business capability. Self-contained, no shared references.
+    resources:
+    - name: providers
+      path: /providers
+      operations:
+      - name: listproviders
+        method: GET
+        description: Ampersand List Providers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: providers-provider
+      path: /providers/{provider}
+      operations:
+      - name: getprovider
+        method: GET
+        description: Ampersand Get Provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: provider
+          in: path
+          type: string
+          description: The provider name (e.g. `salesforce`, `hubspot`).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.AMPERSAND_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ampersand-provider-rest
+    port: 8080
+    description: REST adapter for Ampersand public API — Provider. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/providers
+      name: providers
+      description: REST surface for providers.
+      operations:
+      - method: GET
+        name: listproviders
+        description: Ampersand List Providers
+        call: ampersand-provider.listproviders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/providers/{provider}
+      name: providers-provider
+      description: REST surface for providers-provider.
+      operations:
+      - method: GET
+        name: getprovider
+        description: Ampersand Get Provider
+        call: ampersand-provider.getprovider
+        with:
+          provider: rest.provider
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ampersand-provider-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ampersand public API — Provider. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: ampersand-list-providers
+      description: Ampersand List Providers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-provider.listproviders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-get-provider
+      description: Ampersand Get Provider
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-provider.getprovider
+      with:
+        provider: tools.provider
+      outputParameters:
+      - type: object
+        mapping: $.

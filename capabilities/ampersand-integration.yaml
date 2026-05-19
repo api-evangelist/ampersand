@@ -1,0 +1,276 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ampersand public API — Integration
+  description: 'Ampersand public API — Integration. 5 operations. Lead operation: Ampersand List Integrations. Self-contained
+    Naftiko capability covering one Ampersand business surface.'
+  tags:
+  - Ampersand
+  - Integration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMPERSAND_API_KEY: AMPERSAND_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ampersand-integration
+    baseUri: https://api.withampersand.com/v1
+    description: Ampersand public API — Integration business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectIdOrName-integrations
+      path: /projects/{projectIdOrName}/integrations
+      operations:
+      - name: listintegrations
+        method: GET
+        description: Ampersand List Integrations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+      - name: createintegration
+        method: POST
+        description: Ampersand Create a New Integration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-projectIdOrName-integrations-integrationIdOrName
+      path: /projects/{projectIdOrName}/integrations/{integrationIdOrName}
+      operations:
+      - name: getintegration
+        method: GET
+        description: Ampersand Get an Integration by ID or Name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: integrationIdOrName
+          in: path
+          type: string
+          description: The integration ID or name.
+          required: true
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+    - name: projects-projectIdOrName-integrations-integrationId
+      path: /projects/{projectIdOrName}/integrations/{integrationId}
+      operations:
+      - name: deleteintegration
+        method: DELETE
+        description: Ampersand Delete an Integration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: integrationId
+          in: path
+          type: string
+          description: The integration ID.
+          required: true
+    - name: projects-projectIdOrName-integrations:batch
+      path: /projects/{projectIdOrName}/integrations:batch
+      operations:
+      - name: batchupsertintegrations
+        method: PUT
+        description: Ampersand Batch Upsert a Group of Integrations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: The Ampersand project ID or project name.
+          required: true
+        - name: destructive
+          in: query
+          type: boolean
+          description: Defaults to false. This flag controls whether to perform destructive actions when deploying integrations,
+            like pausing all read actions for an object that was r
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.AMPERSAND_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ampersand-integration-rest
+    port: 8080
+    description: REST adapter for Ampersand public API — Integration. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectidorname}/integrations
+      name: projects-projectidorname-integrations
+      description: REST surface for projects-projectIdOrName-integrations.
+      operations:
+      - method: GET
+        name: listintegrations
+        description: Ampersand List Integrations
+        call: ampersand-integration.listintegrations
+        with:
+          projectIdOrName: rest.projectIdOrName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createintegration
+        description: Ampersand Create a New Integration.
+        call: ampersand-integration.createintegration
+        with:
+          projectIdOrName: rest.projectIdOrName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/integrations/{integrationidorname}
+      name: projects-projectidorname-integrations-integrationidorname
+      description: REST surface for projects-projectIdOrName-integrations-integrationIdOrName.
+      operations:
+      - method: GET
+        name: getintegration
+        description: Ampersand Get an Integration by ID or Name
+        call: ampersand-integration.getintegration
+        with:
+          integrationIdOrName: rest.integrationIdOrName
+          projectIdOrName: rest.projectIdOrName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/integrations/{integrationid}
+      name: projects-projectidorname-integrations-integrationid
+      description: REST surface for projects-projectIdOrName-integrations-integrationId.
+      operations:
+      - method: DELETE
+        name: deleteintegration
+        description: Ampersand Delete an Integration
+        call: ampersand-integration.deleteintegration
+        with:
+          projectIdOrName: rest.projectIdOrName
+          integrationId: rest.integrationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/integrations-batch
+      name: projects-projectidorname-integrations-batch
+      description: REST surface for projects-projectIdOrName-integrations:batch.
+      operations:
+      - method: PUT
+        name: batchupsertintegrations
+        description: Ampersand Batch Upsert a Group of Integrations
+        call: ampersand-integration.batchupsertintegrations
+        with:
+          projectIdOrName: rest.projectIdOrName
+          destructive: rest.destructive
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ampersand-integration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ampersand public API — Integration. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: ampersand-list-integrations
+      description: Ampersand List Integrations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-integration.listintegrations
+      with:
+        projectIdOrName: tools.projectIdOrName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-create-new-integration
+      description: Ampersand Create a New Integration.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ampersand-integration.createintegration
+      with:
+        projectIdOrName: tools.projectIdOrName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-get-integration-id-name
+      description: Ampersand Get an Integration by ID or Name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-integration.getintegration
+      with:
+        integrationIdOrName: tools.integrationIdOrName
+        projectIdOrName: tools.projectIdOrName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-delete-integration
+      description: Ampersand Delete an Integration
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ampersand-integration.deleteintegration
+      with:
+        projectIdOrName: tools.projectIdOrName
+        integrationId: tools.integrationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-batch-upsert-group-integrations
+      description: Ampersand Batch Upsert a Group of Integrations
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ampersand-integration.batchupsertintegrations
+      with:
+        projectIdOrName: tools.projectIdOrName
+        destructive: tools.destructive
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

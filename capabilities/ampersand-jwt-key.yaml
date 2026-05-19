@@ -1,0 +1,268 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ampersand public API — JWT Key
+  description: 'Ampersand public API — JWT Key. 5 operations. Lead operation: Ampersand Create a New JWT Key. Self-contained
+    Naftiko capability covering one Ampersand business surface.'
+  tags:
+  - Ampersand
+  - JWT Key
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMPERSAND_API_KEY: AMPERSAND_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ampersand-jwt-key
+    baseUri: https://api.withampersand.com/v1
+    description: Ampersand public API — JWT Key business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectIdOrName-jwt-keys
+      path: /projects/{projectIdOrName}/jwt-keys
+      operations:
+      - name: createjwtkey
+        method: POST
+        description: Ampersand Create a New JWT Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: Ampersand Project ID or name.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listjwtkeys
+        method: GET
+        description: Ampersand List JWT Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: Ampersand Project ID or name.
+          required: true
+        - name: active
+          in: query
+          type: boolean
+          description: Filter to only return active JWT keys
+    - name: projects-projectIdOrName-jwt-keys-keyId
+      path: /projects/{projectIdOrName}/jwt-keys/{keyId}
+      operations:
+      - name: getjwtkey
+        method: GET
+        description: Ampersand Get a Specific JWT Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: Ampersand Project ID or name.
+          required: true
+        - name: keyId
+          in: path
+          type: string
+          description: The JWT key ID.
+          required: true
+      - name: updatejwtkey
+        method: PATCH
+        description: Ampersand Update a JWT Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: Ampersand Project ID or name.
+          required: true
+        - name: keyId
+          in: path
+          type: string
+          description: The JWT key ID.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletejwtkey
+        method: DELETE
+        description: Ampersand Delete a JWT Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectIdOrName
+          in: path
+          type: string
+          description: Ampersand Project ID or name.
+          required: true
+        - name: keyId
+          in: path
+          type: string
+          description: The JWT key ID.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.AMPERSAND_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ampersand-jwt-key-rest
+    port: 8080
+    description: REST adapter for Ampersand public API — JWT Key. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectidorname}/jwt-keys
+      name: projects-projectidorname-jwt-keys
+      description: REST surface for projects-projectIdOrName-jwt-keys.
+      operations:
+      - method: POST
+        name: createjwtkey
+        description: Ampersand Create a New JWT Key
+        call: ampersand-jwt-key.createjwtkey
+        with:
+          projectIdOrName: rest.projectIdOrName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listjwtkeys
+        description: Ampersand List JWT Keys
+        call: ampersand-jwt-key.listjwtkeys
+        with:
+          projectIdOrName: rest.projectIdOrName
+          active: rest.active
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectidorname}/jwt-keys/{keyid}
+      name: projects-projectidorname-jwt-keys-keyid
+      description: REST surface for projects-projectIdOrName-jwt-keys-keyId.
+      operations:
+      - method: GET
+        name: getjwtkey
+        description: Ampersand Get a Specific JWT Key
+        call: ampersand-jwt-key.getjwtkey
+        with:
+          projectIdOrName: rest.projectIdOrName
+          keyId: rest.keyId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatejwtkey
+        description: Ampersand Update a JWT Key
+        call: ampersand-jwt-key.updatejwtkey
+        with:
+          projectIdOrName: rest.projectIdOrName
+          keyId: rest.keyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletejwtkey
+        description: Ampersand Delete a JWT Key
+        call: ampersand-jwt-key.deletejwtkey
+        with:
+          projectIdOrName: rest.projectIdOrName
+          keyId: rest.keyId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ampersand-jwt-key-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ampersand public API — JWT Key. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: ampersand-create-new-jwt-key
+      description: Ampersand Create a New JWT Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ampersand-jwt-key.createjwtkey
+      with:
+        projectIdOrName: tools.projectIdOrName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-list-jwt-keys
+      description: Ampersand List JWT Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-jwt-key.listjwtkeys
+      with:
+        projectIdOrName: tools.projectIdOrName
+        active: tools.active
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-get-specific-jwt-key
+      description: Ampersand Get a Specific JWT Key
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-jwt-key.getjwtkey
+      with:
+        projectIdOrName: tools.projectIdOrName
+        keyId: tools.keyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-update-jwt-key
+      description: Ampersand Update a JWT Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ampersand-jwt-key.updatejwtkey
+      with:
+        projectIdOrName: tools.projectIdOrName
+        keyId: tools.keyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ampersand-delete-jwt-key
+      description: Ampersand Delete a JWT Key
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ampersand-jwt-key.deletejwtkey
+      with:
+        projectIdOrName: tools.projectIdOrName
+        keyId: tools.keyId
+      outputParameters:
+      - type: object
+        mapping: $.

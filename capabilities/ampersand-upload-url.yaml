@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ampersand public API — Upload URL
+  description: 'Ampersand public API — Upload URL. 1 operations. Lead operation: Ampersand Generate a Signed URL to Upload
+    a Zip File To.. Self-contained Naftiko capability covering one Ampersand business surface.'
+  tags:
+  - Ampersand
+  - Upload URL
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMPERSAND_API_KEY: AMPERSAND_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ampersand-upload-url
+    baseUri: https://api.withampersand.com/v1
+    description: Ampersand public API — Upload URL business capability. Self-contained, no shared references.
+    resources:
+    - name: generate-upload-url
+      path: /generate-upload-url
+      operations:
+      - name: generateuploadurl
+        method: GET
+        description: Ampersand Generate a Signed URL to Upload a Zip File To.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.AMPERSAND_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ampersand-upload-url-rest
+    port: 8080
+    description: REST adapter for Ampersand public API — Upload URL. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/generate-upload-url
+      name: generate-upload-url
+      description: REST surface for generate-upload-url.
+      operations:
+      - method: GET
+        name: generateuploadurl
+        description: Ampersand Generate a Signed URL to Upload a Zip File To.
+        call: ampersand-upload-url.generateuploadurl
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ampersand-upload-url-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ampersand public API — Upload URL. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: ampersand-generate-signed-url-upload
+      description: Ampersand Generate a Signed URL to Upload a Zip File To.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ampersand-upload-url.generateuploadurl
+      outputParameters:
+      - type: object
+        mapping: $.
