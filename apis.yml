@@ -164,6 +164,8 @@ common:
     description: Conversation intelligence integration with Gong for call recordings, transcripts, and revenue insights.
 - type: Integrations
   url: https://www.withampersand.com/integrations
+- type: LLMsTxt
+  url: https://docs.withampersand.com/llms.txt
 integrations:
 - name: CRM Salesforce
 - name: CRM HubSpot
