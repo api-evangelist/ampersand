@@ -40,41 +40,41 @@ apis:
     url: https://docs.withampersand.com/reference/authentication
   - type: OpenAPI
     url: openapi/ampersand-api-openapi-original.yml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-api-key.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-billing-account.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-connection.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-destination.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-installation.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-integration.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-jwt-key.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-notification.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-oauth.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-objects-fields.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-operation.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-org.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-project.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-provider.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-provider-app.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-revision.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-upload-url.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ampersand-user.yaml
 common:
 - type: LinkedIn
@@ -87,11 +87,11 @@ common:
   url: https://github.com/amp-labs
 - type: Blog
   url: https://www.withampersand.com/blog
-- type: SignUp
+- type: Signup
   url: https://dashboard.withampersand.com/sign-up
 - type: Login
   url: https://dashboard.withampersand.com/sign-in
-- type: SDK
+- type: SDKs
   url: https://www.npmjs.com/package/@amp-labs/react
   title: React UI SDK
 - type: CLI
@@ -164,7 +164,7 @@ common:
     description: Conversation intelligence integration with Gong for call recordings, transcripts, and revenue insights.
 - type: Integrations
   url: https://www.withampersand.com/integrations
-- type: LLMsTxt
+- type: LlmsText
   url: https://docs.withampersand.com/llms.txt
 integrations:
 - name: CRM Salesforce
