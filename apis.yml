@@ -77,6 +77,10 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/ampersand-user.yaml
 common:
+- type: DomainSecurity
+  url: security/ampersand-domain-security.yml
+- type: Authentication
+  url: authentication/ampersand-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/meetampersand
 - type: Website
