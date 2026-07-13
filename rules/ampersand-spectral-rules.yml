@@ -1,5 +1,23 @@
+# ampersand — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 1/1 servers on withampersand.com
+#   - path-params-casing: camel @ 95% (n=120)
+#   - query-params-casing: camel @ 70% (n=27)
+#   - operationid-casing: camel @ 100% (n=81)
+#   - schema-names-casing: pascal @ 100% (n=55)
+#   - schema-properties-casing: camel @ 58% (n=253)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - pagination params observed: ['pageSize', 'pageToken']
+#   - merge: kept 26 existing, added 5 measured, upgraded 0
+#   - added: servers-expected-domain, path-params-casing, query-params-casing, schema-names-casing, schema-properties-casing
+extends:
+  - spectral:oas
 rules:
-  # INFO / METADATA
   info-title-prefix:
     description: API title should reference "Ampersand".
     severity: warn
@@ -7,8 +25,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^Ampersand'
-
+        match: ^Ampersand
   info-description-required:
     description: API info must have a description.
     severity: error
@@ -16,7 +33,6 @@ rules:
     then:
       field: description
       function: truthy
-
   info-version-required:
     description: API info must define a version.
     severity: error
@@ -24,8 +40,6 @@ rules:
     then:
       field: version
       function: truthy
-
-  # OPENAPI VERSION
   openapi-version-3:
     description: OpenAPI version must be 3.0.x or 3.1.x.
     severity: error
@@ -33,9 +47,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^3\.'
-
-  # SERVERS
+        match: ^3\.
   servers-defined:
     description: At least one server must be defined.
     severity: error
@@ -43,7 +55,6 @@ rules:
     then:
       field: servers
       function: truthy
-
   servers-https:
     description: Server URLs must use HTTPS.
     severity: error
@@ -51,9 +62,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^https://'
-
-  # PATHS - NAMING CONVENTIONS
+        match: ^https://
   paths-kebab-case:
     description: Path segments should use kebab-case or camelCase with braces for params.
     severity: warn
@@ -61,8 +70,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^(/[a-z0-9A-Z{}_-]+)+$'
-
+        match: ^(/[a-z0-9A-Z{}_-]+)+$
   paths-no-trailing-slash:
     description: Paths must not have trailing slashes.
     severity: error
@@ -70,9 +78,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        notMatch: '/$'
-
-  # OPERATIONS
+        notMatch: /$
   operation-summary-required:
     description: Every operation must have a summary.
     severity: error
@@ -80,7 +86,6 @@ rules:
     then:
       field: summary
       function: truthy
-
   operation-summary-prefix:
     description: Operation summaries should start with "Ampersand".
     severity: warn
@@ -88,8 +93,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^Ampersand'
-
+        match: ^Ampersand
   operation-description-required:
     description: Every operation should have a description.
     severity: warn
@@ -97,7 +101,6 @@ rules:
     then:
       field: description
       function: truthy
-
   operation-id-required:
     description: Every operation must have an operationId.
     severity: error
@@ -105,7 +108,6 @@ rules:
     then:
       field: operationId
       function: truthy
-
   operation-id-camel-case:
     description: operationId should use camelCase.
     severity: warn
@@ -113,8 +115,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^[a-z][a-zA-Z0-9]*$'
-
+        match: ^[a-z][a-zA-Z0-9]*$
   operation-tags-required:
     description: Every operation must have at least one tag.
     severity: error
@@ -122,8 +123,6 @@ rules:
     then:
       field: tags
       function: truthy
-
-  # TAGS
   tags-global-defined:
     description: Global tags array should be defined.
     severity: warn
@@ -131,8 +130,6 @@ rules:
     then:
       field: tags
       function: truthy
-
-  # PARAMETERS
   parameter-description-required:
     description: Every parameter must have a description.
     severity: error
@@ -140,8 +137,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # REQUEST BODIES
   request-body-json-content-type:
     description: Request bodies should use application/json content type.
     severity: warn
@@ -149,8 +144,6 @@ rules:
     then:
       field: application/json
       function: truthy
-
-  # RESPONSES
   response-success-required:
     description: Every operation must define responses.
     severity: error
@@ -158,7 +151,6 @@ rules:
     then:
       field: responses
       function: truthy
-
   response-401-required:
     description: Operations should document a 401 unauthorized response.
     severity: warn
@@ -166,7 +158,6 @@ rules:
     then:
       field: '401'
       function: truthy
-
   response-description-required:
     description: Every response must have a description.
     severity: error
@@ -174,8 +165,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # SCHEMAS
   schema-description-required:
     description: Top-level schemas should have a description.
     severity: warn
@@ -183,8 +172,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # SECURITY
   security-scheme-defined:
     description: Security schemes must be defined in components.
     severity: error
@@ -192,8 +179,6 @@ rules:
     then:
       field: securitySchemes
       function: truthy
-
-  # HTTP METHOD CONVENTIONS
   get-no-request-body:
     description: GET operations must not have a request body.
     severity: error
@@ -201,7 +186,6 @@ rules:
     then:
       field: requestBody
       function: falsy
-
   delete-returns-204:
     description: DELETE operations should return 204 No Content when successful.
     severity: info
@@ -209,8 +193,6 @@ rules:
     then:
       field: '204'
       function: truthy
-
-  # GENERAL QUALITY
   no-empty-descriptions:
     description: Descriptions must not be empty strings.
     severity: error
@@ -218,8 +200,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '.+'
-
+        match: .+
   examples-encouraged:
     description: Operations should include examples for documentation.
     severity: info
@@ -227,3 +208,46 @@ rules:
     then:
       field: examples
       function: truthy
+  servers-expected-domain:
+    description: Server URLs should be on the withampersand.com domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: withampersand\.com
+  path-params-casing:
+    description: Path parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  query-params-casing:
+    description: Query parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: camel
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-properties-casing:
+    description: Schema properties should be camelCase (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: camel
