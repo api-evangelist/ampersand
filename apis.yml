@@ -77,6 +77,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/ampersand-user.yaml
 common:
+- type: AgenticAccess
+  url: agentic-access/ampersand-agentic-access.yml
 - type: DomainSecurity
   url: security/ampersand-domain-security.yml
 - type: Authentication
