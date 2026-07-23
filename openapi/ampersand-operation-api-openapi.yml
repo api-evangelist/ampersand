@@ -1,0 +1,500 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Operation API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Operation
+paths:
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/operations:
+    get:
+      summary: Ampersand List Operations
+      operationId: listOperations
+      tags:
+      - Operation
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The integration ID.
+        schema:
+          type: string
+      - name: installationId
+        in: path
+        required: true
+        description: The Ampersand installation ID.
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 200
+        description: The number of operations to return.
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+        description: A cursor that can be passed to paginate through multiple pages of operations.
+      responses:
+        200:
+          description: List of operations
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - results
+                - pagination
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Operation'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationInfo'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  ? /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}/objects/{objectName}/backfill-progress
+  : get:
+      summary: Ampersand Get Backfill Progress
+      operationId: getBackfillProgress
+      tags:
+      - Operation
+      description: Retrieve backfill progress (records processed, estimated total) for an object. Use to track progress of an initial data sync.
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The Ampersand integration ID.
+        schema:
+          type: string
+        example: 113e9685-9a51-42cc-8662-9d9725b17f14
+      - name: installationId
+        in: path
+        required: true
+        description: The Ampersand installation ID.
+        schema:
+          type: string
+        example: 66438162-5299-4669-a41d-85c5a3b1a83e
+      - name: objectName
+        in: path
+        required: true
+        description: Name of the object being synced (e.g., "contact", "account").
+        schema:
+          type: string
+        example: contact
+      responses:
+        200:
+          description: Backfill progress for the object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackfillProgress'
+              example:
+                installationId: 66438162-5299-4669-a41d-85c5a3b1a83e
+                objectName: contact
+                operationId: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
+                recordsProcessed: 1250
+                recordsEstimatedTotal: 5000
+                createTime: '2025-02-13T10:00:00Z'
+                updateTime: '2025-02-13T10:05:00Z'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        404:
+          description: No backfill operation found or progress not available
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/operations/{operationId}:
+    get:
+      summary: Ampersand Get an Operation
+      description: "Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as backfill progress or write outcome details. \n"
+      operationId: getOperation
+      tags:
+      - Operation
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: operationId
+        in: path
+        required: true
+        description: Unique identifier for the operation. Obtain from the list operations API endpoint, the Ampersand dashboard, or webhook payloads.
+        schema:
+          type: string
+        example: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
+      responses:
+        200:
+          description: The operation, including its current status, result summary, and metadata (e.g. backfill progress or write results).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                readSuccess:
+                  summary: Completed read (no new data)
+                  value:
+                    projectId: 123e4567-e89b-12d3-a456-426614174000
+                    integrationId: 113e9685-9a51-42cc-8662-9d9725b17f14
+                    installationId: 66438162-5299-4669-a41d-85c5a3b1a83e
+                    configId: a1b2c3d4-e5f6-4789-a012-3456789abcde
+                    actionType: read
+                    status: success
+                    id: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
+                    result: '[contact] No new data found'
+                    metadata:
+                      objects:
+                      - contact
+                    createTime: '2023-07-13T21:34:44.816354Z'
+                readBackfill:
+                  summary: Read with backfill progress
+                  value:
+                    projectId: 123e4567-e89b-12d3-a456-426614174000
+                    integrationId: 113e9685-9a51-42cc-8662-9d9725b17f14
+                    installationId: 66438162-5299-4669-a41d-85c5a3b1a83e
+                    configId: a1b2c3d4-e5f6-4789-a012-3456789abcde
+                    actionType: read
+                    status: in_progress
+                    id: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
+                    metadata:
+                      objects:
+                      - contact
+                      progress:
+                        installationId: 66438162-5299-4669-a41d-85c5a3b1a83e
+                        objectName: contact
+                        operationId: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
+                        recordsProcessed: 1250
+                        recordsEstimatedTotal: 5000
+                    createTime: '2023-07-13T21:34:44.816354Z'
+                writeSuccess:
+                  summary: Completed write with successful record IDs
+                  value:
+                    projectId: 123e4567-e89b-12d3-a456-426614174000
+                    integrationId: 113e9685-9a51-42cc-8662-9d9725b17f14
+                    installationId: 66438162-5299-4669-a41d-85c5a3b1a83e
+                    configId: a1b2c3d4-e5f6-4789-a012-3456789abcde
+                    actionType: write
+                    status: success
+                    id: 7a8b9c0d-1e2f-4a5b-8c9d-0e1f2a3b4c5d
+                    result: Batch write completed (2 succeeded, 0 failed)
+                    metadata:
+                      objects:
+                      - contact
+                      successfulRecordIds:
+                      - 001xx000003DGbYAAW
+                      - 001xx000003DGbZAAW
+                    createTime: '2023-07-13T22:10:00.000000Z'
+        default:
+          description: 'Error response for any non-2xx status (e.g. operation not found, invalid project or operation ID, or server error).
+
+            '
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+              example:
+                type: https://httpstatuses.com/404
+                title: Not Found
+                status: 404
+                detail: Operation not found for the given operation ID.
+                subsystem: api
+                time: '2024-04-22T18:55:28.456076Z'
+                requestId: 89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715
+                remedy: Verify the operation ID and project are correct, or list operations to find a valid ID.
+                retryable: false
+  /projects/{projectIdOrName}/operations/{operationId}/logs:
+    get:
+      summary: Ampersand List Logs for an Operation
+      operationId: listOperationLogs
+      tags:
+      - Operation
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: operationId
+        in: path
+        required: true
+        description: Operation ID.
+        schema:
+          type: string
+      responses:
+        200:
+          description: List of logs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Log'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    BackfillProgress:
+      title: BackfillProgress
+      type: object
+      required:
+      - installationId
+      - objectName
+      - operationId
+      - recordsProcessed
+      properties:
+        installationId:
+          type: string
+          description: The installation ID.
+        objectName:
+          type: string
+          description: The object being synced (e.g., contact, account).
+        operationId:
+          type: string
+          description: The ID of the backfill operation.
+        recordsProcessed:
+          type: integer
+          description: The number of records processed so far. Updates as more records are read during the backfill.
+          example: 1250
+        recordsEstimatedTotal:
+          type: integer
+          description: The estimated total number of records to process. Only present for Salesforce and HubSpot; other connectors omit this field.
+          example: 5000
+        createTime:
+          type: string
+          format: date-time
+          description: When the backfill operation started.
+        updateTime:
+          type: string
+          format: date-time
+          description: When progress was last updated.
+    Operation:
+      title: Operation
+      required:
+      - projectId
+      - integrationId
+      - installationId
+      - configId
+      - actionType
+      - status
+      - id
+      type: object
+      properties:
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: 123e4567-e89b-12d3-a456-426614174000
+        integrationId:
+          type: string
+          description: The integration ID.
+        configId:
+          type: string
+          description: The config ID.
+          example: a1b2c3d4-e5f6-4789-a012-3456789abcde
+        actionType:
+          type: string
+          description: 'The type of action that was performed (`read`, `write`, or `subscribe`).
+
+            '
+          example: read
+        id:
+          type: string
+          description: Unique identifier for this operation. Use this to fetch operation details or list logs for debugging.
+        installationId:
+          type: string
+          description: The Ampersand installation ID (customer instance) that this operation ran for.
+        status:
+          type: string
+          description: "The status of the operation.\n- `success`: The operation completed successfully\n- `failure`: The operation failed \n- `in_progress`: The operation is currently running\n"
+          example: success
+        result:
+          type: string
+          description: 'A human-readable summary of what the operation accomplished. Examples: `[contact] No new data found`, `Batch write completed (3 succeeded, 1 failed)`. May be absent.
+
+            '
+          example: '[contact] No new data found'
+        metadata:
+          type: object
+          description: Additional operation details (e.g. objects, retry info, backfill progress, successfulRecordIds).
+          properties:
+            objects:
+              type: array
+              items:
+                type: string
+            retry:
+              type: object
+              properties:
+                attempts:
+                  type: integer
+                lastAttempt:
+                  type: string
+                  format: date-time
+                lastNotified:
+                  type: string
+                  format: date-time
+            progress:
+              type: object
+              description: Only present for backfill read operations.
+              properties:
+                installationId:
+                  type: string
+                objectName:
+                  type: string
+                operationId:
+                  type: string
+                recordsProcessed:
+                  type: integer
+                recordsEstimatedTotal:
+                  type: integer
+                  description: Only present for some providers (e.g. Salesforce, HubSpot).
+            successfulRecordIds:
+              type: array
+              items:
+                type: string
+              description: Provider-assigned IDs of successfully created or updated records. Only present for write operations.
+          example:
+            objects:
+            - contact
+            progress:
+              installationId: 66438162-5299-4669-a41d-85c5a3b1a83e
+              objectName: contact
+              operationId: 3efc0f0f-4bb9-498f-996c-9893d98ca4b5
+              recordsProcessed: 1250
+              recordsEstimatedTotal: 5000
+        createTime:
+          type: string
+          description: The time the operation was created.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+    Log:
+      title: Log
+      type: object
+      required:
+      - timestamp
+      - severity
+      - message
+      properties:
+        timestamp:
+          type: string
+          description: The time the log was created.
+          example: 2023-07-13 21:34:44.816354+00:00
+        message:
+          type: object
+          description: The log message object.
+          required:
+          - msg
+          properties:
+            msg:
+              type: string
+              description: The use-readable message.
+              example: This is a log message
+            error:
+              type: string
+              description: The error message, if there has been an error.
+            operation_id:
+              type: string
+              description: The operation ID.
+            details:
+              type: object
+              description: The details of the log.
+              additionalProperties:
+                type: string
+              example:
+                request: GET /api/v1/users
+          additionalProperties: true
+        severity:
+          type: string
+          description: The severity of the log.
+          example: DEBUG
+    PaginationInfo:
+      title: Pagination Information
+      type: object
+      required:
+      - done
+      properties:
+        done:
+          type: boolean
+          description: If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.
+          example: false
+        nextPageToken:
+          type: string
+          description: If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.
+          example: Q9JT+2qfys28V4ODN+UayA==
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,264 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Project API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Project
+paths:
+  /projects:
+    get:
+      summary: Ampersand List Projects
+      description: Lists projects your credentials can access.
+      operationId: listProjects
+      tags:
+      - Project
+      responses:
+        200:
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    post:
+      summary: Ampersand Create a New Project
+      description: Creates a new project within an organization. A project is a container for provider apps, integrations, and connections.
+      operationId: createProject
+      tags:
+      - Project
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - appName
+              - name
+              - orgId
+              type: object
+              properties:
+                appName:
+                  type: string
+                  description: The display name of your application, shown to end users during the connection flow.
+                  minLength: 1
+                  maxLength: 128
+                  example: MailMonkey
+                name:
+                  type: string
+                  description: The unique name for the project. Must contain only letters, numbers, and hyphens. Values are normalized to lowercase on save.
+                  pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]$
+                  minLength: 2
+                  maxLength: 128
+                  example: mailmonkey-staging
+                orgId:
+                  type: string
+                  description: The ID of the organization this project belongs to. Obtain this from the Ampersand Dashboard or by calling `GET /orgs`.
+                  example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+            example:
+              appName: MailMonkey
+              name: mailmonkey-staging
+              orgId: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        required: true
+      responses:
+        201:
+          description: The newly created project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        422:
+          description: Unprocessable Entity — the request body failed validation (e.g. invalid characters in project name, missing required fields).
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: project
+  /projects/{projectIdOrName}:
+    get:
+      summary: Ampersand Get a Project
+      description: Get a project by its ID or name.
+      operationId: getProject
+      tags:
+      - Project
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: includeEntitlements
+        in: query
+        required: false
+        description: If true, the response includes the project's entitlements (plan-based feature flags). Defaults to false.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        200:
+          description: The requested project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    patch:
+      summary: Ampersand Update a Project
+      operationId: updateProject
+      description: Update a project's mutable fields using field masks. Currently, the updatable fields are `appName` (the display name shown to end users) and `name` (the unique project identifier).
+      tags:
+      - Project
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - project
+              - updateMask
+              type: object
+              properties:
+                updateMask:
+                  type: array
+                  items:
+                    type: string
+                  description: 'Array of field paths specifying which fields to update. Each path must have a
+
+                    corresponding value in the `project` object. A field included in `project` but
+
+                    not listed here will be ignored. Allowed values:
+
+                    - `appName` - the display name of the application, shown to end users during the connection flow.
+
+                    - `name` - the unique project identifier (must be unique within your organization).
+
+                    '
+                  example:
+                  - appName
+                project:
+                  type: object
+                  properties:
+                    appName:
+                      type: string
+                      description: The display name of the application, shown to end users during the connection flow.
+                      example: MailMonkey
+                    name:
+                      type: string
+                      description: The unique name for the project. Must be unique within the organization.
+                      example: mailmonkey-staging
+                  description: 'The project fields to update. Only fields whose paths are listed in `updateMask`
+
+                    will be applied; all other fields in this object are ignored.
+
+                    '
+            example:
+              updateMask:
+              - appName
+              project:
+                appName: MailMonkey Pro
+        required: true
+      responses:
+        200:
+          description: The updated project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: projectUpdate
+components:
+  schemas:
+    Project:
+      title: Project
+      required:
+      - appName
+      - createTime
+      - id
+      - name
+      - orgId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the project.
+          example: proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        name:
+          type: string
+          description: The unique name for the project.
+          example: mailmonkey-staging
+        appName:
+          type: string
+          description: The display name of the application, shown to end users during the connection flow.
+          example: MailMonkey
+        orgId:
+          type: string
+          description: The ID of the organization that this project belongs to.
+          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        createTime:
+          type: string
+          description: The time the project was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the project was updated.
+          format: date-time
+        entitlements:
+          type: object
+          description: Plan-based feature flags for the project. These are managed by Ampersand and cannot be set via the API.
+          properties:
+            brandingRemoval:
+              type: object
+              required:
+              - value
+              x-go-type-skip-optional-pointer: true
+              description: Controls whether Ampersand branding is removed from the embeddable UI components.
+              properties:
+                value:
+                  type: boolean
+                  description: True if Ampersand branding has been removed for this project.
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

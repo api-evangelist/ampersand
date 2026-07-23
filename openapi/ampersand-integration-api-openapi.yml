@@ -1,0 +1,323 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Integration API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Integration
+paths:
+  /projects/{projectIdOrName}/integrations:
+    get:
+      summary: Ampersand List Integrations
+      operationId: listIntegrations
+      tags:
+      - Integration
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      responses:
+        200:
+          description: List of integrations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Integration'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    post:
+      summary: Ampersand Create a New Integration.
+      operationId: createIntegration
+      tags:
+      - Integration
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - name
+              - provider
+              - latestRevision
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The integration name.
+                  example: my-integration
+                provider:
+                  type: string
+                  description: The provider name (e.g. "salesforce", "hubspot")
+                latestRevision:
+                  type: object
+                  required:
+                  - content
+                  - specVersion
+                  properties:
+                    specVersion:
+                      type: string
+                      description: The spec version string.
+                      example: 1.0.0
+                    content:
+                      $ref: ../manifest/manifest.yaml#/components/schemas/Integration
+        required: true
+      responses:
+        201:
+          description: Created
+          content: {}
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: integration
+  /projects/{projectIdOrName}/integrations/{integrationIdOrName}:
+    get:
+      summary: Ampersand Get an Integration by ID or Name
+      operationId: getIntegration
+      tags:
+      - Integration
+      parameters:
+      - name: integrationIdOrName
+        in: path
+        required: true
+        description: The integration ID or name.
+        schema:
+          type: string
+        example: 123e4567-e89b-12d3-a456-426614174000
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      responses:
+        200:
+          description: The integration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+        404:
+          description: Integration not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/integrations/{integrationId}:
+    delete:
+      summary: Ampersand Delete an Integration
+      operationId: deleteIntegration
+      description: Delete an integration and all its installations.
+      tags:
+      - Integration
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The integration ID.
+        schema:
+          type: string
+        example: 123e4567-e89b-12d3-a456-426614174000
+      responses:
+        204:
+          description: Deleted
+        404:
+          description: Integration not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/integrations:batch:
+    put:
+      summary: Ampersand Batch Upsert a Group of Integrations
+      operationId: batchUpsertIntegrations
+      description: This endpoint is used by the Ampersand CLI to batch upsert integrations. We recommend using the [CLI's deploy command](https://docs.withampersand.com/cli/overview#deploy-integrations) rather than this API endpoint directly.
+      tags:
+      - Integration
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: destructive
+        in: query
+        required: false
+        description: Defaults to false. This flag controls whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision.
+        schema:
+          type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sourceZipUrl:
+                  type: string
+                  description: URL of where a zip of the source files can be downloaded (e.g. Google Cloud Storage URL).
+                  example: https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip
+                sourceYaml:
+                  type: string
+                  description: A YAML string that defines the integrations.
+              description: The source of the integrations to upsert. One of sourceZipUrl or sourceYaml is required.
+      responses:
+        200:
+          description: Upserted integrations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Integration'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    Integration:
+      title: Integration
+      required:
+      - createTime
+      - id
+      - latestRevision
+      - name
+      - projectId
+      - provider
+      type: object
+      properties:
+        id:
+          type: string
+          description: The integration ID.
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        name:
+          type: string
+          description: The integration name.
+          example: read-accounts
+        provider:
+          type: string
+          description: The SaaS provider that this integration connects to.
+          example: salesforce
+        createTime:
+          type: string
+          description: The time the integration was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the integration was last updated.
+          format: date-time
+        latestRevision:
+          $ref: '#/components/schemas/Revision'
+    Revision:
+      title: Revision
+      required:
+      - content
+      - createTime
+      - id
+      - specVersion
+      type: object
+      properties:
+        id:
+          type: string
+          description: The revision ID.
+          example: revision-id-1
+        specVersion:
+          type: string
+          description: The spec version string.
+          example: 1.0.0
+        createTime:
+          type: string
+          description: The time the revision was created.
+          format: date-time
+        content:
+          $ref: ../manifest/manifest.yaml#/components/schemas/Integration
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

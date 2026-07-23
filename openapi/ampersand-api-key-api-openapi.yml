@@ -1,0 +1,314 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: API Key
+paths:
+  /projects/{projectIdOrName}/api-keys:
+    get:
+      x-speakeasy-ignore: true
+      summary: Ampersand List API Keys
+      operationId: listApiKeys
+      tags:
+      - API Key
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: active
+        in: query
+        description: Whether to include only active API keys. If false, all API keys are included.
+        schema:
+          type: boolean
+      responses:
+        200:
+          description: List of API keys
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiKey'
+        404:
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    post:
+      x-speakeasy-ignore: true
+      summary: Ampersand Create a New API Key
+      operationId: createApiKey
+      tags:
+      - API Key
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiKeyRequest'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+        404:
+          description: Project not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: apiKey
+  /projects/{projectIdOrName}/api-keys/{apiKey}:
+    get:
+      x-speakeasy-ignore: true
+      summary: Ampersand Get an API Key
+      operationId: getApiKey
+      tags:
+      - API Key
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: apiKey
+        in: path
+        required: true
+        description: API key to access Ampersand APIs.
+        schema:
+          type: string
+      responses:
+        404:
+          description: API key not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        200:
+          description: API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    delete:
+      x-speakeasy-ignore: true
+      summary: Ampersand Delete an API Key
+      operationId: deleteApiKey
+      tags:
+      - API Key
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: apiKey
+        in: path
+        required: true
+        description: API key to access Ampersand APIs.
+        schema:
+          type: string
+      responses:
+        404:
+          description: Not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        204:
+          description: Deleted
+    patch:
+      x-speakeasy-ignore: true
+      summary: Ampersand Update an API Key
+      operationId: updateApiKey
+      tags:
+      - API Key
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: apiKey
+        in: path
+        required: true
+        description: API key to access Ampersand APIs.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchApiKeyRequest'
+        required: true
+      responses:
+        200:
+          description: API key updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        404:
+          description: Not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    ApiKey:
+      title: API Key
+      type: object
+      required:
+      - key
+      - projectId
+      - label
+      - scopes
+      properties:
+        key:
+          type: string
+          description: The API key.
+          example: api-key-123
+        label:
+          type: string
+          description: A short name for the API key.
+          example: MailMonkey API Key
+        scopes:
+          $ref: '#/components/schemas/ApiKeyScopes'
+        projectId:
+          type: string
+          description: The project ID.
+          example: my-project
+        active:
+          type: boolean
+          description: Whether the API key is active.
+          example: true
+    ApiKeyScopes:
+      title: API Key Scopes
+      type: array
+      description: The scopes for the API key.
+      items:
+        type: string
+        example:
+        - full
+        - frontend
+    PatchApiKeyRequest:
+      title: Patch API Key Request
+      type: object
+      required:
+      - updateMask
+      - apiKey
+      properties:
+        updateMask:
+          type: array
+          items:
+            type: string
+          description: 'Array of field paths specifying which fields to update. Allowed values include:
+
+            - active
+
+            - label
+
+            - scopes
+
+            '
+          example:
+          - active
+          - label
+        apiKey:
+          type: object
+          properties:
+            label:
+              type: string
+              description: A short name for the API key.
+              example: MailMonkey API Key
+            active:
+              type: boolean
+              description: Whether the API key is active.
+              example: true
+            scopes:
+              $ref: '#/components/schemas/ApiKeyScopes'
+    ApiKeyRequest:
+      title: API Key Request
+      type: object
+      required:
+      - label
+      properties:
+        label:
+          type: string
+          description: A short name for the API key.
+          example: MailMonkey API Key
+        scopes:
+          $ref: '#/components/schemas/ApiKeyScopes'
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

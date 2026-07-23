@@ -1,0 +1,207 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key OAuth API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: OAuth
+paths:
+  /oauth-connect:
+    post:
+      operationId: oauthConnect
+      summary: Ampersand Generate OAuth Authorization URL
+      description: Generate a URL for the browser to render to kick off OAuth flow. You can use this endpoint as an alternative to the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).
+      tags:
+      - OAuth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - projectId
+              - groupRef
+              - consumerRef
+              - provider
+              properties:
+                projectId:
+                  type: string
+                  description: The Ampersand project ID.
+                  example: my-project
+                provider:
+                  type: string
+                  description: The provider that this app connects to.
+                  example: salesforce
+                groupRef:
+                  type: string
+                  description: Your application's identifier for the organization or workspace that this connection belongs to (e.g. an org ID or team ID).
+                  example: group-123
+                groupName:
+                  type: string
+                  description: The display name for the group. Defaults to groupRef if not provided.
+                  example: Organization Name
+                consumerRef:
+                  type: string
+                  description: The ID that your app uses to identify the user whose SaaS credential will be used for this OAuth flow.
+                  example: user_123456
+                consumerName:
+                  type: string
+                  description: The display name for the consumer. Defaults to consumerRef if not provided.
+                  example: John Doe
+                providerWorkspaceRef:
+                  type: string
+                  description: The identifier for the provider workspace (e.g. the Salesforce subdomain).
+                  example: acme-corp
+                providerMetadata:
+                  description: Additional provider-specific metadata required by certain providers (e.g., account ID for NetSuite). See provider documentation for which fields are needed.
+                  $ref: '#/components/schemas/ProviderMetadata'
+                  example:
+                    accountId:
+                      value: '1234567890'
+                      source: input
+                providerAppId:
+                  type: string
+                  description: ID of the provider app, returned from the [Create Provider App endpoint](https://docs.withampersand.com/reference/provider-apps/create-provider-app). If omitted, the default provider app that was set up on the Ampersand Dashboard is assumed.
+                  example: 32356abe-d2fd-49c7-9030-abdcbc6456d4
+                enableCSRFProtection:
+                  type: boolean
+                  description: This boolean flag is used by the UI library internally. Set it to false or omit it when manually calling this API.
+                  example: false
+            examples:
+              basicOAuth:
+                summary: Basic OAuth flow (required fields only)
+                value:
+                  projectId: my-project
+                  provider: salesforce
+                  groupRef: group-123
+                  consumerRef: user_123456
+              withProviderWorkspace:
+                summary: With provider workspace and provider app
+                value:
+                  projectId: my-project
+                  provider: salesforce
+                  groupRef: group-123
+                  groupName: Acme Corp
+                  consumerRef: user_123456
+                  consumerName: John Doe
+                  providerWorkspaceRef: acme-corp
+                  providerAppId: 32356abe-d2fd-49c7-9030-abdcbc6456d4
+              withProviderMetadata:
+                summary: With provider metadata (e.g. NetSuite account ID)
+                value:
+                  projectId: my-project
+                  provider: netsuite
+                  groupRef: group-456
+                  consumerRef: user_789012
+                  providerMetadata:
+                    accountId:
+                      value: '1234567890'
+                      source: input
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: URL to render
+                example: https://login.salesforce.com/services/oauth2/authorize?client_id=xxx&redirect_uri=https%3A%2F%2Fapi.withampersand.com%2Fcallbacks%2Fv1%2Foauth&state=xxx
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: connectOAuthParams
+  /projects/{projectIdOrName}/connections/{connectionId}:oauth-update:
+    patch:
+      operationId: oauthUpdate
+      summary: Ampersand Generate OAuth Authorization URL for Existing Connection
+      description: 'Generate a URL for the browser to render to kick off an OAuth flow that updates an existing connection. Use this when the connection''s credentials need to be refreshed. To start an OAuth flow without specifying a connection ID, use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) instead.
+
+        '
+      tags:
+      - OAuth
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Ampersand project ID or name.
+      - name: connectionId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ID of the connection to update.
+      responses:
+        200:
+          description: URL to initiate OAuth flow
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: https://login.salesforce.com/services/oauth2/authorize?client_id=xxx&redirect_uri=https%3A%2F%2Fapi.withampersand.com%2Fcallbacks%2Fv1%2Foauth&state=xxx
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    ProviderMetadata:
+      title: Provider Metadata
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ProviderMetadataInfo'
+    ProviderMetadataInfo:
+      title: Provider Metadata Info
+      type: object
+      required:
+      - value
+      - source
+      properties:
+        value:
+          type: string
+          description: The value of the metadata field
+          example: '1234567890'
+        source:
+          type: string
+          description: The source of the metadata field
+          enum:
+          - input
+          - token
+          - provider
+          example: input
+        displayName:
+          type: string
+          description: The human-readable name for the field
+          example: Account ID
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

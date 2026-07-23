@@ -1,0 +1,1155 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Installation API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Installation
+paths:
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations:
+    get:
+      summary: Ampersand List Installations for an Integration
+      description: 'Lists all installations for a specific integration within a project. To list installations across all integrations, use listInstallationsForProject instead.
+
+        '
+      operationId: listInstallations
+      tags:
+      - Installation
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The unique identifier (UUID) of the integration.
+        schema:
+          type: string
+        example: 550e8400-e29b-41d4-a716-446655440000
+      - name: groupRef
+        in: query
+        description: The ID that your app uses to identify a group of users (e.g. an org ID, workspace ID, or team ID). When provided, only returns installations belonging to this group.
+        example: group-123
+        schema:
+          type: string
+      responses:
+        200:
+          description: List of installations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Installation'
+              example:
+              - id: 3f8b2a1e-7c4d-4e9a-b5f6-1d2e3a4b5c6d
+                projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                integrationId: 550e8400-e29b-41d4-a716-446655440000
+                group:
+                  groupRef: org_12345
+                  groupName: Acme Corp
+                  projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  createTime: '2024-01-15T10:30:00.000000Z'
+                healthStatus: healthy
+                connection:
+                  id: 9d8c7b6a-5e4f-3a2b-1c0d-ef9876543210
+                  projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  provider: salesforce
+                  group:
+                    groupRef: org_12345
+                    groupName: Acme Corp
+                    projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    createTime: '2024-01-15T10:30:00.000000Z'
+                  consumer:
+                    consumerRef: user_67890
+                    consumerName: Jane Smith
+                    projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    createTime: '2024-01-15T10:30:00.000000Z'
+                  createTime: '2024-01-15T10:30:00.000000Z'
+                  authScheme: oauth2/authorizationCode
+                  status: working
+                createTime: '2024-01-15T10:30:00.000000Z'
+                createdBy: consumer:user_67890
+                config:
+                  id: e4d3c2b1-a098-7654-3210-fedcba987654
+                  revisionId: f0e1d2c3-b4a5-6789-0abc-def123456789
+                  createTime: '2024-01-15T10:30:00.000000Z'
+                  createdBy: consumer:user_67890
+                  content:
+                    provider: salesforce
+                    read:
+                      objects:
+                        account:
+                          objectName: account
+                          schedule: '*/15 * * * *'
+                          destination: accountWebhook
+                          selectedFields:
+                            name: true
+                            industry: true
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    post:
+      summary: Ampersand Create a New Installation
+      operationId: createInstallation
+      description: 'Install an integration for a specific group. The group must already have a SaaS connection — either provide its `connectionId`, or omit it to use the group''s default. To create a connection, use the [OAuth Connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) or the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).
+
+        '
+      tags:
+      - Installation
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The integration ID.
+        schema:
+          type: string
+        example: 113e9685-9a51-42cc-8662-9d9725b17f14
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - config
+              - groupRef
+              type: object
+              properties:
+                groupRef:
+                  type: string
+                  description: The ID of the user group that has access to this installation.
+                  example: group-123
+                connectionId:
+                  type: string
+                  description: The ID of the SaaS connection tied to this installation. If omitted the default connection for this group will be used.
+                  example: a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c
+                config:
+                  required:
+                  - content
+                  type: object
+                  properties:
+                    revisionId:
+                      type: string
+                      deprecated: true
+                      description: 'Deprecated: This field will be automatically set to the latest revision.'
+                    createdBy:
+                      type: string
+                      description: The person who created the config, in the format of "consumer:{consumer-id}", "builder:{builder-id}", or "api:{api-caller}".
+                      default: api:create-installation
+                    content:
+                      $ref: ../config/config.yaml#/components/schemas/ConfigContent
+                      description: The content of the config.
+                  description: The config of the installation.
+            examples:
+              writeOnly:
+                summary: Minimal write-only installation
+                value:
+                  groupRef: group-123
+                  connectionId: a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c
+                  config:
+                    content:
+                      provider: salesforce
+                      write:
+                        objects:
+                          contacts:
+                            objectName: contacts
+              readWriteAndSubscribe:
+                summary: Read, write, and subscribe
+                value:
+                  groupRef: group-456
+                  connectionId: b2d5f8a3-9e4c-4b7f-8d1a-6c9e2f5b8d4a
+                  config:
+                    content:
+                      provider: salesforce
+                      read:
+                        objects:
+                          contacts:
+                            objectName: contacts
+                            schedule: '*/15 * * * *'
+                            selectedFields:
+                              phone: true
+                              email: true
+                            selectedFieldMappings:
+                              phoneNumber: phone
+                              emailAddress: email
+                      write:
+                        objects:
+                          contacts:
+                            objectName: contacts
+                      subscribe:
+                        objects:
+                          contacts:
+                            objectName: contacts
+                            destination: contactWebhook
+                            inheritFieldsAndMappings: true
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installation'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: installation
+  /projects/{projectIdOrName}/integrations/{integrationId}/installations/{installationId}:
+    get:
+      summary: Ampersand Get an Installation
+      description: 'Retrieves a single installation by ID, including its connection details, config, and health status.
+
+        '
+      operationId: getInstallation
+      tags:
+      - Installation
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The unique identifier (UUID) of the integration.
+        schema:
+          type: string
+        example: 550e8400-e29b-41d4-a716-446655440000
+      - name: installationId
+        in: path
+        required: true
+        description: The unique identifier (UUID) of the installation.
+        schema:
+          type: string
+        example: 7b3c9d2e-5a1f-4e8b-b6d4-9c8a2f1e5d3b
+      responses:
+        200:
+          description: The installation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installation'
+              example:
+                id: 3f8b2a1e-7c4d-4e9a-b5f6-1d2e3a4b5c6d
+                projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                integrationId: 550e8400-e29b-41d4-a716-446655440000
+                group:
+                  groupRef: org_12345
+                  groupName: Acme Corp
+                  projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  createTime: '2024-01-15T10:30:00.000000Z'
+                healthStatus: healthy
+                connection:
+                  id: 9d8c7b6a-5e4f-3a2b-1c0d-ef9876543210
+                  projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  provider: salesforce
+                  group:
+                    groupRef: org_12345
+                    groupName: Acme Corp
+                    projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    createTime: '2024-01-15T10:30:00.000000Z'
+                  consumer:
+                    consumerRef: user_67890
+                    consumerName: Jane Smith
+                    projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    createTime: '2024-01-15T10:30:00.000000Z'
+                  createTime: '2024-01-15T10:30:00.000000Z'
+                  authScheme: oauth2/authorizationCode
+                  status: working
+                createTime: '2024-01-15T10:30:00.000000Z'
+                createdBy: consumer:user_67890
+                config:
+                  id: e4d3c2b1-a098-7654-3210-fedcba987654
+                  revisionId: f0e1d2c3-b4a5-6789-0abc-def123456789
+                  createTime: '2024-01-15T10:30:00.000000Z'
+                  createdBy: consumer:user_67890
+                  content:
+                    provider: salesforce
+                    read:
+                      objects:
+                        account:
+                          objectName: account
+                          schedule: '*/15 * * * *'
+                          destination: accountWebhook
+                          selectedFields:
+                            name: true
+                            industry: true
+        400:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    delete:
+      summary: Ampersand Delete an Installation
+      operationId: deleteInstallation
+      tags:
+      - Installation
+      description: 'Delete an Installation. This will also delete the associated Connection if it is not used by any other Installations.
+
+        '
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The integration ID.
+        schema:
+          type: string
+      - name: installationId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The Ampersand installation ID.
+      responses:
+        204:
+          description: Deleted
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    patch:
+      summary: Ampersand Update an Installation
+      operationId: updateInstallation
+      tags:
+      - Installation
+      description: 'Update an installation using field masks. Note: subscribe config changes trigger a subscription change in the provider''s system, which typically takes 1-2 minutes but may take up to 10 minutes.
+
+        '
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The ID of the integration that this installation belongs to.
+        schema:
+          type: string
+        example: e3a7f9c1-4b2d-4e8a-9f6b-2d5c8a1e3b7f
+      - name: installationId
+        in: path
+        required: true
+        description: The Ampersand installation ID.
+        schema:
+          type: string
+        example: 7b3c9d2e-5a1f-4e8b-b6d4-9c8a2f1e5d3b
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - installation
+              - updateMask
+              type: object
+              properties:
+                updateMask:
+                  type: array
+                  items:
+                    type: string
+                  description: 'Array of field paths specifying which fields to update. Each path must have a corresponding value in the `installation` object. A field included in `installation` but not listed here will be ignored. Allowed values:
+
+                    - `connectionId` - switch the SaaS connection tied to this installation.
+
+                    - `config.createdBy` - change the attribution for who created this config.
+
+                    - `config.content.read.objects.<objectName>` - replace the read config for a single object (e.g. `config.content.read.objects.contacts`).
+
+                    - `config.content.write.objects.<objectName>` - replace the write config for a single object.
+
+                    - `config.content.write.objects` - replace the entire write objects map.
+
+                    - `config.content.subscribe.objects.<objectName>` - replace the subscribe config for a single object.
+
+                    - `config.content.subscribe.objects` - replace the entire subscribe objects map.
+
+                    - `config.content.proxy.enabled` - enable or disable the proxy.
+
+
+                    Replace `<objectName>` with the provider object name (e.g. `contacts`, `leads`, `accounts`).
+
+                    '
+                  example:
+                  - config.content.read.objects.contacts
+                  - config.content.write.objects.leads
+                installation:
+                  type: object
+                  properties:
+                    connectionId:
+                      type: string
+                      description: The ID of the SaaS connection tied to this installation.
+                      example: a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c
+                    config:
+                      type: object
+                      properties:
+                        revisionId:
+                          type: string
+                          deprecated: true
+                          description: 'Deprecated: This field will be automatically set to the latest revision ID.'
+                        createdBy:
+                          type: string
+                          description: The person who created the config, in the format of "consumer:{consumer-id}" or "builder:{builder-id}".
+                        content:
+                          $ref: ../config/config.yaml#/components/schemas/UpdateInstallationConfigContent
+                          description: The content of the config.
+                      description: The config of the installation.
+                  description: 'The installation fields to update. Only fields whose paths are listed in `updateMask` will be
+
+                    applied; all other fields in this object are ignored.
+
+                    '
+            example:
+              updateMask:
+              - config.content.read.objects.contacts
+              installation:
+                config:
+                  content:
+                    read:
+                      objects:
+                        contacts:
+                          objectName: contacts
+                          schedule: '*/30 * * * *'
+                          destination: contactsWebhook
+                          selectedFields:
+                            email: true
+                            phone: true
+        required: true
+      responses:
+        200:
+          description: The updated installation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installation'
+        400:
+          description: Invalid input (e.g. unrecognized update mask path, missing value for a mask, or malformed request body).
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: installationUpdate
+  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/config-content:
+    patch:
+      summary: Ampersand Update an Installation Object
+      description: 'Updates a single object''s configuration within an installation using JSON Patch syntax.
+
+        '
+      operationId: patchObjectConfigContent
+      tags:
+      - Installation
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The integration ID.
+        schema:
+          type: string
+      - name: objectName
+        in: path
+        required: true
+        description: 'The object name whose config content will be patched.
+
+          Must match an object name defined in the integration''s manifest for the specified action type (read, subscribe, or write).
+
+          Common examples include: `account`, `contact`, `lead`, `opportunity` (for Salesforce), `deal`, `company` (for HubSpot), etc.
+
+          '
+        schema:
+          type: string
+        example: account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - oneOf:
+                - type: object
+                  required:
+                  - groupRef
+                  - action
+                  - changes
+                  properties:
+                    groupRef:
+                      type: string
+                      description: 'The ID of the user group that has access to this installation.
+
+                        Either groupRef or installationId must be provided.
+
+                        '
+                      example: group-123
+                    action:
+                      type: string
+                      enum:
+                      - read
+                      - subscribe
+                      - write
+                      description: The action type for the object config (read, subscribe, or write).
+                      example: read
+                    changes:
+                      type: array
+                      minItems: 1
+                      description: 'Array of JSON Patch operations to apply.
+
+                        '
+                      items:
+                        $ref: '#/components/schemas/JSONPatchOperation'
+                      example:
+                      - op: replace
+                        path: /schedule
+                        value: '*/10 * * * *'
+                      - op: add
+                        path: /selectedFields/phone
+                        value: true
+                      - op: remove
+                        path: /selectedFields/billingcity
+                - type: object
+                  required:
+                  - installationId
+                  - action
+                  - changes
+                  properties:
+                    installationId:
+                      type: string
+                      description: 'The installation ID.
+
+                        Either groupRef or installationId must be provided.
+
+                        '
+                      example: installation-123
+                    action:
+                      type: string
+                      enum:
+                      - read
+                      - subscribe
+                      - write
+                      description: The action type for the object config (read, subscribe, or write).
+                      example: read
+                    changes:
+                      type: array
+                      minItems: 1
+                      description: 'Array of JSON Patch operations to apply.
+
+                        '
+                      items:
+                        $ref: '#/components/schemas/JSONPatchOperation'
+                      example:
+                      - op: replace
+                        path: /schedule
+                        value: '*/10 * * * *'
+                      - op: add
+                        path: /selectedFields/phone
+                        value: true
+                      - op: remove
+                        path: /selectedFields/billingcity
+        required: true
+      responses:
+        200:
+          description: The updated installation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installation'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        404:
+          description: Installation not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: patchObjectConfigContent
+  /projects/{projectIdOrName}/installations:
+    get:
+      summary: Ampersand List Installations for a Project
+      description: 'Lists all installations across every integration in a project, giving you a complete view of all active customer integrations. To narrow results to a single integration, use listInstallations instead.
+
+        '
+      operationId: listInstallationsForProject
+      tags:
+      - Installation
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: groupRef
+        in: query
+        description: The ID that your app uses to identify a group of users (e.g. an org ID, workspace ID, or team ID). When provided, only returns installations belonging to this group.
+        example: group-123
+        schema:
+          type: string
+      responses:
+        200:
+          description: List of installations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Installation'
+              example:
+              - id: 3f8b2a1e-7c4d-4e9a-b5f6-1d2e3a4b5c6d
+                projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                integrationId: 550e8400-e29b-41d4-a716-446655440000
+                group:
+                  groupRef: org_12345
+                  groupName: Acme Corp
+                  projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  createTime: '2024-01-15T10:30:00.000000Z'
+                healthStatus: healthy
+                connection:
+                  id: 9d8c7b6a-5e4f-3a2b-1c0d-ef9876543210
+                  projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  provider: salesforce
+                  group:
+                    groupRef: org_12345
+                    groupName: Acme Corp
+                    projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    createTime: '2024-01-15T10:30:00.000000Z'
+                  consumer:
+                    consumerRef: user_67890
+                    consumerName: Jane Smith
+                    projectId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    createTime: '2024-01-15T10:30:00.000000Z'
+                  createTime: '2024-01-15T10:30:00.000000Z'
+                  authScheme: oauth2/authorizationCode
+                  status: working
+                createTime: '2024-01-15T10:30:00.000000Z'
+                createdBy: consumer:user_67890
+                config:
+                  id: e4d3c2b1-a098-7654-3210-fedcba987654
+                  revisionId: f0e1d2c3-b4a5-6789-0abc-def123456789
+                  createTime: '2024-01-15T10:30:00.000000Z'
+                  createdBy: consumer:user_67890
+                  content:
+                    provider: salesforce
+                    read:
+                      objects:
+                        account:
+                          objectName: account
+                          schedule: '*/15 * * * *'
+                          destination: accountWebhook
+                          selectedFields:
+                            name: true
+                            industry: true
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    Consumer:
+      title: Consumer
+      required:
+      - consumerName
+      - consumerRef
+      - createTime
+      - projectId
+      type: object
+      properties:
+        consumerRef:
+          type: string
+          description: The consumer reference.
+          example: consumer-123
+        consumerName:
+          type: string
+          description: The name of the consumer.
+          example: Super Customer
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        createTime:
+          type: string
+          description: The time the consumer was created.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        updateTime:
+          type: string
+          description: The time the consumer was last updated.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+    JSONPatchOperation:
+      title: JSON Patch Operation
+      description: 'Represents a single JSON Patch operation (RFC 6902).
+
+        Only supports add, remove, and replace operations for config updates.
+
+        '
+      required:
+      - op
+      - path
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          description: 'The operation to perform.
+
+            - "add": Adds a new field or replaces an existing one at the specified path
+
+            - "remove": Removes the field at the specified path
+
+            - "replace": Replaces the value at the specified path
+
+            '
+          example: replace
+        path:
+          type: string
+          description: 'JSON Pointer path to the field to operate on (RFC 6901).
+
+            All paths must start with "/" (e.g., "/schedule", "/selectedFields/phone").
+
+            '
+          example: /schedule
+        value:
+          description: 'The value to set for add/replace operations.
+
+            Not used for remove operations.
+
+            '
+          example: '*/10 * * * *'
+    ProviderMetadataInfo:
+      title: Provider Metadata Info
+      type: object
+      required:
+      - value
+      - source
+      properties:
+        value:
+          type: string
+          description: The value of the metadata field
+          example: '1234567890'
+        source:
+          type: string
+          description: The source of the metadata field
+          enum:
+          - input
+          - token
+          - provider
+          example: input
+        displayName:
+          type: string
+          description: The human-readable name for the field
+          example: Account ID
+    ProviderAppMetadata:
+      title: Provider App Metadata
+      type: object
+      description: Provider-specific configuration that extends the standard OAuth flow.
+      properties:
+        authQueryParams:
+          type: object
+          description: Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            optional_scope:
+            - automation.sequences.read
+        providerParams:
+          type: object
+          description: Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).
+          additionalProperties:
+            type: string
+          example:
+            packageInstallURL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
+            gcpProjectId: my-gcp-project
+            gcpPubSubTopicName: my-topic
+    Group:
+      title: Group
+      required:
+      - createTime
+      - groupName
+      - groupRef
+      - projectId
+      type: object
+      properties:
+        groupRef:
+          type: string
+          description: The ID of the user group that has access to this installation.
+          example: group-123
+        groupName:
+          type: string
+          description: The name of the user group that has access to this installation.
+          example: Super Customer
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        createTime:
+          type: string
+          description: The time the group was created.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        updateTime:
+          type: string
+          description: The time the group was last updated.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+    ProviderApp:
+      title: Provider App
+      required:
+      - clientId
+      - createTime
+      - id
+      - projectId
+      - provider
+      type: object
+      properties:
+        id:
+          type: string
+          description: The provider app ID.
+          example: provider-app-123
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        externalRef:
+          type: string
+          description: The ID used by the provider to identify the app (optional).
+          example: external-id-123
+        provider:
+          type: string
+          description: The SaaS provider that this app connects to.
+          example: salesforce
+        clientId:
+          type: string
+          description: The OAuth client ID for this app.
+          example: client-id-123
+        scopes:
+          type: array
+          description: The OAuth scopes for this app.
+          items:
+            type: string
+            example:
+            - oauth
+            - offline
+            - crm.read
+        metadata:
+          $ref: '#/components/schemas/ProviderAppMetadata'
+        createTime:
+          type: string
+          description: The time the provider app was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the provider app was updated.
+          format: date-time
+    ProviderMetadata:
+      title: Provider Metadata
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ProviderMetadataInfo'
+    Oauth2AuthorizationCodeTokensOnly:
+      title: OAuth2 AuthorizationCode Token
+      type: object
+      properties:
+        accessToken:
+          type: object
+          required:
+          - token
+          description: The access token for the connection.
+          properties:
+            token:
+              type: string
+            issuedAt:
+              type: string
+              format: date-time
+              example: '2024-04-22T18:55:28.456076Z'
+            expiresAt:
+              type: string
+              format: date-time
+              example: '2024-10-22T18:55:28.456076Z'
+        refreshToken:
+          type: object
+          required:
+          - token
+          description: The refresh token to use for the connection.
+          properties:
+            token:
+              type: string
+            issuedAt:
+              type: string
+              format: date-time
+              example: '2024-04-22T18:55:28.456076Z'
+            expiresAt:
+              type: string
+              format: date-time
+              example: '2024-10-22T18:55:28.456076Z'
+        scopes:
+          type: array
+          items:
+            type: string
+          description: The scopes for the tokens.
+    Config:
+      title: Config
+      required:
+      - content
+      - createTime
+      - createdBy
+      - id
+      - revisionId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The config ID.
+          example: config-123
+        revisionId:
+          type: string
+          description: "The ID of the revision that was current when this config was created or last updated. \n"
+          example: revision-123
+        createTime:
+          type: string
+          description: The time the config was created.
+          format: date-time
+        createdBy:
+          type: string
+          description: The person who created the config, in the format of "consumer:{consumer-id}" or "builder:{builder-id}".
+          example: builder:builder-123
+        content:
+          $ref: ../config/config.yaml#/components/schemas/ConfigContent
+    Connection:
+      title: Connection
+      required:
+      - id
+      - createTime
+      - group
+      - consumer
+      - projectId
+      - provider
+      - authScheme
+      - status
+      type: object
+      properties:
+        id:
+          type: string
+          description: The connection ID.
+          example: connection-123
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        provider:
+          type: string
+          description: The SaaS provider that this Connection is for.
+          example: salesforce
+        providerApp:
+          $ref: '#/components/schemas/ProviderApp'
+        group:
+          $ref: '#/components/schemas/Group'
+        consumer:
+          $ref: '#/components/schemas/Consumer'
+        providerWorkspaceRef:
+          type: string
+          description: If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)
+          example: provider-workspace-123
+        providerConsumerRef:
+          type: string
+          description: If available, the ID that Salesforce/Hubspot uses to identify this user (e.g. Salesforce has IDs in the form of https://login.salesforce.com/id/00D4x0000019CQTEA2/0054x000000orJ4AA)
+          example: provider-consumer-123
+        createTime:
+          type: string
+          description: The time the connection was created.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        updateTime:
+          type: string
+          description: The time the connection was last updated.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        authScheme:
+          type: string
+          description: The authentication scheme used for this connection.
+          example: oauth2/authorizationCode
+          enum:
+          - none
+          - apiKey
+          - basic
+          - oauth2/authorizationCode
+          - oauth2/authorizationCodePKCE
+          - oauth2/clientCredentials
+          - oauth2/password
+        status:
+          type: string
+          description: 'The status of the connection.
+
+            - `created`: The connection has just been created or the access token was just refreshed.
+
+            - `working`: The connection has successfully been used to make a request.
+
+            - `bad_credentials`: The connection encountered credential-related issues when making a request, or when attempting to refresh the access token.
+
+            '
+          example: working
+          enum:
+          - created
+          - working
+          - bad_credentials
+        oauth2AuthorizationCode:
+          $ref: '#/components/schemas/Oauth2AuthorizationCodeTokensOnly'
+        apiKey:
+          type: string
+          description: The API key used while making the connection.
+          example: api-key-123
+        providerMetadata:
+          $ref: '#/components/schemas/ProviderMetadata'
+    Installation:
+      title: Installation
+      required:
+      - config
+      - connection
+      - createTime
+      - createdBy
+      - healthStatus
+      - id
+      - integrationId
+      - projectId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The installation ID.
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        integrationId:
+          type: string
+          description: The integration ID.
+        group:
+          $ref: '#/components/schemas/Group'
+        healthStatus:
+          type: string
+          enum:
+          - healthy
+          - unhealthy
+          description: The health status of the installation.
+          example: healthy
+        lastOperationStatus:
+          type: string
+          enum:
+          - success
+          - failure
+          - in_progress
+          description: 'The status of the latest operation for this installation.
+
+            '
+          example: success
+        connection:
+          $ref: '#/components/schemas/Connection'
+        createTime:
+          type: string
+          description: The time the installation was created.
+          format: date-time
+        createdBy:
+          type: string
+          description: The person who did the installation, in the format of "consumer:{consumer-id}".
+          example: consumer:consumer-123
+        updateTime:
+          type: string
+          description: The time the installation was last updated with a new config.
+          format: date-time
+        config:
+          $ref: '#/components/schemas/Config'
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,65 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Upload URL API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Upload URL
+paths:
+  /generate-upload-url:
+    get:
+      summary: Ampersand Generate a Signed URL to Upload a Zip File To.
+      operationId: generateUploadUrl
+      tags:
+      - Upload URL
+      responses:
+        200:
+          description: Signed URL
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignedUrl'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    SignedUrl:
+      title: Signed URL
+      type: object
+      required:
+      - url
+      - bucket
+      - path
+      properties:
+        url:
+          type: string
+          description: The signed URL to upload the zip file to.
+        bucket:
+          type: string
+          description: The bucket (will match the bucket part of the url).
+        path:
+          type: string
+          description: The path (will match the path part of the url).
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

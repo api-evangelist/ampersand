@@ -1,0 +1,685 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Objects & Fields API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Objects & Fields
+paths:
+  /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/metadata:
+    get:
+      summary: Ampersand Get Object Metadata via Installation
+      description: 'Retrieves metadata about an object in a customer''s SaaS instance, including its fields. An installation must exist for the given `groupRef` and `integrationId`. The `objectName` can be either the mapped name from your integration config or the native provider name. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$[''billingaddress''][''city'']`).
+
+        '
+      tags:
+      - Objects & Fields
+      operationId: getObjectMetadataForInstallation
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The unique identifier of the integration.
+        schema:
+          type: string
+        example: e3a7f9c1-4b2d-4e8a-9f6b-2d5c8a1e3b7f
+      - name: objectName
+        in: path
+        required: true
+        description: 'The name of the object to retrieve metadata for. You can use either the mapped name from your integration config (e.g. `people`) or the native provider object name (e.g. `contact`).
+
+          '
+        schema:
+          type: string
+        example: account
+      - name: groupRef
+        in: query
+        required: true
+        description: The ID of the user group that has access to this installation.
+        example: group-123
+        schema:
+          type: string
+      - name: excludeReadOnly
+        in: query
+        required: false
+        description: Excludes fields where `ReadOnly` is `true` from the response.
+        example: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: The retrieved object metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectMetadata'
+              example:
+                name: account
+                displayName: Account
+                mappedObjectName: companies
+                fields:
+                  name:
+                    fieldName: name
+                    displayName: Account Name
+                    valueType: string
+                    providerType: string
+                    readOnly: false
+                    isCustom: false
+                    isRequired: true
+                  billingcity:
+                    fieldName: billingcity
+                    displayName: Billing City
+                    valueType: string
+                    providerType: string
+                    readOnly: false
+                    isCustom: false
+                    isRequired: false
+                  industry:
+                    fieldName: industry
+                    displayName: Industry
+                    valueType: singleSelect
+                    providerType: picklist
+                    readOnly: false
+                    isCustom: false
+                    isRequired: false
+                    values:
+                    - value: technology
+                      displayValue: Technology
+                    - value: finance
+                      displayValue: Finance
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/providers/{provider}/objects/{objectName}/metadata:
+    get:
+      summary: Ampersand Get Object Metadata via Connection
+      description: 'Retrieves metadata about an object in a customer''s SaaS instance, including its fields. A connection must exist for the given `groupRef` and `provider`. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$[''billingaddress''][''city'']`).
+
+        '
+      tags:
+      - Objects & Fields
+      operationId: getObjectMetadataForConnection
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: provider
+        in: path
+        required: true
+        description: The provider name (e.g. `salesforce`, `hubspot`).
+        schema:
+          type: string
+        example: salesforce
+      - name: objectName
+        in: path
+        required: true
+        description: The native provider object name to retrieve metadata for.
+        schema:
+          type: string
+        example: contact
+      - name: groupRef
+        in: query
+        required: true
+        description: The ID of the user group whose connection should be used to fetch the metadata.
+        example: group-123
+        schema:
+          type: string
+      - name: excludeReadOnly
+        in: query
+        required: false
+        description: Excludes fields where `ReadOnly` is `true` from the response.
+        example: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: The retrieved object metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectMetadata'
+              example:
+                name: contact
+                displayName: Contact
+                fields:
+                  firstname:
+                    fieldName: firstname
+                    displayName: First Name
+                    valueType: string
+                    providerType: string
+                    readOnly: false
+                    isCustom: false
+                    isRequired: true
+                  email:
+                    fieldName: email
+                    displayName: Email
+                    valueType: string
+                    providerType: string
+                    readOnly: false
+                    isCustom: false
+                    isRequired: false
+                  lifecyclestage:
+                    fieldName: lifecyclestage
+                    displayName: Lifecycle Stage
+                    valueType: singleSelect
+                    providerType: enumeration
+                    readOnly: false
+                    isCustom: false
+                    isRequired: false
+                    values:
+                    - value: lead
+                      displayValue: Lead
+                    - value: customer
+                      displayValue: Customer
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/integrations/{integrationId}/object-metadata:
+    put:
+      summary: Ampersand Upsert Custom Fields for Installation
+      operationId: upsertMetadataForInstallation
+      description: Create or update fields in the SaaS instance tied to an installation. Only HubSpot and Salesforce are supported currently.
+      tags:
+      - Objects & Fields
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The integration ID.
+        schema:
+          type: string
+        example: 32356abe-d2fd-49c7-9030-abdcbc6456d4
+      requestBody:
+        required: true
+        description: Metadata upsert request containing field definitions to create or update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertMetadataRequest'
+            examples:
+              createTextFields:
+                summary: Create text fields on multiple objects
+                value:
+                  groupRef: group-123
+                  fields:
+                    Account:
+                    - fieldName: Industry
+                      displayName: Industry Sector
+                      description: The industry this account operates in
+                      valueType: string
+                      required: false
+                      stringOptions:
+                        length: 255
+                        defaultValue: Technology
+                    - fieldName: Company_Size
+                      displayName: Company Size
+                      valueType: string
+                      stringOptions:
+                        values:
+                        - Small
+                        - Medium
+                        - Large
+                        - Enterprise
+                        valuesRestricted: true
+                    Contact:
+                    - fieldName: Seniority_Level
+                      displayName: Seniority Level
+                      valueType: string
+                      stringOptions:
+                        values:
+                        - Junior
+                        - Mid
+                        - Senior
+                        - Executive
+                        valuesRestricted: true
+              createNumericFields:
+                summary: Create numeric fields with constraints
+                value:
+                  groupRef: group-123
+                  fields:
+                    Opportunity:
+                    - fieldName: Deal_Score
+                      displayName: Deal Score
+                      description: Likelihood score from 0-100
+                      valueType: float
+                      required: true
+                      numericOptions:
+                        precision: 5
+                        scale: 2
+                        min: 0
+                        max: 100
+                        defaultValue: 50
+              createAssociationField:
+                summary: Create field with association to another object
+                value:
+                  groupRef: group-123
+                  fields:
+                    Task:
+                    - fieldName: Related_Contact
+                      displayName: Related Contact
+                      valueType: string
+                      association:
+                        associationType: lookup
+                        targetObject: Contact
+                        targetField: Id
+                        cardinality: many-to-one
+                        required: false
+                        labels:
+                          singular: Contact
+                          plural: Contacts
+      responses:
+        '200':
+          description: Metadata creation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertMetadataResponse'
+        '400':
+          description: Invalid request payload or validation errors
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        '401':
+          description: Authentication required
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        '403':
+          description: Insufficient permissions for metadata operations
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        '404':
+          description: Project, integration, or installation not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        '500':
+          description: Internal server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/providers/{provider}/object-metadata:
+    put:
+      summary: Ampersand Upsert Custom Fields for Connection
+      operationId: upsertMetadataForConnection
+      description: Create or update fields in the SaaS instance tied to a connection. Only HubSpot and Salesforce are supported currently.
+      tags:
+      - Objects & Fields
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: provider
+        in: path
+        required: true
+        description: The provider that this connection connects to.
+        schema:
+          type: string
+        example: salesforce
+      requestBody:
+        required: true
+        description: Metadata upsert request containing field definitions to create or update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertMetadataRequest'
+            examples:
+              createTextFields:
+                summary: Create text fields on multiple objects
+                value:
+                  groupRef: group-123
+                  fields:
+                    Account:
+                    - fieldName: Industry
+                      displayName: Industry Sector
+                      description: The industry this account operates in
+                      valueType: string
+                      required: false
+                      stringOptions:
+                        length: 255
+                        defaultValue: Technology
+                    - fieldName: Company_Size
+                      displayName: Company Size
+                      valueType: string
+                      stringOptions:
+                        values:
+                        - Small
+                        - Medium
+                        - Large
+                        - Enterprise
+                        valuesRestricted: true
+                    Contact:
+                    - fieldName: Seniority_Level
+                      displayName: Seniority Level
+                      valueType: string
+                      stringOptions:
+                        values:
+                        - Junior
+                        - Mid
+                        - Senior
+                        - Executive
+                        valuesRestricted: true
+              createNumericFields:
+                summary: Create numeric fields with constraints
+                value:
+                  groupRef: group-123
+                  fields:
+                    Opportunity:
+                    - fieldName: Deal_Score
+                      displayName: Deal Score
+                      description: Likelihood score from 0-100
+                      valueType: float
+                      required: true
+                      numericOptions:
+                        precision: 5
+                        scale: 2
+                        min: 0
+                        max: 100
+                        defaultValue: 50
+              createAssociationField:
+                summary: Create field with association to another object
+                value:
+                  groupRef: group-123
+                  fields:
+                    Task:
+                    - fieldName: Related_Contact
+                      displayName: Related Contact
+                      valueType: string
+                      association:
+                        associationType: lookup
+                        targetObject: Contact
+                        targetField: Id
+                        cardinality: many-to-one
+                        required: false
+                        labels:
+                          singular: Contact
+                          plural: Contacts
+      responses:
+        '200':
+          description: Metadata creation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertMetadataResponse'
+        '400':
+          description: Invalid request payload or validation errors
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        '401':
+          description: Authentication required
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        '403':
+          description: Insufficient permissions for metadata operations
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        '404':
+          description: Project or connection not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        '500':
+          description: Internal server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    ObjectMetadata:
+      title: Object Metadata
+      type: object
+      required:
+      - name
+      - fields
+      properties:
+        name:
+          type: string
+          description: The provider name of the object
+          example: contact
+        displayName:
+          type: string
+          description: Human-readable name of the object
+          example: Contact
+        mappedObjectName:
+          type: string
+          description: The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.
+          example: people
+        fields:
+          type: object
+          description: Map of field metadata keyed by field name
+          additionalProperties:
+            $ref: ../manifest/manifest.yaml#/components/schemas/FieldMetadata
+    AssociationDefinition:
+      type: object
+      description: Relationship information for a field to another object
+      properties:
+        associationType:
+          type: string
+          description: High-level association variety (e.g., 'foreignKey', 'lookup', 'ref')
+          example: foreignKey
+        targetObject:
+          type: string
+          description: Name of the referenced/parent object
+          example: Account
+        targetField:
+          type: string
+          description: Name of the referenced field on the target object
+        cardinality:
+          type: string
+          description: Association cardinality from the referencing field's perspective
+          example: many-to-one
+        onDelete:
+          type: string
+          description: Behavior upon foreign object deletion
+          example: setNull
+        required:
+          type: boolean
+          description: If true, a referenced record must exist
+        reverseLookupFieldName:
+          type: string
+          description: Optional inverse relationship/property name exposed on the target object
+        labels:
+          $ref: '#/components/schemas/AssociationLabels'
+      required:
+      - associationType
+      - targetObject
+    UpsertMetadataResponse:
+      type: object
+      description: Response containing results for all created/updated fields
+      properties:
+        success:
+          type: boolean
+          description: Indicates if the upsert operation was successful
+        fields:
+          type: object
+          description: Maps object name -> field name -> upsert result
+          additionalProperties:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/FieldUpsertResult'
+      required:
+      - success
+      - fields
+    FieldUpsertResult:
+      type: object
+      description: Result of an upsert operation for a single field
+      properties:
+        fieldName:
+          type: string
+          description: Name of the field
+        action:
+          type: string
+          description: Action taken (create, update, none)
+        metadata:
+          type: object
+          description: Provider-specific metadata about the field
+          additionalProperties: true
+        warnings:
+          type: array
+          description: Warnings that occurred during the upsert operation
+          items:
+            type: string
+      required:
+      - fieldName
+      - action
+    AssociationLabels:
+      type: object
+      description: UI labels for an association
+      properties:
+        singular:
+          type: string
+          description: Singular display label
+        plural:
+          type: string
+          description: Plural display label
+    StringFieldOptions:
+      type: object
+      description: Additional options for string fields
+      properties:
+        length:
+          type: integer
+          description: Maximum length of the string field
+        pattern:
+          type: string
+          description: Regex pattern that the string field value must match
+        values:
+          type: array
+          description: List of allowed values for enum fields
+          items:
+            type: string
+        valuesRestricted:
+          type: boolean
+          description: Indicates if the field value must be limited to what's in Values
+        defaultValue:
+          type: string
+          description: Default value for the field
+    UpsertMetadataRequest:
+      type: object
+      description: Request payload for upserting metadata (fields only)
+      properties:
+        groupRef:
+          type: string
+          description: The ID that your app uses to identify the group of users for this request.
+          example: group-123
+        fields:
+          type: object
+          description: Maps object names to field definitions
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/FieldDefinition'
+      required:
+      - groupRef
+      - fields
+    FieldDefinition:
+      type: object
+      description: Field definition for creating or updating custom fields
+      properties:
+        fieldName:
+          type: string
+          description: The identifier of the field
+          example: My_Custom_Field
+        displayName:
+          type: string
+          description: The human-readable name of the field
+          example: My Custom Field
+        description:
+          type: string
+          description: Optional description of the field
+        valueType:
+          type: string
+          description: The data type of the field. Valid values are string, boolean, date, datetime, singleSelect, multiSelect, int, float, reference
+          example: string
+        required:
+          type: boolean
+          description: Indicates if the field is required
+        unique:
+          type: boolean
+          description: Indicates if the field must be unique across all records
+        indexed:
+          type: boolean
+          description: Indicates if the field should be indexed for faster search
+        stringOptions:
+          $ref: '#/components/schemas/StringFieldOptions'
+        numericOptions:
+          $ref: '#/components/schemas/NumericFieldOptions'
+        association:
+          $ref: '#/components/schemas/AssociationDefinition'
+      required:
+      - fieldName
+      - displayName
+      - valueType
+    NumericFieldOptions:
+      type: object
+      description: Additional options for numeric fields
+      properties:
+        precision:
+          type: integer
+          description: Total number of digits (for decimal types)
+        scale:
+          type: integer
+          description: Number of digits to the right of the decimal point (for decimal types)
+        min:
+          type: number
+          description: Minimum value for numeric fields
+        max:
+          type: number
+          description: Maximum value for numeric fields
+        defaultValue:
+          type: number
+          description: Default value for the field
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

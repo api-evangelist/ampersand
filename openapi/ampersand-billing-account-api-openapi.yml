@@ -1,0 +1,140 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Billing Account API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Billing Account
+paths:
+  /orgs/{orgId}/billingAccount:
+    get:
+      x-speakeasy-ignore: true
+      summary: Ampersand Get the Billing Account for an Organization
+      operationId: getOrgBillingAccount
+      tags:
+      - Billing Account
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        description: ID of the organization.
+        schema:
+          type: string
+        example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      responses:
+        200:
+          description: Billing account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingAccount'
+        404:
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /billingAccounts/{billingAccountId}/portalSession:
+    post:
+      x-speakeasy-ignore: true
+      summary: Ampersand Create a Portal Session for a Billing Account
+      operationId: createBillingAccountSession
+      tags:
+      - Billing Account
+      parameters:
+      - name: billingAccountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - redirectUrl
+              properties:
+                redirectUrl:
+                  type: string
+                  description: The URL to redirect to once a portal session is exited.
+                  example: https://dashboard.withampersand.com/the-current-page
+                timeout:
+                  type: integer
+                  description: The number of seconds before the portal session expires.
+                  example: 3600
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - url
+                properties:
+                  url:
+                    type: string
+                    description: The URL to redirect to in order to start the portal session.
+                    example: https://billing.portal.com/customer/session
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    BillingAccount:
+      title: Billing Account
+      type: object
+      required:
+      - id
+      - displayName
+      - billingProvider
+      - billingProviderRef
+      properties:
+        id:
+          type: string
+          description: The billing account ID.
+          example: billing-account-123
+        displayName:
+          type: string
+          description: The display name of the billing account.
+          example: Acme Inc
+        billingProvider:
+          type: string
+          description: The billing provider that this account is associated with.
+          example: stripe
+        billingProviderRef:
+          type: string
+          description: The ID used by the billing provider to identify the account.
+          example: acct_1J2k3l4m5n6o7p8q9r0s
+        createTime:
+          type: string
+          description: The time the billing account was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the billing account was last updated.
+          format: date-time
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

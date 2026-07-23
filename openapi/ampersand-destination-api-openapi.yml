@@ -1,0 +1,890 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Destination API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Destination
+paths:
+  /projects/{projectIdOrName}/destinations:
+    post:
+      summary: Ampersand Create a New Destination
+      operationId: createDestination
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - type
+              - metadata
+              properties:
+                name:
+                  type: string
+                  description: Name for the new destination. Must be unique within the project and can only contain letters, numbers and dashes.
+                  example: leadConvertedWebhook
+                type:
+                  type: string
+                  description: The type of the destination.
+                  example: webhook
+                  enum:
+                  - webhook
+                  - kinesis
+                secrets:
+                  type: object
+                  description: Secrets for the destination.
+                  properties:
+                    awsKeyId:
+                      type: string
+                      description: The AWS access key ID for the Kinesis destination.
+                      example: AKIAIOSFODNN7EXAMPLE
+                      x-go-type-skip-optional-pointer: true
+                    awsSecretKey:
+                      type: string
+                      description: The AWS secret access key for the Kinesis destination.
+                      example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+                      x-go-type-skip-optional-pointer: true
+                    awsSessionToken:
+                      type: string
+                      description: The AWS session token for the Kinesis destination.
+                      example: AQoEXAMPLEH4aoAH0gNCAPy...
+                      x-go-type-skip-optional-pointer: true
+                metadata:
+                  type: object
+                  properties:
+                    url:
+                      type: string
+                      description: Webhook URL, must start with "https://".
+                      example: https://webhooks.mailmonkey.com/salesforce-lead-converted
+                    headers:
+                      $ref: '#/components/schemas/WebhookHeaders'
+                    region:
+                      type: string
+                      description: The AWS region where the kinesis destination is hosted.
+                      example: us-east-1
+                      x-go-type-skip-optional-pointer: true
+                    streamName:
+                      type: string
+                      description: The name of the Kinesis stream to send events to.
+                      example: my-kinesis-stream
+                      x-go-type-skip-optional-pointer: true
+                    endpointUrl:
+                      type: string
+                      description: The endpoint URL for the Kinesis stream.
+                      example: https://kinesis.us-east-1.amazonaws.com
+                      x-go-type-skip-optional-pointer: true
+                    partitionKeyTemplate:
+                      type: string
+                      description: The template for the partition key to use when sending events to Kinesis (a JMESPath template)
+                      example: data.user_id
+                      x-go-type-skip-optional-pointer: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: destination
+    get:
+      summary: Ampersand List Destinations
+      operationId: listDestinations
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      responses:
+        200:
+          description: List of destinations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Destination'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/destinations/{destination}:
+    get:
+      summary: Ampersand Get a Destination
+      operationId: getDestination
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: destination
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The destination name.
+        example: leadConvertedWebhook
+      - name: includeSecrets
+        in: query
+        required: false
+        description: Include secrets in the response
+        schema:
+          type: boolean
+        example: true
+      - name: rotate
+        in: query
+        required: false
+        description: Rotate the destination secrets
+        schema:
+          type: boolean
+        example: true
+      responses:
+        404:
+          description: Destination not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestinationWithSecrets'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    patch:
+      summary: Ampersand Update a Destination
+      operationId: updateDestination
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: destination
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The destination ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - updateMask
+              - destination
+              properties:
+                updateMask:
+                  type: array
+                  items:
+                    type: string
+                  description: 'Array of field paths specifying which fields to update. Allowed values include:
+
+                    - name
+
+                    - metadata.url
+
+                    - metadata.headers
+
+                    - metadata.region
+
+                    - metadata.streamName
+
+                    - metadata.endpointUrl
+
+                    - metadata.partitionKeyTemplate
+
+                    - secrets.awsKeyId
+
+                    - secrets.awsSecretKey
+
+                    - secrets.awsSessionToken
+
+                    '
+                  example:
+                  - name
+                  - metadata.url
+                  - metadata.region
+                  - metadata.streamName
+                destination:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: User-friendly name for the destination
+                      example: leadConvertedWebhook
+                    metadata:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          description: Webhook URL
+                          example: https://webhooks.mailmonkey.com/salesforce-lead-converted
+                        headers:
+                          $ref: '#/components/schemas/WebhookHeaders'
+                        region:
+                          type: string
+                          description: The AWS region where the kinesis destination is hosted.
+                          example: us-east-1
+                        streamName:
+                          type: string
+                          description: The name of the Kinesis stream to send events to.
+                          example: my-kinesis-stream
+                        endpointUrl:
+                          type: string
+                          description: The endpoint URL for the Kinesis stream.
+                          example: https://kinesis.us-east-1.amazonaws.com
+                        partitionKeyTemplate:
+                          type: string
+                          description: The template for the partition key to use when sending events to Kinesis (a JMESPath template)
+                          example: data.user_id
+                    secrets:
+                      type: object
+                      description: Secrets for the destination.
+                      properties:
+                        awsKeyId:
+                          type: string
+                          description: The AWS access key ID for the Kinesis destination.
+                          example: AKIAIOSFODNN7EXAMPLE
+                        awsSecretKey:
+                          type: string
+                          description: The AWS secret access key for the Kinesis destination.
+                          example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+                        awsSessionToken:
+                          type: string
+                          description: The AWS session token for the Kinesis destination.
+                          example: AQoEXAMPLEH4aoAH0gNCAPy...
+      responses:
+        404:
+          description: Destination not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        200:
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: destinationUpdate
+    delete:
+      summary: Ampersand Delete a Destination
+      operationId: deleteDestination
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: destination
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The destination ID
+      responses:
+        204:
+          description: Deleted
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/topics:
+    post:
+      summary: Ampersand Create a Topic
+      operationId: createTopic
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the topic. Must contain only letters, numbers, and dashes.
+                  example: system-alerts
+                  maxLength: 64
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        409:
+          description: Conflict - A topic with this name already exists in this project. Please choose a different name
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: topic
+    get:
+      summary: Ampersand List Topics
+      operationId: listTopics
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      responses:
+        200:
+          description: List of topics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Topic'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/topics/{topicId}:
+    patch:
+      summary: Ampersand Update a Topic
+      operationId: updateTopic
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: topicId
+        in: path
+        required: true
+        description: The topic ID.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: A human-readable name for the topic.
+                  example: Updated System Alerts
+      responses:
+        200:
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+        404:
+          description: Topic not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        409:
+          description: Conflict - A topic with this name already exists in this project. Please choose a different name
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: updateTopicRequest
+    delete:
+      summary: Ampersand Delete a Topic
+      operationId: deleteTopic
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: topicId
+        in: path
+        required: true
+        description: The topic ID.
+        schema:
+          type: string
+      responses:
+        204:
+          description: Deleted
+        404:
+          description: Topic not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/topic-destination-routes:
+    post:
+      summary: Ampersand Create a Topic Destination Route
+      operationId: createTopicDestinationRoute
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - topicId
+              - destinationId
+              properties:
+                topicId:
+                  type: string
+                  description: The ID of the topic.
+                destinationId:
+                  type: string
+                  description: The ID of the destination.
+            examples:
+              route_example:
+                summary: Create topic destination route
+                value:
+                  topicId: 1234567890abcdef
+                  destinationId: abcdef1234567890
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicDestinationRoute'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        404:
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: topicDestinationRoute
+    get:
+      summary: Ampersand List Topic Destination Routes
+      operationId: listTopicDestinationRoutes
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+      - name: topicId
+        in: query
+        required: false
+        description: Filter by topic ID.
+        schema:
+          type: string
+      - name: destinationId
+        in: query
+        required: false
+        description: Filter by destination ID.
+        schema:
+          type: string
+      responses:
+        200:
+          description: List of topic destination routes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TopicDestinationRoute'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /projects/{projectIdOrName}/topic-destination-routes/{routeId}:
+    delete:
+      summary: Ampersand Delete a Topic Destination Route
+      operationId: deleteTopicDestinationRoute
+      tags:
+      - Destination
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+      - name: routeId
+        in: path
+        required: true
+        description: The topic destination route ID.
+        schema:
+          type: string
+      responses:
+        204:
+          description: Deleted
+        404:
+          description: Route not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    Destination:
+      title: Destination
+      required:
+      - id
+      - name
+      - type
+      - metadata
+      - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The destination ID.
+        name:
+          type: string
+          description: User-defined name for the destination
+          example: leadConvertedWebhook
+        type:
+          type: string
+          description: The type of the destination
+          example: webhook
+        metadata:
+          type: object
+          properties:
+            url:
+              type: string
+              description: Webhook URL
+              example: https://webhooks.mailmonkey.com/salesforce-lead-converted
+            headers:
+              $ref: '#/components/schemas/WebhookHeaders'
+            streamName:
+              type: string
+              description: The name of the Kinesis stream
+              example: my-data-stream
+            region:
+              type: string
+              description: The AWS region for the destination
+              example: us-east-1
+            partitionKeyTemplate:
+              type: string
+              description: Template for generating partition keys
+              example: '{{.integration_id}}'
+        createTime:
+          type: string
+          description: The time the destination was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the destination was updated.
+          format: date-time
+    WebhookHeaders:
+      title: Webhook Headers
+      type: object
+      nullable: true
+      description: Additional headers to add when Ampersand sends a webhook message
+      additionalProperties:
+        type: string
+        nullable: false
+      example:
+        Authorization: Bearer 1234
+    Topic:
+      title: Topic
+      required:
+      - id
+      - name
+      - projectId
+      - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The topic ID.
+        name:
+          type: string
+          description: The name of the topic. Must contain only letters, numbers, and dashes.
+          example: system-alerts
+          maxLength: 64
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the topic was created.
+        updateTime:
+          type: string
+          format: date-time
+          description: The time when the topic was last updated.
+    DestinationWithSecrets:
+      title: DestinationWithSecrets
+      description: Destination object with secrets field (returned by getDestination when includeSecrets is true)
+      required:
+      - id
+      - name
+      - type
+      - metadata
+      - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The destination ID.
+        name:
+          type: string
+          description: User-defined name for the destination
+          example: leadConvertedWebhook
+        type:
+          type: string
+          description: The type of the destination
+          example: webhook
+        metadata:
+          type: object
+          properties:
+            url:
+              type: string
+              description: Webhook URL
+              example: https://webhooks.mailmonkey.com/salesforce-lead-converted
+            headers:
+              $ref: '#/components/schemas/WebhookHeaders'
+            streamName:
+              type: string
+              description: The name of the Kinesis stream
+              example: my-data-stream
+            region:
+              type: string
+              description: The AWS region for the destination
+              example: us-east-1
+            partitionKeyTemplate:
+              type: string
+              description: Template for generating partition keys
+              example: '{{.integration_id}}'
+        createTime:
+          type: string
+          description: The time the destination was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the destination was updated.
+          format: date-time
+        secrets:
+          type: object
+          description: Destination secrets (only included when includeSecrets is true)
+          properties:
+            webhookSigningKey:
+              type: string
+              description: Webhook signing key for the destination (only included for webhook destinations)
+    TopicDestinationRoute:
+      title: Topic Destination Route
+      required:
+      - id
+      - topicId
+      - destinationId
+      - projectId
+      - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The topic destination route ID.
+        topicId:
+          type: string
+          description: The ID of the topic.
+        destinationId:
+          type: string
+          description: The ID of the destination.
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the topic destination route was created.
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,162 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Revision API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Revision
+paths:
+  /projects/{projectIdOrName}/integrations/{integrationId}/revisions:
+    post:
+      summary: Ampersand Create a New Revision.
+      operationId: createRevision
+      description: We recommend using the [CLI's deploy command](https://docs.withampersand.com/cli/overview#deploy-integrations) rather than this API endpoint directly, unless you have an advanced use case.
+      tags:
+      - Revision
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The integration ID.
+        schema:
+          type: string
+      - name: destructive
+        in: query
+        required: false
+        description: Defaults to false. This flag controls whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision.
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sourceZipUrl:
+                  type: string
+                  description: URL of where a zip of the source files can be downloaded (e.g. Google Cloud Storage URL).
+                  example: https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip
+                sourceYaml:
+                  type: string
+                  description: The source YAML file that defines the revision.
+              description: The source of the revision to create. One of sourceZipUrl or sourceYaml is required.
+        required: true
+      responses:
+        201:
+          description: Created
+          content: {}
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        422:
+          description: Unprocessable Entity
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: revision
+  /projects/{projectIdOrName}/integrations/{integrationId}/revisions/{revisionId}:hydrate:
+    get:
+      summary: Ampersand Get a Hydrated Revision
+      description: 'Returns the integration revision enriched with live field metadata from the consumer''s connected SaaS instance, such as available fields, display names, and type for each object defined in the integration.
+
+        '
+      operationId: getHydratedRevision
+      tags:
+      - Revision
+      parameters:
+      - name: projectIdOrName
+        in: path
+        required: true
+        description: The Ampersand project ID or project name.
+        schema:
+          type: string
+        example: my-project
+      - name: integrationId
+        in: path
+        required: true
+        description: The integration ID.
+        schema:
+          type: string
+        example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      - name: revisionId
+        in: path
+        required: true
+        description: The revision ID. You can find this on the integration object's `latestRevision.id` field.
+        schema:
+          type: string
+        example: f0e1d2c3-b4a5-6789-0abc-def123456789
+      - name: connectionId
+        in: query
+        required: true
+        description: The ID of the consumer's connection to the SaaS provider. This connection's credentials are used to fetch field metadata from the provider's API.
+        schema:
+          type: string
+        example: 1a2b3c4d-5e6f-7890-abcd-ef0123456789
+      responses:
+        200:
+          description: Hydrated revision.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HydratedRevision'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    HydratedRevision:
+      title: Hydrated Revision
+      required:
+      - content
+      - createTime
+      - id
+      - specVersion
+      type: object
+      properties:
+        id:
+          type: string
+          description: The revision ID.
+          example: f0e1d2c3-b4a5-6789-0abc-def123456789
+        specVersion:
+          type: string
+          description: The spec version string.
+          example: 1.0.0
+        createTime:
+          type: string
+          description: The time the revision was created.
+          format: date-time
+        content:
+          $ref: ../manifest/manifest.yaml#/components/schemas/HydratedIntegration
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

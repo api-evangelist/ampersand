@@ -1,0 +1,641 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key Org API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: Org
+paths:
+  /orgs:
+    post:
+      x-speakeasy-ignore: true
+      summary: Ampersand Create a New Organization
+      operationId: createOrg
+      tags:
+      - Org
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - label
+              type: object
+              properties:
+                label:
+                  type: string
+                  description: The organization label.
+                  example: org-123
+        required: true
+      responses:
+        201:
+          description: The newly created org
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Org'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: org
+  /orgs/{orgId}:
+    get:
+      x-speakeasy-ignore: true
+      summary: Ampersand Get an Organization
+      operationId: getOrg
+      tags:
+      - Org
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        description: ID of the organization.
+        schema:
+          type: string
+        example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      responses:
+        200:
+          description: Organization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Org'
+        404:
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    patch:
+      x-speakeasy-ignore: true
+      summary: Ampersand Update an Organization
+      operationId: updateOrg
+      tags:
+      - Org
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        description: ID of the organization.
+        schema:
+          type: string
+        example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - updateMask
+              - org
+              properties:
+                updateMask:
+                  type: array
+                  items:
+                    type: string
+                  description: 'Array of field paths specifying which fields to update. Allowed values include:
+
+                    - label
+
+                    '
+                  example:
+                  - label
+                org:
+                  type: object
+                  properties:
+                    label:
+                      type: string
+                      description: The organization label.
+                      example: org-123
+      responses:
+        200:
+          description: Updated org
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Org'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: orgUpdate
+  /orgs/{orgId}/builders:
+    get:
+      summary: Ampersand List Builders for an Organization
+      operationId: listOrgBuilders
+      tags:
+      - Org
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        description: ID of the organization.
+        schema:
+          type: string
+        example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      responses:
+        200:
+          description: List of builders that are a part of the org
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Builder'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /orgs/{orgId}/invites:
+    post:
+      x-speakeasy-ignore: true
+      summary: Ampersand Invite a User to an Organization
+      operationId: createOrgInvite
+      tags:
+      - Org
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        description: ID of the organization.
+        schema:
+          type: string
+        example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - email
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The email address of the user to invite.
+                  example: alice@company.com
+      responses:
+        201:
+          description: The newly created invite
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invite'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+      x-codegen-request-body-name: invite
+    get:
+      x-speakeasy-ignore: true
+      summary: Ampersand List Invites for an Organization
+      operationId: listOrgInvites
+      tags:
+      - Org
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        description: ID of the organization.
+        schema:
+          type: string
+        example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      responses:
+        200:
+          description: List of invites
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invite'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /orgs/{orgId}/invites/{inviteId}:
+    get:
+      x-speakeasy-ignore: true
+      summary: Ampersand Get an Invite
+      operationId: getOrgInvite
+      tags:
+      - Org
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        description: ID of the organization.
+        schema:
+          type: string
+        example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      - name: inviteId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Invite
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invite'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    delete:
+      x-speakeasy-ignore: true
+      summary: Ampersand Revoke an Invite
+      operationId: deleteOrgInvite
+      tags:
+      - Org
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        description: ID of the organization.
+        schema:
+          type: string
+        example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      - name: inviteId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Deleted
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /orgs/{orgId}/memberships:
+    post:
+      summary: Ampersand Add User to an Organization
+      description: Adds a builder to an organization. Two authorization modes - Org owner inviting another user, or self-joining via claimed domain (authenticated user's email domain should be claimed by this organization).
+      operationId: addUserToOrg
+      tags:
+      - Org
+      security:
+      - Bearer: []
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        description: ID of the organization.
+        schema:
+          type: string
+        example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - builderId
+              properties:
+                builderId:
+                  type: string
+                  description: The ID of the builder to add to the organization
+                  example: builder-id-123
+      responses:
+        201:
+          description: User successfully added to organization
+        400:
+          description: Bad Request - Membership already exists or invalid request
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        403:
+          description: Forbidden - Requires org:owner permission
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        404:
+          description: Not Found - Organization or builder not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /claimed-domains:
+    get:
+      operationId: checkClaimedDomain
+      summary: Ampersand Check if a Domain is Claimed
+      description: Returns claimed domain information if authenticated user is an owner of the organization that claimed the domain, or if the user's email domain matches the claimed domain.
+      tags:
+      - Org
+      security:
+      - Bearer: []
+      parameters:
+      - name: domain
+        in: query
+        required: true
+        description: 'Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails, the portion after @ is used (e.g., "user@example.com" becomes "example.com"); for URLs, the hostname is extracted (e.g., "https://www.example.com" becomes "example.com").
+
+          '
+        schema:
+          type: string
+        example: xyz@withampersand.com
+      responses:
+        200:
+          description: Domain claim status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimedDomainResponse'
+        400:
+          description: Bad Request - Invalid input
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        404:
+          description: Domain not claimed
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+    post:
+      operationId: claimDomain
+      summary: Ampersand Claim a Domain
+      description: Claim a domain for an organization. Accepts email, domain, or URL.
+      tags:
+      - Org
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - domain
+              - parentId
+              - parentType
+              properties:
+                domain:
+                  type: string
+                  description: 'Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails, the portion after @ is used (e.g., "user@example.com" becomes "example.com"); for URLs, the hostname is extracted (e.g., "https://www.example.com" becomes "example.com").
+
+                    '
+                  example: xyz@withampersand.com
+                parentId:
+                  type: string
+                  description: ID of the parent entity claiming the domain
+                  example: orgId
+                parentType:
+                  type: string
+                  description: Type of the parent entity
+                  example: org
+        required: true
+      responses:
+        201:
+          description: Domain claimed successfully
+        400:
+          description: Bad Request - Invalid input
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/InputValidationProblem
+        409:
+          description: Domain already claimed by another organization
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /orgs/{orgId}/claimed-domains:
+    get:
+      operationId: listOrgClaimedDomains
+      summary: Ampersand List Organization's Claimed Domains
+      description: Get all domains claimed by a specific organization
+      tags:
+      - Org
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Organization ID
+        example: orgId
+      responses:
+        200:
+          description: List of claimed domains for the organization
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClaimedDomainResponse'
+        404:
+          description: Organization not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    Builder:
+      title: Builder
+      type: object
+      required:
+      - id
+      - idpProvider
+      - idpRef
+      - createTime
+      properties:
+        id:
+          type: string
+          description: The builder ID.
+          example: builder-id-123
+        idpProvider:
+          type: string
+          description: The identity provider
+          example: clerk
+        idpRef:
+          type: string
+          description: ID used by the identity provider
+        createTime:
+          type: string
+          description: The time that the builder joined Ampersand.
+          format: date-time
+        firstName:
+          type: string
+        lastName:
+          type: string
+        fullName:
+          type: string
+        primaryEmail:
+          type: string
+    ClaimedDomainResponse:
+      type: object
+      required:
+      - id
+      - parentType
+      - parentId
+      - domain
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the claimed domain
+          example: 00000000-0000-0000-0000-000000000001
+        parentType:
+          type: string
+          description: Type of the parent entity that claimed the domain
+          example: org
+        parentId:
+          type: string
+          description: ID of the parent entity that claimed the domain
+          example: 00000000-0000-0000-0000-000000000001
+        domain:
+          type: string
+          description: The normalized domain name
+          example: xyz.com
+    Org:
+      title: Organization
+      required:
+      - id
+      - label
+      - createTime
+      - defaultTeamId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The organization ID.
+          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        label:
+          type: string
+          description: The organization label.
+          example: Acme Inc
+        defaultTeamId:
+          type: string
+          description: The ID of the Everyone team for the org.
+        createTime:
+          type: string
+          description: The time the organization was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the organization was updated.
+          format: date-time
+    Invite:
+      title: Invite
+      type: object
+      required:
+      - id
+      - invitedEmail
+      - createTime
+      - parentId
+      - parentType
+      - status
+      properties:
+        id:
+          type: string
+          description: The invite ID.
+        invitedEmail:
+          type: string
+          description: The email address of the person invited.
+        parentType:
+          type: string
+          enum:
+          - org
+          description: The type of entity that the person is invited to.
+        parentId:
+          type: string
+          description: The ID of the parent (e.g. org ID).
+        status:
+          type: string
+          description: The status of the invite.
+          enum:
+          - pending
+          - accepted
+          - revoked
+          - expired
+        createTime:
+          type: string
+          description: The time the invite was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the invite was updated.
+          format: date-time
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

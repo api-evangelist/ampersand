@@ -1,0 +1,247 @@
+openapi: 3.0.1
+info:
+  title: Ampersand public API Key User API
+  version: 1.0.0
+servers:
+- url: https://api.withampersand.com/v1
+security:
+- APIKeyHeader: []
+- Bearer: []
+tags:
+- name: User
+paths:
+  /my-info:
+    get:
+      x-speakeasy-ignore: true
+      summary: Ampersand Get Information About the Current User
+      operationId: getMyInfo
+      tags:
+      - User
+      security:
+      - Bearer: []
+      responses:
+        200:
+          description: Information about the current user and their organizations and projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuilderInfo'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+  /invites:accept:
+    post:
+      x-speakeasy-ignore: true
+      summary: Ampersand Accept an Invite
+      operationId: acceptInvite
+      tags:
+      - User
+      security:
+      - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - invitedEmail
+              properties:
+                invitedEmail:
+                  type: string
+                  description: The email address that the invite was sent to
+        required: true
+      responses:
+        200:
+          description: Information about the current user and their organizations and projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuilderInfo'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
+components:
+  schemas:
+    BuilderInfo:
+      title: Builder Info
+      type: object
+      required:
+      - builder
+      - projectRoles
+      properties:
+        builder:
+          $ref: '#/components/schemas/Builder'
+        projectRoles:
+          type: object
+          description: A map of project IDs to project roles for the builder.
+          additionalProperties:
+            type: object
+            required:
+            - role
+            - principalType
+            - principalId
+            - project
+            properties:
+              role:
+                type: string
+                description: The role of the builder in the project.
+                example: admin
+              principalType:
+                type: string
+                description: The type of the principal.
+                enum:
+                - team
+                - builder
+              principalId:
+                type: string
+                description: The ID of the team or builder.
+                example: builder-id-123
+              project:
+                $ref: '#/components/schemas/Project'
+        orgRole:
+          type: object
+          required:
+          - role
+          - principalType
+          - principalId
+          - org
+          properties:
+            role:
+              type: string
+              description: The role of the builder in the org.
+              example: admin
+            principalType:
+              type: string
+              description: The type of the principal.
+              enum:
+              - team
+              - builder
+            principalId:
+              type: string
+              description: The ID of the team or builder.
+              example: builder-id-123
+            org:
+              $ref: '#/components/schemas/Org'
+    Project:
+      title: Project
+      required:
+      - appName
+      - createTime
+      - id
+      - name
+      - orgId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the project.
+          example: proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        name:
+          type: string
+          description: The unique name for the project.
+          example: mailmonkey-staging
+        appName:
+          type: string
+          description: The display name of the application, shown to end users during the connection flow.
+          example: MailMonkey
+        orgId:
+          type: string
+          description: The ID of the organization that this project belongs to.
+          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        createTime:
+          type: string
+          description: The time the project was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the project was updated.
+          format: date-time
+        entitlements:
+          type: object
+          description: Plan-based feature flags for the project. These are managed by Ampersand and cannot be set via the API.
+          properties:
+            brandingRemoval:
+              type: object
+              required:
+              - value
+              x-go-type-skip-optional-pointer: true
+              description: Controls whether Ampersand branding is removed from the embeddable UI components.
+              properties:
+                value:
+                  type: boolean
+                  description: True if Ampersand branding has been removed for this project.
+    Org:
+      title: Organization
+      required:
+      - id
+      - label
+      - createTime
+      - defaultTeamId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The organization ID.
+          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        label:
+          type: string
+          description: The organization label.
+          example: Acme Inc
+        defaultTeamId:
+          type: string
+          description: The ID of the Everyone team for the org.
+        createTime:
+          type: string
+          description: The time the organization was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the organization was updated.
+          format: date-time
+    Builder:
+      title: Builder
+      type: object
+      required:
+      - id
+      - idpProvider
+      - idpRef
+      - createTime
+      properties:
+        id:
+          type: string
+          description: The builder ID.
+          example: builder-id-123
+        idpProvider:
+          type: string
+          description: The identity provider
+          example: clerk
+        idpRef:
+          type: string
+          description: ID used by the identity provider
+        createTime:
+          type: string
+          description: The time that the builder joined Ampersand.
+          format: date-time
+        firstName:
+          type: string
+        lastName:
+          type: string
+        fullName:
+          type: string
+        primaryEmail:
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
