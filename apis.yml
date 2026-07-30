@@ -5,7 +5,20 @@ description: Ampersand is a developer-first platform for building native SaaS in
   and managed infrastructure that lets developers add product integrations quickly, handling OAuth, data sync, webhooks, and
   field mapping out of the box. The platform supports hundreds of SaaS connectors including Salesforce, HubSpot, Marketo,
   Microsoft Dynamics 365, Zendesk, and Gong with bi-directional sync and declarative configuration.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ampersand.png
 tags:
 - Developer Tools
 - Integrations
@@ -18,28 +31,906 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: ampersand:ampersand-api
-  name: Ampersand API
-  description: The Ampersand API enables developers to programmatically manage integrations, connections, installations, destinations,
-    and data flows for SaaS-to-SaaS connectivity. It provides endpoints for managing installations, connections, destinations,
-    API keys, projects, organizations, providers, and integration configurations within the Ampersand platform.
+- aid: ampersand:ampersand-api-key-api
+  name: Ampersand API Key API
+  description: The API Key API from Ampersand — 2 operation(s) for api key.
   humanURL: https://docs.withampersand.com/
   baseURL: https://api.withampersand.com
   tags:
-  - Integrations
-  - Platform
-  - SaaS
-  - OAuth
-  - Data Sync
+  - API Key
   properties:
+  - type: OpenAPI
+    url: openapi/ampersand-api-key-api-openapi.yml
   - type: Documentation
     url: https://docs.withampersand.com/
   - type: GettingStarted
     url: https://docs.withampersand.com/getting-started
   - type: Authentication
     url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-billing-account-api
+  name: Ampersand Billing Account API
+  description: The Billing Account API from Ampersand — 2 operation(s) for billing account.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Billing Account
+  properties:
   - type: OpenAPI
-    url: openapi/ampersand-api-openapi-original.yml
+    url: openapi/ampersand-billing-account-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-connection-api
+  name: Ampersand Connection API
+  description: The Connection API from Ampersand — 3 operation(s) for connection.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Connection
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-connection-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-destination-api
+  name: Ampersand Destination API
+  description: The Destination API from Ampersand — 6 operation(s) for destination.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Destination
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-destination-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-installation-api
+  name: Ampersand Installation API
+  description: The Installation API from Ampersand — 4 operation(s) for installation.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Installation
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-installation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-integration-api
+  name: Ampersand Integration API
+  description: The Integration API from Ampersand — 4 operation(s) for integration.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Integration
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-integration-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-jwt-key-api
+  name: Ampersand JWT Key API
+  description: The JWT Key API from Ampersand — 2 operation(s) for jwt key.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - JWT Key
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-jwt-key-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-notification-api
+  name: Ampersand Notification API
+  description: The Notification API from Ampersand — 2 operation(s) for notification.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Notification
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-notification-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-oauth-api
+  name: Ampersand OAuth API
+  description: The OAuth API from Ampersand — 2 operation(s) for oauth.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-objects-fields-api
+  name: Ampersand Objects & Fields API
+  description: The Objects & Fields API from Ampersand — 4 operation(s) for objects & fields.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Objects & Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-objects-fields-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-operation-api
+  name: Ampersand Operation API
+  description: The Operation API from Ampersand — 4 operation(s) for operation.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Operation
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-operation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-org-api
+  name: Ampersand Org API
+  description: The Org API from Ampersand — 8 operation(s) for org.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Org
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-org-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-project-api
+  name: Ampersand Project API
+  description: The Project API from Ampersand — 2 operation(s) for project.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Project
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-project-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-provider-api
+  name: Ampersand Provider API
+  description: The Provider API from Ampersand — 2 operation(s) for provider.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Provider
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-provider-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-provider-app-api
+  name: Ampersand Provider App API
+  description: The Provider App API from Ampersand — 2 operation(s) for provider app.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Provider App
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-provider-app-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-revision-api
+  name: Ampersand Revision API
+  description: The Revision API from Ampersand — 2 operation(s) for revision.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Revision
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-revision-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-upload-url-api
+  name: Ampersand Upload URL API
+  description: The Upload URL API from Ampersand — 1 operation(s) for upload url.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - Upload URL
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-upload-url-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-api-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-billing-account.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-connection.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-destination.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-installation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-integration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-jwt-key.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-notification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-oauth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-objects-fields.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-operation.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-org.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-project.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-provider-app.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-revision.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-upload-url.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/ampersand-user.yaml
+- aid: ampersand:ampersand-user-api
+  name: Ampersand User API
+  description: The User API from Ampersand — 2 operation(s) for user.
+  humanURL: https://docs.withampersand.com/
+  baseURL: https://api.withampersand.com
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/ampersand-user-api-openapi.yml
+  - type: Documentation
+    url: https://docs.withampersand.com/
+  - type: GettingStarted
+    url: https://docs.withampersand.com/getting-started
+  - type: Authentication
+    url: https://docs.withampersand.com/reference/authentication
   - type: X-NaftikoCapability
     url: capabilities/ampersand-api-key.yaml
   - type: X-NaftikoCapability
