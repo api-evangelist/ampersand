@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Objects & Fields API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Objects & Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand Get Object Metadata via Installation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/objects/:objectName/metadata",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "e3a7f9c1-4b2d-4e8a-9f6b-2d5c8a1e3b7f",
+                "type": "path",
+                "description": "The unique identifier of the integration."
+              },
+              {
+                "name": "objectName",
+                "value": "account",
+                "type": "path",
+                "description": "The name of the object to retrieve metadata for. You can use either the mapped name from your integration config (e.g. `people`) or the native provider object name (e.g. `contact`).\n"
+              },
+              {
+                "name": "groupRef",
+                "value": "group-123",
+                "type": "query",
+                "description": "The ID of the user group that has access to this installation."
+              },
+              {
+                "name": "excludeReadOnly",
+                "value": "true",
+                "type": "query",
+                "description": "Excludes fields where `ReadOnly` is `true` from the response."
+              }
+            ]
+          },
+          "docs": "Retrieves metadata about an object in a customer's SaaS instance, including its fields. An installation must exist for the given `groupRef` and `integrationId`. The `objectName` can be either the mapped name from your integration config or the native provider name. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).\n"
+        },
+        {
+          "info": {
+            "name": "Ampersand Get Object Metadata via Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/providers/:provider/objects/:objectName/metadata",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "provider",
+                "value": "salesforce",
+                "type": "path",
+                "description": "The provider name (e.g. `salesforce`, `hubspot`)."
+              },
+              {
+                "name": "objectName",
+                "value": "contact",
+                "type": "path",
+                "description": "The native provider object name to retrieve metadata for."
+              },
+              {
+                "name": "groupRef",
+                "value": "group-123",
+                "type": "query",
+                "description": "The ID of the user group whose connection should be used to fetch the metadata."
+              },
+              {
+                "name": "excludeReadOnly",
+                "value": "true",
+                "type": "query",
+                "description": "Excludes fields where `ReadOnly` is `true` from the response."
+              }
+            ]
+          },
+          "docs": "Retrieves metadata about an object in a customer's SaaS instance, including its fields. A connection must exist for the given `groupRef` and `provider`. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).\n"
+        },
+        {
+          "info": {
+            "name": "Ampersand Upsert Custom Fields for Installation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/object-metadata",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "32356abe-d2fd-49c7-9030-abdcbc6456d4",
+                "type": "path",
+                "description": "The integration ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update fields in the SaaS instance tied to an installation. Only HubSpot and Salesforce are supported currently."
+        },
+        {
+          "info": {
+            "name": "Ampersand Upsert Custom Fields for Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/providers/:provider/object-metadata",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "provider",
+                "value": "salesforce",
+                "type": "path",
+                "description": "The provider that this connection connects to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update fields in the SaaS instance tied to a connection. Only HubSpot and Salesforce are supported currently."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

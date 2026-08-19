@@ -1,0 +1,318 @@
+{
+  "item": [
+    {
+      "id": "0252fb56-5308-4de9-9bdf-9d2c629db588",
+      "name": "Provider",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6933e999-bd2c-4363-9016-c2c1c02d6079",
+          "name": "Ampersand List Providers",
+          "request": {
+            "name": "Ampersand List Providers",
+            "description": {
+              "content": "Returns all supported SaaS providers and their capabilities. The response is a JSON object keyed by provider name (e.g. `salesforce`, `hubspot`). Each value describes the provider's authentication type, supported operations, modules, and configuration options. No authentication is required.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a30abd8-1079-42c7-8b24-b2d84857e871",
+              "name": "All available providers and their capabilities.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"salesforce\": {\n    \"name\": \"salesforce\",\n    \"displayName\": \"Salesforce\",\n    \"authType\": \"oauth2\",\n    \"baseURL\": \"https://{{.workspace}}.my.salesforce.com\",\n    \"defaultModule\": \"crm\",\n    \"support\": {\n      \"read\": true,\n      \"write\": true,\n      \"delete\": true,\n      \"subscribe\": true,\n      \"proxy\": true,\n      \"bulkWrite\": {\n        \"insert\": true,\n        \"update\": true,\n        \"upsert\": true,\n        \"delete\": true\n      },\n      \"search\": {\n        \"operators\": {\n          \"equals\": true\n        }\n      }\n    },\n    \"providerOpts\": {}\n  },\n  \"hubspot\": {\n    \"name\": \"hubspot\",\n    \"displayName\": \"HubSpot\",\n    \"authType\": \"oauth2\",\n    \"baseURL\": \"https://api.hubapi.com\",\n    \"defaultModule\": \"\",\n    \"support\": {\n      \"read\": true,\n      \"write\": true,\n      \"delete\": true,\n      \"subscribe\": true,\n      \"proxy\": true,\n      \"bulkWrite\": {\n        \"insert\": false,\n        \"update\": false,\n        \"upsert\": false,\n        \"delete\": false\n      },\n      \"search\": {\n        \"operators\": {\n          \"equals\": true\n        }\n      }\n    },\n    \"providerOpts\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "574e0b52-b072-48e6-939d-539e786cfa5d",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d8e23b1-ca74-4417-8a1a-055ff109993c",
+          "name": "Ampersand Get Provider",
+          "request": {
+            "name": "Ampersand Get Provider",
+            "description": {
+              "content": "Returns information about a single provider. No authentication is required.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providers",
+                ":provider"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider",
+                  "description": "(Required) The provider name (e.g. `salesforce`, `hubspot`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d21fc901-22bd-4a80-bcf3-ac0cff40271f",
+              "name": "The requested provider.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider name (e.g. `salesforce`, `hubspot`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af5a03ad-a774-4816-aaa2-035826940532",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providers",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider name (e.g. `salesforce`, `hubspot`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.withampersand.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a273f578-983d-4839-accd-9da686af3e75",
+    "name": "Ampersand public API Key Provider API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

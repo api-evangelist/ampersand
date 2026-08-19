@@ -1,0 +1,243 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Installation API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Installation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List Installations for an Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/installations",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "550e8400-e29b-41d4-a716-446655440000",
+                "type": "path",
+                "description": "The unique identifier (UUID) of the integration."
+              },
+              {
+                "name": "groupRef",
+                "value": "group-123",
+                "type": "query",
+                "description": "The ID that your app uses to identify a group of users (e.g. an org ID, workspace ID, or team ID). When provided, only returns installations belonging to this group."
+              }
+            ]
+          },
+          "docs": "Lists all installations for a specific integration within a project. To list installations across all integrations, use listInstallationsForProject instead.\n"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a New Installation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/installations",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "113e9685-9a51-42cc-8662-9d9725b17f14",
+                "type": "path",
+                "description": "The integration ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Install an integration for a specific group. The group must already have a SaaS connection — either provide its `connectionId`, or omit it to use the group's default. To create a connection, use the [OAuth Connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) or the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).\n"
+        },
+        {
+          "info": {
+            "name": "Ampersand Get an Installation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "550e8400-e29b-41d4-a716-446655440000",
+                "type": "path",
+                "description": "The unique identifier (UUID) of the integration."
+              },
+              {
+                "name": "installationId",
+                "value": "7b3c9d2e-5a1f-4e8b-b6d4-9c8a2f1e5d3b",
+                "type": "path",
+                "description": "The unique identifier (UUID) of the installation."
+              }
+            ]
+          },
+          "docs": "Retrieves a single installation by ID, including its connection details, config, and health status.\n"
+        },
+        {
+          "info": {
+            "name": "Ampersand Update an Installation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "e3a7f9c1-4b2d-4e8a-9f6b-2d5c8a1e3b7f",
+                "type": "path",
+                "description": "The ID of the integration that this installation belongs to."
+              },
+              {
+                "name": "installationId",
+                "value": "7b3c9d2e-5a1f-4e8b-b6d4-9c8a2f1e5d3b",
+                "type": "path",
+                "description": "The Ampersand installation ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an installation using field masks. Note: subscribe config changes trigger a subscription change in the provider's system, which typically takes 1-2 minutes but may take up to 10 minutes.\n"
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete an Installation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "",
+                "type": "path",
+                "description": "The integration ID."
+              },
+              {
+                "name": "installationId",
+                "value": "",
+                "type": "path",
+                "description": "The Ampersand installation ID."
+              }
+            ]
+          },
+          "docs": "Delete an Installation. This will also delete the associated Connection if it is not used by any other Installations.\n"
+        },
+        {
+          "info": {
+            "name": "Ampersand Update an Installation Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/objects/:objectName/config-content",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "",
+                "type": "path",
+                "description": "The integration ID."
+              },
+              {
+                "name": "objectName",
+                "value": "account",
+                "type": "path",
+                "description": "The object name whose config content will be patched.\nMust match an object name defined in the integration's manifest for the specified action type (read, subscribe, or write).\nCommon examples include: `account`, `contact`, `lead`, `opportunity` (for Salesforce), `deal`, `company` (for HubSpot), etc.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a single object's configuration within an installation using JSON Patch syntax.\n"
+        },
+        {
+          "info": {
+            "name": "Ampersand List Installations for a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/installations",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "groupRef",
+                "value": "group-123",
+                "type": "query",
+                "description": "The ID that your app uses to identify a group of users (e.g. an org ID, workspace ID, or team ID). When provided, only returns installations belonging to this group."
+              }
+            ]
+          },
+          "docs": "Lists all installations across every integration in a project, giving you a complete view of all active customer integrations. To narrow results to a single integration, use listInstallations instead.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

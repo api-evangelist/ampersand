@@ -1,0 +1,1048 @@
+{
+  "item": [
+    {
+      "id": "cb779589-4d54-4c86-a6e3-db366c7f2b5f",
+      "name": "Provider App",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2009feb-a7d9-4051-b397-f92f0328abdb",
+          "name": "Ampersand List Provider Apps",
+          "request": {
+            "name": "Ampersand List Provider Apps",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "provider-apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) TThe Ampersand project ID or project name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae4332c4-0b35-4589-88e4-43256870cda2",
+              "name": "List of provider apps",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) TThe Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"clientId\": \"client-id-123\",\n    \"createTime\": \"2006-07-19T22:18:26.848Z\",\n    \"id\": \"provider-app-123\",\n    \"projectId\": \"project-456\",\n    \"provider\": \"salesforce\",\n    \"externalRef\": \"external-id-123\",\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"optional_scope\": [\n          \"automation.sequences.read\"\n        ]\n      },\n      \"providerParams\": {\n        \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n        \"gcpProjectId\": \"my-gcp-project\",\n        \"gcpPubSubTopicName\": \"my-topic\"\n      }\n    },\n    \"updateTime\": \"1995-07-05T09:46:24.201Z\"\n  },\n  {\n    \"clientId\": \"client-id-123\",\n    \"createTime\": \"1952-09-19T18:40:02.146Z\",\n    \"id\": \"provider-app-123\",\n    \"projectId\": \"project-456\",\n    \"provider\": \"salesforce\",\n    \"externalRef\": \"external-id-123\",\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"optional_scope\": [\n          \"automation.sequences.read\"\n        ]\n      },\n      \"providerParams\": {\n        \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n        \"gcpProjectId\": \"my-gcp-project\",\n        \"gcpPubSubTopicName\": \"my-topic\"\n      }\n    },\n    \"updateTime\": \"1987-11-07T14:12:23.733Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4152a29c-2105-4853-ae58-8ff94813fb63",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) TThe Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c81f1847-35c4-42d7-8b32-681c84f31c79",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) TThe Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2be2d649-5ab5-4806-ad6b-b9fc2035021a",
+          "name": "Ampersand Create a New Provider App",
+          "request": {
+            "name": "Ampersand Create a New Provider App",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "provider-apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"externalRef\": \"<string>\",\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"authQueryParams\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_1\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_2\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_3\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"providerParams\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d585ee42-889a-48df-8c61-aecca4956a68",
+              "name": "The newly created provider app",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"client-id-123\",\n  \"clientSecret\": \"client-secret-123\",\n  \"provider\": \"salesforce\",\n  \"externalRef\": \"external-id-123\",\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"authQueryParams\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_1\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_2\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_3\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"providerParams\": {\n      \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n      \"gcpProjectId\": \"my-gcp-project\",\n      \"gcpPubSubTopicName\": \"my-topic\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"clientId\": \"client-id-123\",\n  \"createTime\": \"2014-01-21T02:43:53.095Z\",\n  \"id\": \"provider-app-123\",\n  \"projectId\": \"project-456\",\n  \"provider\": \"salesforce\",\n  \"externalRef\": \"external-id-123\",\n  \"scopes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata\": {\n    \"authQueryParams\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_1\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_2\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"providerParams\": {\n      \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n      \"gcpProjectId\": \"my-gcp-project\",\n      \"gcpPubSubTopicName\": \"my-topic\"\n    }\n  },\n  \"updateTime\": \"1953-07-17T11:48:38.517Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40ad0272-5396-4e0b-82f5-e7b17070e1a1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"client-id-123\",\n  \"clientSecret\": \"client-secret-123\",\n  \"provider\": \"salesforce\",\n  \"externalRef\": \"external-id-123\",\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"authQueryParams\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_1\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_2\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_3\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"providerParams\": {\n      \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n      \"gcpProjectId\": \"my-gcp-project\",\n      \"gcpPubSubTopicName\": \"my-topic\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39f7f61d-7f10-4286-9f1c-a420e1c598bd",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"client-id-123\",\n  \"clientSecret\": \"client-secret-123\",\n  \"provider\": \"salesforce\",\n  \"externalRef\": \"external-id-123\",\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"authQueryParams\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_1\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_2\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_3\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"providerParams\": {\n      \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n      \"gcpProjectId\": \"my-gcp-project\",\n      \"gcpPubSubTopicName\": \"my-topic\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35cee51e-2f37-41e7-986d-9ed15a06c5b5",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"client-id-123\",\n  \"clientSecret\": \"client-secret-123\",\n  \"provider\": \"salesforce\",\n  \"externalRef\": \"external-id-123\",\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"authQueryParams\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_1\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_2\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_3\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"providerParams\": {\n      \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n      \"gcpProjectId\": \"my-gcp-project\",\n      \"gcpPubSubTopicName\": \"my-topic\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af813c31-1d35-487b-a54e-19c7fc8e963c",
+          "name": "Ampersand Delete a Provider App.",
+          "request": {
+            "name": "Ampersand Delete a Provider App.",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "provider-apps",
+                ":providerAppId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "providerAppId",
+                  "description": "(Required) ID of the provider app, returned by the CreateProviderApp call."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/problem+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8edc02d-52c6-42be-8de2-1cef3b6d48e1",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps",
+                    ":providerAppId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "providerAppId",
+                      "description": "(Required) ID of the provider app, returned by the CreateProviderApp call."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5cf771ba-87ca-406a-b5a5-cea85e5884c1",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps",
+                    ":providerAppId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "providerAppId",
+                      "description": "(Required) ID of the provider app, returned by the CreateProviderApp call."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28150bab-970d-4c46-a579-804810eb79c4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps",
+                    ":providerAppId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "providerAppId",
+                      "description": "(Required) ID of the provider app, returned by the CreateProviderApp call."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f92938ae-21df-491f-95e5-6c917060f5bc",
+          "name": "Ampersand Update a Provider App",
+          "request": {
+            "name": "Ampersand Update a Provider App",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "provider-apps",
+                ":providerAppId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "providerAppId",
+                  "description": "(Required) ID of the provider app, returned by the CreateProviderApp call."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"providerApp\": {\n    \"externalRef\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"key_0\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_1\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"providerParams\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\"\n      }\n    }\n  },\n  \"updateMask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "373f7c4a-bd01-47dc-a871-528a50376229",
+              "name": "The updated provider app",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps",
+                    ":providerAppId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "providerAppId",
+                      "description": "(Required) ID of the provider app, returned by the CreateProviderApp call."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerApp\": {\n    \"externalRef\": \"external-id-123\",\n    \"provider\": \"salesforce\",\n    \"clientId\": \"client-id-123\",\n    \"clientSecret\": \"client-secret-123\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"key_0\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_1\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_2\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"providerParams\": {\n        \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n        \"gcpProjectId\": \"my-gcp-project\",\n        \"gcpPubSubTopicName\": \"my-topic\"\n      }\n    }\n  },\n  \"updateMask\": [\n    \"externalRef\",\n    \"clientId\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"clientId\": \"client-id-123\",\n  \"createTime\": \"2014-01-21T02:43:53.095Z\",\n  \"id\": \"provider-app-123\",\n  \"projectId\": \"project-456\",\n  \"provider\": \"salesforce\",\n  \"externalRef\": \"external-id-123\",\n  \"scopes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata\": {\n    \"authQueryParams\": {\n      \"key_0\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_1\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"key_2\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"providerParams\": {\n      \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n      \"gcpProjectId\": \"my-gcp-project\",\n      \"gcpPubSubTopicName\": \"my-topic\"\n    }\n  },\n  \"updateTime\": \"1953-07-17T11:48:38.517Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3600f53e-2ab3-4d79-887d-a6c759d5adea",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps",
+                    ":providerAppId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "providerAppId",
+                      "description": "(Required) ID of the provider app, returned by the CreateProviderApp call."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerApp\": {\n    \"externalRef\": \"external-id-123\",\n    \"provider\": \"salesforce\",\n    \"clientId\": \"client-id-123\",\n    \"clientSecret\": \"client-secret-123\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"key_0\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_1\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_2\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"providerParams\": {\n        \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n        \"gcpProjectId\": \"my-gcp-project\",\n        \"gcpPubSubTopicName\": \"my-topic\"\n      }\n    }\n  },\n  \"updateMask\": [\n    \"externalRef\",\n    \"clientId\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2fca023-c13c-4913-8e23-4a05a168b5a0",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "provider-apps",
+                    ":providerAppId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "providerAppId",
+                      "description": "(Required) ID of the provider app, returned by the CreateProviderApp call."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerApp\": {\n    \"externalRef\": \"external-id-123\",\n    \"provider\": \"salesforce\",\n    \"clientId\": \"client-id-123\",\n    \"clientSecret\": \"client-secret-123\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"key_0\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_1\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_2\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"providerParams\": {\n        \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n        \"gcpProjectId\": \"my-gcp-project\",\n        \"gcpPubSubTopicName\": \"my-topic\"\n      }\n    }\n  },\n  \"updateMask\": [\n    \"externalRef\",\n    \"clientId\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.withampersand.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "69234324-0470-487c-95e5-ed48c2dd3463",
+    "name": "Ampersand public API Key Provider App API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

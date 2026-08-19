@@ -1,0 +1,280 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Org API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Org",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand Create a New Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/orgs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Create a New Organization"
+        },
+        {
+          "info": {
+            "name": "Ampersand Get an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79",
+                "type": "path",
+                "description": "ID of the organization."
+              }
+            ]
+          },
+          "docs": "Ampersand Get an Organization"
+        },
+        {
+          "info": {
+            "name": "Ampersand Update an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79",
+                "type": "path",
+                "description": "ID of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Update an Organization"
+        },
+        {
+          "info": {
+            "name": "Ampersand List Builders for an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId/builders",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79",
+                "type": "path",
+                "description": "ID of the organization."
+              }
+            ]
+          },
+          "docs": "Ampersand List Builders for an Organization"
+        },
+        {
+          "info": {
+            "name": "Ampersand List Invites for an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId/invites",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79",
+                "type": "path",
+                "description": "ID of the organization."
+              }
+            ]
+          },
+          "docs": "Ampersand List Invites for an Organization"
+        },
+        {
+          "info": {
+            "name": "Ampersand Invite a User to an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId/invites",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79",
+                "type": "path",
+                "description": "ID of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Invite a User to an Organization"
+        },
+        {
+          "info": {
+            "name": "Ampersand Get an Invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId/invites/:inviteId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79",
+                "type": "path",
+                "description": "ID of the organization."
+              },
+              {
+                "name": "inviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Ampersand Get an Invite"
+        },
+        {
+          "info": {
+            "name": "Ampersand Revoke an Invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId/invites/:inviteId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79",
+                "type": "path",
+                "description": "ID of the organization."
+              },
+              {
+                "name": "inviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Ampersand Revoke an Invite"
+        },
+        {
+          "info": {
+            "name": "Ampersand Add User to an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId/memberships",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79",
+                "type": "path",
+                "description": "ID of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Adds a builder to an organization. Two authorization modes - Org owner inviting another user, or self-joining via claimed domain (authenticated user's email domain should be claimed by this organization)."
+        },
+        {
+          "info": {
+            "name": "Ampersand Check if a Domain is Claimed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/claimed-domains",
+            "params": [
+              {
+                "name": "domain",
+                "value": "xyz@withampersand.com",
+                "type": "query",
+                "description": "Accepts an email address, domain name, or URL. The domain will be automatically extracted: for emails, the portion after @ is used (e.g., \"user@example.com\" becomes \"example.com\"); for URLs, the hostname is extracted (e.g., \"https://www.example.com\" becomes \"example.com\").\n"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns claimed domain information if authenticated user is an owner of the organization that claimed the domain, or if the user's email domain matches the claimed domain."
+        },
+        {
+          "info": {
+            "name": "Ampersand Claim a Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/claimed-domains",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Claim a domain for an organization. Accepts email, domain, or URL."
+        },
+        {
+          "info": {
+            "name": "Ampersand List Organization's Claimed Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId/claimed-domains",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "orgId",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ]
+          },
+          "docs": "Get all domains claimed by a specific organization"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Provider API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Provider",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/providers"
+          },
+          "docs": "Returns all supported SaaS providers and their capabilities. The response is a JSON object keyed by provider name (e.g. `salesforce`, `hubspot`). Each value describes the provider's authentication type, supported operations, modules, and configuration options. No authentication is required.\n"
+        },
+        {
+          "info": {
+            "name": "Ampersand Get Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/providers/:provider",
+            "params": [
+              {
+                "name": "provider",
+                "value": "hubspot",
+                "type": "path",
+                "description": "The provider name (e.g. `salesforce`, `hubspot`)."
+              }
+            ]
+          },
+          "docs": "Returns information about a single provider. No authentication is required.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

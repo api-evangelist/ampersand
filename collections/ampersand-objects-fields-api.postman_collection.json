@@ -1,0 +1,1495 @@
+{
+  "item": [
+    {
+      "id": "f3098e92-a9fb-4747-89dc-4b128cb3559f",
+      "name": "Objects & Fields",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34ecc89d-d380-4437-93d5-4c80a06d6f8b",
+          "name": "Ampersand Get Object Metadata via Installation",
+          "request": {
+            "name": "Ampersand Get Object Metadata via Installation",
+            "description": {
+              "content": "Retrieves metadata about an object in a customer's SaaS instance, including its fields. An installation must exist for the given `groupRef` and `integrationId`. The `objectName` can be either the mapped name from your integration config or the native provider name. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "integrations",
+                ":integrationId",
+                "objects",
+                ":objectName",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groupRef",
+                  "value": "<string>",
+                  "description": "(Required) The ID of the user group that has access to this installation."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeReadOnly",
+                  "value": "<boolean>",
+                  "description": "Excludes fields where `ReadOnly` is `true` from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "integrationId",
+                  "description": "(Required) The unique identifier of the integration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectName",
+                  "description": "(Required) The name of the object to retrieve metadata for. You can use either the mapped name from your integration config (e.g. `people`) or the native provider object name (e.g. `contact`).\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d8ac360-18a5-494d-b5f8-7e5e26de5b7d",
+              "name": "The retrieved object metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "objects",
+                    ":objectName",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupRef",
+                      "value": "group-123"
+                    },
+                    {
+                      "key": "excludeReadOnly",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The unique identifier of the integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) The name of the object to retrieve metadata for. You can use either the mapped name from your integration config (e.g. `people`) or the native provider object name (e.g. `contact`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"account\",\n  \"displayName\": \"Account\",\n  \"mappedObjectName\": \"companies\",\n  \"fields\": {\n    \"name\": {\n      \"fieldName\": \"name\",\n      \"displayName\": \"Account Name\",\n      \"valueType\": \"string\",\n      \"providerType\": \"string\",\n      \"readOnly\": false,\n      \"isCustom\": false,\n      \"isRequired\": true\n    },\n    \"billingcity\": {\n      \"fieldName\": \"billingcity\",\n      \"displayName\": \"Billing City\",\n      \"valueType\": \"string\",\n      \"providerType\": \"string\",\n      \"readOnly\": false,\n      \"isCustom\": false,\n      \"isRequired\": false\n    },\n    \"industry\": {\n      \"fieldName\": \"industry\",\n      \"displayName\": \"Industry\",\n      \"valueType\": \"singleSelect\",\n      \"providerType\": \"picklist\",\n      \"readOnly\": false,\n      \"isCustom\": false,\n      \"isRequired\": false,\n      \"values\": [\n        {\n          \"value\": \"technology\",\n          \"displayValue\": \"Technology\"\n        },\n        {\n          \"value\": \"finance\",\n          \"displayValue\": \"Finance\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3de7d344-2f8f-46b1-ab71-dc8e852b163b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "objects",
+                    ":objectName",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupRef",
+                      "value": "group-123"
+                    },
+                    {
+                      "key": "excludeReadOnly",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The unique identifier of the integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) The name of the object to retrieve metadata for. You can use either the mapped name from your integration config (e.g. `people`) or the native provider object name (e.g. `contact`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b2f2620-5a8a-46ae-b9fc-16e20d53d53e",
+          "name": "Ampersand Get Object Metadata via Connection",
+          "request": {
+            "name": "Ampersand Get Object Metadata via Connection",
+            "description": {
+              "content": "Retrieves metadata about an object in a customer's SaaS instance, including its fields. A connection must exist for the given `groupRef` and `provider`. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "providers",
+                ":provider",
+                "objects",
+                ":objectName",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groupRef",
+                  "value": "<string>",
+                  "description": "(Required) The ID of the user group whose connection should be used to fetch the metadata."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeReadOnly",
+                  "value": "<boolean>",
+                  "description": "Excludes fields where `ReadOnly` is `true` from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider",
+                  "description": "(Required) The provider name (e.g. `salesforce`, `hubspot`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectName",
+                  "description": "(Required) The native provider object name to retrieve metadata for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55663c6c-3daa-49f5-8bcb-4eec9fe8c4be",
+              "name": "The retrieved object metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "providers",
+                    ":provider",
+                    "objects",
+                    ":objectName",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupRef",
+                      "value": "group-123"
+                    },
+                    {
+                      "key": "excludeReadOnly",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider name (e.g. `salesforce`, `hubspot`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) The native provider object name to retrieve metadata for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"contact\",\n  \"displayName\": \"Contact\",\n  \"fields\": {\n    \"firstname\": {\n      \"fieldName\": \"firstname\",\n      \"displayName\": \"First Name\",\n      \"valueType\": \"string\",\n      \"providerType\": \"string\",\n      \"readOnly\": false,\n      \"isCustom\": false,\n      \"isRequired\": true\n    },\n    \"email\": {\n      \"fieldName\": \"email\",\n      \"displayName\": \"Email\",\n      \"valueType\": \"string\",\n      \"providerType\": \"string\",\n      \"readOnly\": false,\n      \"isCustom\": false,\n      \"isRequired\": false\n    },\n    \"lifecyclestage\": {\n      \"fieldName\": \"lifecyclestage\",\n      \"displayName\": \"Lifecycle Stage\",\n      \"valueType\": \"singleSelect\",\n      \"providerType\": \"enumeration\",\n      \"readOnly\": false,\n      \"isCustom\": false,\n      \"isRequired\": false,\n      \"values\": [\n        {\n          \"value\": \"lead\",\n          \"displayValue\": \"Lead\"\n        },\n        {\n          \"value\": \"customer\",\n          \"displayValue\": \"Customer\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b01bfb6-6347-430c-a4a2-c502fcdd84ea",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "providers",
+                    ":provider",
+                    "objects",
+                    ":objectName",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupRef",
+                      "value": "group-123"
+                    },
+                    {
+                      "key": "excludeReadOnly",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider name (e.g. `salesforce`, `hubspot`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) The native provider object name to retrieve metadata for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "415eaf85-0eee-4c66-b4b4-438ca98af57f",
+          "name": "Ampersand Upsert Custom Fields for Installation",
+          "request": {
+            "name": "Ampersand Upsert Custom Fields for Installation",
+            "description": {
+              "content": "Create or update fields in the SaaS instance tied to an installation. Only HubSpot and Salesforce are supported currently.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "integrations",
+                ":integrationId",
+                "object-metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "integrationId",
+                  "description": "(Required) The integration ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupRef\": \"<string>\",\n  \"fields\": {\n    \"key_0\": [\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"key_1\": [\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"key_2\": [\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d3bb2c2-2d68-4652-8cd9-394d7864891d",
+              "name": "Metadata creation completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"fields\": {\n    \"key_0\": {\n      \"key_0\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": false\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    \"key_1\": {\n      \"key_0\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": false,\n          \"key_1\": \"string\",\n          \"key_2\": 7637,\n          \"key_3\": false,\n          \"key_4\": \"string\"\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"key_1\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": 4577.341706208972\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"key_2\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": 3005.805197938659\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "247e319e-f828-43ab-b683-432b7914788b",
+              "name": "Invalid request payload or validation errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65aa9e58-c73c-4a74-9818-25f2fcce7483",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9be0966-2fee-4b94-aef3-d8ca0417d112",
+              "name": "Insufficient permissions for metadata operations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef680a91-561b-4c56-858e-d36aea7b45a8",
+              "name": "Project, integration, or installation not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78dcce53-a0f2-4287-960c-3cef4bff926c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89a02b36-113e-45bd-a0a8-53dc072cea10",
+          "name": "Ampersand Upsert Custom Fields for Connection",
+          "request": {
+            "name": "Ampersand Upsert Custom Fields for Connection",
+            "description": {
+              "content": "Create or update fields in the SaaS instance tied to a connection. Only HubSpot and Salesforce are supported currently.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "providers",
+                ":provider",
+                "object-metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider",
+                  "description": "(Required) The provider that this connection connects to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupRef\": \"<string>\",\n  \"fields\": {\n    \"key_0\": [\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"key_1\": [\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"fieldName\": \"<string>\",\n        \"displayName\": \"<string>\",\n        \"valueType\": \"<string>\",\n        \"description\": \"<string>\",\n        \"required\": \"<boolean>\",\n        \"unique\": \"<boolean>\",\n        \"indexed\": \"<boolean>\",\n        \"stringOptions\": {\n          \"length\": \"<integer>\",\n          \"pattern\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"valuesRestricted\": \"<boolean>\",\n          \"defaultValue\": \"<string>\"\n        },\n        \"numericOptions\": {\n          \"precision\": \"<integer>\",\n          \"scale\": \"<integer>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"defaultValue\": \"<number>\"\n        },\n        \"association\": {\n          \"associationType\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetField\": \"<string>\",\n          \"cardinality\": \"<string>\",\n          \"onDelete\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"reverseLookupFieldName\": \"<string>\",\n          \"labels\": {\n            \"singular\": \"<string>\",\n            \"plural\": \"<string>\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "970fa4c7-4e13-425e-90c9-40c253718a66",
+              "name": "Metadata creation completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "providers",
+                    ":provider",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider that this connection connects to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"fields\": {\n    \"key_0\": {\n      \"key_0\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": false,\n          \"key_1\": \"string\",\n          \"key_2\": 2834.8955005355992\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    \"key_1\": {\n      \"key_0\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": 5697\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"key_1\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\"\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"key_2\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": true,\n          \"key_1\": false,\n          \"key_2\": 4436\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    \"key_2\": {\n      \"key_0\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": 7120,\n          \"key_1\": 7703\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"key_1\": {\n        \"fieldName\": \"string\",\n        \"action\": \"string\",\n        \"metadata\": {\n          \"key_0\": 6269.242715050269,\n          \"key_1\": true\n        },\n        \"warnings\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a428e9db-06b3-493e-bcff-5682fdecbf40",
+              "name": "Invalid request payload or validation errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "providers",
+                    ":provider",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider that this connection connects to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "518bd5f4-8872-4077-a3ca-9d5442f59ba5",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "providers",
+                    ":provider",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider that this connection connects to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0005b6a6-df12-4cbb-8777-8478862f1388",
+              "name": "Insufficient permissions for metadata operations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "providers",
+                    ":provider",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider that this connection connects to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b443100-125b-4a73-bac9-4c71a2bad666",
+              "name": "Project or connection not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "providers",
+                    ":provider",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider that this connection connects to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79afc718-9422-4652-b5d9-1fe9cd04c6dd",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "providers",
+                    ":provider",
+                    "object-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) The provider that this connection connects to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"fields\": {\n    \"Account\": [\n      {\n        \"fieldName\": \"Industry\",\n        \"displayName\": \"Industry Sector\",\n        \"description\": \"The industry this account operates in\",\n        \"valueType\": \"string\",\n        \"required\": false,\n        \"stringOptions\": {\n          \"length\": 255,\n          \"defaultValue\": \"Technology\"\n        }\n      },\n      {\n        \"fieldName\": \"Company_Size\",\n        \"displayName\": \"Company Size\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Small\",\n            \"Medium\",\n            \"Large\",\n            \"Enterprise\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ],\n    \"Contact\": [\n      {\n        \"fieldName\": \"Seniority_Level\",\n        \"displayName\": \"Seniority Level\",\n        \"valueType\": \"string\",\n        \"stringOptions\": {\n          \"values\": [\n            \"Junior\",\n            \"Mid\",\n            \"Senior\",\n            \"Executive\"\n          ],\n          \"valuesRestricted\": true\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.withampersand.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "79396c39-d261-40a4-a40d-a796ee297e9b",
+    "name": "Ampersand public API Key Objects & Fields API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

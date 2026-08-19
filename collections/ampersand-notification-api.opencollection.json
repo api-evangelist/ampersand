@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Notification API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List Notification Event-topic Routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/notification-event-topic-routes",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by topic ID."
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by notification event type."
+              }
+            ]
+          },
+          "docs": "Ampersand List Notification Event-topic Routes"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a Notification Event-topic Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/notification-event-topic-routes",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Create a Notification Event-topic Route"
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete a Notification Event-topic Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/notification-event-topic-routes/:routeId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path",
+                "description": "The event-topic route ID."
+              }
+            ]
+          },
+          "docs": "Ampersand Delete a Notification Event-topic Route"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

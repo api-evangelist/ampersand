@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Project API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Project",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects"
+          },
+          "docs": "Lists projects your credentials can access."
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a New Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new project within an organization. A project is a container for provider apps, integrations, and connections."
+        },
+        {
+          "info": {
+            "name": "Ampersand Get a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "includeEntitlements",
+                "value": "",
+                "type": "query",
+                "description": "If true, the response includes the project's entitlements (plan-based feature flags). Defaults to false."
+              }
+            ]
+          },
+          "docs": "Get a project by its ID or name."
+        },
+        {
+          "info": {
+            "name": "Ampersand Update a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a project's mutable fields using field masks. Currently, the updatable fields are `appName` (the display name shown to end users) and `name` (the unique project identifier)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

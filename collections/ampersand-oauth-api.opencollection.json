@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key OAuth API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand Generate OAuth Authorization URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/oauth-connect",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a URL for the browser to render to kick off OAuth flow. You can use this endpoint as an alternative to the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components)."
+        },
+        {
+          "info": {
+            "name": "Ampersand Generate OAuth Authorization URL for Existing Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/connections/:connectionId:oauth-update",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "Ampersand project ID or name."
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the connection to update."
+              }
+            ]
+          },
+          "docs": "Generate a URL for the browser to render to kick off an OAuth flow that updates an existing connection. Use this when the connection's credentials need to be refreshed. To start an OAuth flow without specifying a connection ID, use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) instead.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,334 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Destination API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Destination",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List Destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/destinations",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ]
+          },
+          "docs": "Ampersand List Destinations"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a New Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/destinations",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Create a New Destination"
+        },
+        {
+          "info": {
+            "name": "Ampersand Get a Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/destinations/:destination",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "destination",
+                "value": "leadConvertedWebhook",
+                "type": "path",
+                "description": "The destination name."
+              },
+              {
+                "name": "includeSecrets",
+                "value": "true",
+                "type": "query",
+                "description": "Include secrets in the response"
+              },
+              {
+                "name": "rotate",
+                "value": "true",
+                "type": "query",
+                "description": "Rotate the destination secrets"
+              }
+            ]
+          },
+          "docs": "Ampersand Get a Destination"
+        },
+        {
+          "info": {
+            "name": "Ampersand Update a Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/destinations/:destination",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "destination",
+                "value": "",
+                "type": "path",
+                "description": "The destination ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Update a Destination"
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete a Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/destinations/:destination",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "destination",
+                "value": "",
+                "type": "path",
+                "description": "The destination ID"
+              }
+            ]
+          },
+          "docs": "Ampersand Delete a Destination"
+        },
+        {
+          "info": {
+            "name": "Ampersand List Topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/topics",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ]
+          },
+          "docs": "Ampersand List Topics"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a Topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/topics",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Create a Topic"
+        },
+        {
+          "info": {
+            "name": "Ampersand Update a Topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/topics/:topicId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path",
+                "description": "The topic ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Update a Topic"
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete a Topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/topics/:topicId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path",
+                "description": "The topic ID."
+              }
+            ]
+          },
+          "docs": "Ampersand Delete a Topic"
+        },
+        {
+          "info": {
+            "name": "Ampersand List Topic Destination Routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/topic-destination-routes",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by topic ID."
+              },
+              {
+                "name": "destinationId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by destination ID."
+              }
+            ]
+          },
+          "docs": "Ampersand List Topic Destination Routes"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a Topic Destination Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/topic-destination-routes",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Create a Topic Destination Route"
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete a Topic Destination Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/topic-destination-routes/:routeId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path",
+                "description": "The topic destination route ID."
+              }
+            ]
+          },
+          "docs": "Ampersand Delete a Topic Destination Route"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

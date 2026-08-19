@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Integration API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Integration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List Integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ]
+          },
+          "docs": "Ampersand List Integrations"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a New Integration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Create a New Integration."
+        },
+        {
+          "info": {
+            "name": "Ampersand Get an Integration by ID or Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationIdOrName",
+            "params": [
+              {
+                "name": "integrationIdOrName",
+                "value": "123e4567-e89b-12d3-a456-426614174000",
+                "type": "path",
+                "description": "The integration ID or name."
+              },
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ]
+          },
+          "docs": "Ampersand Get an Integration by ID or Name"
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete an Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "123e4567-e89b-12d3-a456-426614174000",
+                "type": "path",
+                "description": "The integration ID."
+              }
+            ]
+          },
+          "docs": "Delete an integration and all its installations."
+        },
+        {
+          "info": {
+            "name": "Ampersand Batch Upsert a Group of Integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations:batch",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "destructive",
+                "value": "",
+                "type": "query",
+                "description": "Defaults to false. This flag controls whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used by the Ampersand CLI to batch upsert integrations. We recommend using the [CLI's deploy command](https://docs.withampersand.com/cli/overview#deploy-integrations) rather than this API endpoint directly."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

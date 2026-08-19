@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Provider App API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Provider App",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List Provider Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/provider-apps",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "TThe Ampersand project ID or project name."
+              }
+            ]
+          },
+          "docs": "Ampersand List Provider Apps"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a New Provider App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/provider-apps",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Create a New Provider App"
+        },
+        {
+          "info": {
+            "name": "Ampersand Update a Provider App",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/provider-apps/:providerAppId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "providerAppId",
+                "value": "32356abe-d2fd-49c7-9030-abdcbc6456d4",
+                "type": "path",
+                "description": "ID of the provider app, returned by the CreateProviderApp call."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Update a Provider App"
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete a Provider App.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/provider-apps/:providerAppId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "providerAppId",
+                "value": "32356abe-d2fd-49c7-9030-abdcbc6456d4",
+                "type": "path",
+                "description": "ID of the provider app, returned by the CreateProviderApp call."
+              }
+            ]
+          },
+          "docs": "Ampersand Delete a Provider App."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

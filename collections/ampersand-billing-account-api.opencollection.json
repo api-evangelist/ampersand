@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Billing Account API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand Get the Billing Account for an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/orgs/:orgId/billingAccount",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79",
+                "type": "path",
+                "description": "ID of the organization."
+              }
+            ]
+          },
+          "docs": "Ampersand Get the Billing Account for an Organization"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a Portal Session for a Billing Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/billingAccounts/:billingAccountId/portalSession",
+            "params": [
+              {
+                "name": "billingAccountId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Create a Portal Session for a Billing Account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

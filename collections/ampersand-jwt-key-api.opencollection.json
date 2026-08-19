@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key JWT Key API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JWT Key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List JWT Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/jwt-keys",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "Ampersand Project ID or name."
+              },
+              {
+                "name": "active",
+                "value": "true",
+                "type": "query",
+                "description": "Filter to only return active JWT keys"
+              }
+            ]
+          },
+          "docs": "Retrieves all JWT keys for the specified project, with optional filtering for active keys only"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a New JWT Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/jwt-keys",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "Ampersand Project ID or name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new JWT key for the specified project with RSA public key for token verification"
+        },
+        {
+          "info": {
+            "name": "Ampersand Get a Specific JWT Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/jwt-keys/:keyId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "Ampersand Project ID or name."
+              },
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path",
+                "description": "The JWT key ID."
+              }
+            ]
+          },
+          "docs": "Retrieves a specific JWT key by its ID within the specified project"
+        },
+        {
+          "info": {
+            "name": "Ampersand Update a JWT Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/jwt-keys/:keyId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "Ampersand Project ID or name."
+              },
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path",
+                "description": "The JWT key ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates specific fields of a JWT key using field masks. Currently supports updating the 'active' status and 'name' field."
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete a JWT Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/jwt-keys/:keyId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "",
+                "type": "path",
+                "description": "Ampersand Project ID or name."
+              },
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path",
+                "description": "The JWT key ID."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a JWT key from the specified project"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

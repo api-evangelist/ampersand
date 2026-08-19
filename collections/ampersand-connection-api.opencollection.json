@@ -1,0 +1,181 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Connection API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List Connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/connections",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query",
+                "description": "The provider name (e.g. \"salesforce\", \"hubspot\")"
+              },
+              {
+                "name": "groupRef",
+                "value": "group-123",
+                "type": "query",
+                "description": "The ID of the user group that has access to this installation."
+              },
+              {
+                "name": "consumerRef",
+                "value": "",
+                "type": "query",
+                "description": "The consumer reference."
+              }
+            ]
+          },
+          "docs": "Ampersand List Connections"
+        },
+        {
+          "info": {
+            "name": "Ampersand Generate a New Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/connections:generate",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/get-url-for-oauth-flow) instead, unless you already have the refresh token and are importing it into Ampersand."
+        },
+        {
+          "info": {
+            "name": "Ampersand Get a Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/connections/:connectionId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeCreds",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include credentials for `oauth2AuthorizationCode` in the response. If true, `accessToken` and `scopes` are included. To include `refreshToken` as well, set `includeRefreshToken` to true. Default is false."
+              },
+              {
+                "name": "includeRefreshToken",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include `refreshToken` for `oauth2AuthorizationCode` credentials in the response (along with `accessToken` and `scopes`). If true, the `includeCreds` query parameter will be ignored. Default is false."
+              },
+              {
+                "name": "refresh",
+                "value": "",
+                "type": "query",
+                "description": "Whether to refresh the access token. If value is `ifExpired`, the access token will be refreshed only if it has expired. If value is `force`, the access token will be refreshed regardless of its expiration."
+              }
+            ]
+          },
+          "docs": "Ampersand Get a Connection"
+        },
+        {
+          "info": {
+            "name": "Ampersand Update a Connection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/connections/:connectionId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "connectionId",
+                "value": "connection-123",
+                "type": "path",
+                "description": "The ID of the connection to update. You can find this via the [list connections endpoint](https://docs.withampersand.com/reference/connection/list-connections)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rotate credentials or update metadata (such as the provider workspace reference) for an existing connection."
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete a Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/connections/:connectionId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Ampersand Delete a Connection"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

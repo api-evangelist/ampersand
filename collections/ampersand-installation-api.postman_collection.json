@@ -1,0 +1,1997 @@
+{
+  "item": [
+    {
+      "id": "2786117c-193a-4444-859b-35b467e6cc00",
+      "name": "Installation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a081523-752e-454e-8010-aefda7f4db45",
+          "name": "Ampersand List Installations for an Integration",
+          "request": {
+            "name": "Ampersand List Installations for an Integration",
+            "description": {
+              "content": "Lists all installations for a specific integration within a project. To list installations across all integrations, use listInstallationsForProject instead.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "integrations",
+                ":integrationId",
+                "installations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groupRef",
+                  "value": "<string>",
+                  "description": "The ID that your app uses to identify a group of users (e.g. an org ID, workspace ID, or team ID). When provided, only returns installations belonging to this group."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "integrationId",
+                  "description": "(Required) The unique identifier (UUID) of the integration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29958413-2073-43d6-bb59-5bb8122e39bf",
+              "name": "List of installations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupRef",
+                      "value": "group-123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The unique identifier (UUID) of the integration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"3f8b2a1e-7c4d-4e9a-b5f6-1d2e3a4b5c6d\",\n    \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n    \"integrationId\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"group\": {\n      \"groupRef\": \"org_12345\",\n      \"groupName\": \"Acme Corp\",\n      \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"createTime\": \"2024-01-15T10:30:00.000000Z\"\n    },\n    \"healthStatus\": \"healthy\",\n    \"connection\": {\n      \"id\": \"9d8c7b6a-5e4f-3a2b-1c0d-ef9876543210\",\n      \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"provider\": \"salesforce\",\n      \"group\": {\n        \"groupRef\": \"org_12345\",\n        \"groupName\": \"Acme Corp\",\n        \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n        \"createTime\": \"2024-01-15T10:30:00.000000Z\"\n      },\n      \"consumer\": {\n        \"consumerRef\": \"user_67890\",\n        \"consumerName\": \"Jane Smith\",\n        \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n        \"createTime\": \"2024-01-15T10:30:00.000000Z\"\n      },\n      \"createTime\": \"2024-01-15T10:30:00.000000Z\",\n      \"authScheme\": \"oauth2/authorizationCode\",\n      \"status\": \"working\"\n    },\n    \"createTime\": \"2024-01-15T10:30:00.000000Z\",\n    \"createdBy\": \"consumer:user_67890\",\n    \"config\": {\n      \"id\": \"e4d3c2b1-a098-7654-3210-fedcba987654\",\n      \"revisionId\": \"f0e1d2c3-b4a5-6789-0abc-def123456789\",\n      \"createTime\": \"2024-01-15T10:30:00.000000Z\",\n      \"createdBy\": \"consumer:user_67890\",\n      \"content\": {\n        \"provider\": \"salesforce\",\n        \"read\": {\n          \"objects\": {\n            \"account\": {\n              \"objectName\": \"account\",\n              \"schedule\": \"*/15 * * * *\",\n              \"destination\": \"accountWebhook\",\n              \"selectedFields\": {\n                \"name\": true,\n                \"industry\": true\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac6ad9f7-2b18-4f67-af41-f2ae553e9b8b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupRef",
+                      "value": "group-123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The unique identifier (UUID) of the integration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91689d23-b6be-4ee3-8848-182d96fdef7a",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupRef",
+                      "value": "group-123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The unique identifier (UUID) of the integration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebd14776-9992-4865-bc2d-383315e7ff61",
+          "name": "Ampersand Create a New Installation",
+          "request": {
+            "name": "Ampersand Create a New Installation",
+            "description": {
+              "content": "Install an integration for a specific group. The group must already have a SaaS connection — either provide its `connectionId`, or omit it to use the group's default. To create a connection, use the [OAuth Connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) or the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "integrations",
+                ":integrationId",
+                "installations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "integrationId",
+                  "description": "(Required) The integration ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"content\": {\n      \"value\": \"reference ../config/config.yaml#/components/schemas/ConfigContent not found in the OpenAPI spec\"\n    },\n    \"revisionId\": \"<string>\",\n    \"createdBy\": \"api:create-installation\"\n  },\n  \"groupRef\": \"<string>\",\n  \"connectionId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "777391c8-3d0b-40d1-8fbc-b93fbcd26d9b",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"connectionId\": \"a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c\",\n  \"config\": {\n    \"content\": {\n      \"provider\": \"salesforce\",\n      \"write\": {\n        \"objects\": {\n          \"contacts\": {\n            \"objectName\": \"contacts\"\n          }\n        }\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"content\": {\n      \"value\": \"reference ../config/config.yaml#/components/schemas/ConfigContent not found in the OpenAPI spec\"\n    },\n    \"createTime\": \"1982-10-12T19:31:42.002Z\",\n    \"createdBy\": \"builder:builder-123\",\n    \"id\": \"config-123\",\n    \"revisionId\": \"revision-123\"\n  },\n  \"connection\": {\n    \"id\": \"connection-123\",\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"group\": {\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"groupName\": \"Super Customer\",\n      \"groupRef\": \"group-123\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"consumer\": {\n      \"consumerName\": \"Super Customer\",\n      \"consumerRef\": \"consumer-123\",\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"projectId\": \"project-456\",\n    \"provider\": \"salesforce\",\n    \"authScheme\": \"oauth2/authorizationCode\",\n    \"status\": \"working\",\n    \"providerApp\": {\n      \"clientId\": \"client-id-123\",\n      \"createTime\": \"2002-10-08T19:18:08.148Z\",\n      \"id\": \"provider-app-123\",\n      \"projectId\": \"project-456\",\n      \"provider\": \"salesforce\",\n      \"externalRef\": \"external-id-123\",\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata\": {\n        \"authQueryParams\": {\n          \"optional_scope\": [\n            \"automation.sequences.read\"\n          ]\n        },\n        \"providerParams\": {\n          \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n          \"gcpProjectId\": \"my-gcp-project\",\n          \"gcpPubSubTopicName\": \"my-topic\"\n        }\n      },\n      \"updateTime\": \"1960-11-22T13:39:41.727Z\"\n    },\n    \"providerWorkspaceRef\": \"provider-workspace-123\",\n    \"providerConsumerRef\": \"provider-consumer-123\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"refreshToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"apiKey\": \"api-key-123\",\n    \"providerMetadata\": {\n      \"key_0\": {\n        \"value\": \"1234567890\",\n        \"source\": \"input\",\n        \"displayName\": \"Account ID\"\n      }\n    }\n  },\n  \"createTime\": \"1961-02-02T22:01:47.241Z\",\n  \"createdBy\": \"consumer:consumer-123\",\n  \"healthStatus\": \"healthy\",\n  \"id\": \"string\",\n  \"integrationId\": \"string\",\n  \"projectId\": \"project-456\",\n  \"group\": {\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"groupName\": \"Super Customer\",\n    \"groupRef\": \"group-123\",\n    \"projectId\": \"project-456\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n  },\n  \"lastOperationStatus\": \"success\",\n  \"updateTime\": \"2005-03-02T07:13:30.891Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5f9c1cd-06ab-4220-af88-c88488069331",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"connectionId\": \"a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c\",\n  \"config\": {\n    \"content\": {\n      \"provider\": \"salesforce\",\n      \"write\": {\n        \"objects\": {\n          \"contacts\": {\n            \"objectName\": \"contacts\"\n          }\n        }\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d75e1431-4e7b-4598-b82a-bf08fb14a2a3",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"connectionId\": \"a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c\",\n  \"config\": {\n    \"content\": {\n      \"provider\": \"salesforce\",\n      \"write\": {\n        \"objects\": {\n          \"contacts\": {\n            \"objectName\": \"contacts\"\n          }\n        }\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c180b9f-6db6-48b0-bf7c-98e85991a626",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"connectionId\": \"a1c4e7b2-8f3d-4a6e-9c2b-5d8f1e4a7b3c\",\n  \"config\": {\n    \"content\": {\n      \"provider\": \"salesforce\",\n      \"write\": {\n        \"objects\": {\n          \"contacts\": {\n            \"objectName\": \"contacts\"\n          }\n        }\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a3b810f-d3f1-4dfa-847c-2f1767c331b8",
+          "name": "Ampersand Get an Installation",
+          "request": {
+            "name": "Ampersand Get an Installation",
+            "description": {
+              "content": "Retrieves a single installation by ID, including its connection details, config, and health status.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "integrations",
+                ":integrationId",
+                "installations",
+                ":installationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "integrationId",
+                  "description": "(Required) The unique identifier (UUID) of the integration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "installationId",
+                  "description": "(Required) The unique identifier (UUID) of the installation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "423bdc29-01d2-41ab-b5c1-fa971b97a6ff",
+              "name": "The installation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations",
+                    ":installationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The unique identifier (UUID) of the integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "installationId",
+                      "description": "(Required) The unique identifier (UUID) of the installation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3f8b2a1e-7c4d-4e9a-b5f6-1d2e3a4b5c6d\",\n  \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"integrationId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"group\": {\n    \"groupRef\": \"org_12345\",\n    \"groupName\": \"Acme Corp\",\n    \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n    \"createTime\": \"2024-01-15T10:30:00.000000Z\"\n  },\n  \"healthStatus\": \"healthy\",\n  \"connection\": {\n    \"id\": \"9d8c7b6a-5e4f-3a2b-1c0d-ef9876543210\",\n    \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n    \"provider\": \"salesforce\",\n    \"group\": {\n      \"groupRef\": \"org_12345\",\n      \"groupName\": \"Acme Corp\",\n      \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"createTime\": \"2024-01-15T10:30:00.000000Z\"\n    },\n    \"consumer\": {\n      \"consumerRef\": \"user_67890\",\n      \"consumerName\": \"Jane Smith\",\n      \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"createTime\": \"2024-01-15T10:30:00.000000Z\"\n    },\n    \"createTime\": \"2024-01-15T10:30:00.000000Z\",\n    \"authScheme\": \"oauth2/authorizationCode\",\n    \"status\": \"working\"\n  },\n  \"createTime\": \"2024-01-15T10:30:00.000000Z\",\n  \"createdBy\": \"consumer:user_67890\",\n  \"config\": {\n    \"id\": \"e4d3c2b1-a098-7654-3210-fedcba987654\",\n    \"revisionId\": \"f0e1d2c3-b4a5-6789-0abc-def123456789\",\n    \"createTime\": \"2024-01-15T10:30:00.000000Z\",\n    \"createdBy\": \"consumer:user_67890\",\n    \"content\": {\n      \"provider\": \"salesforce\",\n      \"read\": {\n        \"objects\": {\n          \"account\": {\n            \"objectName\": \"account\",\n            \"schedule\": \"*/15 * * * *\",\n            \"destination\": \"accountWebhook\",\n            \"selectedFields\": {\n              \"name\": true,\n              \"industry\": true\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "599e1c24-802d-45f5-852e-a7f147024345",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations",
+                    ":installationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The unique identifier (UUID) of the integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "installationId",
+                      "description": "(Required) The unique identifier (UUID) of the installation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0f6a7da-4895-4dfa-97e6-79f73c2de925",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations",
+                    ":installationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The unique identifier (UUID) of the integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "installationId",
+                      "description": "(Required) The unique identifier (UUID) of the installation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "520ca526-4fa5-4829-8ca8-e8ef5c36b1f2",
+          "name": "Ampersand Delete an Installation",
+          "request": {
+            "name": "Ampersand Delete an Installation",
+            "description": {
+              "content": "Delete an Installation. This will also delete the associated Connection if it is not used by any other Installations.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "integrations",
+                ":integrationId",
+                "installations",
+                ":installationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "integrationId",
+                  "description": "(Required) The integration ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "installationId",
+                  "description": "(Required) The Ampersand installation ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/problem+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a942ee9-8f78-4a54-b6d3-716a15dfdb34",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations",
+                    ":installationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "installationId",
+                      "description": "(Required) The Ampersand installation ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "537d46ed-e404-48fb-9aae-80bff7f6ce26",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations",
+                    ":installationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "installationId",
+                      "description": "(Required) The Ampersand installation ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a0064ef-c88a-41c5-bf5e-feb0705c4d71",
+          "name": "Ampersand Update an Installation",
+          "request": {
+            "name": "Ampersand Update an Installation",
+            "description": {
+              "content": "Update an installation using field masks. Note: subscribe config changes trigger a subscription change in the provider's system, which typically takes 1-2 minutes but may take up to 10 minutes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "integrations",
+                ":integrationId",
+                "installations",
+                ":installationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "integrationId",
+                  "description": "(Required) The ID of the integration that this installation belongs to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "installationId",
+                  "description": "(Required) The Ampersand installation ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"installation\": {\n    \"connectionId\": \"<string>\",\n    \"config\": {\n      \"revisionId\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"content\": {\n        \"value\": \"reference ../config/config.yaml#/components/schemas/UpdateInstallationConfigContent not found in the OpenAPI spec\"\n      }\n    }\n  },\n  \"updateMask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ccc88fd6-e80a-4264-9ba8-c7c6894fb2b3",
+              "name": "The updated installation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations",
+                    ":installationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the integration that this installation belongs to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "installationId",
+                      "description": "(Required) The Ampersand installation ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"updateMask\": [\n    \"config.content.read.objects.contacts\"\n  ],\n  \"installation\": {\n    \"config\": {\n      \"content\": {\n        \"read\": {\n          \"objects\": {\n            \"contacts\": {\n              \"objectName\": \"contacts\",\n              \"schedule\": \"*/30 * * * *\",\n              \"destination\": \"contactsWebhook\",\n              \"selectedFields\": {\n                \"email\": true,\n                \"phone\": true\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"content\": {\n      \"value\": \"reference ../config/config.yaml#/components/schemas/ConfigContent not found in the OpenAPI spec\"\n    },\n    \"createTime\": \"1963-08-04T23:44:00.871Z\",\n    \"createdBy\": \"builder:builder-123\",\n    \"id\": \"config-123\",\n    \"revisionId\": \"revision-123\"\n  },\n  \"connection\": {\n    \"id\": \"connection-123\",\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"group\": {\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"groupName\": \"Super Customer\",\n      \"groupRef\": \"group-123\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"consumer\": {\n      \"consumerName\": \"Super Customer\",\n      \"consumerRef\": \"consumer-123\",\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"projectId\": \"project-456\",\n    \"provider\": \"salesforce\",\n    \"authScheme\": \"oauth2/authorizationCode\",\n    \"status\": \"working\",\n    \"providerApp\": {\n      \"clientId\": \"client-id-123\",\n      \"createTime\": \"1960-07-13T04:36:36.507Z\",\n      \"id\": \"provider-app-123\",\n      \"projectId\": \"project-456\",\n      \"provider\": \"salesforce\",\n      \"externalRef\": \"external-id-123\",\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata\": {\n        \"authQueryParams\": {\n          \"key_0\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"providerParams\": {\n          \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n          \"gcpProjectId\": \"my-gcp-project\",\n          \"gcpPubSubTopicName\": \"my-topic\"\n        }\n      },\n      \"updateTime\": \"2002-12-23T10:04:36.886Z\"\n    },\n    \"providerWorkspaceRef\": \"provider-workspace-123\",\n    \"providerConsumerRef\": \"provider-consumer-123\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"refreshToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"apiKey\": \"api-key-123\",\n    \"providerMetadata\": {\n      \"key_0\": {\n        \"value\": \"1234567890\",\n        \"source\": \"input\",\n        \"displayName\": \"Account ID\"\n      }\n    }\n  },\n  \"createTime\": \"2025-03-02T07:16:04.576Z\",\n  \"createdBy\": \"consumer:consumer-123\",\n  \"healthStatus\": \"healthy\",\n  \"id\": \"string\",\n  \"integrationId\": \"string\",\n  \"projectId\": \"project-456\",\n  \"group\": {\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"groupName\": \"Super Customer\",\n    \"groupRef\": \"group-123\",\n    \"projectId\": \"project-456\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n  },\n  \"lastOperationStatus\": \"success\",\n  \"updateTime\": \"1952-03-12T14:15:18.085Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "859f2549-07c3-4449-b3c1-7837a368e3fb",
+              "name": "Invalid input (e.g. unrecognized update mask path, missing value for a mask, or malformed request body).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations",
+                    ":installationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the integration that this installation belongs to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "installationId",
+                      "description": "(Required) The Ampersand installation ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"updateMask\": [\n    \"config.content.read.objects.contacts\"\n  ],\n  \"installation\": {\n    \"config\": {\n      \"content\": {\n        \"read\": {\n          \"objects\": {\n            \"contacts\": {\n              \"objectName\": \"contacts\",\n              \"schedule\": \"*/30 * * * *\",\n              \"destination\": \"contactsWebhook\",\n              \"selectedFields\": {\n                \"email\": true,\n                \"phone\": true\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "849309f1-24dd-48ec-b968-6b55d15a5462",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "installations",
+                    ":installationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the integration that this installation belongs to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "installationId",
+                      "description": "(Required) The Ampersand installation ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"updateMask\": [\n    \"config.content.read.objects.contacts\"\n  ],\n  \"installation\": {\n    \"config\": {\n      \"content\": {\n        \"read\": {\n          \"objects\": {\n            \"contacts\": {\n              \"objectName\": \"contacts\",\n              \"schedule\": \"*/30 * * * *\",\n              \"destination\": \"contactsWebhook\",\n              \"selectedFields\": {\n                \"email\": true,\n                \"phone\": true\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d714dc06-8e89-49d2-990d-7d1bb279c550",
+          "name": "Ampersand Update an Installation Object",
+          "request": {
+            "name": "Ampersand Update an Installation Object",
+            "description": {
+              "content": "Updates a single object's configuration within an installation using JSON Patch syntax.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "integrations",
+                ":integrationId",
+                "objects",
+                ":objectName",
+                "config-content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "integrationId",
+                  "description": "(Required) The integration ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectName",
+                  "description": "(Required) The object name whose config content will be patched.\nMust match an object name defined in the integration's manifest for the specified action type (read, subscribe, or write).\nCommon examples include: `account`, `contact`, `lead`, `opportunity` (for Salesforce), `deal`, `company` (for HubSpot), etc.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupRef\": \"<string>\",\n  \"action\": \"<string>\",\n  \"changes\": [\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d066475-12f6-42fd-9e8d-110223cc1016",
+              "name": "The updated installation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "objects",
+                    ":objectName",
+                    "config-content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) The object name whose config content will be patched.\nMust match an object name defined in the integration's manifest for the specified action type (read, subscribe, or write).\nCommon examples include: `account`, `contact`, `lead`, `opportunity` (for Salesforce), `deal`, `company` (for HubSpot), etc.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"action\": \"read\",\n  \"changes\": [\n    {\n      \"op\": \"replace\",\n      \"path\": \"/schedule\",\n      \"value\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"content\": {\n      \"value\": \"reference ../config/config.yaml#/components/schemas/ConfigContent not found in the OpenAPI spec\"\n    },\n    \"createTime\": \"1963-08-04T23:44:00.871Z\",\n    \"createdBy\": \"builder:builder-123\",\n    \"id\": \"config-123\",\n    \"revisionId\": \"revision-123\"\n  },\n  \"connection\": {\n    \"id\": \"connection-123\",\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"group\": {\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"groupName\": \"Super Customer\",\n      \"groupRef\": \"group-123\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"consumer\": {\n      \"consumerName\": \"Super Customer\",\n      \"consumerRef\": \"consumer-123\",\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"projectId\": \"project-456\",\n    \"provider\": \"salesforce\",\n    \"authScheme\": \"oauth2/authorizationCode\",\n    \"status\": \"working\",\n    \"providerApp\": {\n      \"clientId\": \"client-id-123\",\n      \"createTime\": \"1960-07-13T04:36:36.507Z\",\n      \"id\": \"provider-app-123\",\n      \"projectId\": \"project-456\",\n      \"provider\": \"salesforce\",\n      \"externalRef\": \"external-id-123\",\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata\": {\n        \"authQueryParams\": {\n          \"key_0\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"providerParams\": {\n          \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n          \"gcpProjectId\": \"my-gcp-project\",\n          \"gcpPubSubTopicName\": \"my-topic\"\n        }\n      },\n      \"updateTime\": \"2002-12-23T10:04:36.886Z\"\n    },\n    \"providerWorkspaceRef\": \"provider-workspace-123\",\n    \"providerConsumerRef\": \"provider-consumer-123\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"refreshToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"apiKey\": \"api-key-123\",\n    \"providerMetadata\": {\n      \"key_0\": {\n        \"value\": \"1234567890\",\n        \"source\": \"input\",\n        \"displayName\": \"Account ID\"\n      }\n    }\n  },\n  \"createTime\": \"2025-03-02T07:16:04.576Z\",\n  \"createdBy\": \"consumer:consumer-123\",\n  \"healthStatus\": \"healthy\",\n  \"id\": \"string\",\n  \"integrationId\": \"string\",\n  \"projectId\": \"project-456\",\n  \"group\": {\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"groupName\": \"Super Customer\",\n    \"groupRef\": \"group-123\",\n    \"projectId\": \"project-456\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n  },\n  \"lastOperationStatus\": \"success\",\n  \"updateTime\": \"1952-03-12T14:15:18.085Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60e1cc59-bdff-446d-96c7-5f358ba4bdc4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "objects",
+                    ":objectName",
+                    "config-content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) The object name whose config content will be patched.\nMust match an object name defined in the integration's manifest for the specified action type (read, subscribe, or write).\nCommon examples include: `account`, `contact`, `lead`, `opportunity` (for Salesforce), `deal`, `company` (for HubSpot), etc.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"action\": \"read\",\n  \"changes\": [\n    {\n      \"op\": \"replace\",\n      \"path\": \"/schedule\",\n      \"value\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de6a875c-1e57-45ab-b0c3-0b371631d868",
+              "name": "Installation not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "objects",
+                    ":objectName",
+                    "config-content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) The object name whose config content will be patched.\nMust match an object name defined in the integration's manifest for the specified action type (read, subscribe, or write).\nCommon examples include: `account`, `contact`, `lead`, `opportunity` (for Salesforce), `deal`, `company` (for HubSpot), etc.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"action\": \"read\",\n  \"changes\": [\n    {\n      \"op\": \"replace\",\n      \"path\": \"/schedule\",\n      \"value\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "875cbb7c-018c-4d39-ae2c-3cbf632cb1cc",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "integrations",
+                    ":integrationId",
+                    "objects",
+                    ":objectName",
+                    "config-content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The integration ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) The object name whose config content will be patched.\nMust match an object name defined in the integration's manifest for the specified action type (read, subscribe, or write).\nCommon examples include: `account`, `contact`, `lead`, `opportunity` (for Salesforce), `deal`, `company` (for HubSpot), etc.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupRef\": \"group-123\",\n  \"action\": \"read\",\n  \"changes\": [\n    {\n      \"op\": \"replace\",\n      \"path\": \"/schedule\",\n      \"value\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20c58b5f-2f93-41b3-bff8-a5fac1ced9fb",
+          "name": "Ampersand List Installations for a Project",
+          "request": {
+            "name": "Ampersand List Installations for a Project",
+            "description": {
+              "content": "Lists all installations across every integration in a project, giving you a complete view of all active customer integrations. To narrow results to a single integration, use listInstallations instead.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectIdOrName",
+                "installations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groupRef",
+                  "value": "<string>",
+                  "description": "The ID that your app uses to identify a group of users (e.g. an org ID, workspace ID, or team ID). When provided, only returns installations belonging to this group."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectIdOrName",
+                  "description": "(Required) The Ampersand project ID or project name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4a996cb-1d5b-426a-aad4-0b38395991e0",
+              "name": "List of installations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "installations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupRef",
+                      "value": "group-123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"3f8b2a1e-7c4d-4e9a-b5f6-1d2e3a4b5c6d\",\n    \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n    \"integrationId\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"group\": {\n      \"groupRef\": \"org_12345\",\n      \"groupName\": \"Acme Corp\",\n      \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"createTime\": \"2024-01-15T10:30:00.000000Z\"\n    },\n    \"healthStatus\": \"healthy\",\n    \"connection\": {\n      \"id\": \"9d8c7b6a-5e4f-3a2b-1c0d-ef9876543210\",\n      \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"provider\": \"salesforce\",\n      \"group\": {\n        \"groupRef\": \"org_12345\",\n        \"groupName\": \"Acme Corp\",\n        \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n        \"createTime\": \"2024-01-15T10:30:00.000000Z\"\n      },\n      \"consumer\": {\n        \"consumerRef\": \"user_67890\",\n        \"consumerName\": \"Jane Smith\",\n        \"projectId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n        \"createTime\": \"2024-01-15T10:30:00.000000Z\"\n      },\n      \"createTime\": \"2024-01-15T10:30:00.000000Z\",\n      \"authScheme\": \"oauth2/authorizationCode\",\n      \"status\": \"working\"\n    },\n    \"createTime\": \"2024-01-15T10:30:00.000000Z\",\n    \"createdBy\": \"consumer:user_67890\",\n    \"config\": {\n      \"id\": \"e4d3c2b1-a098-7654-3210-fedcba987654\",\n      \"revisionId\": \"f0e1d2c3-b4a5-6789-0abc-def123456789\",\n      \"createTime\": \"2024-01-15T10:30:00.000000Z\",\n      \"createdBy\": \"consumer:user_67890\",\n      \"content\": {\n        \"provider\": \"salesforce\",\n        \"read\": {\n          \"objects\": {\n            \"account\": {\n              \"objectName\": \"account\",\n              \"schedule\": \"*/15 * * * *\",\n              \"destination\": \"accountWebhook\",\n              \"selectedFields\": {\n                \"name\": true,\n                \"industry\": true\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a26bd52a-d81c-483a-a6ac-cdb70d9ba391",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectIdOrName",
+                    "installations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupRef",
+                      "value": "group-123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectIdOrName",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.withampersand.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6e02ec50-d467-43e6-814c-7d391a7e946e",
+    "name": "Ampersand public API Key Installation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

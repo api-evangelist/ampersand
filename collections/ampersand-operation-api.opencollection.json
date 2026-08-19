@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key Operation API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Operation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List Operations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/operations",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "",
+                "type": "path",
+                "description": "The integration ID."
+              },
+              {
+                "name": "installationId",
+                "value": "",
+                "type": "path",
+                "description": "The Ampersand installation ID."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The number of operations to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A cursor that can be passed to paginate through multiple pages of operations."
+              }
+            ]
+          },
+          "docs": "Ampersand List Operations"
+        },
+        {
+          "info": {
+            "name": "Ampersand Get Backfill Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/objects/:objectName/backfill-progress",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "integrationId",
+                "value": "113e9685-9a51-42cc-8662-9d9725b17f14",
+                "type": "path",
+                "description": "The Ampersand integration ID."
+              },
+              {
+                "name": "installationId",
+                "value": "66438162-5299-4669-a41d-85c5a3b1a83e",
+                "type": "path",
+                "description": "The Ampersand installation ID."
+              },
+              {
+                "name": "objectName",
+                "value": "contact",
+                "type": "path",
+                "description": "Name of the object being synced (e.g., \"contact\", \"account\")."
+              }
+            ]
+          },
+          "docs": "Retrieve backfill progress (records processed, estimated total) for an object. Use to track progress of an initial data sync."
+        },
+        {
+          "info": {
+            "name": "Ampersand Get an Operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/operations/:operationId",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "operationId",
+                "value": "3efc0f0f-4bb9-498f-996c-9893d98ca4b5",
+                "type": "path",
+                "description": "Unique identifier for the operation. Obtain from the list operations API endpoint, the Ampersand dashboard, or webhook payloads."
+              }
+            ]
+          },
+          "docs": "Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as backfill progress or write outcome details. \n"
+        },
+        {
+          "info": {
+            "name": "Ampersand List Logs for an Operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/operations/:operationId/logs",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "operationId",
+                "value": "",
+                "type": "path",
+                "description": "Operation ID."
+              }
+            ]
+          },
+          "docs": "Ampersand List Logs for an Operation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

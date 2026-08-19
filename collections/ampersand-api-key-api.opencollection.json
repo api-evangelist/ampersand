@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ampersand public API Key API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ampersand List API Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/api-keys",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include only active API keys. If false, all API keys are included."
+              }
+            ]
+          },
+          "docs": "Ampersand List API Keys"
+        },
+        {
+          "info": {
+            "name": "Ampersand Create a New API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/api-keys",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Create a New API Key"
+        },
+        {
+          "info": {
+            "name": "Ampersand Get an API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/api-keys/:apiKey",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "API key to access Ampersand APIs."
+              }
+            ]
+          },
+          "docs": "Ampersand Get an API Key"
+        },
+        {
+          "info": {
+            "name": "Ampersand Update an API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/api-keys/:apiKey",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "API key to access Ampersand APIs."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ampersand Update an API Key"
+        },
+        {
+          "info": {
+            "name": "Ampersand Delete an API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.withampersand.com/v1/projects/:projectIdOrName/api-keys/:apiKey",
+            "params": [
+              {
+                "name": "projectIdOrName",
+                "value": "my-project",
+                "type": "path",
+                "description": "The Ampersand project ID or project name."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "API key to access Ampersand APIs."
+              }
+            ]
+          },
+          "docs": "Ampersand Delete an API Key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
