@@ -21,6 +21,14 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ampersand.png
 tags:
 - Developer Tools
+- Integration
+- Platform
+- Software-as-a-Service
+- Authentication
+- Data Sync
+- Webhook
+tags_raw:
+- Developer Tools
 - Integrations
 - Platform
 - SaaS
@@ -37,6 +45,8 @@ apis:
   humanURL: https://docs.withampersand.com/
   baseURL: https://api.withampersand.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Key
   properties:
   - type: OpenAPI
@@ -101,6 +111,8 @@ apis:
   humanURL: https://docs.withampersand.com/
   baseURL: https://api.withampersand.com
   tags:
+  - Installations
+  tags_raw:
   - Installation
   properties:
   - type: OpenAPI
@@ -165,6 +177,8 @@ apis:
   humanURL: https://docs.withampersand.com/
   baseURL: https://api.withampersand.com
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
