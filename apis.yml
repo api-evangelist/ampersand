@@ -5,6 +5,18 @@ description: Ampersand is a developer-first platform for building native SaaS in
   and managed infrastructure that lets developers add product integrations quickly, handling OAuth, data sync, webhooks, and
   field mapping out of the box. The platform supports hundreds of SaaS connectors including Salesforce, HubSpot, Marketo,
   Microsoft Dynamics 365, Zendesk, and Gong with bi-directional sync and declarative configuration.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
