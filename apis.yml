@@ -272,6 +272,8 @@ apis:
   humanURL: https://docs.withampersand.com/
   baseURL: https://api.withampersand.com
   tags:
+  - Providers
+  tags_raw:
   - Provider
   properties:
   - type: OpenAPI
