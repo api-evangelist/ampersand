@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Ampersand public API Key API
   version: 1.0.0
@@ -219,42 +219,6 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    ApiKey:
-      title: API Key
-      type: object
-      required:
-      - key
-      - projectId
-      - label
-      - scopes
-      properties:
-        key:
-          type: string
-          description: The API key.
-          example: api-key-123
-        label:
-          type: string
-          description: A short name for the API key.
-          example: MailMonkey API Key
-        scopes:
-          $ref: '#/components/schemas/ApiKeyScopes'
-        projectId:
-          type: string
-          description: The project ID.
-          example: my-project
-        active:
-          type: boolean
-          description: Whether the API key is active.
-          example: true
-    ApiKeyScopes:
-      title: API Key Scopes
-      type: array
-      description: The scopes for the API key.
-      items:
-        type: string
-        example:
-        - full
-        - frontend
     PatchApiKeyRequest:
       title: Patch API Key Request
       type: object
@@ -291,6 +255,15 @@ components:
               example: true
             scopes:
               $ref: '#/components/schemas/ApiKeyScopes'
+    ApiKeyScopes:
+      title: API Key Scopes
+      type: array
+      description: The scopes for the API key.
+      items:
+        type: string
+        example:
+        - full
+        - frontend
     ApiKeyRequest:
       title: API Key Request
       type: object
@@ -303,6 +276,33 @@ components:
           example: MailMonkey API Key
         scopes:
           $ref: '#/components/schemas/ApiKeyScopes'
+    ApiKey:
+      title: API Key
+      type: object
+      required:
+      - key
+      - projectId
+      - label
+      - scopes
+      properties:
+        key:
+          type: string
+          description: The API key.
+          example: api-key-123
+        label:
+          type: string
+          description: A short name for the API key.
+          example: MailMonkey API Key
+        scopes:
+          $ref: '#/components/schemas/ApiKeyScopes'
+        projectId:
+          type: string
+          description: The project ID.
+          example: my-project
+        active:
+          type: boolean
+          description: Whether the API key is active.
+          example: true
   securitySchemes:
     APIKeyHeader:
       type: apiKey

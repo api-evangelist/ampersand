@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key Objects & Fields API
+  title: Ampersand public Objects & Fields API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -13,9 +13,7 @@ paths:
   /projects/{projectIdOrName}/integrations/{integrationId}/objects/{objectName}/metadata:
     get:
       summary: Ampersand Get Object Metadata via Installation
-      description: 'Retrieves metadata about an object in a customer''s SaaS instance, including its fields. An installation must exist for the given `groupRef` and `integrationId`. The `objectName` can be either the mapped name from your integration config or the native provider name. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$[''billingaddress''][''city'']`).
-
-        '
+      description: Retrieves metadata about an object in a customer's SaaS instance, including its fields. An installation must exist for the given `groupRef` and `integrationId`. The `objectName` can be either the mapped name from your integration config or the native provider name. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
       tags:
       - Objects & Fields
       operationId: getObjectMetadataForInstallation
@@ -107,9 +105,7 @@ paths:
   /projects/{projectIdOrName}/providers/{provider}/objects/{objectName}/metadata:
     get:
       summary: Ampersand Get Object Metadata via Connection
-      description: 'Retrieves metadata about an object in a customer''s SaaS instance, including its fields. A connection must exist for the given `groupRef` and `provider`. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$[''billingaddress''][''city'']`).
-
-        '
+      description: Retrieves metadata about an object in a customer's SaaS instance, including its fields. A connection must exist for the given `groupRef` and `provider`. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
       tags:
       - Objects & Fields
       operationId: getObjectMetadataForConnection
@@ -471,30 +467,113 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    ObjectMetadata:
-      title: Object Metadata
+    StringFieldOptions:
       type: object
-      required:
-      - name
-      - fields
+      description: Additional options for string fields
       properties:
-        name:
+        length:
+          type: integer
+          description: Maximum length of the string field
+        pattern:
           type: string
-          description: The provider name of the object
-          example: contact
-        displayName:
+          description: Regex pattern that the string field value must match
+        values:
+          type: array
+          description: List of allowed values for enum fields
+          items:
+            type: string
+        valuesRestricted:
+          type: boolean
+          description: Indicates if the field value must be limited to what's in Values
+        defaultValue:
           type: string
-          description: Human-readable name of the object
-          example: Contact
-        mappedObjectName:
+          description: Default value for the field
+    FieldUpsertResult:
+      type: object
+      description: Result of an upsert operation for a single field
+      properties:
+        fieldName:
           type: string
-          description: The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.
-          example: people
+          description: Name of the field
+        action:
+          type: string
+          description: Action taken (create, update, none)
+        metadata:
+          type: object
+          description: Provider-specific metadata about the field
+          additionalProperties: true
+        warnings:
+          type: array
+          description: Warnings that occurred during the upsert operation
+          items:
+            type: string
+      required:
+      - fieldName
+      - action
+    UpsertMetadataRequest:
+      type: object
+      description: Request payload for upserting metadata (fields only)
+      properties:
+        groupRef:
+          type: string
+          description: The ID that your app uses to identify the group of users for this request.
+          example: group-123
         fields:
           type: object
-          description: Map of field metadata keyed by field name
+          description: Maps object names to field definitions
           additionalProperties:
-            $ref: ../manifest/manifest.yaml#/components/schemas/FieldMetadata
+            type: array
+            items:
+              $ref: '#/components/schemas/FieldDefinition'
+      required:
+      - groupRef
+      - fields
+    AssociationLabels:
+      type: object
+      description: UI labels for an association
+      properties:
+        singular:
+          type: string
+          description: Singular display label
+        plural:
+          type: string
+          description: Plural display label
+    NumericFieldOptions:
+      type: object
+      description: Additional options for numeric fields
+      properties:
+        precision:
+          type: integer
+          description: Total number of digits (for decimal types)
+        scale:
+          type: integer
+          description: Number of digits to the right of the decimal point (for decimal types)
+        min:
+          type: number
+          description: Minimum value for numeric fields
+        max:
+          type: number
+          description: Maximum value for numeric fields
+        defaultValue:
+          type: number
+          description: Default value for the field
+    UpsertMetadataResponse:
+      type: object
+      description: Response containing results for all created/updated fields
+      properties:
+        success:
+          type: boolean
+          description: Indicates if the upsert operation was successful
+        fields:
+          type: object
+          description: Maps object name -> field name -> upsert result
+          additionalProperties:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/FieldUpsertResult'
+      required:
+      - success
+      - fields
     AssociationDefinition:
       type: object
       description: Relationship information for a field to another object
@@ -529,94 +608,30 @@ components:
       required:
       - associationType
       - targetObject
-    UpsertMetadataResponse:
+    ObjectMetadata:
+      title: Object Metadata
       type: object
-      description: Response containing results for all created/updated fields
+      required:
+      - name
+      - fields
       properties:
-        success:
-          type: boolean
-          description: Indicates if the upsert operation was successful
+        name:
+          type: string
+          description: The provider name of the object
+          example: contact
+        displayName:
+          type: string
+          description: Human-readable name of the object
+          example: Contact
+        mappedObjectName:
+          type: string
+          description: The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.
+          example: people
         fields:
           type: object
-          description: Maps object name -> field name -> upsert result
+          description: Map of field metadata keyed by field name
           additionalProperties:
-            type: object
-            additionalProperties:
-              $ref: '#/components/schemas/FieldUpsertResult'
-      required:
-      - success
-      - fields
-    FieldUpsertResult:
-      type: object
-      description: Result of an upsert operation for a single field
-      properties:
-        fieldName:
-          type: string
-          description: Name of the field
-        action:
-          type: string
-          description: Action taken (create, update, none)
-        metadata:
-          type: object
-          description: Provider-specific metadata about the field
-          additionalProperties: true
-        warnings:
-          type: array
-          description: Warnings that occurred during the upsert operation
-          items:
-            type: string
-      required:
-      - fieldName
-      - action
-    AssociationLabels:
-      type: object
-      description: UI labels for an association
-      properties:
-        singular:
-          type: string
-          description: Singular display label
-        plural:
-          type: string
-          description: Plural display label
-    StringFieldOptions:
-      type: object
-      description: Additional options for string fields
-      properties:
-        length:
-          type: integer
-          description: Maximum length of the string field
-        pattern:
-          type: string
-          description: Regex pattern that the string field value must match
-        values:
-          type: array
-          description: List of allowed values for enum fields
-          items:
-            type: string
-        valuesRestricted:
-          type: boolean
-          description: Indicates if the field value must be limited to what's in Values
-        defaultValue:
-          type: string
-          description: Default value for the field
-    UpsertMetadataRequest:
-      type: object
-      description: Request payload for upserting metadata (fields only)
-      properties:
-        groupRef:
-          type: string
-          description: The ID that your app uses to identify the group of users for this request.
-          example: group-123
-        fields:
-          type: object
-          description: Maps object names to field definitions
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/FieldDefinition'
-      required:
-      - groupRef
-      - fields
+            $ref: ../manifest/manifest.yaml#/components/schemas/FieldMetadata
     FieldDefinition:
       type: object
       description: Field definition for creating or updating custom fields
@@ -655,25 +670,6 @@ components:
       - fieldName
       - displayName
       - valueType
-    NumericFieldOptions:
-      type: object
-      description: Additional options for numeric fields
-      properties:
-        precision:
-          type: integer
-          description: Total number of digits (for decimal types)
-        scale:
-          type: integer
-          description: Number of digits to the right of the decimal point (for decimal types)
-        min:
-          type: number
-          description: Minimum value for numeric fields
-        max:
-          type: number
-          description: Maximum value for numeric fields
-        defaultValue:
-          type: number
-          description: Default value for the field
   securitySchemes:
     APIKeyHeader:
       type: apiKey

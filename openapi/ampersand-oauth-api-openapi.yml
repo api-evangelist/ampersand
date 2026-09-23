@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key OAuth API
+  title: Ampersand public O Auth API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -14,7 +14,7 @@ paths:
     post:
       operationId: oauthConnect
       summary: Ampersand Generate OAuth Authorization URL
-      description: Generate a URL for the browser to render to kick off OAuth flow. You can use this endpoint as an alternative to the [prebuilt UI components](https://docs.withampersand.com/embeddable-ui-components).
+      description: Generate a URL for the browser to render to kick off OAuth flow. You can use this endpoint as an alternative to the prebuilt UI components.
       tags:
       - OAuth
       requestBody:
@@ -128,9 +128,7 @@ paths:
     patch:
       operationId: oauthUpdate
       summary: Ampersand Generate OAuth Authorization URL for Existing Connection
-      description: 'Generate a URL for the browser to render to kick off an OAuth flow that updates an existing connection. Use this when the connection''s credentials need to be refreshed. To start an OAuth flow without specifying a connection ID, use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/generate-oauth-authorization-url) instead.
-
-        '
+      description: Generate a URL for the browser to render to kick off an OAuth flow that updates an existing connection. Use this when the connection's credentials need to be refreshed. To start an OAuth flow without specifying a connection ID, use the /oauth-connect endpoint instead.
       tags:
       - OAuth
       parameters:
@@ -168,11 +166,6 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    ProviderMetadata:
-      title: Provider Metadata
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/ProviderMetadataInfo'
     ProviderMetadataInfo:
       title: Provider Metadata Info
       type: object
@@ -196,6 +189,11 @@ components:
           type: string
           description: The human-readable name for the field
           example: Account ID
+    ProviderMetadata:
+      title: Provider Metadata
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ProviderMetadataInfo'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

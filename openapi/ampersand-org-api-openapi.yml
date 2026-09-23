@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key Org API
+  title: Ampersand public Org API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -505,6 +505,58 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
+    Org:
+      title: Organization
+      required:
+      - id
+      - label
+      - createTime
+      - defaultTeamId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The organization ID.
+          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        label:
+          type: string
+          description: The organization label.
+          example: Acme Inc
+        defaultTeamId:
+          type: string
+          description: The ID of the Everyone team for the org.
+        createTime:
+          type: string
+          description: The time the organization was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the organization was updated.
+          format: date-time
+    ClaimedDomainResponse:
+      type: object
+      required:
+      - id
+      - parentType
+      - parentId
+      - domain
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the claimed domain
+          example: 00000000-0000-0000-0000-000000000001
+        parentType:
+          type: string
+          description: Type of the parent entity that claimed the domain
+          example: org
+        parentId:
+          type: string
+          description: ID of the parent entity that claimed the domain
+          example: 00000000-0000-0000-0000-000000000001
+        domain:
+          type: string
+          description: The normalized domain name
+          example: xyz.com
     Builder:
       title: Builder
       type: object
@@ -537,58 +589,6 @@ components:
           type: string
         primaryEmail:
           type: string
-    ClaimedDomainResponse:
-      type: object
-      required:
-      - id
-      - parentType
-      - parentId
-      - domain
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the claimed domain
-          example: 00000000-0000-0000-0000-000000000001
-        parentType:
-          type: string
-          description: Type of the parent entity that claimed the domain
-          example: org
-        parentId:
-          type: string
-          description: ID of the parent entity that claimed the domain
-          example: 00000000-0000-0000-0000-000000000001
-        domain:
-          type: string
-          description: The normalized domain name
-          example: xyz.com
-    Org:
-      title: Organization
-      required:
-      - id
-      - label
-      - createTime
-      - defaultTeamId
-      type: object
-      properties:
-        id:
-          type: string
-          description: The organization ID.
-          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
-        label:
-          type: string
-          description: The organization label.
-          example: Acme Inc
-        defaultTeamId:
-          type: string
-          description: The ID of the Everyone team for the org.
-        createTime:
-          type: string
-          description: The time the organization was created.
-          format: date-time
-        updateTime:
-          type: string
-          description: The time the organization was updated.
-          format: date-time
     Invite:
       title: Invite
       type: object

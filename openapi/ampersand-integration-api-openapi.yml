@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key Integration API
+  title: Ampersand public Integration API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -46,7 +46,7 @@ paths:
               schema:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
     post:
-      summary: Ampersand Create a New Integration.
+      summary: Ampersand Create a New Integration
       operationId: createIntegration
       tags:
       - Integration
@@ -198,7 +198,7 @@ paths:
     put:
       summary: Ampersand Batch Upsert a Group of Integrations
       operationId: batchUpsertIntegrations
-      description: This endpoint is used by the Ampersand CLI to batch upsert integrations. We recommend using the [CLI's deploy command](https://docs.withampersand.com/cli/overview#deploy-integrations) rather than this API endpoint directly.
+      description: This endpoint is used by the Ampersand CLI to batch upsert integrations. We recommend using the CLI's deploy command rather than this API endpoint directly.
       tags:
       - Integration
       parameters:
@@ -253,6 +253,29 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
+    Revision:
+      title: Revision
+      required:
+      - content
+      - createTime
+      - id
+      - specVersion
+      type: object
+      properties:
+        id:
+          type: string
+          description: The revision ID.
+          example: revision-id-1
+        specVersion:
+          type: string
+          description: The spec version string.
+          example: 1.0.0
+        createTime:
+          type: string
+          description: The time the revision was created.
+          format: date-time
+        content:
+          $ref: ../manifest/manifest.yaml#/components/schemas/Integration
     Integration:
       title: Integration
       required:
@@ -289,29 +312,6 @@ components:
           format: date-time
         latestRevision:
           $ref: '#/components/schemas/Revision'
-    Revision:
-      title: Revision
-      required:
-      - content
-      - createTime
-      - id
-      - specVersion
-      type: object
-      properties:
-        id:
-          type: string
-          description: The revision ID.
-          example: revision-id-1
-        specVersion:
-          type: string
-          description: The spec version string.
-          example: 1.0.0
-        createTime:
-          type: string
-          description: The time the revision was created.
-          format: date-time
-        content:
-          $ref: ../manifest/manifest.yaml#/components/schemas/Integration
   securitySchemes:
     APIKeyHeader:
       type: apiKey

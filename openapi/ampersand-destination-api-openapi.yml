@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key Destination API
+  title: Ampersand public Destination API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -53,7 +53,7 @@ paths:
                     awsKeyId:
                       type: string
                       description: The AWS access key ID for the Kinesis destination.
-                      example: AKIAIOSFODNN7EXAMPLE
+                      example: REDACTED_AWS_ACCESS_KEY_ID
                       x-go-type-skip-optional-pointer: true
                     awsSecretKey:
                       type: string
@@ -302,7 +302,7 @@ paths:
                         awsKeyId:
                           type: string
                           description: The AWS access key ID for the Kinesis destination.
-                          example: AKIAIOSFODNN7EXAMPLE
+                          example: REDACTED_AWS_ACCESS_KEY_ID
                         awsSecretKey:
                           type: string
                           description: The AWS secret access key for the Kinesis destination.
@@ -757,44 +757,6 @@ components:
           type: string
           description: The time the destination was updated.
           format: date-time
-    WebhookHeaders:
-      title: Webhook Headers
-      type: object
-      nullable: true
-      description: Additional headers to add when Ampersand sends a webhook message
-      additionalProperties:
-        type: string
-        nullable: false
-      example:
-        Authorization: Bearer 1234
-    Topic:
-      title: Topic
-      required:
-      - id
-      - name
-      - projectId
-      - createTime
-      type: object
-      properties:
-        id:
-          type: string
-          description: The topic ID.
-        name:
-          type: string
-          description: The name of the topic. Must contain only letters, numbers, and dashes.
-          example: system-alerts
-          maxLength: 64
-        projectId:
-          type: string
-          description: The Ampersand project ID.
-        createTime:
-          type: string
-          format: date-time
-          description: The time when the topic was created.
-        updateTime:
-          type: string
-          format: date-time
-          description: The time when the topic was last updated.
     DestinationWithSecrets:
       title: DestinationWithSecrets
       description: Destination object with secrets field (returned by getDestination when includeSecrets is true)
@@ -853,6 +815,44 @@ components:
             webhookSigningKey:
               type: string
               description: Webhook signing key for the destination (only included for webhook destinations)
+    Topic:
+      title: Topic
+      required:
+      - id
+      - name
+      - projectId
+      - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The topic ID.
+        name:
+          type: string
+          description: The name of the topic. Must contain only letters, numbers, and dashes.
+          example: system-alerts
+          maxLength: 64
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the topic was created.
+        updateTime:
+          type: string
+          format: date-time
+          description: The time when the topic was last updated.
+    WebhookHeaders:
+      title: Webhook Headers
+      type:
+      - object
+      - 'null'
+      description: Additional headers to add when Ampersand sends a webhook message
+      additionalProperties:
+        type: string
+      example:
+        Authorization: Bearer 1234
     TopicDestinationRoute:
       title: Topic Destination Route
       required:

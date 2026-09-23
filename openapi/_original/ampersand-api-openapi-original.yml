@@ -2947,7 +2947,7 @@ paths:
                     awsKeyId:
                       type: string
                       description: The AWS access key ID for the Kinesis destination.
-                      example: AKIAIOSFODNN7EXAMPLE
+                      example: REDACTED_AWS_ACCESS_KEY_ID
                       x-go-type-skip-optional-pointer: true
                     awsSecretKey:
                       type: string
@@ -3179,7 +3179,7 @@ paths:
                         awsKeyId:
                           type: string
                           description: The AWS access key ID for the Kinesis destination.
-                          example: AKIAIOSFODNN7EXAMPLE
+                          example: REDACTED_AWS_ACCESS_KEY_ID
                         awsSecretKey:
                           type: string
                           description: The AWS secret access key for the Kinesis destination.

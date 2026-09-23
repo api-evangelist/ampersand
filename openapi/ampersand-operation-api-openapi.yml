@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key Operation API
+  title: Ampersand public Operation API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -156,7 +156,7 @@ paths:
   /projects/{projectIdOrName}/operations/{operationId}:
     get:
       summary: Ampersand Get an Operation
-      description: "Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as backfill progress or write outcome details. \n"
+      description: Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as backfill progress or write outcome details.
       operationId: getOperation
       tags:
       - Operation
@@ -303,6 +303,60 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
+    PaginationInfo:
+      title: Pagination Information
+      type: object
+      required:
+      - done
+      properties:
+        done:
+          type: boolean
+          description: If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.
+          example: false
+        nextPageToken:
+          type: string
+          description: If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.
+          example: Q9JT+2qfys28V4ODN+UayA==
+    Log:
+      title: Log
+      type: object
+      required:
+      - timestamp
+      - severity
+      - message
+      properties:
+        timestamp:
+          type: string
+          description: The time the log was created.
+          example: 2023-07-13 21:34:44.816354+00:00
+        message:
+          type: object
+          description: The log message object.
+          required:
+          - msg
+          properties:
+            msg:
+              type: string
+              description: The use-readable message.
+              example: This is a log message
+            error:
+              type: string
+              description: The error message, if there has been an error.
+            operation_id:
+              type: string
+              description: The operation ID.
+            details:
+              type: object
+              description: The details of the log.
+              additionalProperties:
+                type: string
+              example:
+                request: GET /api/v1/users
+          additionalProperties: true
+        severity:
+          type: string
+          description: The severity of the log.
+          example: DEBUG
     BackfillProgress:
       title: BackfillProgress
       type: object
@@ -435,60 +489,6 @@ components:
           description: The time the operation was created.
           format: date-time
           example: 2023-07-13 21:34:44.816354+00:00
-    Log:
-      title: Log
-      type: object
-      required:
-      - timestamp
-      - severity
-      - message
-      properties:
-        timestamp:
-          type: string
-          description: The time the log was created.
-          example: 2023-07-13 21:34:44.816354+00:00
-        message:
-          type: object
-          description: The log message object.
-          required:
-          - msg
-          properties:
-            msg:
-              type: string
-              description: The use-readable message.
-              example: This is a log message
-            error:
-              type: string
-              description: The error message, if there has been an error.
-            operation_id:
-              type: string
-              description: The operation ID.
-            details:
-              type: object
-              description: The details of the log.
-              additionalProperties:
-                type: string
-              example:
-                request: GET /api/v1/users
-          additionalProperties: true
-        severity:
-          type: string
-          description: The severity of the log.
-          example: DEBUG
-    PaginationInfo:
-      title: Pagination Information
-      type: object
-      required:
-      - done
-      properties:
-        done:
-          type: boolean
-          description: If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.
-          example: false
-        nextPageToken:
-          type: string
-          description: If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.
-          example: Q9JT+2qfys28V4ODN+UayA==
   securitySchemes:
     APIKeyHeader:
       type: apiKey

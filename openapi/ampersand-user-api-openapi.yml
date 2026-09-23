@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key User API
+  title: Ampersand public User API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -128,54 +128,6 @@ components:
               example: builder-id-123
             org:
               $ref: '#/components/schemas/Org'
-    Project:
-      title: Project
-      required:
-      - appName
-      - createTime
-      - id
-      - name
-      - orgId
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier for the project.
-          example: proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
-        name:
-          type: string
-          description: The unique name for the project.
-          example: mailmonkey-staging
-        appName:
-          type: string
-          description: The display name of the application, shown to end users during the connection flow.
-          example: MailMonkey
-        orgId:
-          type: string
-          description: The ID of the organization that this project belongs to.
-          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
-        createTime:
-          type: string
-          description: The time the project was created.
-          format: date-time
-        updateTime:
-          type: string
-          description: The time the project was updated.
-          format: date-time
-        entitlements:
-          type: object
-          description: Plan-based feature flags for the project. These are managed by Ampersand and cannot be set via the API.
-          properties:
-            brandingRemoval:
-              type: object
-              required:
-              - value
-              x-go-type-skip-optional-pointer: true
-              description: Controls whether Ampersand branding is removed from the embeddable UI components.
-              properties:
-                value:
-                  type: boolean
-                  description: True if Ampersand branding has been removed for this project.
     Org:
       title: Organization
       required:
@@ -236,6 +188,54 @@ components:
           type: string
         primaryEmail:
           type: string
+    Project:
+      title: Project
+      required:
+      - appName
+      - createTime
+      - id
+      - name
+      - orgId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the project.
+          example: proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        name:
+          type: string
+          description: The unique name for the project.
+          example: mailmonkey-staging
+        appName:
+          type: string
+          description: The display name of the application, shown to end users during the connection flow.
+          example: MailMonkey
+        orgId:
+          type: string
+          description: The ID of the organization that this project belongs to.
+          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        createTime:
+          type: string
+          description: The time the project was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the project was updated.
+          format: date-time
+        entitlements:
+          type: object
+          description: Plan-based feature flags for the project. These are managed by Ampersand and cannot be set via the API.
+          properties:
+            brandingRemoval:
+              type: object
+              required:
+              - value
+              x-go-type-skip-optional-pointer: true
+              description: Controls whether Ampersand branding is removed from the embeddable UI components.
+              properties:
+                value:
+                  type: boolean
+                  description: True if Ampersand branding has been removed for this project.
   securitySchemes:
     APIKeyHeader:
       type: apiKey

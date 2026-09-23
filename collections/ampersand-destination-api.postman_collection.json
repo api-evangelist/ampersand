@@ -98,7 +98,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"leadConvertedWebhook\",\n  \"type\": \"webhook\",\n  \"metadata\": {\n    \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n    \"headers\": {\n      \"Authorization\": \"Bearer 1234\"\n    },\n    \"region\": \"us-east-1\",\n    \"streamName\": \"my-kinesis-stream\",\n    \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n    \"partitionKeyTemplate\": \"data.user_id\"\n  },\n  \"secrets\": {\n    \"awsKeyId\": \"AKIAIOSFODNN7EXAMPLE\",\n    \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n    \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"leadConvertedWebhook\",\n  \"type\": \"webhook\",\n  \"metadata\": {\n    \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n    \"headers\": {\n      \"Authorization\": \"Bearer 1234\"\n    },\n    \"region\": \"us-east-1\",\n    \"streamName\": \"my-kinesis-stream\",\n    \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n    \"partitionKeyTemplate\": \"data.user_id\"\n  },\n  \"secrets\": {\n    \"awsKeyId\": \"REDACTED_AWS_ACCESS_KEY_ID\",\n    \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n    \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -159,7 +159,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"leadConvertedWebhook\",\n  \"type\": \"webhook\",\n  \"metadata\": {\n    \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n    \"headers\": {\n      \"Authorization\": \"Bearer 1234\"\n    },\n    \"region\": \"us-east-1\",\n    \"streamName\": \"my-kinesis-stream\",\n    \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n    \"partitionKeyTemplate\": \"data.user_id\"\n  },\n  \"secrets\": {\n    \"awsKeyId\": \"AKIAIOSFODNN7EXAMPLE\",\n    \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n    \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"leadConvertedWebhook\",\n  \"type\": \"webhook\",\n  \"metadata\": {\n    \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n    \"headers\": {\n      \"Authorization\": \"Bearer 1234\"\n    },\n    \"region\": \"us-east-1\",\n    \"streamName\": \"my-kinesis-stream\",\n    \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n    \"partitionKeyTemplate\": \"data.user_id\"\n  },\n  \"secrets\": {\n    \"awsKeyId\": \"REDACTED_AWS_ACCESS_KEY_ID\",\n    \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n    \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -220,7 +220,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"leadConvertedWebhook\",\n  \"type\": \"webhook\",\n  \"metadata\": {\n    \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n    \"headers\": {\n      \"Authorization\": \"Bearer 1234\"\n    },\n    \"region\": \"us-east-1\",\n    \"streamName\": \"my-kinesis-stream\",\n    \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n    \"partitionKeyTemplate\": \"data.user_id\"\n  },\n  \"secrets\": {\n    \"awsKeyId\": \"AKIAIOSFODNN7EXAMPLE\",\n    \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n    \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"leadConvertedWebhook\",\n  \"type\": \"webhook\",\n  \"metadata\": {\n    \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n    \"headers\": {\n      \"Authorization\": \"Bearer 1234\"\n    },\n    \"region\": \"us-east-1\",\n    \"streamName\": \"my-kinesis-stream\",\n    \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n    \"partitionKeyTemplate\": \"data.user_id\"\n  },\n  \"secrets\": {\n    \"awsKeyId\": \"REDACTED_AWS_ACCESS_KEY_ID\",\n    \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n    \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -281,7 +281,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"leadConvertedWebhook\",\n  \"type\": \"webhook\",\n  \"metadata\": {\n    \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n    \"headers\": {\n      \"Authorization\": \"Bearer 1234\"\n    },\n    \"region\": \"us-east-1\",\n    \"streamName\": \"my-kinesis-stream\",\n    \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n    \"partitionKeyTemplate\": \"data.user_id\"\n  },\n  \"secrets\": {\n    \"awsKeyId\": \"AKIAIOSFODNN7EXAMPLE\",\n    \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n    \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"leadConvertedWebhook\",\n  \"type\": \"webhook\",\n  \"metadata\": {\n    \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n    \"headers\": {\n      \"Authorization\": \"Bearer 1234\"\n    },\n    \"region\": \"us-east-1\",\n    \"streamName\": \"my-kinesis-stream\",\n    \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n    \"partitionKeyTemplate\": \"data.user_id\"\n  },\n  \"secrets\": {\n    \"awsKeyId\": \"REDACTED_AWS_ACCESS_KEY_ID\",\n    \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n    \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -834,7 +834,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"AKIAIOSFODNN7EXAMPLE\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
+                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"REDACTED_AWS_ACCESS_KEY_ID\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -903,7 +903,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"AKIAIOSFODNN7EXAMPLE\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
+                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"REDACTED_AWS_ACCESS_KEY_ID\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -972,7 +972,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"AKIAIOSFODNN7EXAMPLE\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
+                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"REDACTED_AWS_ACCESS_KEY_ID\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1041,7 +1041,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"AKIAIOSFODNN7EXAMPLE\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
+                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"REDACTED_AWS_ACCESS_KEY_ID\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1110,7 +1110,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"AKIAIOSFODNN7EXAMPLE\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
+                  "raw": "{\n  \"updateMask\": [\n    \"name\",\n    \"metadata.url\",\n    \"metadata.region\",\n    \"metadata.streamName\"\n  ],\n  \"destination\": {\n    \"name\": \"leadConvertedWebhook\",\n    \"metadata\": {\n      \"url\": \"https://webhooks.mailmonkey.com/salesforce-lead-converted\",\n      \"headers\": {\n        \"Authorization\": \"Bearer 1234\"\n      },\n      \"region\": \"us-east-1\",\n      \"streamName\": \"my-kinesis-stream\",\n      \"endpointUrl\": \"https://kinesis.us-east-1.amazonaws.com\",\n      \"partitionKeyTemplate\": \"data.user_id\"\n    },\n    \"secrets\": {\n      \"awsKeyId\": \"REDACTED_AWS_ACCESS_KEY_ID\",\n      \"awsSecretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"awsSessionToken\": \"AQoEXAMPLEH4aoAH0gNCAPy...\"\n    }\n  }\n}",
                   "options": {
                     "raw": {
                       "language": "json"

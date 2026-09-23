@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key JWT Key API
+  title: Ampersand public JWT Key API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -419,50 +419,6 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    PatchJWTKeyRequest:
-      type: object
-      required:
-      - updateMask
-      - jwtKey
-      properties:
-        updateMask:
-          type: array
-          description: List of field paths to update (currently supports 'active' and 'name')
-          items:
-            type: string
-            enum:
-            - active
-            - label
-          minItems: 1
-          example:
-          - active
-          - label
-        jwtKey:
-          type: object
-          description: Object containing the fields to update with their new values
-          additionalProperties: true
-          properties:
-            active:
-              type: boolean
-              description: New active status for the JWT key
-              example: false
-            label:
-              type: string
-              description: New label for the JWT key
-              example: updated-key-name
-          example:
-            active: false
-            name: updated-key-name
-    JWTKeyResponse:
-      type: object
-      required:
-      - kid
-      properties:
-        kid:
-          type: string
-          format: uuid
-          description: The unique key identifier (key ID) for the created JWT key
-          example: 550e8400-e29b-41d4-a716-446655440000
     JWTKey:
       type: object
       required:
@@ -520,6 +476,40 @@ components:
           format: date-time
           description: Timestamp when the JWT key was last updated
           example: '2024-01-15T10:30:00Z'
+    PatchJWTKeyRequest:
+      type: object
+      required:
+      - updateMask
+      - jwtKey
+      properties:
+        updateMask:
+          type: array
+          description: List of field paths to update (currently supports 'active' and 'name')
+          items:
+            type: string
+            enum:
+            - active
+            - label
+          minItems: 1
+          example:
+          - active
+          - label
+        jwtKey:
+          type: object
+          description: Object containing the fields to update with their new values
+          additionalProperties: true
+          properties:
+            active:
+              type: boolean
+              description: New active status for the JWT key
+              example: false
+            label:
+              type: string
+              description: New label for the JWT key
+              example: updated-key-name
+          example:
+            active: false
+            name: updated-key-name
     CreateJWTKeyRequest:
       type: object
       required:
@@ -554,6 +544,16 @@ components:
             -----END PUBLIC KEY-----
 
             '
+    JWTKeyResponse:
+      type: object
+      required:
+      - kid
+      properties:
+        kid:
+          type: string
+          format: uuid
+          description: The unique key identifier (key ID) for the created JWT key
+          example: 550e8400-e29b-41d4-a716-446655440000
   securitySchemes:
     APIKeyHeader:
       type: apiKey

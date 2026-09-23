@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key Project API
+  title: Ampersand public Project API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1

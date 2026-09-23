@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Ampersand public API Key Notification API
+  title: Ampersand public Notification API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -159,23 +159,6 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    NotificationEventType:
-      type: string
-      description: The type of notification event.
-      enum:
-      - connection.created
-      - connection.error
-      - connection.refreshed
-      - connection.deleted
-      - installation.created
-      - installation.updated
-      - installation.deleted
-      - read.schedule.paused
-      - read.backfill.done
-      - read.triggered.done
-      - read.triggered.error
-      - write.async.done
-      - destination.webhook.disabled
     NotificationEventTopicRoute:
       title: Notification Event Topic Route
       required:
@@ -205,6 +188,23 @@ components:
           type: string
           format: date-time
           description: The time when the event-topic route was last updated.
+    NotificationEventType:
+      type: string
+      description: The type of notification event.
+      enum:
+      - connection.created
+      - connection.error
+      - connection.refreshed
+      - connection.deleted
+      - installation.created
+      - installation.updated
+      - installation.deleted
+      - read.schedule.paused
+      - read.backfill.done
+      - read.triggered.done
+      - read.triggered.error
+      - write.async.done
+      - destination.webhook.disabled
   securitySchemes:
     APIKeyHeader:
       type: apiKey
