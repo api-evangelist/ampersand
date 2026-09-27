@@ -467,27 +467,24 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    StringFieldOptions:
+    UpsertMetadataRequest:
       type: object
-      description: Additional options for string fields
+      description: Request payload for upserting metadata (fields only)
       properties:
-        length:
-          type: integer
-          description: Maximum length of the string field
-        pattern:
+        groupRef:
           type: string
-          description: Regex pattern that the string field value must match
-        values:
-          type: array
-          description: List of allowed values for enum fields
-          items:
-            type: string
-        valuesRestricted:
-          type: boolean
-          description: Indicates if the field value must be limited to what's in Values
-        defaultValue:
-          type: string
-          description: Default value for the field
+          description: The ID that your app uses to identify the group of users for this request.
+          example: group-123
+        fields:
+          type: object
+          description: Maps object names to field definitions
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/FieldDefinition'
+      required:
+      - groupRef
+      - fields
     FieldUpsertResult:
       type: object
       description: Result of an upsert operation for a single field
@@ -510,24 +507,27 @@ components:
       required:
       - fieldName
       - action
-    UpsertMetadataRequest:
+    StringFieldOptions:
       type: object
-      description: Request payload for upserting metadata (fields only)
+      description: Additional options for string fields
       properties:
-        groupRef:
+        length:
+          type: integer
+          description: Maximum length of the string field
+        pattern:
           type: string
-          description: The ID that your app uses to identify the group of users for this request.
-          example: group-123
-        fields:
-          type: object
-          description: Maps object names to field definitions
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/FieldDefinition'
-      required:
-      - groupRef
-      - fields
+          description: Regex pattern that the string field value must match
+        values:
+          type: array
+          description: List of allowed values for enum fields
+          items:
+            type: string
+        valuesRestricted:
+          type: boolean
+          description: Indicates if the field value must be limited to what's in Values
+        defaultValue:
+          type: string
+          description: Default value for the field
     AssociationLabels:
       type: object
       description: UI labels for an association
@@ -557,23 +557,30 @@ components:
         defaultValue:
           type: number
           description: Default value for the field
-    UpsertMetadataResponse:
+    ObjectMetadata:
+      title: Object Metadata
       type: object
-      description: Response containing results for all created/updated fields
+      required:
+      - name
+      - fields
       properties:
-        success:
-          type: boolean
-          description: Indicates if the upsert operation was successful
+        name:
+          type: string
+          description: The provider name of the object
+          example: contact
+        displayName:
+          type: string
+          description: Human-readable name of the object
+          example: Contact
+        mappedObjectName:
+          type: string
+          description: The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.
+          example: people
         fields:
           type: object
-          description: Maps object name -> field name -> upsert result
+          description: Map of field metadata keyed by field name
           additionalProperties:
-            type: object
-            additionalProperties:
-              $ref: '#/components/schemas/FieldUpsertResult'
-      required:
-      - success
-      - fields
+            $ref: ../manifest/manifest.yaml#/components/schemas/FieldMetadata
     AssociationDefinition:
       type: object
       description: Relationship information for a field to another object
@@ -608,30 +615,6 @@ components:
       required:
       - associationType
       - targetObject
-    ObjectMetadata:
-      title: Object Metadata
-      type: object
-      required:
-      - name
-      - fields
-      properties:
-        name:
-          type: string
-          description: The provider name of the object
-          example: contact
-        displayName:
-          type: string
-          description: Human-readable name of the object
-          example: Contact
-        mappedObjectName:
-          type: string
-          description: The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.
-          example: people
-        fields:
-          type: object
-          description: Map of field metadata keyed by field name
-          additionalProperties:
-            $ref: ../manifest/manifest.yaml#/components/schemas/FieldMetadata
     FieldDefinition:
       type: object
       description: Field definition for creating or updating custom fields
@@ -670,6 +653,23 @@ components:
       - fieldName
       - displayName
       - valueType
+    UpsertMetadataResponse:
+      type: object
+      description: Response containing results for all created/updated fields
+      properties:
+        success:
+          type: boolean
+          description: Indicates if the upsert operation was successful
+        fields:
+          type: object
+          description: Maps object name -> field name -> upsert result
+          additionalProperties:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/FieldUpsertResult'
+      required:
+      - success
+      - fields
   securitySchemes:
     APIKeyHeader:
       type: apiKey

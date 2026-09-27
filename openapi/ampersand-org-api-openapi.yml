@@ -505,6 +505,30 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
+    ClaimedDomainResponse:
+      type: object
+      required:
+      - id
+      - parentType
+      - parentId
+      - domain
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the claimed domain
+          example: 00000000-0000-0000-0000-000000000001
+        parentType:
+          type: string
+          description: Type of the parent entity that claimed the domain
+          example: org
+        parentId:
+          type: string
+          description: ID of the parent entity that claimed the domain
+          example: 00000000-0000-0000-0000-000000000001
+        domain:
+          type: string
+          description: The normalized domain name
+          example: xyz.com
     Org:
       title: Organization
       required:
@@ -533,62 +557,6 @@ components:
           type: string
           description: The time the organization was updated.
           format: date-time
-    ClaimedDomainResponse:
-      type: object
-      required:
-      - id
-      - parentType
-      - parentId
-      - domain
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the claimed domain
-          example: 00000000-0000-0000-0000-000000000001
-        parentType:
-          type: string
-          description: Type of the parent entity that claimed the domain
-          example: org
-        parentId:
-          type: string
-          description: ID of the parent entity that claimed the domain
-          example: 00000000-0000-0000-0000-000000000001
-        domain:
-          type: string
-          description: The normalized domain name
-          example: xyz.com
-    Builder:
-      title: Builder
-      type: object
-      required:
-      - id
-      - idpProvider
-      - idpRef
-      - createTime
-      properties:
-        id:
-          type: string
-          description: The builder ID.
-          example: builder-id-123
-        idpProvider:
-          type: string
-          description: The identity provider
-          example: clerk
-        idpRef:
-          type: string
-          description: ID used by the identity provider
-        createTime:
-          type: string
-          description: The time that the builder joined Ampersand.
-          format: date-time
-        firstName:
-          type: string
-        lastName:
-          type: string
-        fullName:
-          type: string
-        primaryEmail:
-          type: string
     Invite:
       title: Invite
       type: object
@@ -630,6 +598,38 @@ components:
           type: string
           description: The time the invite was updated.
           format: date-time
+    Builder:
+      title: Builder
+      type: object
+      required:
+      - id
+      - idpProvider
+      - idpRef
+      - createTime
+      properties:
+        id:
+          type: string
+          description: The builder ID.
+          example: builder-id-123
+        idpProvider:
+          type: string
+          description: The identity provider
+          example: clerk
+        idpRef:
+          type: string
+          description: ID used by the identity provider
+        createTime:
+          type: string
+          description: The time that the builder joined Ampersand.
+          format: date-time
+        firstName:
+          type: string
+        lastName:
+          type: string
+        fullName:
+          type: string
+        primaryEmail:
+          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

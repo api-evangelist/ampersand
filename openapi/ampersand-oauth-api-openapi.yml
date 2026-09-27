@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Ampersand public O Auth API
+  title: Ampersand public OAuth API
   version: 1.0.0
 servers:
 - url: https://api.withampersand.com/v1
@@ -166,6 +166,11 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
+    ProviderMetadata:
+      title: Provider Metadata
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ProviderMetadataInfo'
     ProviderMetadataInfo:
       title: Provider Metadata Info
       type: object
@@ -189,11 +194,6 @@ components:
           type: string
           description: The human-readable name for the field
           example: Account ID
-    ProviderMetadata:
-      title: Provider Metadata
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/ProviderMetadataInfo'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

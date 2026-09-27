@@ -303,20 +303,6 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    PaginationInfo:
-      title: Pagination Information
-      type: object
-      required:
-      - done
-      properties:
-        done:
-          type: boolean
-          description: If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.
-          example: false
-        nextPageToken:
-          type: string
-          description: If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.
-          example: Q9JT+2qfys28V4ODN+UayA==
     Log:
       title: Log
       type: object
@@ -391,6 +377,20 @@ components:
           type: string
           format: date-time
           description: When progress was last updated.
+    PaginationInfo:
+      title: Pagination Information
+      type: object
+      required:
+      - done
+      properties:
+        done:
+          type: boolean
+          description: If set to true, this is the last page of results for the given operation. There are no more results & there will be no nextPageToken sent when done is true.
+          example: false
+        nextPageToken:
+          type: string
+          description: If present, set this value against your 'pageToken' query parameter in the next API call, which will retrieve the next set of results.
+          example: Q9JT+2qfys28V4ODN+UayA==
     Operation:
       title: Operation
       required:
