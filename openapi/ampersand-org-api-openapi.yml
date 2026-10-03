@@ -505,30 +505,6 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    ClaimedDomainResponse:
-      type: object
-      required:
-      - id
-      - parentType
-      - parentId
-      - domain
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the claimed domain
-          example: 00000000-0000-0000-0000-000000000001
-        parentType:
-          type: string
-          description: Type of the parent entity that claimed the domain
-          example: org
-        parentId:
-          type: string
-          description: ID of the parent entity that claimed the domain
-          example: 00000000-0000-0000-0000-000000000001
-        domain:
-          type: string
-          description: The normalized domain name
-          example: xyz.com
     Org:
       title: Organization
       required:
@@ -557,6 +533,30 @@ components:
           type: string
           description: The time the organization was updated.
           format: date-time
+    ClaimedDomainResponse:
+      type: object
+      required:
+      - id
+      - parentType
+      - parentId
+      - domain
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the claimed domain
+          example: 00000000-0000-0000-0000-000000000001
+        parentType:
+          type: string
+          description: Type of the parent entity that claimed the domain
+          example: org
+        parentId:
+          type: string
+          description: ID of the parent entity that claimed the domain
+          example: 00000000-0000-0000-0000-000000000001
+        domain:
+          type: string
+          description: The normalized domain name
+          example: xyz.com
     Invite:
       title: Invite
       type: object

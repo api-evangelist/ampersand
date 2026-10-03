@@ -68,6 +68,34 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
+    Org:
+      title: Organization
+      required:
+      - id
+      - label
+      - createTime
+      - defaultTeamId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The organization ID.
+          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
+        label:
+          type: string
+          description: The organization label.
+          example: Acme Inc
+        defaultTeamId:
+          type: string
+          description: The ID of the Everyone team for the org.
+        createTime:
+          type: string
+          description: The time the organization was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the organization was updated.
+          format: date-time
     Project:
       title: Project
       required:
@@ -116,34 +144,6 @@ components:
                 value:
                   type: boolean
                   description: True if Ampersand branding has been removed for this project.
-    Org:
-      title: Organization
-      required:
-      - id
-      - label
-      - createTime
-      - defaultTeamId
-      type: object
-      properties:
-        id:
-          type: string
-          description: The organization ID.
-          example: 9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79
-        label:
-          type: string
-          description: The organization label.
-          example: Acme Inc
-        defaultTeamId:
-          type: string
-          description: The ID of the Everyone team for the org.
-        createTime:
-          type: string
-          description: The time the organization was created.
-          format: date-time
-        updateTime:
-          type: string
-          description: The time the organization was updated.
-          format: date-time
     BuilderInfo:
       title: Builder Info
       type: object

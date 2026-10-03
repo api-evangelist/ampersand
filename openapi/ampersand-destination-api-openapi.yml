@@ -707,6 +707,32 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
+    TopicDestinationRoute:
+      title: Topic Destination Route
+      required:
+      - id
+      - topicId
+      - destinationId
+      - projectId
+      - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The topic destination route ID.
+        topicId:
+          type: string
+          description: The ID of the topic.
+        destinationId:
+          type: string
+          description: The ID of the destination.
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the topic destination route was created.
     Topic:
       title: Topic
       required:
@@ -735,90 +761,6 @@ components:
           type: string
           format: date-time
           description: The time when the topic was last updated.
-    TopicDestinationRoute:
-      title: Topic Destination Route
-      required:
-      - id
-      - topicId
-      - destinationId
-      - projectId
-      - createTime
-      type: object
-      properties:
-        id:
-          type: string
-          description: The topic destination route ID.
-        topicId:
-          type: string
-          description: The ID of the topic.
-        destinationId:
-          type: string
-          description: The ID of the destination.
-        projectId:
-          type: string
-          description: The Ampersand project ID.
-        createTime:
-          type: string
-          format: date-time
-          description: The time when the topic destination route was created.
-    DestinationWithSecrets:
-      title: DestinationWithSecrets
-      description: Destination object with secrets field (returned by getDestination when includeSecrets is true)
-      required:
-      - id
-      - name
-      - type
-      - metadata
-      - createTime
-      type: object
-      properties:
-        id:
-          type: string
-          description: The destination ID.
-        name:
-          type: string
-          description: User-defined name for the destination
-          example: leadConvertedWebhook
-        type:
-          type: string
-          description: The type of the destination
-          example: webhook
-        metadata:
-          type: object
-          properties:
-            url:
-              type: string
-              description: Webhook URL
-              example: https://webhooks.mailmonkey.com/salesforce-lead-converted
-            headers:
-              $ref: '#/components/schemas/WebhookHeaders'
-            streamName:
-              type: string
-              description: The name of the Kinesis stream
-              example: my-data-stream
-            region:
-              type: string
-              description: The AWS region for the destination
-              example: us-east-1
-            partitionKeyTemplate:
-              type: string
-              description: Template for generating partition keys
-              example: '{{.integration_id}}'
-        createTime:
-          type: string
-          description: The time the destination was created.
-          format: date-time
-        updateTime:
-          type: string
-          description: The time the destination was updated.
-          format: date-time
-        secrets:
-          type: object
-          description: Destination secrets (only included when includeSecrets is true)
-          properties:
-            webhookSigningKey:
-              type: string
-              description: Webhook signing key for the destination (only included for webhook destinations)
     WebhookHeaders:
       title: Webhook Headers
       type:
@@ -879,6 +821,64 @@ components:
           type: string
           description: The time the destination was updated.
           format: date-time
+    DestinationWithSecrets:
+      title: DestinationWithSecrets
+      description: Destination object with secrets field (returned by getDestination when includeSecrets is true)
+      required:
+      - id
+      - name
+      - type
+      - metadata
+      - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The destination ID.
+        name:
+          type: string
+          description: User-defined name for the destination
+          example: leadConvertedWebhook
+        type:
+          type: string
+          description: The type of the destination
+          example: webhook
+        metadata:
+          type: object
+          properties:
+            url:
+              type: string
+              description: Webhook URL
+              example: https://webhooks.mailmonkey.com/salesforce-lead-converted
+            headers:
+              $ref: '#/components/schemas/WebhookHeaders'
+            streamName:
+              type: string
+              description: The name of the Kinesis stream
+              example: my-data-stream
+            region:
+              type: string
+              description: The AWS region for the destination
+              example: us-east-1
+            partitionKeyTemplate:
+              type: string
+              description: Template for generating partition keys
+              example: '{{.integration_id}}'
+        createTime:
+          type: string
+          description: The time the destination was created.
+          format: date-time
+        updateTime:
+          type: string
+          description: The time the destination was updated.
+          format: date-time
+        secrets:
+          type: object
+          description: Destination secrets (only included when includeSecrets is true)
+          properties:
+            webhookSigningKey:
+              type: string
+              description: Webhook signing key for the destination (only included for webhook destinations)
   securitySchemes:
     APIKeyHeader:
       type: apiKey
