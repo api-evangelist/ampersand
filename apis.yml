@@ -353,6 +353,9 @@ apis:
   - type: Authentication
     url: https://docs.withampersand.com/reference/authentication
 common:
+- type: CapabilityMap
+  url: capabilities/ampersand-capability-edges.yml
+  name: Ampersand Business Capability Map
 - type: AgenticAccess
   url: agentic-access/ampersand-agentic-access.yml
 - type: DomainSecurity
