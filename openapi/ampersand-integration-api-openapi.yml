@@ -253,6 +253,29 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
+    Revision:
+      title: Revision
+      required:
+      - content
+      - createTime
+      - id
+      - specVersion
+      type: object
+      properties:
+        id:
+          type: string
+          description: The revision ID.
+          example: revision-id-1
+        specVersion:
+          type: string
+          description: The spec version string.
+          example: 1.0.0
+        createTime:
+          type: string
+          description: The time the revision was created.
+          format: date-time
+        content:
+          $ref: ../manifest/manifest.yaml#/components/schemas/Integration
     Integration:
       title: Integration
       required:
@@ -289,29 +312,6 @@ components:
           format: date-time
         latestRevision:
           $ref: '#/components/schemas/Revision'
-    Revision:
-      title: Revision
-      required:
-      - content
-      - createTime
-      - id
-      - specVersion
-      type: object
-      properties:
-        id:
-          type: string
-          description: The revision ID.
-          example: revision-id-1
-        specVersion:
-          type: string
-          description: The spec version string.
-          example: 1.0.0
-        createTime:
-          type: string
-          description: The time the revision was created.
-          format: date-time
-        content:
-          $ref: ../manifest/manifest.yaml#/components/schemas/Integration
   securitySchemes:
     APIKeyHeader:
       type: apiKey

@@ -166,11 +166,6 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    ProviderMetadata:
-      title: Provider Metadata
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/ProviderMetadataInfo'
     ProviderMetadataInfo:
       title: Provider Metadata Info
       type: object
@@ -194,6 +189,11 @@ components:
           type: string
           description: The human-readable name for the field
           example: Account ID
+    ProviderMetadata:
+      title: Provider Metadata
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ProviderMetadataInfo'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

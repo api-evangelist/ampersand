@@ -261,30 +261,6 @@ paths:
       x-codegen-request-body-name: providerAppUpdate
 components:
   schemas:
-    ProviderAppMetadata:
-      title: Provider App Metadata
-      type: object
-      description: Provider-specific configuration that extends the standard OAuth flow.
-      properties:
-        authQueryParams:
-          type: object
-          description: Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).
-          additionalProperties:
-            type: array
-            items:
-              type: string
-          example:
-            optional_scope:
-            - automation.sequences.read
-        providerParams:
-          type: object
-          description: Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).
-          additionalProperties:
-            type: string
-          example:
-            packageInstallURL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
-            gcpProjectId: my-gcp-project
-            gcpPubSubTopicName: my-topic
     ProviderApp:
       title: Provider App
       required:
@@ -334,6 +310,30 @@ components:
           type: string
           description: The time the provider app was updated.
           format: date-time
+    ProviderAppMetadata:
+      title: Provider App Metadata
+      type: object
+      description: Provider-specific configuration that extends the standard OAuth flow.
+      properties:
+        authQueryParams:
+          type: object
+          description: Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            optional_scope:
+            - automation.sequences.read
+        providerParams:
+          type: object
+          description: Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).
+          additionalProperties:
+            type: string
+          example:
+            packageInstallURL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
+            gcpProjectId: my-gcp-project
+            gcpPubSubTopicName: my-topic
   securitySchemes:
     APIKeyHeader:
       type: apiKey

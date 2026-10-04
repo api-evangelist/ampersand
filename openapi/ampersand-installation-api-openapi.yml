@@ -838,139 +838,6 @@ components:
           example: api-key-123
         providerMetadata:
           $ref: '#/components/schemas/ProviderMetadata'
-    Consumer:
-      title: Consumer
-      required:
-      - consumerName
-      - consumerRef
-      - createTime
-      - projectId
-      type: object
-      properties:
-        consumerRef:
-          type: string
-          description: The consumer reference.
-          example: consumer-123
-        consumerName:
-          type: string
-          description: The name of the consumer.
-          example: Super Customer
-        projectId:
-          type: string
-          description: The Ampersand project ID.
-          example: project-456
-        createTime:
-          type: string
-          description: The time the consumer was created.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
-        updateTime:
-          type: string
-          description: The time the consumer was last updated.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
-    JSONPatchOperation:
-      title: JSON Patch Operation
-      description: 'Represents a single JSON Patch operation (RFC 6902).
-
-        Only supports add, remove, and replace operations for config updates.
-
-        '
-      required:
-      - op
-      - path
-      type: object
-      properties:
-        op:
-          type: string
-          enum:
-          - add
-          - remove
-          - replace
-          description: 'The operation to perform.
-
-            - "add": Adds a new field or replaces an existing one at the specified path
-
-            - "remove": Removes the field at the specified path
-
-            - "replace": Replaces the value at the specified path
-
-            '
-          example: replace
-        path:
-          type: string
-          description: 'JSON Pointer path to the field to operate on (RFC 6901).
-
-            All paths must start with "/" (e.g., "/schedule", "/selectedFields/phone").
-
-            '
-          example: /schedule
-        value:
-          description: 'The value to set for add/replace operations.
-
-            Not used for remove operations.
-
-            '
-          example: '*/10 * * * *'
-    Config:
-      title: Config
-      required:
-      - content
-      - createTime
-      - createdBy
-      - id
-      - revisionId
-      type: object
-      properties:
-        id:
-          type: string
-          description: The config ID.
-          example: config-123
-        revisionId:
-          type: string
-          description: "The ID of the revision that was current when this config was created or last updated. \n"
-          example: revision-123
-        createTime:
-          type: string
-          description: The time the config was created.
-          format: date-time
-        createdBy:
-          type: string
-          description: The person who created the config, in the format of "consumer:{consumer-id}" or "builder:{builder-id}".
-          example: builder:builder-123
-        content:
-          $ref: ../config/config.yaml#/components/schemas/ConfigContent
-    Group:
-      title: Group
-      required:
-      - createTime
-      - groupName
-      - groupRef
-      - projectId
-      type: object
-      properties:
-        groupRef:
-          type: string
-          description: The ID of the user group that has access to this installation.
-          example: group-123
-        groupName:
-          type: string
-          description: The name of the user group that has access to this installation.
-          example: Super Customer
-        projectId:
-          type: string
-          description: The Ampersand project ID.
-          example: project-456
-        createTime:
-          type: string
-          description: The time the group was created.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
-        updateTime:
-          type: string
-          description: The time the group was last updated.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
     Installation:
       title: Installation
       required:
@@ -1029,29 +896,6 @@ components:
           format: date-time
         config:
           $ref: '#/components/schemas/Config'
-    ProviderMetadataInfo:
-      title: Provider Metadata Info
-      type: object
-      required:
-      - value
-      - source
-      properties:
-        value:
-          type: string
-          description: The value of the metadata field
-          example: '1234567890'
-        source:
-          type: string
-          description: The source of the metadata field
-          enum:
-          - input
-          - token
-          - provider
-          example: input
-        displayName:
-          type: string
-          description: The human-readable name for the field
-          example: Account ID
     ProviderAppMetadata:
       title: Provider App Metadata
       type: object
@@ -1076,11 +920,68 @@ components:
             packageInstallURL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
             gcpProjectId: my-gcp-project
             gcpPubSubTopicName: my-topic
-    ProviderMetadata:
-      title: Provider Metadata
+    Group:
+      title: Group
+      required:
+      - createTime
+      - groupName
+      - groupRef
+      - projectId
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/ProviderMetadataInfo'
+      properties:
+        groupRef:
+          type: string
+          description: The ID of the user group that has access to this installation.
+          example: group-123
+        groupName:
+          type: string
+          description: The name of the user group that has access to this installation.
+          example: Super Customer
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        createTime:
+          type: string
+          description: The time the group was created.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        updateTime:
+          type: string
+          description: The time the group was last updated.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+    Consumer:
+      title: Consumer
+      required:
+      - consumerName
+      - consumerRef
+      - createTime
+      - projectId
+      type: object
+      properties:
+        consumerRef:
+          type: string
+          description: The consumer reference.
+          example: consumer-123
+        consumerName:
+          type: string
+          description: The name of the consumer.
+          example: Super Customer
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        createTime:
+          type: string
+          description: The time the consumer was created.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        updateTime:
+          type: string
+          description: The time the consumer was last updated.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
     ProviderApp:
       title: Provider App
       required:
@@ -1130,6 +1031,105 @@ components:
           type: string
           description: The time the provider app was updated.
           format: date-time
+    ProviderMetadataInfo:
+      title: Provider Metadata Info
+      type: object
+      required:
+      - value
+      - source
+      properties:
+        value:
+          type: string
+          description: The value of the metadata field
+          example: '1234567890'
+        source:
+          type: string
+          description: The source of the metadata field
+          enum:
+          - input
+          - token
+          - provider
+          example: input
+        displayName:
+          type: string
+          description: The human-readable name for the field
+          example: Account ID
+    JSONPatchOperation:
+      title: JSON Patch Operation
+      description: 'Represents a single JSON Patch operation (RFC 6902).
+
+        Only supports add, remove, and replace operations for config updates.
+
+        '
+      required:
+      - op
+      - path
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          description: 'The operation to perform.
+
+            - "add": Adds a new field or replaces an existing one at the specified path
+
+            - "remove": Removes the field at the specified path
+
+            - "replace": Replaces the value at the specified path
+
+            '
+          example: replace
+        path:
+          type: string
+          description: 'JSON Pointer path to the field to operate on (RFC 6901).
+
+            All paths must start with "/" (e.g., "/schedule", "/selectedFields/phone").
+
+            '
+          example: /schedule
+        value:
+          description: 'The value to set for add/replace operations.
+
+            Not used for remove operations.
+
+            '
+          example: '*/10 * * * *'
+    ProviderMetadata:
+      title: Provider Metadata
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ProviderMetadataInfo'
+    Config:
+      title: Config
+      required:
+      - content
+      - createTime
+      - createdBy
+      - id
+      - revisionId
+      type: object
+      properties:
+        id:
+          type: string
+          description: The config ID.
+          example: config-123
+        revisionId:
+          type: string
+          description: "The ID of the revision that was current when this config was created or last updated. \n"
+          example: revision-123
+        createTime:
+          type: string
+          description: The time the config was created.
+          format: date-time
+        createdBy:
+          type: string
+          description: The person who created the config, in the format of "consumer:{consumer-id}" or "builder:{builder-id}".
+          example: builder:builder-123
+        content:
+          $ref: ../config/config.yaml#/components/schemas/ConfigContent
   securitySchemes:
     APIKeyHeader:
       type: apiKey

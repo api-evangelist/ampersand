@@ -467,62 +467,6 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    ObjectMetadata:
-      title: Object Metadata
-      type: object
-      required:
-      - name
-      - fields
-      properties:
-        name:
-          type: string
-          description: The provider name of the object
-          example: contact
-        displayName:
-          type: string
-          description: Human-readable name of the object
-          example: Contact
-        mappedObjectName:
-          type: string
-          description: The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.
-          example: people
-        fields:
-          type: object
-          description: Map of field metadata keyed by field name
-          additionalProperties:
-            $ref: ../manifest/manifest.yaml#/components/schemas/FieldMetadata
-    FieldUpsertResult:
-      type: object
-      description: Result of an upsert operation for a single field
-      properties:
-        fieldName:
-          type: string
-          description: Name of the field
-        action:
-          type: string
-          description: Action taken (create, update, none)
-        metadata:
-          type: object
-          description: Provider-specific metadata about the field
-          additionalProperties: true
-        warnings:
-          type: array
-          description: Warnings that occurred during the upsert operation
-          items:
-            type: string
-      required:
-      - fieldName
-      - action
-    AssociationLabels:
-      type: object
-      description: UI labels for an association
-      properties:
-        singular:
-          type: string
-          description: Singular display label
-        plural:
-          type: string
-          description: Plural display label
     AssociationDefinition:
       type: object
       description: Relationship information for a field to another object
@@ -614,6 +558,48 @@ components:
       - fieldName
       - displayName
       - valueType
+    ObjectMetadata:
+      title: Object Metadata
+      type: object
+      required:
+      - name
+      - fields
+      properties:
+        name:
+          type: string
+          description: The provider name of the object
+          example: contact
+        displayName:
+          type: string
+          description: Human-readable name of the object
+          example: Contact
+        mappedObjectName:
+          type: string
+          description: The mapped name of the object as defined in your integration config, if a mapping was applied. Only present when using the installation-scoped metadata endpoint.
+          example: people
+        fields:
+          type: object
+          description: Map of field metadata keyed by field name
+          additionalProperties:
+            $ref: ../manifest/manifest.yaml#/components/schemas/FieldMetadata
+    UpsertMetadataRequest:
+      type: object
+      description: Request payload for upserting metadata (fields only)
+      properties:
+        groupRef:
+          type: string
+          description: The ID that your app uses to identify the group of users for this request.
+          example: group-123
+        fields:
+          type: object
+          description: Maps object names to field definitions
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/FieldDefinition'
+      required:
+      - groupRef
+      - fields
     StringFieldOptions:
       type: object
       description: Additional options for string fields
@@ -635,24 +621,6 @@ components:
         defaultValue:
           type: string
           description: Default value for the field
-    UpsertMetadataRequest:
-      type: object
-      description: Request payload for upserting metadata (fields only)
-      properties:
-        groupRef:
-          type: string
-          description: The ID that your app uses to identify the group of users for this request.
-          example: group-123
-        fields:
-          type: object
-          description: Maps object names to field definitions
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/FieldDefinition'
-      required:
-      - groupRef
-      - fields
     UpsertMetadataResponse:
       type: object
       description: Response containing results for all created/updated fields
@@ -670,6 +638,38 @@ components:
       required:
       - success
       - fields
+    AssociationLabels:
+      type: object
+      description: UI labels for an association
+      properties:
+        singular:
+          type: string
+          description: Singular display label
+        plural:
+          type: string
+          description: Plural display label
+    FieldUpsertResult:
+      type: object
+      description: Result of an upsert operation for a single field
+      properties:
+        fieldName:
+          type: string
+          description: Name of the field
+        action:
+          type: string
+          description: Action taken (create, update, none)
+        metadata:
+          type: object
+          description: Provider-specific metadata about the field
+          additionalProperties: true
+        warnings:
+          type: array
+          description: Warnings that occurred during the upsert operation
+          items:
+            type: string
+      required:
+      - fieldName
+      - action
   securitySchemes:
     APIKeyHeader:
       type: apiKey
