@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/amp-labs/openapi/HEAD/api/api.yaml",
+ "requested_url": "https://raw.githubusercontent.com/amp-labs/openapi/HEAD/api/api.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 271786,
+ "sha256": "f303eb5abbc2acca0ea46e63093d527edd003a68d3e30ea48cb5c5e45901f76c",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.964), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
