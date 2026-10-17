@@ -287,288 +287,6 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    Oauth2AuthorizationCodeTokensOnly:
-      title: OAuth2 AuthorizationCode Token
-      type: object
-      properties:
-        accessToken:
-          type: object
-          required:
-          - token
-          description: The access token for the connection.
-          properties:
-            token:
-              type: string
-            issuedAt:
-              type: string
-              format: date-time
-              example: '2024-04-22T18:55:28.456076Z'
-            expiresAt:
-              type: string
-              format: date-time
-              example: '2024-10-22T18:55:28.456076Z'
-        refreshToken:
-          type: object
-          required:
-          - token
-          description: The refresh token to use for the connection.
-          properties:
-            token:
-              type: string
-            issuedAt:
-              type: string
-              format: date-time
-              example: '2024-04-22T18:55:28.456076Z'
-            expiresAt:
-              type: string
-              format: date-time
-              example: '2024-10-22T18:55:28.456076Z'
-        scopes:
-          type: array
-          items:
-            type: string
-          description: The scopes for the tokens.
-    Connection:
-      title: Connection
-      required:
-      - id
-      - createTime
-      - group
-      - consumer
-      - projectId
-      - provider
-      - authScheme
-      - status
-      type: object
-      properties:
-        id:
-          type: string
-          description: The connection ID.
-          example: connection-123
-        projectId:
-          type: string
-          description: The Ampersand project ID.
-          example: project-456
-        provider:
-          type: string
-          description: The SaaS provider that this Connection is for.
-          example: salesforce
-        providerApp:
-          $ref: '#/components/schemas/ProviderApp'
-        group:
-          $ref: '#/components/schemas/Group'
-        consumer:
-          $ref: '#/components/schemas/Consumer'
-        providerWorkspaceRef:
-          type: string
-          description: If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)
-          example: provider-workspace-123
-        providerConsumerRef:
-          type: string
-          description: If available, the ID that Salesforce/Hubspot uses to identify this user (e.g. Salesforce has IDs in the form of https://login.salesforce.com/id/00D4x0000019CQTEA2/0054x000000orJ4AA)
-          example: provider-consumer-123
-        createTime:
-          type: string
-          description: The time the connection was created.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
-        updateTime:
-          type: string
-          description: The time the connection was last updated.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
-        authScheme:
-          type: string
-          description: The authentication scheme used for this connection.
-          example: oauth2/authorizationCode
-          enum:
-          - none
-          - apiKey
-          - basic
-          - oauth2/authorizationCode
-          - oauth2/authorizationCodePKCE
-          - oauth2/clientCredentials
-          - oauth2/password
-        status:
-          type: string
-          description: 'The status of the connection.
-
-            - `created`: The connection has just been created or the access token was just refreshed.
-
-            - `working`: The connection has successfully been used to make a request.
-
-            - `bad_credentials`: The connection encountered credential-related issues when making a request, or when attempting to refresh the access token.
-
-            '
-          example: working
-          enum:
-          - created
-          - working
-          - bad_credentials
-        oauth2AuthorizationCode:
-          $ref: '#/components/schemas/Oauth2AuthorizationCodeTokensOnly'
-        apiKey:
-          type: string
-          description: The API key used while making the connection.
-          example: api-key-123
-        providerMetadata:
-          $ref: '#/components/schemas/ProviderMetadata'
-    Oauth2AuthorizationCode:
-      title: OAuth2 Authorization Code
-      type: object
-      properties:
-        accessToken:
-          type: object
-          required:
-          - token
-          description: The access token for the connection.
-          properties:
-            token:
-              type: string
-            expiresAt:
-              type: string
-              format: date-time
-            issuedAt:
-              type: string
-              format: date-time
-        refreshToken:
-          type: object
-          required:
-          - token
-          description: The refresh token to use for the connection.
-          properties:
-            token:
-              type: string
-            expiresAt:
-              type: string
-              format: date-time
-            issuedAt:
-              type: string
-              format: date-time
-        scopes:
-          type: array
-          items:
-            type: string
-          description: The scopes for the tokens.
-    ProviderAppMetadata:
-      title: Provider App Metadata
-      type: object
-      description: Provider-specific configuration that extends the standard OAuth flow.
-      properties:
-        authQueryParams:
-          type: object
-          description: Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).
-          additionalProperties:
-            type: array
-            items:
-              type: string
-          example:
-            optional_scope:
-            - automation.sequences.read
-        providerParams:
-          type: object
-          description: Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).
-          additionalProperties:
-            type: string
-          example:
-            packageInstallURL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
-            gcpProjectId: my-gcp-project
-            gcpPubSubTopicName: my-topic
-    Group:
-      title: Group
-      required:
-      - createTime
-      - groupName
-      - groupRef
-      - projectId
-      type: object
-      properties:
-        groupRef:
-          type: string
-          description: The ID of the user group that has access to this installation.
-          example: group-123
-        groupName:
-          type: string
-          description: The name of the user group that has access to this installation.
-          example: Super Customer
-        projectId:
-          type: string
-          description: The Ampersand project ID.
-          example: project-456
-        createTime:
-          type: string
-          description: The time the group was created.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
-        updateTime:
-          type: string
-          description: The time the group was last updated.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
-    Consumer:
-      title: Consumer
-      required:
-      - consumerName
-      - consumerRef
-      - createTime
-      - projectId
-      type: object
-      properties:
-        consumerRef:
-          type: string
-          description: The consumer reference.
-          example: consumer-123
-        consumerName:
-          type: string
-          description: The name of the consumer.
-          example: Super Customer
-        projectId:
-          type: string
-          description: The Ampersand project ID.
-          example: project-456
-        createTime:
-          type: string
-          description: The time the consumer was created.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
-        updateTime:
-          type: string
-          description: The time the consumer was last updated.
-          format: date-time
-          example: 2023-07-13 21:34:44.816354+00:00
-    GenerateConnectionRequest:
-      title: Generate Connection Request
-      allOf:
-      - $ref: '#/components/schemas/ConnectionRequest'
-      - type: object
-        required:
-        - groupRef
-        - consumerRef
-        - provider
-    UpdateConnectionRequest:
-      title: Update Connection Request
-      description: Specify which fields to update in `updateMask` and provide corresponding values in `connection`. Fields in `connection` not listed in `updateMask` are ignored.
-      type: object
-      required:
-      - updateMask
-      - connection
-      properties:
-        updateMask:
-          type: array
-          items:
-            type: string
-            enum:
-            - providerWorkspaceRef
-            - providerMetadata
-            - apiKey
-            - basicAuth
-            - oauth2ClientCredentials
-            - oauth2PasswordCredentials
-          description: Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme.
-          example:
-          - apiKey
-        connection:
-          $ref: '#/components/schemas/ConnectionRequest'
     ConnectionRequest:
       title: Connection Request Body
       type: object
@@ -661,29 +379,74 @@ components:
               description: The scopes for the tokens.
         oauth2AuthorizationCode:
           $ref: '#/components/schemas/Oauth2AuthorizationCode'
-    ProviderMetadataInfo:
-      title: Provider Metadata Info
+    Oauth2AuthorizationCode:
+      title: OAuth2 Authorization Code
       type: object
-      required:
-      - value
-      - source
       properties:
-        value:
-          type: string
-          description: The value of the metadata field
-          example: '1234567890'
-        source:
-          type: string
-          description: The source of the metadata field
-          enum:
-          - input
+        accessToken:
+          type: object
+          required:
           - token
-          - provider
-          example: input
-        displayName:
+          description: The access token for the connection.
+          properties:
+            token:
+              type: string
+            expiresAt:
+              type: string
+              format: date-time
+            issuedAt:
+              type: string
+              format: date-time
+        refreshToken:
+          type: object
+          required:
+          - token
+          description: The refresh token to use for the connection.
+          properties:
+            token:
+              type: string
+            expiresAt:
+              type: string
+              format: date-time
+            issuedAt:
+              type: string
+              format: date-time
+        scopes:
+          type: array
+          items:
+            type: string
+          description: The scopes for the tokens.
+    Group:
+      title: Group
+      required:
+      - createTime
+      - groupName
+      - groupRef
+      - projectId
+      type: object
+      properties:
+        groupRef:
           type: string
-          description: The human-readable name for the field
-          example: Account ID
+          description: The ID of the user group that has access to this installation.
+          example: group-123
+        groupName:
+          type: string
+          description: The name of the user group that has access to this installation.
+          example: Super Customer
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        createTime:
+          type: string
+          description: The time the group was created.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        updateTime:
+          type: string
+          description: The time the group was last updated.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
     ProviderApp:
       title: Provider App
       required:
@@ -733,11 +496,248 @@ components:
           type: string
           description: The time the provider app was updated.
           format: date-time
+    Connection:
+      title: Connection
+      required:
+      - id
+      - createTime
+      - group
+      - consumer
+      - projectId
+      - provider
+      - authScheme
+      - status
+      type: object
+      properties:
+        id:
+          type: string
+          description: The connection ID.
+          example: connection-123
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        provider:
+          type: string
+          description: The SaaS provider that this Connection is for.
+          example: salesforce
+        providerApp:
+          $ref: '#/components/schemas/ProviderApp'
+        group:
+          $ref: '#/components/schemas/Group'
+        consumer:
+          $ref: '#/components/schemas/Consumer'
+        providerWorkspaceRef:
+          type: string
+          description: If available, the identifier for the provider workspace (e.g. the Salesforce subdomain)
+          example: provider-workspace-123
+        providerConsumerRef:
+          type: string
+          description: If available, the ID that Salesforce/Hubspot uses to identify this user (e.g. Salesforce has IDs in the form of https://login.salesforce.com/id/00D4x0000019CQTEA2/0054x000000orJ4AA)
+          example: provider-consumer-123
+        createTime:
+          type: string
+          description: The time the connection was created.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        updateTime:
+          type: string
+          description: The time the connection was last updated.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        authScheme:
+          type: string
+          description: The authentication scheme used for this connection.
+          example: oauth2/authorizationCode
+          enum:
+          - none
+          - apiKey
+          - basic
+          - oauth2/authorizationCode
+          - oauth2/authorizationCodePKCE
+          - oauth2/clientCredentials
+          - oauth2/password
+        status:
+          type: string
+          description: 'The status of the connection.
+
+            - `created`: The connection has just been created or the access token was just refreshed.
+
+            - `working`: The connection has successfully been used to make a request.
+
+            - `bad_credentials`: The connection encountered credential-related issues when making a request, or when attempting to refresh the access token.
+
+            '
+          example: working
+          enum:
+          - created
+          - working
+          - bad_credentials
+        oauth2AuthorizationCode:
+          $ref: '#/components/schemas/Oauth2AuthorizationCodeTokensOnly'
+        apiKey:
+          type: string
+          description: The API key used while making the connection.
+          example: api-key-123
+        providerMetadata:
+          $ref: '#/components/schemas/ProviderMetadata'
+    GenerateConnectionRequest:
+      title: Generate Connection Request
+      allOf:
+      - $ref: '#/components/schemas/ConnectionRequest'
+      - type: object
+        required:
+        - groupRef
+        - consumerRef
+        - provider
     ProviderMetadata:
       title: Provider Metadata
       type: object
       additionalProperties:
         $ref: '#/components/schemas/ProviderMetadataInfo'
+    ProviderAppMetadata:
+      title: Provider App Metadata
+      type: object
+      description: Provider-specific configuration that extends the standard OAuth flow.
+      properties:
+        authQueryParams:
+          type: object
+          description: Additional query parameters to include in the OAuth authorization URL (e.g., optional_scope for HubSpot).
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            optional_scope:
+            - automation.sequences.read
+        providerParams:
+          type: object
+          description: Provider-specific string values keyed by names (e.g., packageInstallURL for Salesforce, gcpProjectId and gcpPubSubTopicName for Gmail).
+          additionalProperties:
+            type: string
+          example:
+            packageInstallURL: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789
+            gcpProjectId: my-gcp-project
+            gcpPubSubTopicName: my-topic
+    Oauth2AuthorizationCodeTokensOnly:
+      title: OAuth2 AuthorizationCode Token
+      type: object
+      properties:
+        accessToken:
+          type: object
+          required:
+          - token
+          description: The access token for the connection.
+          properties:
+            token:
+              type: string
+            issuedAt:
+              type: string
+              format: date-time
+              example: '2024-04-22T18:55:28.456076Z'
+            expiresAt:
+              type: string
+              format: date-time
+              example: '2024-10-22T18:55:28.456076Z'
+        refreshToken:
+          type: object
+          required:
+          - token
+          description: The refresh token to use for the connection.
+          properties:
+            token:
+              type: string
+            issuedAt:
+              type: string
+              format: date-time
+              example: '2024-04-22T18:55:28.456076Z'
+            expiresAt:
+              type: string
+              format: date-time
+              example: '2024-10-22T18:55:28.456076Z'
+        scopes:
+          type: array
+          items:
+            type: string
+          description: The scopes for the tokens.
+    Consumer:
+      title: Consumer
+      required:
+      - consumerName
+      - consumerRef
+      - createTime
+      - projectId
+      type: object
+      properties:
+        consumerRef:
+          type: string
+          description: The consumer reference.
+          example: consumer-123
+        consumerName:
+          type: string
+          description: The name of the consumer.
+          example: Super Customer
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+          example: project-456
+        createTime:
+          type: string
+          description: The time the consumer was created.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+        updateTime:
+          type: string
+          description: The time the consumer was last updated.
+          format: date-time
+          example: 2023-07-13 21:34:44.816354+00:00
+    UpdateConnectionRequest:
+      title: Update Connection Request
+      description: Specify which fields to update in `updateMask` and provide corresponding values in `connection`. Fields in `connection` not listed in `updateMask` are ignored.
+      type: object
+      required:
+      - updateMask
+      - connection
+      properties:
+        updateMask:
+          type: array
+          items:
+            type: string
+            enum:
+            - providerWorkspaceRef
+            - providerMetadata
+            - apiKey
+            - basicAuth
+            - oauth2ClientCredentials
+            - oauth2PasswordCredentials
+          description: Fields to update. Each entry must have a corresponding value in `connection`. Credential fields (`apiKey`, `basicAuth`, `oauth2ClientCredentials`, `oauth2PasswordCredentials`) must match the connection's existing auth scheme.
+          example:
+          - apiKey
+        connection:
+          $ref: '#/components/schemas/ConnectionRequest'
+    ProviderMetadataInfo:
+      title: Provider Metadata Info
+      type: object
+      required:
+      - value
+      - source
+      properties:
+        value:
+          type: string
+          description: The value of the metadata field
+          example: '1234567890'
+        source:
+          type: string
+          description: The source of the metadata field
+          enum:
+          - input
+          - token
+          - provider
+          example: input
+        displayName:
+          type: string
+          description: The human-readable name for the field
+          example: Account ID
   securitySchemes:
     APIKeyHeader:
       type: apiKey

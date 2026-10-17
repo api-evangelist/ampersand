@@ -467,40 +467,23 @@ paths:
                 $ref: ../problem/problem.yaml#/components/schemas/ApiProblem
 components:
   schemas:
-    AssociationDefinition:
+    UpsertMetadataResponse:
       type: object
-      description: Relationship information for a field to another object
+      description: Response containing results for all created/updated fields
       properties:
-        associationType:
-          type: string
-          description: High-level association variety (e.g., 'foreignKey', 'lookup', 'ref')
-          example: foreignKey
-        targetObject:
-          type: string
-          description: Name of the referenced/parent object
-          example: Account
-        targetField:
-          type: string
-          description: Name of the referenced field on the target object
-        cardinality:
-          type: string
-          description: Association cardinality from the referencing field's perspective
-          example: many-to-one
-        onDelete:
-          type: string
-          description: Behavior upon foreign object deletion
-          example: setNull
-        required:
+        success:
           type: boolean
-          description: If true, a referenced record must exist
-        reverseLookupFieldName:
-          type: string
-          description: Optional inverse relationship/property name exposed on the target object
-        labels:
-          $ref: '#/components/schemas/AssociationLabels'
+          description: Indicates if the upsert operation was successful
+        fields:
+          type: object
+          description: Maps object name -> field name -> upsert result
+          additionalProperties:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/FieldUpsertResult'
       required:
-      - associationType
-      - targetObject
+      - success
+      - fields
     NumericFieldOptions:
       type: object
       description: Additional options for numeric fields
@@ -558,6 +541,59 @@ components:
       - fieldName
       - displayName
       - valueType
+    StringFieldOptions:
+      type: object
+      description: Additional options for string fields
+      properties:
+        length:
+          type: integer
+          description: Maximum length of the string field
+        pattern:
+          type: string
+          description: Regex pattern that the string field value must match
+        values:
+          type: array
+          description: List of allowed values for enum fields
+          items:
+            type: string
+        valuesRestricted:
+          type: boolean
+          description: Indicates if the field value must be limited to what's in Values
+        defaultValue:
+          type: string
+          description: Default value for the field
+    FieldUpsertResult:
+      type: object
+      description: Result of an upsert operation for a single field
+      properties:
+        fieldName:
+          type: string
+          description: Name of the field
+        action:
+          type: string
+          description: Action taken (create, update, none)
+        metadata:
+          type: object
+          description: Provider-specific metadata about the field
+          additionalProperties: true
+        warnings:
+          type: array
+          description: Warnings that occurred during the upsert operation
+          items:
+            type: string
+      required:
+      - fieldName
+      - action
+    AssociationLabels:
+      type: object
+      description: UI labels for an association
+      properties:
+        singular:
+          type: string
+          description: Singular display label
+        plural:
+          type: string
+          description: Plural display label
     ObjectMetadata:
       title: Object Metadata
       type: object
@@ -582,6 +618,40 @@ components:
           description: Map of field metadata keyed by field name
           additionalProperties:
             $ref: ../manifest/manifest.yaml#/components/schemas/FieldMetadata
+    AssociationDefinition:
+      type: object
+      description: Relationship information for a field to another object
+      properties:
+        associationType:
+          type: string
+          description: High-level association variety (e.g., 'foreignKey', 'lookup', 'ref')
+          example: foreignKey
+        targetObject:
+          type: string
+          description: Name of the referenced/parent object
+          example: Account
+        targetField:
+          type: string
+          description: Name of the referenced field on the target object
+        cardinality:
+          type: string
+          description: Association cardinality from the referencing field's perspective
+          example: many-to-one
+        onDelete:
+          type: string
+          description: Behavior upon foreign object deletion
+          example: setNull
+        required:
+          type: boolean
+          description: If true, a referenced record must exist
+        reverseLookupFieldName:
+          type: string
+          description: Optional inverse relationship/property name exposed on the target object
+        labels:
+          $ref: '#/components/schemas/AssociationLabels'
+      required:
+      - associationType
+      - targetObject
     UpsertMetadataRequest:
       type: object
       description: Request payload for upserting metadata (fields only)
@@ -600,76 +670,6 @@ components:
       required:
       - groupRef
       - fields
-    StringFieldOptions:
-      type: object
-      description: Additional options for string fields
-      properties:
-        length:
-          type: integer
-          description: Maximum length of the string field
-        pattern:
-          type: string
-          description: Regex pattern that the string field value must match
-        values:
-          type: array
-          description: List of allowed values for enum fields
-          items:
-            type: string
-        valuesRestricted:
-          type: boolean
-          description: Indicates if the field value must be limited to what's in Values
-        defaultValue:
-          type: string
-          description: Default value for the field
-    UpsertMetadataResponse:
-      type: object
-      description: Response containing results for all created/updated fields
-      properties:
-        success:
-          type: boolean
-          description: Indicates if the upsert operation was successful
-        fields:
-          type: object
-          description: Maps object name -> field name -> upsert result
-          additionalProperties:
-            type: object
-            additionalProperties:
-              $ref: '#/components/schemas/FieldUpsertResult'
-      required:
-      - success
-      - fields
-    AssociationLabels:
-      type: object
-      description: UI labels for an association
-      properties:
-        singular:
-          type: string
-          description: Singular display label
-        plural:
-          type: string
-          description: Plural display label
-    FieldUpsertResult:
-      type: object
-      description: Result of an upsert operation for a single field
-      properties:
-        fieldName:
-          type: string
-          description: Name of the field
-        action:
-          type: string
-          description: Action taken (create, update, none)
-        metadata:
-          type: object
-          description: Provider-specific metadata about the field
-          additionalProperties: true
-        warnings:
-          type: array
-          description: Warnings that occurred during the upsert operation
-          items:
-            type: string
-      required:
-      - fieldName
-      - action
   securitySchemes:
     APIKeyHeader:
       type: apiKey

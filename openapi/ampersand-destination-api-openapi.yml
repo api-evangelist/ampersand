@@ -791,6 +791,34 @@ components:
           type: string
           format: date-time
           description: The time when the topic destination route was created.
+    Topic:
+      title: Topic
+      required:
+      - id
+      - name
+      - projectId
+      - createTime
+      type: object
+      properties:
+        id:
+          type: string
+          description: The topic ID.
+        name:
+          type: string
+          description: The name of the topic. Must contain only letters, numbers, and dashes.
+          example: system-alerts
+          maxLength: 64
+        projectId:
+          type: string
+          description: The Ampersand project ID.
+        createTime:
+          type: string
+          format: date-time
+          description: The time when the topic was created.
+        updateTime:
+          type: string
+          format: date-time
+          description: The time when the topic was last updated.
     WebhookHeaders:
       title: Webhook Headers
       type:
@@ -851,34 +879,6 @@ components:
           type: string
           description: The time the destination was updated.
           format: date-time
-    Topic:
-      title: Topic
-      required:
-      - id
-      - name
-      - projectId
-      - createTime
-      type: object
-      properties:
-        id:
-          type: string
-          description: The topic ID.
-        name:
-          type: string
-          description: The name of the topic. Must contain only letters, numbers, and dashes.
-          example: system-alerts
-          maxLength: 64
-        projectId:
-          type: string
-          description: The Ampersand project ID.
-        createTime:
-          type: string
-          format: date-time
-          description: The time when the topic was created.
-        updateTime:
-          type: string
-          format: date-time
-          description: The time when the topic was last updated.
   securitySchemes:
     APIKeyHeader:
       type: apiKey
