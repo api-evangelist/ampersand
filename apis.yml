@@ -353,6 +353,8 @@ apis:
   - type: Authentication
     url: https://docs.withampersand.com/reference/authentication
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/ampersand/overview
 - type: Plans
   url: plans/ampersand-plans-pricing.yml
 - type: RateLimits
