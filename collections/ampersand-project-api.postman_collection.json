@@ -1,536 +1,494 @@
 {
+  "info": {
+    "_postman_id": "e16be1c3-a4e5-4222-8727-311a1743c344",
+    "name": "Ampersand public Project API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:14:57.000Z",
+    "updatedAt": "2026-10-21T21:14:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e16be1c3-a4e5-4222-8727-311a1743c344"
+  },
   "item": [
     {
-      "id": "cd947b72-5168-47f3-ab06-56b5efeb1549",
-      "name": "Project",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "projects",
       "item": [
         {
-          "id": "614985d0-42dd-4b47-b033-1a1d02a7e76f",
-          "name": "Ampersand List Projects",
-          "request": {
-            "name": "Ampersand List Projects",
-            "description": {
-              "content": "Lists projects your credentials can access.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{projectIdOrName}",
+          "item": [
             {
-              "id": "84ccc5df-07a1-4294-9271-57f6089e176f",
-              "name": "List of projects",
-              "originalRequest": {
+              "name": "Ampersand Get a Project",
+              "id": "150b337e-9123-49b8-8280-376c31adfe49",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "projects"
-                  ],
+                  "raw": "{{baseUrl}}/projects/:projectIdOrName?includeEntitlements=false",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "projects",
+                    ":projectIdOrName"
+                  ],
+                  "query": [
+                    {
+                      "description": "If true, the response includes the project's entitlements (plan-based feature flags). Defaults to false.",
+                      "key": "includeEntitlements",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "a1c6f781-1913-4da8-9599-9a7e72da8252",
+                      "key": "projectIdOrName",
+                      "value": "<string>",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    }
+                  ]
                 },
+                "description": "Get a project by its ID or name."
+              },
+              "response": [
+                {
+                  "id": "d829e12f-74be-450b-95c8-ff38f2e8f167",
+                  "name": "The requested project.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Api-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName?includeEntitlements=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, the response includes the project's entitlements (plan-based feature flags). Defaults to false.",
+                          "key": "includeEntitlements",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectIdOrName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"appName\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"updateTime\": \"<dateTime>\",\n  \"entitlements\": {\n    \"brandingRemoval\": {\n      \"value\": \"<boolean>\"\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T21:14:58.000Z",
+                  "updatedAt": "2026-10-21T21:14:58.000Z",
+                  "uid": "35240-d829e12f-74be-450b-95c8-ff38f2e8f167"
+                },
+                {
+                  "id": "034c578b-0057-4c5d-8d2b-0bb1888c83a7",
+                  "name": "Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/problem+json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Api-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName?includeEntitlements=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, the response includes the project's entitlements (plan-based feature flags). Defaults to false.",
+                          "key": "includeEntitlements",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectIdOrName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/problem+json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                  "createdAt": "2026-10-21T21:14:58.000Z",
+                  "updatedAt": "2026-10-21T21:14:58.000Z",
+                  "uid": "35240-034c578b-0057-4c5d-8d2b-0bb1888c83a7"
+                }
+              ],
+              "createdAt": "2026-10-21T21:14:58.000Z",
+              "updatedAt": "2026-10-21T21:14:58.000Z",
+              "uid": "35240-150b337e-9123-49b8-8280-376c31adfe49"
+            },
+            {
+              "name": "Ampersand Update a Project",
+              "id": "0f009656-75a3-4fb6-a876-5de8ebe99d3a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": {\n    \"appName\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"updateMask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/:projectIdOrName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":projectIdOrName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ee48dfe0-307c-4f08-b88a-2d9cfa94c45a",
+                      "key": "projectIdOrName",
+                      "value": "<string>",
+                      "description": "(Required) The Ampersand project ID or project name."
+                    }
+                  ]
+                },
+                "description": "Update a project's mutable fields using field masks. Currently, the updatable fields are `appName` (the display name shown to end users) and `name` (the unique project identifier)."
+              },
+              "response": [
+                {
+                  "id": "f04076c8-aff8-482a-9b1d-6cd313bab565",
+                  "name": "The updated project.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Api-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"project\": {\n    \"appName\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"updateMask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectIdOrName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"appName\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"updateTime\": \"<dateTime>\",\n  \"entitlements\": {\n    \"brandingRemoval\": {\n      \"value\": \"<boolean>\"\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T21:14:58.000Z",
+                  "updatedAt": "2026-10-21T21:14:58.000Z",
+                  "uid": "35240-f04076c8-aff8-482a-9b1d-6cd313bab565"
+                },
+                {
+                  "id": "57a55590-cc0d-46ca-922a-094d09c1b90c",
+                  "name": "Error",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/problem+json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Api-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"project\": {\n    \"appName\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"updateMask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectIdOrName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/problem+json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                  "createdAt": "2026-10-21T21:14:58.000Z",
+                  "updatedAt": "2026-10-21T21:14:58.000Z",
+                  "uid": "35240-57a55590-cc0d-46ca-922a-094d09c1b90c"
+                }
+              ],
+              "createdAt": "2026-10-21T21:14:58.000Z",
+              "updatedAt": "2026-10-21T21:14:58.000Z",
+              "uid": "35240-0f009656-75a3-4fb6-a876-5de8ebe99d3a"
+            }
+          ],
+          "id": "f90e714f-1f18-4935-9e5f-8fe04238e955",
+          "createdAt": "2026-10-21T21:14:57.000Z",
+          "updatedAt": "2026-10-21T21:14:57.000Z",
+          "uid": "35240-f90e714f-1f18-4935-9e5f-8fe04238e955"
+        },
+        {
+          "name": "Ampersand List Projects",
+          "id": "245b5d8c-053d-47ed-965a-8eb766768763",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "Lists projects your credentials can access."
+          },
+          "response": [
+            {
+              "id": "3215ffbb-b4e9-4dc8-ac67-cb0d87de31cc",
+              "name": "List of projects",
+              "originalRequest": {
                 "method": "GET",
-                "body": {}
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"appName\": \"MailMonkey\",\n    \"createTime\": \"1950-09-18T05:09:23.166Z\",\n    \"id\": \"proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n    \"name\": \"mailmonkey-staging\",\n    \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n    \"updateTime\": \"1981-03-20T19:58:14.216Z\",\n    \"entitlements\": {\n      \"brandingRemoval\": {\n        \"value\": false\n      }\n    }\n  },\n  {\n    \"appName\": \"MailMonkey\",\n    \"createTime\": \"1983-05-25T18:29:57.021Z\",\n    \"id\": \"proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n    \"name\": \"mailmonkey-staging\",\n    \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n    \"updateTime\": \"2021-04-08T15:26:22.954Z\",\n    \"entitlements\": {\n      \"brandingRemoval\": {\n        \"value\": true\n      }\n    }\n  }\n]",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "[\n  {\n    \"appName\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"orgId\": \"<string>\",\n    \"updateTime\": \"<dateTime>\",\n    \"entitlements\": {\n      \"brandingRemoval\": {\n        \"value\": \"<boolean>\"\n      }\n    }\n  },\n  {\n    \"appName\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"orgId\": \"<string>\",\n    \"updateTime\": \"<dateTime>\",\n    \"entitlements\": {\n      \"brandingRemoval\": {\n        \"value\": \"<boolean>\"\n      }\n    }\n  }\n]",
+              "createdAt": "2026-10-21T21:14:58.000Z",
+              "updatedAt": "2026-10-21T21:14:58.000Z",
+              "uid": "35240-3215ffbb-b4e9-4dc8-ac67-cb0d87de31cc"
             },
             {
-              "id": "d23c0583-7634-4062-aee3-c345cb70529e",
+              "id": "a997d444-2700-4e34-a383-6c9d36486989",
               "name": "Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/problem+json"
                 }
               ],
-              "body": "{}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+              "createdAt": "2026-10-21T21:14:58.000Z",
+              "updatedAt": "2026-10-21T21:14:58.000Z",
+              "uid": "35240-a997d444-2700-4e34-a383-6c9d36486989"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T21:14:58.000Z",
+          "updatedAt": "2026-10-21T21:14:58.000Z",
+          "uid": "35240-245b5d8c-053d-47ed-965a-8eb766768763"
         },
         {
-          "id": "95804f93-4255-46f3-aa83-7438f6517600",
           "name": "Ampersand Create a New Project",
+          "id": "1c79e58c-29c6-4760-a1f8-5c02f204dc6e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Ampersand Create a New Project",
-            "description": {
-              "content": "Creates a new project within an organization. A project is a container for provider apps, integrations, and connections.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
             "auth": {
               "type": "bearer",
               "bearer": [
                 {
                   "key": "token",
-                  "value": "{{bearerToken}}"
+                  "value": "{{bearerToken}}",
+                  "type": "string"
                 }
               ]
             },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"appName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "688da105-5f82-494b-b97c-b8c478931f35",
-              "name": "The newly created project.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"appName\": \"MailMonkey\",\n  \"name\": \"mailmonkey-staging\",\n  \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"appName\": \"MailMonkey\",\n  \"createTime\": \"1985-04-12T01:55:13.694Z\",\n  \"id\": \"proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n  \"name\": \"mailmonkey-staging\",\n  \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n  \"updateTime\": \"2023-05-16T18:41:43.538Z\",\n  \"entitlements\": {\n    \"brandingRemoval\": {\n      \"value\": true\n    }\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b912d7ca-ccbc-4c28-a1be-8f76e4f58c96",
-              "name": "Unprocessable Entity — the request body failed validation (e.g. invalid characters in project name, missing required fields).",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"appName\": \"MailMonkey\",\n  \"name\": \"mailmonkey-staging\",\n  \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "50aa717b-deeb-4002-bfdc-337d7d5e060f",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"appName\": \"MailMonkey\",\n  \"name\": \"mailmonkey-staging\",\n  \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e3cd491c-ae02-42f6-852f-a284bbabe291",
-          "name": "Ampersand Get a Project",
-          "request": {
-            "name": "Ampersand Get a Project",
-            "description": {
-              "content": "Get a project by its ID or name.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "includeEntitlements",
-                  "value": "false",
-                  "description": "If true, the response includes the project's entitlements (plan-based feature flags). Defaults to false."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "bc28e226-79a4-4822-8e77-0ceb1ad44c86",
-              "name": "The requested project.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "includeEntitlements",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"appName\": \"MailMonkey\",\n  \"createTime\": \"1985-04-12T01:55:13.694Z\",\n  \"id\": \"proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n  \"name\": \"mailmonkey-staging\",\n  \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n  \"updateTime\": \"2023-05-16T18:41:43.538Z\",\n  \"entitlements\": {\n    \"brandingRemoval\": {\n      \"value\": true\n    }\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b13a7745-55a9-4933-9539-9c20e42cd927",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "includeEntitlements",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e2ddee4b-9a9d-4ad6-a281-d972853b4b71",
-          "name": "Ampersand Update a Project",
-          "request": {
-            "name": "Ampersand Update a Project",
-            "description": {
-              "content": "Update a project's mutable fields using field masks. Currently, the updatable fields are `appName` (the display name shown to end users) and `name` (the unique project identifier).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                }
-              ]
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -541,155 +499,206 @@
                 "value": "application/json"
               }
             ],
-            "method": "PATCH",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"project\": {\n    \"appName\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"updateMask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "raw": "{\n  \"appName\": \"<string>\",\n  \"name\": \"zF9c-hDWQWO\",\n  \"orgId\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "Creates a new project within an organization. A project is a container for provider apps, integrations, and connections."
           },
           "response": [
             {
-              "id": "c47c63d4-d987-447e-80ec-30a66df78964",
-              "name": "The updated project.",
+              "id": "5010a006-d195-4bdb-bf2e-8be89d43bab7",
+              "name": "The newly created project.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"appName\"\n  ],\n  \"project\": {\n    \"appName\": \"MailMonkey Pro\"\n  }\n}",
+                  "raw": "{\n  \"appName\": \"<string>\",\n  \"name\": \"zF9c-hDWQWO\",\n  \"orgId\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
                 }
               },
-              "status": "OK",
-              "code": 200,
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"appName\": \"MailMonkey\",\n  \"createTime\": \"1985-04-12T01:55:13.694Z\",\n  \"id\": \"proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n  \"name\": \"mailmonkey-staging\",\n  \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n  \"updateTime\": \"2023-05-16T18:41:43.538Z\",\n  \"entitlements\": {\n    \"brandingRemoval\": {\n      \"value\": true\n    }\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"appName\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"updateTime\": \"<dateTime>\",\n  \"entitlements\": {\n    \"brandingRemoval\": {\n      \"value\": \"<boolean>\"\n    }\n  }\n}",
+              "createdAt": "2026-10-21T21:14:58.000Z",
+              "updatedAt": "2026-10-21T21:14:58.000Z",
+              "uid": "35240-5010a006-d195-4bdb-bf2e-8be89d43bab7"
             },
             {
-              "id": "d1af2f16-67de-4d90-bfc0-8309404e4bc7",
-              "name": "Error",
+              "id": "377666ee-90f9-485f-962e-00c3171bd49d",
+              "name": "Unprocessable Entity \u2014 the request body failed validation (e.g. invalid characters in project name, missing required fields).",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"appName\"\n  ],\n  \"project\": {\n    \"appName\": \"MailMonkey Pro\"\n  }\n}",
+                  "raw": "{\n  \"appName\": \"<string>\",\n  \"name\": \"zF9c-hDWQWO\",\n  \"orgId\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
                 }
               },
-              "status": "Internal Server Error",
-              "code": 500,
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/problem+json"
                 }
               ],
-              "body": "{}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+              "createdAt": "2026-10-21T21:14:58.000Z",
+              "updatedAt": "2026-10-21T21:14:58.000Z",
+              "uid": "35240-377666ee-90f9-485f-962e-00c3171bd49d"
+            },
+            {
+              "id": "702ee853-d894-4bbc-961c-df78a3258784",
+              "name": "Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appName\": \"<string>\",\n  \"name\": \"zF9c-hDWQWO\",\n  \"orgId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+              "createdAt": "2026-10-21T21:14:58.000Z",
+              "updatedAt": "2026-10-21T21:14:58.000Z",
+              "uid": "35240-702ee853-d894-4bbc-961c-df78a3258784"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T21:14:58.000Z",
+          "updatedAt": "2026-10-21T21:14:58.000Z",
+          "uid": "35240-1c79e58c-29c6-4760-a1f8-5c02f204dc6e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.withampersand.com/v1",
-      "key": "baseUrl"
+      "id": "f2dd7cde-87f7-483c-9839-6150408adcaa",
+      "createdAt": "2026-10-21T21:14:57.000Z",
+      "updatedAt": "2026-10-21T21:14:57.000Z",
+      "uid": "35240-f2dd7cde-87f7-483c-9839-6150408adcaa"
     }
   ],
   "auth": {
@@ -697,25 +706,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Api-Key"
+        "value": "X-Api-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "3067d926-cc48-4517-80aa-ec8b0c59f58b",
-    "name": "Ampersand public API Key Project API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.withampersand.com/v1"
     }
-  }
+  ]
 }

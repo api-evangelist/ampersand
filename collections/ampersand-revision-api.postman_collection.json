@@ -1,601 +1,609 @@
 {
+  "info": {
+    "_postman_id": "4019d536-89e0-49e9-8ebe-4ec8ecfabae6",
+    "name": "Ampersand public Revision API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:15:07.000Z",
+    "updatedAt": "2026-10-21T21:15:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4019d536-89e0-49e9-8ebe-4ec8ecfabae6"
+  },
   "item": [
     {
-      "id": "bbc3aabb-7133-4a08-b378-c21ac1dd349f",
-      "name": "Revision",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "projects",
       "item": [
         {
-          "id": "88260b07-8fad-453e-9c46-15374ff34644",
-          "name": "Ampersand Create a New Revision.",
-          "request": {
-            "name": "Ampersand Create a New Revision.",
-            "description": {
-              "content": "We recommend using the [CLI's deploy command](https://docs.withampersand.com/cli/overview#deploy-integrations) rather than this API endpoint directly, unless you have an advanced use case.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "integrations",
-                ":integrationId",
-                "revisions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "destructive",
-                  "value": "<boolean>",
-                  "description": "Defaults to false. This flag controls whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "integrationId",
-                  "description": "(Required) The integration ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/problem+json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"sourceZipUrl\": \"<string>\",\n  \"sourceYaml\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "{projectIdOrName}",
+          "item": [
             {
-              "id": "e2bf2f8b-3c3a-4cf5-96ec-cdb5e6965e09",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "revisions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "destructive",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"sourceZipUrl\": \"https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip\",\n  \"sourceYaml\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
+              "name": "integrations",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "{integrationId}",
+                  "item": [
+                    {
+                      "name": "revisions",
+                      "item": [
+                        {
+                          "name": "{revisionId}:hydrate",
+                          "item": [
+                            {
+                              "name": "Ampersand Get a Hydrated Revision",
+                              "id": "7a5d1330-ed35-4c3c-bd0a-9c460083831f",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/revisions/{{revisionId}}:hydrate?connectionId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectIdOrName",
+                                    "integrations",
+                                    ":integrationId",
+                                    "revisions",
+                                    "{{revisionId}}:hydrate"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The ID of the consumer's connection to the SaaS provider. This connection's credentials are used to fetch field metadata from the provider's API.",
+                                      "key": "connectionId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "068341e9-a29b-447d-acd0-a64d5b9d2a12",
+                                      "key": "projectIdOrName",
+                                      "value": "<string>",
+                                      "description": "(Required) The Ampersand project ID or project name."
+                                    },
+                                    {
+                                      "id": "4bbec1de-40fe-4115-9fdf-b73fb4972872",
+                                      "key": "integrationId",
+                                      "value": "<string>",
+                                      "description": "(Required) The integration ID."
+                                    }
+                                  ]
+                                },
+                                "description": "Returns the integration revision enriched with live field metadata from the consumer's connected SaaS instance, such as available fields, display names, and type for each object defined in the integration."
+                              },
+                              "response": [
+                                {
+                                  "id": "550196d0-167c-4f53-bdb7-1a9bf673bd7d",
+                                  "name": "Hydrated revision.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "X-Api-Key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/revisions/{{revisionId}}:hydrate?connectionId=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectIdOrName",
+                                        "integrations",
+                                        ":integrationId",
+                                        "revisions",
+                                        "{{revisionId}}:hydrate"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The ID of the consumer's connection to the SaaS provider. This connection's credentials are used to fetch field metadata from the provider's API.",
+                                          "key": "connectionId",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectIdOrName"
+                                        },
+                                        {
+                                          "key": "integrationId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"content\": {\n    \"value\": \"reference ../manifest/manifest.yaml#/components/schemas/HydratedIntegration not found in the OpenAPI spec\"\n  },\n  \"createTime\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"specVersion\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-21T21:15:08.000Z",
+                                  "updatedAt": "2026-10-21T21:15:08.000Z",
+                                  "uid": "35240-550196d0-167c-4f53-bdb7-1a9bf673bd7d"
+                                },
+                                {
+                                  "id": "9c57480e-65c6-4b06-9df6-12859845ca9d",
+                                  "name": "Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/problem+json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "X-Api-Key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/revisions/{{revisionId}}:hydrate?connectionId=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectIdOrName",
+                                        "integrations",
+                                        ":integrationId",
+                                        "revisions",
+                                        "{{revisionId}}:hydrate"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The ID of the consumer's connection to the SaaS provider. This connection's credentials are used to fetch field metadata from the provider's API.",
+                                          "key": "connectionId",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectIdOrName"
+                                        },
+                                        {
+                                          "key": "integrationId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/problem+json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                                  "createdAt": "2026-10-21T21:15:08.000Z",
+                                  "updatedAt": "2026-10-21T21:15:08.000Z",
+                                  "uid": "35240-9c57480e-65c6-4b06-9df6-12859845ca9d"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T21:15:08.000Z",
+                              "updatedAt": "2026-10-21T21:15:08.000Z",
+                              "uid": "35240-7a5d1330-ed35-4c3c-bd0a-9c460083831f"
+                            }
+                          ],
+                          "id": "d2446200-05cf-4b24-bfe9-8603ac3e1c7b",
+                          "createdAt": "2026-10-21T21:15:08.000Z",
+                          "updatedAt": "2026-10-21T21:15:08.000Z",
+                          "uid": "35240-d2446200-05cf-4b24-bfe9-8603ac3e1c7b"
+                        },
+                        {
+                          "name": "Ampersand Create a New Revision",
+                          "id": "c6b79e83-b5bb-4573-8934-567e8dd75baf",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"sourceZipUrl\": \"<string>\",\n  \"sourceYaml\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/revisions?destructive=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "integrations",
+                                ":integrationId",
+                                "revisions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Defaults to false. This flag controls whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision.",
+                                  "key": "destructive",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "19ae633e-56c8-46fb-97c5-fab6ab629305",
+                                  "key": "projectIdOrName",
+                                  "value": "<string>",
+                                  "description": "(Required) The Ampersand project ID or project name."
+                                },
+                                {
+                                  "id": "3510b841-765d-4a87-a232-a4e86a6557b5",
+                                  "key": "integrationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The integration ID."
+                                }
+                              ]
+                            },
+                            "description": "We recommend using the CLI's deploy command rather than this API endpoint directly, unless you have an advanced use case."
+                          },
+                          "response": [
+                            {
+                              "id": "5f3b2fd1-377c-4484-ab33-6936c5ddda26",
+                              "name": "Created",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"sourceZipUrl\": \"<string>\",\n  \"sourceYaml\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/revisions?destructive=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectIdOrName",
+                                    "integrations",
+                                    ":integrationId",
+                                    "revisions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Defaults to false. This flag controls whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision.",
+                                      "key": "destructive",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectIdOrName"
+                                    },
+                                    {
+                                      "key": "integrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:15:08.000Z",
+                              "updatedAt": "2026-10-21T21:15:08.000Z",
+                              "uid": "35240-5f3b2fd1-377c-4484-ab33-6936c5ddda26"
+                            },
+                            {
+                              "id": "0a208667-ee1c-49e4-b4de-b5617098c0b7",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/problem+json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"sourceZipUrl\": \"<string>\",\n  \"sourceYaml\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/revisions?destructive=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectIdOrName",
+                                    "integrations",
+                                    ":integrationId",
+                                    "revisions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Defaults to false. This flag controls whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision.",
+                                      "key": "destructive",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectIdOrName"
+                                    },
+                                    {
+                                      "key": "integrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/problem+json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                              "createdAt": "2026-10-21T21:15:08.000Z",
+                              "updatedAt": "2026-10-21T21:15:08.000Z",
+                              "uid": "35240-0a208667-ee1c-49e4-b4de-b5617098c0b7"
+                            },
+                            {
+                              "id": "0cd589a8-fc4f-4255-a72c-67e5dc2c363d",
+                              "name": "Unprocessable Entity",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/problem+json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"sourceZipUrl\": \"<string>\",\n  \"sourceYaml\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/revisions?destructive=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectIdOrName",
+                                    "integrations",
+                                    ":integrationId",
+                                    "revisions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Defaults to false. This flag controls whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision.",
+                                      "key": "destructive",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectIdOrName"
+                                    },
+                                    {
+                                      "key": "integrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/problem+json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                              "createdAt": "2026-10-21T21:15:08.000Z",
+                              "updatedAt": "2026-10-21T21:15:08.000Z",
+                              "uid": "35240-0cd589a8-fc4f-4255-a72c-67e5dc2c363d"
+                            },
+                            {
+                              "id": "fd266e74-b596-42ae-8b53-4f9a020dbc6f",
+                              "name": "Error",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/problem+json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"sourceZipUrl\": \"<string>\",\n  \"sourceYaml\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/revisions?destructive=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectIdOrName",
+                                    "integrations",
+                                    ":integrationId",
+                                    "revisions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Defaults to false. This flag controls whether to perform destructive actions when deploying integrations, like pausing all read actions for an object that was removed in the latest revision.",
+                                      "key": "destructive",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectIdOrName"
+                                    },
+                                    {
+                                      "key": "integrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/problem+json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                              "createdAt": "2026-10-21T21:15:08.000Z",
+                              "updatedAt": "2026-10-21T21:15:08.000Z",
+                              "uid": "35240-fd266e74-b596-42ae-8b53-4f9a020dbc6f"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:15:08.000Z",
+                          "updatedAt": "2026-10-21T21:15:08.000Z",
+                          "uid": "35240-c6b79e83-b5bb-4573-8934-567e8dd75baf"
+                        }
+                      ],
+                      "id": "0bb726e8-28c9-421c-aaac-0c36fe06caff",
+                      "createdAt": "2026-10-21T21:15:08.000Z",
+                      "updatedAt": "2026-10-21T21:15:08.000Z",
+                      "uid": "35240-0bb726e8-28c9-421c-aaac-0c36fe06caff"
+                    }
+                  ],
+                  "id": "09b095c3-d191-42fc-87f7-3ab55d55be02",
+                  "createdAt": "2026-10-21T21:15:08.000Z",
+                  "updatedAt": "2026-10-21T21:15:08.000Z",
+                  "uid": "35240-09b095c3-d191-42fc-87f7-3ab55d55be02"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3d5105f8-700e-4d81-85ff-010bc05541ba",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "revisions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "destructive",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"sourceZipUrl\": \"https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip\",\n  \"sourceYaml\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6213d5f7-f012-41b5-9ce3-7c5514f070b4",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "revisions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "destructive",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"sourceZipUrl\": \"https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip\",\n  \"sourceYaml\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "25a4aa24-158d-4815-a0b0-3eb10ce4af68",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "revisions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "destructive",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"sourceZipUrl\": \"https://storage.googleapis.com/my-bucket/source-files/integration-v1.2.3.zip\",\n  \"sourceYaml\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "6713d9c7-9501-41f6-aea8-79f413a8fd60",
+              "createdAt": "2026-10-21T21:15:08.000Z",
+              "updatedAt": "2026-10-21T21:15:08.000Z",
+              "uid": "35240-6713d9c7-9501-41f6-aea8-79f413a8fd60"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "70301993-2c6d-44f7-a61b-97a1aeb4caa9",
-          "name": "Ampersand Get a Hydrated Revision",
-          "request": {
-            "name": "Ampersand Get a Hydrated Revision",
-            "description": {
-              "content": "Returns the integration revision enriched with live field metadata from the consumer's connected SaaS instance, such as available fields, display names, and type for each object defined in the integration.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "integrations",
-                ":integrationId",
-                "revisions",
-                "{{revisionId}}:hydrate"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "connectionId",
-                  "value": "<string>",
-                  "description": "(Required) The ID of the consumer's connection to the SaaS provider. This connection's credentials are used to fetch field metadata from the provider's API."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "integrationId",
-                  "description": "(Required) The integration ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "732599f8-fc37-442d-bd26-3a88ff3128d3",
-              "name": "Hydrated revision.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "revisions",
-                    "{{revisionId}}:hydrate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "connectionId",
-                      "value": "1a2b3c4d-5e6f-7890-abcd-ef0123456789"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"content\": {\n    \"value\": \"reference ../manifest/manifest.yaml#/components/schemas/HydratedIntegration not found in the OpenAPI spec\"\n  },\n  \"createTime\": \"1960-05-18T01:29:38.661Z\",\n  \"id\": \"f0e1d2c3-b4a5-6789-0abc-def123456789\",\n  \"specVersion\": \"1.0.0\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "68e707ee-565d-498e-977d-54199dc3362e",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "revisions",
-                    "{{revisionId}}:hydrate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "connectionId",
-                      "value": "1a2b3c4d-5e6f-7890-abcd-ef0123456789"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "461e467c-b555-4d1c-b951-f02462e50063",
+          "createdAt": "2026-10-21T21:15:08.000Z",
+          "updatedAt": "2026-10-21T21:15:08.000Z",
+          "uid": "35240-461e467c-b555-4d1c-b951-f02462e50063"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.withampersand.com/v1",
-      "key": "baseUrl"
-    },
-    {
-      "disabled": false,
-      "description": {
-        "content": "(Required) The revision ID. You can find this on the integration object's `latestRevision.id` field.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "<string>",
-      "key": "revisionId"
+      "id": "2ec5a69d-5c6e-4470-a72e-402d2b868e9d",
+      "createdAt": "2026-10-21T21:15:08.000Z",
+      "updatedAt": "2026-10-21T21:15:08.000Z",
+      "uid": "35240-2ec5a69d-5c6e-4470-a72e-402d2b868e9d"
     }
   ],
   "auth": {
@@ -603,25 +611,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Api-Key"
+        "value": "X-Api-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "6c1296f5-257e-4297-a043-613a86c73cd7",
-    "name": "Ampersand public API Key Revision API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.withampersand.com/v1"
+    },
+    {
+      "key": "revisionId",
+      "value": "<string>"
     }
-  }
+  ]
 }

@@ -1,1282 +1,1221 @@
 {
+  "info": {
+    "_postman_id": "7640d824-dfe4-4795-b447-f9b725da9c36",
+    "name": "Ampersand public Operation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:13:15.000Z",
+    "updatedAt": "2026-10-21T21:13:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7640d824-dfe4-4795-b447-f9b725da9c36"
+  },
   "item": [
     {
-      "id": "27effbd0-1f3d-4089-9002-3eb0d5b6057d",
-      "name": "Operation",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "projects",
       "item": [
         {
-          "id": "c97e58b8-52f9-46f3-b9a4-faa11d28c043",
-          "name": "Ampersand List Operations",
-          "request": {
-            "name": "Ampersand List Operations",
-            "description": {},
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "integrations",
-                ":integrationId",
-                "installations",
-                ":installationId",
-                "operations"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "pageSize",
-                  "value": "200",
-                  "description": "The number of operations to return."
-                },
-                {
-                  "disabled": false,
-                  "key": "pageToken",
-                  "value": "<string>",
-                  "description": "A cursor that can be passed to paginate through multiple pages of operations."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "integrationId",
-                  "description": "(Required) The integration ID."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "installationId",
-                  "description": "(Required) The Ampersand installation ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{projectIdOrName}",
+          "item": [
             {
-              "id": "5748014f-031b-4d7d-8f8a-64ba56b6792e",
-              "name": "List of operations",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "installations",
-                    ":installationId",
-                    "operations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "pageSize",
-                      "value": "200"
-                    },
-                    {
-                      "key": "pageToken",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "installationId",
-                      "description": "(Required) The Ampersand installation ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "integrations",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{integrationId}",
+                  "item": [
+                    {
+                      "name": "installations",
+                      "item": [
+                        {
+                          "name": "{installationId}",
+                          "item": [
+                            {
+                              "name": "operations",
+                              "item": [
+                                {
+                                  "name": "Ampersand List Operations",
+                                  "id": "e563e09c-99d4-4092-860c-f0de9dc51a04",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/operations?pageSize=200&pageToken=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectIdOrName",
+                                        "integrations",
+                                        ":integrationId",
+                                        "installations",
+                                        ":installationId",
+                                        "operations"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The number of operations to return.",
+                                          "key": "pageSize",
+                                          "value": "200"
+                                        },
+                                        {
+                                          "description": "A cursor that can be passed to paginate through multiple pages of operations.",
+                                          "key": "pageToken",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "af5148b4-c103-4564-8c32-3726b2b6d541",
+                                          "key": "projectIdOrName",
+                                          "value": "<string>",
+                                          "description": "(Required) The Ampersand project ID or project name."
+                                        },
+                                        {
+                                          "id": "0bfc4949-e744-4bd1-8cc5-b8074f055064",
+                                          "key": "integrationId",
+                                          "value": "<string>",
+                                          "description": "(Required) The integration ID."
+                                        },
+                                        {
+                                          "id": "09dc0e25-6638-48b4-b5a0-d5583669f548",
+                                          "key": "installationId",
+                                          "value": "<string>",
+                                          "description": "(Required) The Ampersand installation ID."
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "38e021b3-60f3-4496-acf2-0f9bec157e71",
+                                      "name": "List of operations",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "X-Api-Key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/operations?pageSize=200&pageToken=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectIdOrName",
+                                            "integrations",
+                                            ":integrationId",
+                                            "installations",
+                                            ":installationId",
+                                            "operations"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "The number of operations to return.",
+                                              "key": "pageSize",
+                                              "value": "200"
+                                            },
+                                            {
+                                              "description": "A cursor that can be passed to paginate through multiple pages of operations.",
+                                              "key": "pageToken",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectIdOrName"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "installationId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"results\": [\n    {\n      \"projectId\": \"<string>\",\n      \"integrationId\": \"<string>\",\n      \"installationId\": \"<string>\",\n      \"configId\": \"<string>\",\n      \"actionType\": \"<string>\",\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"result\": \"<string>\",\n      \"metadata\": {\n        \"objects\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"retry\": {\n          \"attempts\": \"<integer>\",\n          \"lastAttempt\": \"<dateTime>\",\n          \"lastNotified\": \"<dateTime>\"\n        },\n        \"progress\": {\n          \"installationId\": \"<string>\",\n          \"objectName\": \"<string>\",\n          \"operationId\": \"<string>\",\n          \"recordsProcessed\": \"<integer>\",\n          \"recordsEstimatedTotal\": \"<integer>\"\n        },\n        \"successfulRecordIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"createTime\": \"<dateTime>\"\n    },\n    {\n      \"projectId\": \"<string>\",\n      \"integrationId\": \"<string>\",\n      \"installationId\": \"<string>\",\n      \"configId\": \"<string>\",\n      \"actionType\": \"<string>\",\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"result\": \"<string>\",\n      \"metadata\": {\n        \"objects\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"retry\": {\n          \"attempts\": \"<integer>\",\n          \"lastAttempt\": \"<dateTime>\",\n          \"lastNotified\": \"<dateTime>\"\n        },\n        \"progress\": {\n          \"installationId\": \"<string>\",\n          \"objectName\": \"<string>\",\n          \"operationId\": \"<string>\",\n          \"recordsProcessed\": \"<integer>\",\n          \"recordsEstimatedTotal\": \"<integer>\"\n        },\n        \"successfulRecordIds\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"createTime\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"done\": \"<boolean>\",\n    \"nextPageToken\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-10-21T21:13:15.000Z",
+                                      "updatedAt": "2026-10-21T21:13:15.000Z",
+                                      "uid": "35240-38e021b3-60f3-4496-acf2-0f9bec157e71"
+                                    },
+                                    {
+                                      "id": "b715da0d-7f24-4d69-aee6-f299db458b6c",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/problem+json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "X-Api-Key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/operations?pageSize=200&pageToken=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectIdOrName",
+                                            "integrations",
+                                            ":integrationId",
+                                            "installations",
+                                            ":installationId",
+                                            "operations"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "The number of operations to return.",
+                                              "key": "pageSize",
+                                              "value": "200"
+                                            },
+                                            {
+                                              "description": "A cursor that can be passed to paginate through multiple pages of operations.",
+                                              "key": "pageToken",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectIdOrName"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "installationId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/problem+json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                                      "createdAt": "2026-10-21T21:13:15.000Z",
+                                      "updatedAt": "2026-10-21T21:13:15.000Z",
+                                      "uid": "35240-b715da0d-7f24-4d69-aee6-f299db458b6c"
+                                    },
+                                    {
+                                      "id": "e631b8b0-3d43-452f-a7f1-c3134aa47a11",
+                                      "name": "Unprocessable Entity",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/problem+json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "X-Api-Key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/operations?pageSize=200&pageToken=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectIdOrName",
+                                            "integrations",
+                                            ":integrationId",
+                                            "installations",
+                                            ":installationId",
+                                            "operations"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "The number of operations to return.",
+                                              "key": "pageSize",
+                                              "value": "200"
+                                            },
+                                            {
+                                              "description": "A cursor that can be passed to paginate through multiple pages of operations.",
+                                              "key": "pageToken",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectIdOrName"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "installationId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                      "code": 422,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/problem+json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                                      "createdAt": "2026-10-21T21:13:15.000Z",
+                                      "updatedAt": "2026-10-21T21:13:15.000Z",
+                                      "uid": "35240-e631b8b0-3d43-452f-a7f1-c3134aa47a11"
+                                    },
+                                    {
+                                      "id": "0ae0b5c5-26bc-4fb8-a481-f21260ff715f",
+                                      "name": "Error",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/problem+json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "X-Api-Key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/operations?pageSize=200&pageToken=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectIdOrName",
+                                            "integrations",
+                                            ":integrationId",
+                                            "installations",
+                                            ":installationId",
+                                            "operations"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "The number of operations to return.",
+                                              "key": "pageSize",
+                                              "value": "200"
+                                            },
+                                            {
+                                              "description": "A cursor that can be passed to paginate through multiple pages of operations.",
+                                              "key": "pageToken",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectIdOrName"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "installationId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/problem+json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                                      "createdAt": "2026-10-21T21:13:15.000Z",
+                                      "updatedAt": "2026-10-21T21:13:15.000Z",
+                                      "uid": "35240-0ae0b5c5-26bc-4fb8-a481-f21260ff715f"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T21:13:15.000Z",
+                                  "updatedAt": "2026-10-21T21:13:15.000Z",
+                                  "uid": "35240-e563e09c-99d4-4092-860c-f0de9dc51a04"
+                                }
+                              ],
+                              "id": "6842e9d1-8533-4f04-a912-42b7cf6f48f8",
+                              "createdAt": "2026-10-21T21:13:15.000Z",
+                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                              "uid": "35240-6842e9d1-8533-4f04-a912-42b7cf6f48f8"
+                            },
+                            {
+                              "name": "objects",
+                              "item": [
+                                {
+                                  "name": "{objectName}",
+                                  "item": [
+                                    {
+                                      "name": "backfill-progress",
+                                      "item": [
+                                        {
+                                          "name": "Ampersand Get Backfill Progress",
+                                          "id": "5cba103c-3d19-4100-9a32-035a0623d40b",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/objects/:objectName/backfill-progress",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "projects",
+                                                ":projectIdOrName",
+                                                "integrations",
+                                                ":integrationId",
+                                                "installations",
+                                                ":installationId",
+                                                "objects",
+                                                ":objectName",
+                                                "backfill-progress"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "baed3f11-6a96-4520-bd35-610a005addb7",
+                                                  "key": "projectIdOrName",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The Ampersand project ID or project name."
+                                                },
+                                                {
+                                                  "id": "813453f1-87c6-4df2-ba59-e55ec69e767a",
+                                                  "key": "integrationId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The Ampersand integration ID."
+                                                },
+                                                {
+                                                  "id": "8e808c47-9491-4f18-8105-f51ec96184cc",
+                                                  "key": "installationId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The Ampersand installation ID."
+                                                },
+                                                {
+                                                  "id": "f61cb6b9-89f3-4d8c-b952-51d4d15de441",
+                                                  "key": "objectName",
+                                                  "value": "<string>",
+                                                  "description": "(Required) Name of the object being synced (e.g., \"contact\", \"account\")."
+                                                }
+                                              ]
+                                            },
+                                            "description": "Retrieve backfill progress (records processed, estimated total) for an object. Use to track progress of an initial data sync."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "f654490c-e48d-41e9-9d62-13c940814348",
+                                              "name": "Backfill progress for the object",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: apikey",
+                                                    "key": "X-Api-Key",
+                                                    "value": "<API Key>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/objects/:objectName/backfill-progress",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "projects",
+                                                    ":projectIdOrName",
+                                                    "integrations",
+                                                    ":integrationId",
+                                                    "installations",
+                                                    ":installationId",
+                                                    "objects",
+                                                    ":objectName",
+                                                    "backfill-progress"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "projectIdOrName"
+                                                    },
+                                                    {
+                                                      "key": "integrationId"
+                                                    },
+                                                    {
+                                                      "key": "installationId"
+                                                    },
+                                                    {
+                                                      "key": "objectName"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"installationId\": \"<string>\",\n  \"objectName\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"recordsProcessed\": \"<integer>\",\n  \"recordsEstimatedTotal\": \"<integer>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                                              "createdAt": "2026-10-21T21:13:15.000Z",
+                                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                                              "uid": "35240-f654490c-e48d-41e9-9d62-13c940814348"
+                                            },
+                                            {
+                                              "id": "36c4e55c-6eb3-4d0a-9779-e07f5fc35a41",
+                                              "name": "Bad Request",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/problem+json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: apikey",
+                                                    "key": "X-Api-Key",
+                                                    "value": "<API Key>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/objects/:objectName/backfill-progress",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "projects",
+                                                    ":projectIdOrName",
+                                                    "integrations",
+                                                    ":integrationId",
+                                                    "installations",
+                                                    ":installationId",
+                                                    "objects",
+                                                    ":objectName",
+                                                    "backfill-progress"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "projectIdOrName"
+                                                    },
+                                                    {
+                                                      "key": "integrationId"
+                                                    },
+                                                    {
+                                                      "key": "installationId"
+                                                    },
+                                                    {
+                                                      "key": "objectName"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Bad Request",
+                                              "code": 400,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/problem+json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                                              "createdAt": "2026-10-21T21:13:15.000Z",
+                                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                                              "uid": "35240-36c4e55c-6eb3-4d0a-9779-e07f5fc35a41"
+                                            },
+                                            {
+                                              "id": "9862bd38-5192-4f30-89da-eed3fe31c3a6",
+                                              "name": "No backfill operation found or progress not available",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/problem+json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: apikey",
+                                                    "key": "X-Api-Key",
+                                                    "value": "<API Key>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/objects/:objectName/backfill-progress",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "projects",
+                                                    ":projectIdOrName",
+                                                    "integrations",
+                                                    ":integrationId",
+                                                    "installations",
+                                                    ":installationId",
+                                                    "objects",
+                                                    ":objectName",
+                                                    "backfill-progress"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "projectIdOrName"
+                                                    },
+                                                    {
+                                                      "key": "integrationId"
+                                                    },
+                                                    {
+                                                      "key": "installationId"
+                                                    },
+                                                    {
+                                                      "key": "objectName"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/problem+json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                                              "createdAt": "2026-10-21T21:13:15.000Z",
+                                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                                              "uid": "35240-9862bd38-5192-4f30-89da-eed3fe31c3a6"
+                                            },
+                                            {
+                                              "id": "1f222241-96d8-4023-ad8e-00c9df81e15f",
+                                              "name": "Error",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/problem+json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: apikey",
+                                                    "key": "X-Api-Key",
+                                                    "value": "<API Key>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/integrations/:integrationId/installations/:installationId/objects/:objectName/backfill-progress",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "projects",
+                                                    ":projectIdOrName",
+                                                    "integrations",
+                                                    ":integrationId",
+                                                    "installations",
+                                                    ":installationId",
+                                                    "objects",
+                                                    ":objectName",
+                                                    "backfill-progress"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "projectIdOrName"
+                                                    },
+                                                    {
+                                                      "key": "integrationId"
+                                                    },
+                                                    {
+                                                      "key": "installationId"
+                                                    },
+                                                    {
+                                                      "key": "objectName"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Internal Server Error",
+                                              "code": 500,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/problem+json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                                              "createdAt": "2026-10-21T21:13:15.000Z",
+                                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                                              "uid": "35240-1f222241-96d8-4023-ad8e-00c9df81e15f"
+                                            }
+                                          ],
+                                          "createdAt": "2026-10-21T21:13:15.000Z",
+                                          "updatedAt": "2026-10-21T21:13:15.000Z",
+                                          "uid": "35240-5cba103c-3d19-4100-9a32-035a0623d40b"
+                                        }
+                                      ],
+                                      "id": "9629b073-1770-4d12-8b02-319ee041e3a8",
+                                      "createdAt": "2026-10-21T21:13:15.000Z",
+                                      "updatedAt": "2026-10-21T21:13:15.000Z",
+                                      "uid": "35240-9629b073-1770-4d12-8b02-319ee041e3a8"
+                                    }
+                                  ],
+                                  "id": "75de2bfc-65e3-434f-9f42-03632b4d774d",
+                                  "createdAt": "2026-10-21T21:13:15.000Z",
+                                  "updatedAt": "2026-10-21T21:13:15.000Z",
+                                  "uid": "35240-75de2bfc-65e3-434f-9f42-03632b4d774d"
+                                }
+                              ],
+                              "id": "3c91ee7c-aedd-40e4-b4c3-85fb63bf8f4c",
+                              "createdAt": "2026-10-21T21:13:15.000Z",
+                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                              "uid": "35240-3c91ee7c-aedd-40e4-b4c3-85fb63bf8f4c"
+                            }
+                          ],
+                          "id": "5679004b-39ab-46d9-bdf8-3b3dfd89cae7",
+                          "createdAt": "2026-10-21T21:13:15.000Z",
+                          "updatedAt": "2026-10-21T21:13:15.000Z",
+                          "uid": "35240-5679004b-39ab-46d9-bdf8-3b3dfd89cae7"
+                        }
+                      ],
+                      "id": "0e13c468-c986-477e-a82e-28dba5e82cc9",
+                      "createdAt": "2026-10-21T21:13:15.000Z",
+                      "updatedAt": "2026-10-21T21:13:15.000Z",
+                      "uid": "35240-0e13c468-c986-477e-a82e-28dba5e82cc9"
+                    }
+                  ],
+                  "id": "b20b6bdd-40b0-446b-9e1c-6ba8d21ce41d",
+                  "createdAt": "2026-10-21T21:13:15.000Z",
+                  "updatedAt": "2026-10-21T21:13:15.000Z",
+                  "uid": "35240-b20b6bdd-40b0-446b-9e1c-6ba8d21ce41d"
                 }
               ],
-              "body": "{\n  \"results\": [\n    {\n      \"projectId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"integrationId\": \"string\",\n      \"installationId\": \"string\",\n      \"configId\": \"a1b2c3d4-e5f6-4789-a012-3456789abcde\",\n      \"actionType\": \"read\",\n      \"status\": \"success\",\n      \"id\": \"string\",\n      \"result\": \"[contact] No new data found\",\n      \"metadata\": {\n        \"objects\": [\n          \"contact\"\n        ],\n        \"progress\": {\n          \"installationId\": \"66438162-5299-4669-a41d-85c5a3b1a83e\",\n          \"objectName\": \"contact\",\n          \"operationId\": \"3efc0f0f-4bb9-498f-996c-9893d98ca4b5\",\n          \"recordsProcessed\": 1250,\n          \"recordsEstimatedTotal\": 5000\n        }\n      },\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    {\n      \"projectId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"integrationId\": \"string\",\n      \"installationId\": \"string\",\n      \"configId\": \"a1b2c3d4-e5f6-4789-a012-3456789abcde\",\n      \"actionType\": \"read\",\n      \"status\": \"success\",\n      \"id\": \"string\",\n      \"result\": \"[contact] No new data found\",\n      \"metadata\": {\n        \"objects\": [\n          \"contact\"\n        ],\n        \"progress\": {\n          \"installationId\": \"66438162-5299-4669-a41d-85c5a3b1a83e\",\n          \"objectName\": \"contact\",\n          \"operationId\": \"3efc0f0f-4bb9-498f-996c-9893d98ca4b5\",\n          \"recordsProcessed\": 1250,\n          \"recordsEstimatedTotal\": 5000\n        }\n      },\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    }\n  ],\n  \"pagination\": {\n    \"done\": false,\n    \"nextPageToken\": \"Q9JT+2qfys28V4ODN+UayA==\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "966aed19-019d-4901-972e-71833187877e",
+              "createdAt": "2026-10-21T21:13:15.000Z",
+              "updatedAt": "2026-10-21T21:13:15.000Z",
+              "uid": "35240-966aed19-019d-4901-972e-71833187877e"
             },
             {
-              "id": "e002399c-8156-4392-a707-828e67d8fe91",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "installations",
-                    ":installationId",
-                    "operations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "pageSize",
-                      "value": "200"
-                    },
-                    {
-                      "key": "pageToken",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "installationId",
-                      "description": "(Required) The Ampersand installation ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
+              "name": "operations",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
+                  "name": "{operationId}",
+                  "item": [
+                    {
+                      "name": "logs",
+                      "item": [
+                        {
+                          "name": "Ampersand List Logs for an Operation",
+                          "id": "e50ab1ae-9357-45cc-a3c6-36c85405ccd4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/operations/:operationId/logs",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "operations",
+                                ":operationId",
+                                "logs"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9d31d9dd-0317-4d13-9021-d59b10dbad95",
+                                  "key": "projectIdOrName",
+                                  "value": "<string>",
+                                  "description": "(Required) The Ampersand project ID or project name."
+                                },
+                                {
+                                  "id": "8d6cbf60-ae30-4359-bf7a-71d9cd78debb",
+                                  "key": "operationId",
+                                  "value": "<string>",
+                                  "description": "(Required) Operation ID."
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "9aec42e8-503e-4a25-bdea-bf2335b177af",
+                              "name": "List of logs",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/operations/:operationId/logs",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectIdOrName",
+                                    "operations",
+                                    ":operationId",
+                                    "logs"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectIdOrName"
+                                    },
+                                    {
+                                      "key": "operationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"timestamp\": \"<string>\",\n    \"severity\": \"<string>\",\n    \"message\": {\n      \"msg\": \"<string>\",\n      \"error\": \"<string>\",\n      \"operation_id\": \"<string>\",\n      \"details\": {\n        \"consectetur_904\": \"<string>\",\n        \"ete\": \"<string>\"\n      }\n    }\n  },\n  {\n    \"timestamp\": \"<string>\",\n    \"severity\": \"<string>\",\n    \"message\": {\n      \"msg\": \"<string>\",\n      \"error\": \"<string>\",\n      \"operation_id\": \"<string>\",\n      \"details\": {\n        \"eu_12\": \"<string>\"\n      }\n    }\n  }\n]",
+                              "createdAt": "2026-10-21T21:13:15.000Z",
+                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                              "uid": "35240-9aec42e8-503e-4a25-bdea-bf2335b177af"
+                            },
+                            {
+                              "id": "542c63a2-4c28-4a33-9afd-0a2fffd806b9",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/problem+json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/operations/:operationId/logs",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectIdOrName",
+                                    "operations",
+                                    ":operationId",
+                                    "logs"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectIdOrName"
+                                    },
+                                    {
+                                      "key": "operationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/problem+json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                              "createdAt": "2026-10-21T21:13:15.000Z",
+                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                              "uid": "35240-542c63a2-4c28-4a33-9afd-0a2fffd806b9"
+                            },
+                            {
+                              "id": "73739a02-d56b-407a-bf3a-6000fe8f96b2",
+                              "name": "Unprocessable Entity",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/problem+json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/operations/:operationId/logs",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectIdOrName",
+                                    "operations",
+                                    ":operationId",
+                                    "logs"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectIdOrName"
+                                    },
+                                    {
+                                      "key": "operationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/problem+json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                              "createdAt": "2026-10-21T21:13:15.000Z",
+                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                              "uid": "35240-73739a02-d56b-407a-bf3a-6000fe8f96b2"
+                            },
+                            {
+                              "id": "058af1fa-56e5-4096-bebd-a0e5918bdce6",
+                              "name": "Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/problem+json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectIdOrName/operations/:operationId/logs",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectIdOrName",
+                                    "operations",
+                                    ":operationId",
+                                    "logs"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectIdOrName"
+                                    },
+                                    {
+                                      "key": "operationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/problem+json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                              "createdAt": "2026-10-21T21:13:15.000Z",
+                              "updatedAt": "2026-10-21T21:13:15.000Z",
+                              "uid": "35240-058af1fa-56e5-4096-bebd-a0e5918bdce6"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:13:15.000Z",
+                          "updatedAt": "2026-10-21T21:13:15.000Z",
+                          "uid": "35240-e50ab1ae-9357-45cc-a3c6-36c85405ccd4"
+                        }
+                      ],
+                      "id": "7fd64f19-8b51-4e4d-ae9f-44caab14ed09",
+                      "createdAt": "2026-10-21T21:13:15.000Z",
+                      "updatedAt": "2026-10-21T21:13:15.000Z",
+                      "uid": "35240-7fd64f19-8b51-4e4d-ae9f-44caab14ed09"
+                    },
+                    {
+                      "name": "Ampersand Get an Operation",
+                      "id": "550d558c-2f1e-4412-b757-958962548da2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/operations/:operationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "operations",
+                            ":operationId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c21d42af-2eac-44e6-8541-d4ec9b387218",
+                              "key": "projectIdOrName",
+                              "value": "<string>",
+                              "description": "(Required) The Ampersand project ID or project name."
+                            },
+                            {
+                              "id": "33b746a5-e6a7-46cf-bd3c-f06f4d046569",
+                              "key": "operationId",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for the operation. Obtain from the list operations API endpoint, the Ampersand dashboard, or webhook payloads."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as backfill progress or write outcome details."
+                      },
+                      "response": [
+                        {
+                          "id": "0b77a113-5d65-4797-92b9-7e0fc479660f",
+                          "name": "The operation, including its current status, result summary, and metadata (e.g. backfill progress or write results).",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/operations/:operationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "operations",
+                                ":operationId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "operationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"projectId\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"installationId\": \"<string>\",\n  \"configId\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"id\": \"<string>\",\n  \"result\": \"<string>\",\n  \"metadata\": {\n    \"objects\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"retry\": {\n      \"attempts\": \"<integer>\",\n      \"lastAttempt\": \"<dateTime>\",\n      \"lastNotified\": \"<dateTime>\"\n    },\n    \"progress\": {\n      \"installationId\": \"<string>\",\n      \"objectName\": \"<string>\",\n      \"operationId\": \"<string>\",\n      \"recordsProcessed\": \"<integer>\",\n      \"recordsEstimatedTotal\": \"<integer>\"\n    },\n    \"successfulRecordIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"createTime\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-10-21T21:13:15.000Z",
+                          "updatedAt": "2026-10-21T21:13:15.000Z",
+                          "uid": "35240-0b77a113-5d65-4797-92b9-7e0fc479660f"
+                        },
+                        {
+                          "id": "df5dc0c7-98d5-4c6d-ba94-5ae8b7e769e0",
+                          "name": "Error response for any non-2xx status (e.g. operation not found, invalid project or operation ID, or server error).\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/operations/:operationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "operations",
+                                ":operationId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "operationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:13:15.000Z",
+                          "updatedAt": "2026-10-21T21:13:15.000Z",
+                          "uid": "35240-df5dc0c7-98d5-4c6d-ba94-5ae8b7e769e0"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:13:15.000Z",
+                      "updatedAt": "2026-10-21T21:13:15.000Z",
+                      "uid": "35240-550d558c-2f1e-4412-b757-958962548da2"
+                    }
+                  ],
+                  "id": "4739428c-cfb8-4796-9559-c1ce8af8d24d",
+                  "createdAt": "2026-10-21T21:13:15.000Z",
+                  "updatedAt": "2026-10-21T21:13:15.000Z",
+                  "uid": "35240-4739428c-cfb8-4796-9559-c1ce8af8d24d"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0852709c-aec8-471d-90aa-b998e6cd7ea3",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "installations",
-                    ":installationId",
-                    "operations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "pageSize",
-                      "value": "200"
-                    },
-                    {
-                      "key": "pageToken",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "installationId",
-                      "description": "(Required) The Ampersand installation ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "18d8902a-9a91-4217-8b68-9ce60c36cd5f",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "installations",
-                    ":installationId",
-                    "operations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "pageSize",
-                      "value": "200"
-                    },
-                    {
-                      "key": "pageToken",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The integration ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "installationId",
-                      "description": "(Required) The Ampersand installation ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "efbcbae8-00c0-4ede-bbc9-eb0ea122ba59",
+              "createdAt": "2026-10-21T21:13:15.000Z",
+              "updatedAt": "2026-10-21T21:13:15.000Z",
+              "uid": "35240-efbcbae8-00c0-4ede-bbc9-eb0ea122ba59"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "87497263-a8e9-4e78-9922-436c406035f2",
-          "name": "Ampersand Get Backfill Progress",
-          "request": {
-            "name": "Ampersand Get Backfill Progress",
-            "description": {
-              "content": "Retrieve backfill progress (records processed, estimated total) for an object. Use to track progress of an initial data sync.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "integrations",
-                ":integrationId",
-                "installations",
-                ":installationId",
-                "objects",
-                ":objectName",
-                "backfill-progress"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "integrationId",
-                  "description": "(Required) The Ampersand integration ID."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "installationId",
-                  "description": "(Required) The Ampersand installation ID."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "objectName",
-                  "description": "(Required) Name of the object being synced (e.g., \"contact\", \"account\")."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "6ac4b9fb-e0c2-45d7-a558-58f391e533bf",
-              "name": "Backfill progress for the object",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "installations",
-                    ":installationId",
-                    "objects",
-                    ":objectName",
-                    "backfill-progress"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The Ampersand integration ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "installationId",
-                      "description": "(Required) The Ampersand installation ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the object being synced (e.g., \"contact\", \"account\")."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"installationId\": \"66438162-5299-4669-a41d-85c5a3b1a83e\",\n  \"objectName\": \"contact\",\n  \"operationId\": \"3efc0f0f-4bb9-498f-996c-9893d98ca4b5\",\n  \"recordsProcessed\": 1250,\n  \"recordsEstimatedTotal\": 5000,\n  \"createTime\": \"2025-02-13T10:00:00Z\",\n  \"updateTime\": \"2025-02-13T10:05:00Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fe5ffb16-4879-4dc3-9836-7447a0cc4435",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "installations",
-                    ":installationId",
-                    "objects",
-                    ":objectName",
-                    "backfill-progress"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The Ampersand integration ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "installationId",
-                      "description": "(Required) The Ampersand installation ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the object being synced (e.g., \"contact\", \"account\")."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "49b96f67-582b-4496-9c01-daba19dbc763",
-              "name": "No backfill operation found or progress not available",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "installations",
-                    ":installationId",
-                    "objects",
-                    ":objectName",
-                    "backfill-progress"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The Ampersand integration ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "installationId",
-                      "description": "(Required) The Ampersand installation ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the object being synced (e.g., \"contact\", \"account\")."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "db75c4b2-45f4-4567-a708-9932d4c3e553",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "integrations",
-                    ":integrationId",
-                    "installations",
-                    ":installationId",
-                    "objects",
-                    ":objectName",
-                    "backfill-progress"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The Ampersand integration ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "installationId",
-                      "description": "(Required) The Ampersand installation ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the object being synced (e.g., \"contact\", \"account\")."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d787f19e-64bb-470d-9bdc-7b2798bb8af0",
-          "name": "Ampersand Get an Operation",
-          "request": {
-            "name": "Ampersand Get an Operation",
-            "description": {
-              "content": "Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as backfill progress or write outcome details. \n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "operations",
-                ":operationId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "operationId",
-                  "description": "(Required) Unique identifier for the operation. Obtain from the list operations API endpoint, the Ampersand dashboard, or webhook payloads."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "e680c250-0f0f-4dc2-b609-1bc8e5e46826",
-              "name": "The operation, including its current status, result summary, and metadata (e.g. backfill progress or write results).",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "operations",
-                    ":operationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "operationId",
-                      "description": "(Required) Unique identifier for the operation. Obtain from the list operations API endpoint, the Ampersand dashboard, or webhook payloads."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"projectId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"integrationId\": \"113e9685-9a51-42cc-8662-9d9725b17f14\",\n  \"installationId\": \"66438162-5299-4669-a41d-85c5a3b1a83e\",\n  \"configId\": \"a1b2c3d4-e5f6-4789-a012-3456789abcde\",\n  \"actionType\": \"read\",\n  \"status\": \"success\",\n  \"id\": \"3efc0f0f-4bb9-498f-996c-9893d98ca4b5\",\n  \"result\": \"[contact] No new data found\",\n  \"metadata\": {\n    \"objects\": [\n      \"contact\"\n    ]\n  },\n  \"createTime\": \"2023-07-13T21:34:44.816354Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d5b0c6f8-1b90-4837-a997-7e79ccc937af",
-              "name": "Error response for any non-2xx status (e.g. operation not found, invalid project or operation ID, or server error).\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "operations",
-                    ":operationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "operationId",
-                      "description": "(Required) Unique identifier for the operation. Obtain from the list operations API endpoint, the Ampersand dashboard, or webhook payloads."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{\n  \"type\": \"https://httpstatuses.com/404\",\n  \"title\": \"Not Found\",\n  \"status\": 404,\n  \"detail\": \"Operation not found for the given operation ID.\",\n  \"subsystem\": \"api\",\n  \"time\": \"2024-04-22T18:55:28.456076Z\",\n  \"requestId\": \"89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715\",\n  \"remedy\": \"Verify the operation ID and project are correct, or list operations to find a valid ID.\",\n  \"retryable\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8b26b238-cec6-4731-8e26-e0697db0b230",
-          "name": "Ampersand List Logs for an Operation",
-          "request": {
-            "name": "Ampersand List Logs for an Operation",
-            "description": {},
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "operations",
-                ":operationId",
-                "logs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "operationId",
-                  "description": "(Required) Operation ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f383b36b-2686-44ef-9bf4-a1c1e6d8de02",
-              "name": "List of logs",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "operations",
-                    ":operationId",
-                    "logs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "operationId",
-                      "description": "(Required) Operation ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"timestamp\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"severity\": \"DEBUG\",\n    \"message\": {\n      \"msg\": \"This is a log message\",\n      \"error\": \"string\",\n      \"operation_id\": \"string\",\n      \"details\": {\n        \"request\": \"GET /api/v1/users\"\n      }\n    }\n  },\n  {\n    \"timestamp\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"severity\": \"DEBUG\",\n    \"message\": {\n      \"msg\": \"This is a log message\",\n      \"error\": \"string\",\n      \"operation_id\": \"string\",\n      \"details\": {\n        \"request\": \"GET /api/v1/users\"\n      }\n    }\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9ddd3077-d0a5-4268-9605-c015250d4870",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "operations",
-                    ":operationId",
-                    "logs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "operationId",
-                      "description": "(Required) Operation ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f4f30d8d-d4d9-41e3-8fb8-c228d4492219",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "operations",
-                    ":operationId",
-                    "logs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "operationId",
-                      "description": "(Required) Operation ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fede4237-00b4-4475-a95c-f6af10ffed7c",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "operations",
-                    ":operationId",
-                    "logs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "operationId",
-                      "description": "(Required) Operation ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "28f5670f-cf58-4466-a3ba-a77ebda3044b",
+          "createdAt": "2026-10-21T21:13:15.000Z",
+          "updatedAt": "2026-10-21T21:13:15.000Z",
+          "uid": "35240-28f5670f-cf58-4466-a3ba-a77ebda3044b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.withampersand.com/v1",
-      "key": "baseUrl"
+      "id": "a5ac6e86-f448-4e4e-9f53-3c4e41c4a19a",
+      "createdAt": "2026-10-21T21:13:15.000Z",
+      "updatedAt": "2026-10-21T21:13:15.000Z",
+      "uid": "35240-a5ac6e86-f448-4e4e-9f53-3c4e41c4a19a"
     }
   ],
   "auth": {
@@ -1284,25 +1223,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Api-Key"
+        "value": "X-Api-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "618272fb-2ab4-403d-8b5c-5f2481d2773c",
-    "name": "Ampersand public API Key Operation API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.withampersand.com/v1"
     }
-  }
+  ]
 }

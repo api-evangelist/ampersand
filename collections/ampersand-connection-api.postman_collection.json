@@ -1,1316 +1,1301 @@
 {
+  "info": {
+    "_postman_id": "d47959ce-aea3-41cb-81f6-99e26861a51f",
+    "name": "Ampersand public Connection API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:12:22.000Z",
+    "updatedAt": "2026-10-21T21:12:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d47959ce-aea3-41cb-81f6-99e26861a51f"
+  },
   "item": [
     {
-      "id": "be09f1b7-2e03-4355-a6bd-256cf1f6e3b6",
-      "name": "Connection",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "projects",
       "item": [
         {
-          "id": "2741bd56-68df-4f4b-b5af-3dd3fd7a5557",
-          "name": "Ampersand List Connections",
-          "request": {
-            "name": "Ampersand List Connections",
-            "description": {},
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "connections"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "provider",
-                  "value": "<string>",
-                  "description": "The provider name (e.g. \"salesforce\", \"hubspot\")"
-                },
-                {
-                  "disabled": false,
-                  "key": "groupRef",
-                  "value": "<string>",
-                  "description": "The ID of the user group that has access to this installation."
-                },
-                {
-                  "disabled": false,
-                  "key": "consumerRef",
-                  "value": "<string>",
-                  "description": "The consumer reference."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{projectIdOrName}",
+          "item": [
             {
-              "id": "f0c46123-706b-4424-bd27-be4311e70740",
-              "name": "List of project connections.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "provider",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "groupRef",
-                      "value": "group-123"
-                    },
-                    {
-                      "key": "consumerRef",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "connections",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{connectionId}",
+                  "item": [
+                    {
+                      "name": "Ampersand Get a Connection",
+                      "id": "c6ec77b4-8276-40c1-bc97-0d0899047286",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId?includeCreds=<boolean>&includeRefreshToken=<boolean>&refresh=force",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to include credentials for `oauth2AuthorizationCode` in the response. If true, `accessToken` and `scopes` are included. To include `refreshToken` as well, set `includeRefreshToken` to true. Default is false.",
+                              "key": "includeCreds",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to include `refreshToken` for `oauth2AuthorizationCode` credentials in the response (along with `accessToken` and `scopes`). If true, the `includeCreds` query parameter will be ignored. Default is false.",
+                              "key": "includeRefreshToken",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Whether to refresh the access token. If value is `ifExpired`, the access token will be refreshed only if it has expired. If value is `force`, the access token will be refreshed regardless of its expiration.",
+                              "key": "refresh",
+                              "value": "force"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "4f734729-02ef-476b-9953-675db997415e",
+                              "key": "projectIdOrName",
+                              "value": "<string>",
+                              "description": "(Required) The Ampersand project ID or project name."
+                            },
+                            {
+                              "id": "a6218188-06f3-419b-b98f-246b0aa30bbd",
+                              "key": "connectionId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "ffdda947-2790-4a4e-859f-c2dc69e03b58",
+                          "name": "Connection",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId?includeCreds=<boolean>&includeRefreshToken=<boolean>&refresh=force",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Whether to include credentials for `oauth2AuthorizationCode` in the response. If true, `accessToken` and `scopes` are included. To include `refreshToken` as well, set `includeRefreshToken` to true. Default is false.",
+                                  "key": "includeCreds",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Whether to include `refreshToken` for `oauth2AuthorizationCode` credentials in the response (along with `accessToken` and `scopes`). If true, the `includeCreds` query parameter will be ignored. Default is false.",
+                                  "key": "includeRefreshToken",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Whether to refresh the access token. If value is `ifExpired`, the access token will be refreshed only if it has expired. If value is `force`, the access token will be refreshed regardless of its expiration.",
+                                  "key": "refresh",
+                                  "value": "force"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "connectionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"group\": {\n    \"createTime\": \"<dateTime>\",\n    \"groupName\": \"<string>\",\n    \"groupRef\": \"<string>\",\n    \"projectId\": \"<string>\",\n    \"updateTime\": \"<dateTime>\"\n  },\n  \"consumer\": {\n    \"consumerName\": \"<string>\",\n    \"consumerRef\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"projectId\": \"<string>\",\n    \"updateTime\": \"<dateTime>\"\n  },\n  \"projectId\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"authScheme\": \"basic\",\n  \"status\": \"created\",\n  \"providerApp\": {\n    \"clientId\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"projectId\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"externalRef\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"est_69\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"elit_70f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"providerParams\": {\n        \"laborum__8\": \"<string>\",\n        \"nostrud1\": \"<string>\"\n      }\n    },\n    \"updateTime\": \"<dateTime>\"\n  },\n  \"providerWorkspaceRef\": \"<string>\",\n  \"providerConsumerRef\": \"<string>\",\n  \"updateTime\": \"<dateTime>\",\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"<string>\",\n      \"issuedAt\": \"<dateTime>\",\n      \"expiresAt\": \"<dateTime>\"\n    },\n    \"refreshToken\": {\n      \"token\": \"<string>\",\n      \"issuedAt\": \"<dateTime>\",\n      \"expiresAt\": \"<dateTime>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"apiKey\": \"<string>\",\n  \"providerMetadata\": {\n    \"veniamdf3\": {\n      \"value\": \"<string>\",\n      \"source\": \"input\",\n      \"displayName\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-10-21T21:12:23.000Z",
+                          "updatedAt": "2026-10-21T21:12:23.000Z",
+                          "uid": "35240-ffdda947-2790-4a4e-859f-c2dc69e03b58"
+                        },
+                        {
+                          "id": "227c3879-678d-4667-95ef-bef707275b3f",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId?includeCreds=<boolean>&includeRefreshToken=<boolean>&refresh=force",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Whether to include credentials for `oauth2AuthorizationCode` in the response. If true, `accessToken` and `scopes` are included. To include `refreshToken` as well, set `includeRefreshToken` to true. Default is false.",
+                                  "key": "includeCreds",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Whether to include `refreshToken` for `oauth2AuthorizationCode` credentials in the response (along with `accessToken` and `scopes`). If true, the `includeCreds` query parameter will be ignored. Default is false.",
+                                  "key": "includeRefreshToken",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Whether to refresh the access token. If value is `ifExpired`, the access token will be refreshed only if it has expired. If value is `force`, the access token will be refreshed regardless of its expiration.",
+                                  "key": "refresh",
+                                  "value": "force"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "connectionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:23.000Z",
+                          "updatedAt": "2026-10-21T21:12:23.000Z",
+                          "uid": "35240-227c3879-678d-4667-95ef-bef707275b3f"
+                        },
+                        {
+                          "id": "a73d7595-520e-4b2e-843c-7a200ef6d279",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId?includeCreds=<boolean>&includeRefreshToken=<boolean>&refresh=force",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Whether to include credentials for `oauth2AuthorizationCode` in the response. If true, `accessToken` and `scopes` are included. To include `refreshToken` as well, set `includeRefreshToken` to true. Default is false.",
+                                  "key": "includeCreds",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Whether to include `refreshToken` for `oauth2AuthorizationCode` credentials in the response (along with `accessToken` and `scopes`). If true, the `includeCreds` query parameter will be ignored. Default is false.",
+                                  "key": "includeRefreshToken",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Whether to refresh the access token. If value is `ifExpired`, the access token will be refreshed only if it has expired. If value is `force`, the access token will be refreshed regardless of its expiration.",
+                                  "key": "refresh",
+                                  "value": "force"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "connectionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:23.000Z",
+                          "updatedAt": "2026-10-21T21:12:23.000Z",
+                          "uid": "35240-a73d7595-520e-4b2e-843c-7a200ef6d279"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-c6ec77b4-8276-40c1-bc97-0d0899047286"
+                    },
+                    {
+                      "name": "Ampersand Update a Connection",
+                      "id": "3353d218-1e70-4898-9d51-6303ac204d5c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"updateMask\": [\n    \"basicAuth\",\n    \"providerWorkspaceRef\"\n  ],\n  \"connection\": {\n    \"providerWorkspaceRef\": \"<string>\",\n    \"providerMetadata\": {\n      \"sit_3\": {\n        \"value\": \"<string>\",\n        \"source\": \"token\",\n        \"displayName\": \"<string>\"\n      },\n      \"cupidatat_d_1\": {\n        \"value\": \"<string>\",\n        \"source\": \"input\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    \"groupName\": \"<string>\",\n    \"groupRef\": \"<string>\",\n    \"consumerName\": \"<string>\",\n    \"consumerRef\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"apiKey\": \"<string>\",\n    \"customAuth\": {\n      \"adb9\": \"<string>\"\n    },\n    \"basicAuth\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\"\n    },\n    \"oauth2ClientCredentials\": {\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2PasswordCredentials\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"refreshToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f8b3c3fd-dfef-435d-a42a-514e075c90cd",
+                              "key": "projectIdOrName",
+                              "value": "<string>",
+                              "description": "(Required) The Ampersand project ID or project name."
+                            },
+                            {
+                              "id": "e238ac15-0f41-4f3c-a493-ee9ad02cbb1b",
+                              "key": "connectionId",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the connection to update. You can find this via the [list connections endpoint](https://docs.withampersand.com/reference/connection/list-connections)."
+                            }
+                          ]
+                        },
+                        "description": "Rotate credentials or update metadata (such as the provider workspace reference) for an existing connection."
+                      },
+                      "response": [
+                        {
+                          "id": "458cbafb-e112-4506-b1bd-1e19df952eb1",
+                          "name": "Connection updated successfully.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"updateMask\": [\n    \"basicAuth\",\n    \"providerWorkspaceRef\"\n  ],\n  \"connection\": {\n    \"providerWorkspaceRef\": \"<string>\",\n    \"providerMetadata\": {\n      \"sit_3\": {\n        \"value\": \"<string>\",\n        \"source\": \"token\",\n        \"displayName\": \"<string>\"\n      },\n      \"cupidatat_d_1\": {\n        \"value\": \"<string>\",\n        \"source\": \"input\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    \"groupName\": \"<string>\",\n    \"groupRef\": \"<string>\",\n    \"consumerName\": \"<string>\",\n    \"consumerRef\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"apiKey\": \"<string>\",\n    \"customAuth\": {\n      \"adb9\": \"<string>\"\n    },\n    \"basicAuth\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\"\n    },\n    \"oauth2ClientCredentials\": {\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2PasswordCredentials\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"refreshToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "connectionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"group\": {\n    \"createTime\": \"<dateTime>\",\n    \"groupName\": \"<string>\",\n    \"groupRef\": \"<string>\",\n    \"projectId\": \"<string>\",\n    \"updateTime\": \"<dateTime>\"\n  },\n  \"consumer\": {\n    \"consumerName\": \"<string>\",\n    \"consumerRef\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"projectId\": \"<string>\",\n    \"updateTime\": \"<dateTime>\"\n  },\n  \"projectId\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"authScheme\": \"basic\",\n  \"status\": \"created\",\n  \"providerApp\": {\n    \"clientId\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"projectId\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"externalRef\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"est_69\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"elit_70f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"providerParams\": {\n        \"laborum__8\": \"<string>\",\n        \"nostrud1\": \"<string>\"\n      }\n    },\n    \"updateTime\": \"<dateTime>\"\n  },\n  \"providerWorkspaceRef\": \"<string>\",\n  \"providerConsumerRef\": \"<string>\",\n  \"updateTime\": \"<dateTime>\",\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"<string>\",\n      \"issuedAt\": \"<dateTime>\",\n      \"expiresAt\": \"<dateTime>\"\n    },\n    \"refreshToken\": {\n      \"token\": \"<string>\",\n      \"issuedAt\": \"<dateTime>\",\n      \"expiresAt\": \"<dateTime>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"apiKey\": \"<string>\",\n  \"providerMetadata\": {\n    \"veniamdf3\": {\n      \"value\": \"<string>\",\n      \"source\": \"input\",\n      \"displayName\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-10-21T21:12:23.000Z",
+                          "updatedAt": "2026-10-21T21:12:23.000Z",
+                          "uid": "35240-458cbafb-e112-4506-b1bd-1e19df952eb1"
+                        },
+                        {
+                          "id": "dad84e6f-fc55-47d7-a94d-457ab17b8a73",
+                          "name": "Invalid update mask or request body. The response includes the list of allowed mask values.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"updateMask\": [\n    \"basicAuth\",\n    \"providerWorkspaceRef\"\n  ],\n  \"connection\": {\n    \"providerWorkspaceRef\": \"<string>\",\n    \"providerMetadata\": {\n      \"sit_3\": {\n        \"value\": \"<string>\",\n        \"source\": \"token\",\n        \"displayName\": \"<string>\"\n      },\n      \"cupidatat_d_1\": {\n        \"value\": \"<string>\",\n        \"source\": \"input\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    \"groupName\": \"<string>\",\n    \"groupRef\": \"<string>\",\n    \"consumerName\": \"<string>\",\n    \"consumerRef\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"apiKey\": \"<string>\",\n    \"customAuth\": {\n      \"adb9\": \"<string>\"\n    },\n    \"basicAuth\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\"\n    },\n    \"oauth2ClientCredentials\": {\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2PasswordCredentials\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"refreshToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "connectionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:23.000Z",
+                          "updatedAt": "2026-10-21T21:12:23.000Z",
+                          "uid": "35240-dad84e6f-fc55-47d7-a94d-457ab17b8a73"
+                        },
+                        {
+                          "id": "574fb3ef-61d3-48bb-abd8-b05904895290",
+                          "name": "Error (e.g. connection not found, auth scheme mismatch, or server error).",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"updateMask\": [\n    \"basicAuth\",\n    \"providerWorkspaceRef\"\n  ],\n  \"connection\": {\n    \"providerWorkspaceRef\": \"<string>\",\n    \"providerMetadata\": {\n      \"sit_3\": {\n        \"value\": \"<string>\",\n        \"source\": \"token\",\n        \"displayName\": \"<string>\"\n      },\n      \"cupidatat_d_1\": {\n        \"value\": \"<string>\",\n        \"source\": \"input\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    \"groupName\": \"<string>\",\n    \"groupRef\": \"<string>\",\n    \"consumerName\": \"<string>\",\n    \"consumerRef\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"apiKey\": \"<string>\",\n    \"customAuth\": {\n      \"adb9\": \"<string>\"\n    },\n    \"basicAuth\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\"\n    },\n    \"oauth2ClientCredentials\": {\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2PasswordCredentials\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"refreshToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "connectionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:23.000Z",
+                          "updatedAt": "2026-10-21T21:12:23.000Z",
+                          "uid": "35240-574fb3ef-61d3-48bb-abd8-b05904895290"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-3353d218-1e70-4898-9d51-6303ac204d5c"
+                    },
+                    {
+                      "name": "Ampersand Delete a Connection",
+                      "id": "ff5e65d2-b22e-45fe-8187-52f9cc07f8c0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2b610f88-de94-40c0-a71f-abce7ff625d4",
+                              "key": "projectIdOrName",
+                              "value": "<string>",
+                              "description": "(Required) The Ampersand project ID or project name."
+                            },
+                            {
+                              "id": "a49236fc-7a7d-472e-bcf4-b85aa314ebc2",
+                              "key": "connectionId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "381bc6e5-2534-42f4-9231-34dc1312b827",
+                          "name": "Deleted",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "connectionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:12:23.000Z",
+                          "updatedAt": "2026-10-21T21:12:23.000Z",
+                          "uid": "35240-381bc6e5-2534-42f4-9231-34dc1312b827"
+                        },
+                        {
+                          "id": "4cd37ddb-d395-4214-98e1-e020327ce9f9",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/connections/:connectionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "connectionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:23.000Z",
+                          "updatedAt": "2026-10-21T21:12:23.000Z",
+                          "uid": "35240-4cd37ddb-d395-4214-98e1-e020327ce9f9"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-ff5e65d2-b22e-45fe-8187-52f9cc07f8c0"
+                    }
+                  ],
+                  "id": "7db5c023-018e-4791-a3ba-510722606709",
+                  "createdAt": "2026-10-21T21:12:23.000Z",
+                  "updatedAt": "2026-10-21T21:12:23.000Z",
+                  "uid": "35240-7db5c023-018e-4791-a3ba-510722606709"
+                },
+                {
+                  "name": "Ampersand List Connections",
+                  "id": "54fb5800-0695-48c8-913b-05aebc085753",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName/connections?provider=<string>&groupRef=<string>&consumerRef=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName",
+                        "connections"
+                      ],
+                      "query": [
+                        {
+                          "description": "The provider name (e.g. \"salesforce\", \"hubspot\")",
+                          "key": "provider",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The ID of the user group that has access to this installation.",
+                          "key": "groupRef",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The consumer reference.",
+                          "key": "consumerRef",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "696baa45-4d77-487d-8d71-354df18e10cb",
+                          "key": "projectIdOrName",
+                          "value": "<string>",
+                          "description": "(Required) The Ampersand project ID or project name."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "1d51a27e-de66-4682-9931-90516eabf780",
+                      "name": "List of project connections.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections?provider=<string>&groupRef=<string>&consumerRef=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections"
+                          ],
+                          "query": [
+                            {
+                              "description": "The provider name (e.g. \"salesforce\", \"hubspot\")",
+                              "key": "provider",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The ID of the user group that has access to this installation.",
+                              "key": "groupRef",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The consumer reference.",
+                              "key": "consumerRef",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"group\": {\n      \"createTime\": \"<dateTime>\",\n      \"groupName\": \"<string>\",\n      \"groupRef\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"updateTime\": \"<dateTime>\"\n    },\n    \"consumer\": {\n      \"consumerName\": \"<string>\",\n      \"consumerRef\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"projectId\": \"<string>\",\n      \"updateTime\": \"<dateTime>\"\n    },\n    \"projectId\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"authScheme\": \"apiKey\",\n    \"status\": \"created\",\n    \"providerApp\": {\n      \"clientId\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"provider\": \"<string>\",\n      \"externalRef\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"authQueryParams\": {\n          \"velit_0\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"veniam2\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"providerParams\": {\n          \"culpa8\": \"<string>\",\n          \"anim_2d\": \"<string>\"\n        }\n      },\n      \"updateTime\": \"<dateTime>\"\n    },\n    \"providerWorkspaceRef\": \"<string>\",\n    \"providerConsumerRef\": \"<string>\",\n    \"updateTime\": \"<dateTime>\",\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"<string>\",\n        \"issuedAt\": \"<dateTime>\",\n        \"expiresAt\": \"<dateTime>\"\n      },\n      \"refreshToken\": {\n        \"token\": \"<string>\",\n        \"issuedAt\": \"<dateTime>\",\n        \"expiresAt\": \"<dateTime>\"\n      },\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"apiKey\": \"<string>\",\n    \"providerMetadata\": {\n      \"ea38d\": {\n        \"value\": \"<string>\",\n        \"source\": \"input\",\n        \"displayName\": \"<string>\"\n      },\n      \"culpa_fb\": {\n        \"value\": \"<string>\",\n        \"source\": \"input\",\n        \"displayName\": \"<string>\"\n      }\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"group\": {\n      \"createTime\": \"<dateTime>\",\n      \"groupName\": \"<string>\",\n      \"groupRef\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"updateTime\": \"<dateTime>\"\n    },\n    \"consumer\": {\n      \"consumerName\": \"<string>\",\n      \"consumerRef\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"projectId\": \"<string>\",\n      \"updateTime\": \"<dateTime>\"\n    },\n    \"projectId\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"authScheme\": \"oauth2/authorizationCodePKCE\",\n    \"status\": \"created\",\n    \"providerApp\": {\n      \"clientId\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"provider\": \"<string>\",\n      \"externalRef\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": {\n        \"authQueryParams\": {\n          \"Excepteur_38\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"providerParams\": {\n          \"commodo_f5d\": \"<string>\"\n        }\n      },\n      \"updateTime\": \"<dateTime>\"\n    },\n    \"providerWorkspaceRef\": \"<string>\",\n    \"providerConsumerRef\": \"<string>\",\n    \"updateTime\": \"<dateTime>\",\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"<string>\",\n        \"issuedAt\": \"<dateTime>\",\n        \"expiresAt\": \"<dateTime>\"\n      },\n      \"refreshToken\": {\n        \"token\": \"<string>\",\n        \"issuedAt\": \"<dateTime>\",\n        \"expiresAt\": \"<dateTime>\"\n      },\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"apiKey\": \"<string>\",\n    \"providerMetadata\": {\n      \"fugiata98\": {\n        \"value\": \"<string>\",\n        \"source\": \"provider\",\n        \"displayName\": \"<string>\"\n      }\n    }\n  }\n]",
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-1d51a27e-de66-4682-9931-90516eabf780"
+                    },
+                    {
+                      "id": "8528e138-a3c3-4535-bc4f-7d509a3df029",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections?provider=<string>&groupRef=<string>&consumerRef=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections"
+                          ],
+                          "query": [
+                            {
+                              "description": "The provider name (e.g. \"salesforce\", \"hubspot\")",
+                              "key": "provider",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The ID of the user group that has access to this installation.",
+                              "key": "groupRef",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The consumer reference.",
+                              "key": "consumerRef",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-8528e138-a3c3-4535-bc4f-7d509a3df029"
+                    },
+                    {
+                      "id": "4ee3a340-0ad8-4602-a15b-e02e5d144970",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections?provider=<string>&groupRef=<string>&consumerRef=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections"
+                          ],
+                          "query": [
+                            {
+                              "description": "The provider name (e.g. \"salesforce\", \"hubspot\")",
+                              "key": "provider",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The ID of the user group that has access to this installation.",
+                              "key": "groupRef",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The consumer reference.",
+                              "key": "consumerRef",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-4ee3a340-0ad8-4602-a15b-e02e5d144970"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:12:23.000Z",
+                  "updatedAt": "2026-10-21T21:12:23.000Z",
+                  "uid": "35240-54fb5800-0695-48c8-913b-05aebc085753"
                 }
               ],
-              "body": "[\n  {\n    \"id\": \"connection-123\",\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"group\": {\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"groupName\": \"Super Customer\",\n      \"groupRef\": \"group-123\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"consumer\": {\n      \"consumerName\": \"Super Customer\",\n      \"consumerRef\": \"consumer-123\",\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"projectId\": \"project-456\",\n    \"provider\": \"salesforce\",\n    \"authScheme\": \"oauth2/authorizationCode\",\n    \"status\": \"working\",\n    \"providerApp\": {\n      \"clientId\": \"client-id-123\",\n      \"createTime\": \"2001-10-25T18:21:24.807Z\",\n      \"id\": \"provider-app-123\",\n      \"projectId\": \"project-456\",\n      \"provider\": \"salesforce\",\n      \"externalRef\": \"external-id-123\",\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata\": {\n        \"authQueryParams\": {\n          \"optional_scope\": [\n            \"automation.sequences.read\"\n          ]\n        },\n        \"providerParams\": {\n          \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n          \"gcpProjectId\": \"my-gcp-project\",\n          \"gcpPubSubTopicName\": \"my-topic\"\n        }\n      },\n      \"updateTime\": \"1956-07-16T22:31:45.431Z\"\n    },\n    \"providerWorkspaceRef\": \"provider-workspace-123\",\n    \"providerConsumerRef\": \"provider-consumer-123\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"refreshToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"apiKey\": \"api-key-123\",\n    \"providerMetadata\": {\n      \"key_0\": {\n        \"value\": \"1234567890\",\n        \"source\": \"input\",\n        \"displayName\": \"Account ID\"\n      }\n    }\n  },\n  {\n    \"id\": \"connection-123\",\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"group\": {\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"groupName\": \"Super Customer\",\n      \"groupRef\": \"group-123\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"consumer\": {\n      \"consumerName\": \"Super Customer\",\n      \"consumerRef\": \"consumer-123\",\n      \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n      \"projectId\": \"project-456\",\n      \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n    },\n    \"projectId\": \"project-456\",\n    \"provider\": \"salesforce\",\n    \"authScheme\": \"oauth2/authorizationCode\",\n    \"status\": \"working\",\n    \"providerApp\": {\n      \"clientId\": \"client-id-123\",\n      \"createTime\": \"1986-03-16T04:20:40.267Z\",\n      \"id\": \"provider-app-123\",\n      \"projectId\": \"project-456\",\n      \"provider\": \"salesforce\",\n      \"externalRef\": \"external-id-123\",\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata\": {\n        \"authQueryParams\": {\n          \"optional_scope\": [\n            \"automation.sequences.read\"\n          ]\n        },\n        \"providerParams\": {\n          \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n          \"gcpProjectId\": \"my-gcp-project\",\n          \"gcpPubSubTopicName\": \"my-topic\"\n        }\n      },\n      \"updateTime\": \"1981-06-07T20:29:25.015Z\"\n    },\n    \"providerWorkspaceRef\": \"provider-workspace-123\",\n    \"providerConsumerRef\": \"provider-consumer-123\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"refreshToken\": {\n        \"token\": \"string\",\n        \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n        \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n      },\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"apiKey\": \"api-key-123\",\n    \"providerMetadata\": {\n      \"key_0\": {\n        \"value\": \"1234567890\",\n        \"source\": \"input\",\n        \"displayName\": \"Account ID\"\n      }\n    }\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "2d436857-194c-4578-a264-3dbea72dd1f7",
+              "createdAt": "2026-10-21T21:12:23.000Z",
+              "updatedAt": "2026-10-21T21:12:23.000Z",
+              "uid": "35240-2d436857-194c-4578-a264-3dbea72dd1f7"
             },
             {
-              "id": "3a8bf265-9c33-4630-949c-0941a3bffe4d",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "provider",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "groupRef",
-                      "value": "group-123"
-                    },
-                    {
-                      "key": "consumerRef",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "name": "connections:generate",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
+                  "name": "Ampersand Generate a New Connection",
+                  "id": "ba75d0e2-1684-4db2-b787-ae0a40d1d4d8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"groupRef\": \"<string>\",\n  \"consumerRef\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"providerWorkspaceRef\": \"<string>\",\n  \"providerMetadata\": {\n    \"culpaca\": {\n      \"value\": \"<string>\",\n      \"source\": \"input\",\n      \"displayName\": \"<string>\"\n    }\n  },\n  \"groupName\": \"<string>\",\n  \"consumerName\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"customAuth\": {\n    \"consectetur_ff\": \"<string>\",\n    \"nostrud_1e\": \"<string>\"\n  },\n  \"basicAuth\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"oauth2ClientCredentials\": {\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2PasswordCredentials\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"refreshToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName/connections:generate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName",
+                        "connections:generate"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9b111f1e-33f3-46b6-b09d-06c6d9fb8887",
+                          "key": "projectIdOrName",
+                          "value": "<string>",
+                          "description": "(Required) The Ampersand project ID or project name."
+                        }
+                      ]
+                    },
+                    "description": "All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the /oauth-connect endpoint instead, unless you already have the refresh token and are importing it into Ampersand."
+                  },
+                  "response": [
+                    {
+                      "id": "01fa9a7f-2ad2-4ee9-ac20-ab6c57b616c9",
+                      "name": "Created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"groupRef\": \"<string>\",\n  \"consumerRef\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"providerWorkspaceRef\": \"<string>\",\n  \"providerMetadata\": {\n    \"culpaca\": {\n      \"value\": \"<string>\",\n      \"source\": \"input\",\n      \"displayName\": \"<string>\"\n    }\n  },\n  \"groupName\": \"<string>\",\n  \"consumerName\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"customAuth\": {\n    \"consectetur_ff\": \"<string>\",\n    \"nostrud_1e\": \"<string>\"\n  },\n  \"basicAuth\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"oauth2ClientCredentials\": {\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2PasswordCredentials\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"refreshToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections:generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections:generate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"group\": {\n    \"createTime\": \"<dateTime>\",\n    \"groupName\": \"<string>\",\n    \"groupRef\": \"<string>\",\n    \"projectId\": \"<string>\",\n    \"updateTime\": \"<dateTime>\"\n  },\n  \"consumer\": {\n    \"consumerName\": \"<string>\",\n    \"consumerRef\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"projectId\": \"<string>\",\n    \"updateTime\": \"<dateTime>\"\n  },\n  \"projectId\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"authScheme\": \"basic\",\n  \"status\": \"created\",\n  \"providerApp\": {\n    \"clientId\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"projectId\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"externalRef\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"est_69\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"elit_70f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"providerParams\": {\n        \"laborum__8\": \"<string>\",\n        \"nostrud1\": \"<string>\"\n      }\n    },\n    \"updateTime\": \"<dateTime>\"\n  },\n  \"providerWorkspaceRef\": \"<string>\",\n  \"providerConsumerRef\": \"<string>\",\n  \"updateTime\": \"<dateTime>\",\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"<string>\",\n      \"issuedAt\": \"<dateTime>\",\n      \"expiresAt\": \"<dateTime>\"\n    },\n    \"refreshToken\": {\n      \"token\": \"<string>\",\n      \"issuedAt\": \"<dateTime>\",\n      \"expiresAt\": \"<dateTime>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"apiKey\": \"<string>\",\n  \"providerMetadata\": {\n    \"veniamdf3\": {\n      \"value\": \"<string>\",\n      \"source\": \"input\",\n      \"displayName\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-01fa9a7f-2ad2-4ee9-ac20-ab6c57b616c9"
+                    },
+                    {
+                      "id": "456ebb3b-b640-4b16-9f3e-4155ea2346ad",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"groupRef\": \"<string>\",\n  \"consumerRef\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"providerWorkspaceRef\": \"<string>\",\n  \"providerMetadata\": {\n    \"culpaca\": {\n      \"value\": \"<string>\",\n      \"source\": \"input\",\n      \"displayName\": \"<string>\"\n    }\n  },\n  \"groupName\": \"<string>\",\n  \"consumerName\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"customAuth\": {\n    \"consectetur_ff\": \"<string>\",\n    \"nostrud_1e\": \"<string>\"\n  },\n  \"basicAuth\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"oauth2ClientCredentials\": {\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2PasswordCredentials\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"refreshToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections:generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections:generate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-456ebb3b-b640-4b16-9f3e-4155ea2346ad"
+                    },
+                    {
+                      "id": "e5fa7e7c-1f4f-4711-ac2c-58553a5446bf",
+                      "name": "Unprocessable Entity",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"groupRef\": \"<string>\",\n  \"consumerRef\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"providerWorkspaceRef\": \"<string>\",\n  \"providerMetadata\": {\n    \"culpaca\": {\n      \"value\": \"<string>\",\n      \"source\": \"input\",\n      \"displayName\": \"<string>\"\n    }\n  },\n  \"groupName\": \"<string>\",\n  \"consumerName\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"customAuth\": {\n    \"consectetur_ff\": \"<string>\",\n    \"nostrud_1e\": \"<string>\"\n  },\n  \"basicAuth\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"oauth2ClientCredentials\": {\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2PasswordCredentials\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"refreshToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections:generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections:generate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-e5fa7e7c-1f4f-4711-ac2c-58553a5446bf"
+                    },
+                    {
+                      "id": "6b688df0-4712-44fb-b72f-d973f1290546",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"groupRef\": \"<string>\",\n  \"consumerRef\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"providerWorkspaceRef\": \"<string>\",\n  \"providerMetadata\": {\n    \"culpaca\": {\n      \"value\": \"<string>\",\n      \"source\": \"input\",\n      \"displayName\": \"<string>\"\n    }\n  },\n  \"groupName\": \"<string>\",\n  \"consumerName\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"customAuth\": {\n    \"consectetur_ff\": \"<string>\",\n    \"nostrud_1e\": \"<string>\"\n  },\n  \"basicAuth\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\"\n  },\n  \"oauth2ClientCredentials\": {\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2PasswordCredentials\": {\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"clientId\": \"<string>\",\n    \"clientSecret\": \"<string>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"refreshToken\": {\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"issuedAt\": \"<dateTime>\"\n    },\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/connections:generate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "connections:generate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:23.000Z",
+                      "updatedAt": "2026-10-21T21:12:23.000Z",
+                      "uid": "35240-6b688df0-4712-44fb-b72f-d973f1290546"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:12:23.000Z",
+                  "updatedAt": "2026-10-21T21:12:23.000Z",
+                  "uid": "35240-ba75d0e2-1684-4db2-b787-ae0a40d1d4d8"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8999c8c4-59d8-420b-94d8-a4b72b5545b5",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "provider",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "groupRef",
-                      "value": "group-123"
-                    },
-                    {
-                      "key": "consumerRef",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "d426c2b2-483a-46a8-b2fe-33ad3f2523a7",
+              "createdAt": "2026-10-21T21:12:23.000Z",
+              "updatedAt": "2026-10-21T21:12:23.000Z",
+              "uid": "35240-d426c2b2-483a-46a8-b2fe-33ad3f2523a7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "669573eb-64ea-49f1-8cd1-ce07d8652586",
-          "name": "Ampersand Generate a New Connection",
-          "request": {
-            "name": "Ampersand Generate a New Connection",
-            "description": {
-              "content": "All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.withampersand.com/reference/oauth/get-url-for-oauth-flow) instead, unless you already have the refresh token and are importing it into Ampersand.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "connections:generate"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "3d0fe3e8-e276-49fc-a65c-b90df5f21dcb",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections:generate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"connection-123\",\n  \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n  \"group\": {\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"groupName\": \"Super Customer\",\n    \"groupRef\": \"group-123\",\n    \"projectId\": \"project-456\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n  },\n  \"consumer\": {\n    \"consumerName\": \"Super Customer\",\n    \"consumerRef\": \"consumer-123\",\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"projectId\": \"project-456\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n  },\n  \"projectId\": \"project-456\",\n  \"provider\": \"salesforce\",\n  \"authScheme\": \"oauth2/authorizationCode\",\n  \"status\": \"working\",\n  \"providerApp\": {\n    \"clientId\": \"client-id-123\",\n    \"createTime\": \"2018-03-09T22:18:05.379Z\",\n    \"id\": \"provider-app-123\",\n    \"projectId\": \"project-456\",\n    \"provider\": \"salesforce\",\n    \"externalRef\": \"external-id-123\",\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"key_0\": [\n          \"string\",\n          \"string\"\n        ],\n        \"key_1\": [\n          \"string\",\n          \"string\"\n        ],\n        \"key_2\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"providerParams\": {\n        \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n        \"gcpProjectId\": \"my-gcp-project\",\n        \"gcpPubSubTopicName\": \"my-topic\"\n      }\n    },\n    \"updateTime\": \"1992-08-24T22:12:40.477Z\"\n  },\n  \"providerWorkspaceRef\": \"provider-workspace-123\",\n  \"providerConsumerRef\": \"provider-consumer-123\",\n  \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\",\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"string\",\n      \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n      \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n    },\n    \"refreshToken\": {\n      \"token\": \"string\",\n      \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n      \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n    },\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"apiKey\": \"api-key-123\",\n  \"providerMetadata\": {\n    \"key_0\": {\n      \"value\": \"1234567890\",\n      \"source\": \"input\",\n      \"displayName\": \"Account ID\"\n    },\n    \"key_1\": {\n      \"value\": \"1234567890\",\n      \"source\": \"input\",\n      \"displayName\": \"Account ID\"\n    },\n    \"key_2\": {\n      \"value\": \"1234567890\",\n      \"source\": \"input\",\n      \"displayName\": \"Account ID\"\n    }\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "64383125-3be5-4801-952c-f5d3128c4a02",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections:generate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "09cd26d4-c50a-4612-8f4b-c4a2db93126f",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections:generate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b72aa92f-accd-40c2-b947-76dc8a09dfd1",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections:generate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9855a65c-07b9-4c4b-8a27-71160b41eb17",
-          "name": "Ampersand Get a Connection",
-          "request": {
-            "name": "Ampersand Get a Connection",
-            "description": {},
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "connections",
-                ":connectionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "includeCreds",
-                  "value": "<boolean>",
-                  "description": "Whether to include credentials for `oauth2AuthorizationCode` in the response. If true, `accessToken` and `scopes` are included. To include `refreshToken` as well, set `includeRefreshToken` to true. Default is false."
-                },
-                {
-                  "disabled": false,
-                  "key": "includeRefreshToken",
-                  "value": "<boolean>",
-                  "description": "Whether to include `refreshToken` for `oauth2AuthorizationCode` credentials in the response (along with `accessToken` and `scopes`). If true, the `includeCreds` query parameter will be ignored. Default is false."
-                },
-                {
-                  "disabled": false,
-                  "key": "refresh",
-                  "value": "<string>",
-                  "description": "Whether to refresh the access token. If value is `ifExpired`, the access token will be refreshed only if it has expired. If value is `force`, the access token will be refreshed regardless of its expiration."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "connectionId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c126e2b4-b0af-426f-aba0-cacc9e25abbe",
-              "name": "Connection",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "includeCreds",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "includeRefreshToken",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "refresh",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"connection-123\",\n  \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n  \"group\": {\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"groupName\": \"Super Customer\",\n    \"groupRef\": \"group-123\",\n    \"projectId\": \"project-456\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n  },\n  \"consumer\": {\n    \"consumerName\": \"Super Customer\",\n    \"consumerRef\": \"consumer-123\",\n    \"createTime\": \"2023-07-13 21:34:44.816354+00:00\",\n    \"projectId\": \"project-456\",\n    \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\"\n  },\n  \"projectId\": \"project-456\",\n  \"provider\": \"salesforce\",\n  \"authScheme\": \"oauth2/authorizationCode\",\n  \"status\": \"working\",\n  \"providerApp\": {\n    \"clientId\": \"client-id-123\",\n    \"createTime\": \"2018-03-09T22:18:05.379Z\",\n    \"id\": \"provider-app-123\",\n    \"projectId\": \"project-456\",\n    \"provider\": \"salesforce\",\n    \"externalRef\": \"external-id-123\",\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata\": {\n      \"authQueryParams\": {\n        \"key_0\": [\n          \"string\",\n          \"string\"\n        ],\n        \"key_1\": [\n          \"string\",\n          \"string\"\n        ],\n        \"key_2\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"providerParams\": {\n        \"packageInstallURL\": \"https://login.salesforce.com/packaging/installPackage.apexp?p0=04t123456789\",\n        \"gcpProjectId\": \"my-gcp-project\",\n        \"gcpPubSubTopicName\": \"my-topic\"\n      }\n    },\n    \"updateTime\": \"1992-08-24T22:12:40.477Z\"\n  },\n  \"providerWorkspaceRef\": \"provider-workspace-123\",\n  \"providerConsumerRef\": \"provider-consumer-123\",\n  \"updateTime\": \"2023-07-13 21:34:44.816354+00:00\",\n  \"oauth2AuthorizationCode\": {\n    \"accessToken\": {\n      \"token\": \"string\",\n      \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n      \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n    },\n    \"refreshToken\": {\n      \"token\": \"string\",\n      \"issuedAt\": \"2024-04-22T18:55:28.456076Z\",\n      \"expiresAt\": \"2024-10-22T18:55:28.456076Z\"\n    },\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"apiKey\": \"api-key-123\",\n  \"providerMetadata\": {\n    \"key_0\": {\n      \"value\": \"1234567890\",\n      \"source\": \"input\",\n      \"displayName\": \"Account ID\"\n    },\n    \"key_1\": {\n      \"value\": \"1234567890\",\n      \"source\": \"input\",\n      \"displayName\": \"Account ID\"\n    },\n    \"key_2\": {\n      \"value\": \"1234567890\",\n      \"source\": \"input\",\n      \"displayName\": \"Account ID\"\n    }\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5c24cf06-bafc-4415-9a4d-bde9f95c411f",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "includeCreds",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "includeRefreshToken",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "refresh",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9261333f-3338-4d8b-b1ad-f9d33a6ec3ff",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "includeCreds",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "includeRefreshToken",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "refresh",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ca3ca231-b4b1-4d48-a433-f86d81c2d7bd",
-          "name": "Ampersand Update a Connection.",
-          "request": {
-            "name": "Ampersand Update a Connection.",
-            "description": {
-              "content": "Rotate credentials or update metadata (such as the provider workspace reference) for an existing connection.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "connections",
-                ":connectionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "connectionId",
-                  "description": "(Required) The ID of the connection to update. You can find this via the [list connections endpoint](https://docs.withampersand.com/reference/connection/list-connections)."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"updateMask\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"connection\": {\n    \"providerWorkspaceRef\": \"<string>\",\n    \"providerMetadata\": {\n      \"key_0\": {\n        \"value\": \"<string>\",\n        \"source\": \"<string>\",\n        \"displayName\": \"<string>\"\n      }\n    },\n    \"groupName\": \"<string>\",\n    \"groupRef\": \"<string>\",\n    \"consumerName\": \"<string>\",\n    \"consumerRef\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"apiKey\": \"<string>\",\n    \"customAuth\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"basicAuth\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\"\n    },\n    \"oauth2ClientCredentials\": {\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2PasswordCredentials\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"clientSecret\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"oauth2AuthorizationCode\": {\n      \"accessToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"refreshToken\": {\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"issuedAt\": \"<dateTime>\"\n      },\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "39e1c12e-c339-468d-8807-e837e806a793",
-              "name": "Connection updated successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The ID of the connection to update. You can find this via the [list connections endpoint](https://docs.withampersand.com/reference/connection/list-connections)."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"apiKey\"\n  ],\n  \"connection\": {\n    \"apiKey\": \"new-api-key-value\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"c3a1f9d2-7b4e-4f8a-9e6d-2c5b8a3f1e7d\",\n  \"projectId\": \"a1b2c3d4-e5f6-4789-a012-3456789abcde\",\n  \"provider\": \"salesforce\",\n  \"group\": {\n    \"groupRef\": \"8f2e4a6b-1c3d-4e5f-9a7b-0d8e6f2c4a1b\",\n    \"groupName\": \"my-group\"\n  },\n  \"consumer\": {\n    \"consumerRef\": \"d4e5f6a7-b8c9-4d0e-a1f2-3b4c5d6e7f8a\",\n    \"consumerName\": \"my-consumer\"\n  },\n  \"providerWorkspaceRef\": \"my-org.my.salesforce.com\",\n  \"authScheme\": \"apiKey\",\n  \"status\": \"working\",\n  \"createTime\": \"2023-07-13T21:34:44.816354Z\",\n  \"updateTime\": \"2024-01-15T10:22:33.000000Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "89fcb7f5-25f2-4130-b598-dbb692365322",
-              "name": "Invalid update mask or request body. The response includes the list of allowed mask values.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The ID of the connection to update. You can find this via the [list connections endpoint](https://docs.withampersand.com/reference/connection/list-connections)."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"apiKey\"\n  ],\n  \"connection\": {\n    \"apiKey\": \"new-api-key-value\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{\n  \"type\": \"about:blank\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"detail\": \"Invalid update mask\",\n  \"subsystem\": \"api\",\n  \"time\": \"2024-04-22T18:55:28.456076Z\",\n  \"requestId\": \"89eb1ffb-2a54-4105-aaae-7bf990f1aa69#87715\",\n  \"remedy\": \"Allowed masks: 'providerWorkspaceRef, providerMetadata, apiKey, basicAuth, oauth2ClientCredentials, oauth2PasswordCredentials'\",\n  \"retryable\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b0a18965-10bf-475b-ad49-08c4da10deae",
-              "name": "Error (e.g. connection not found, auth scheme mismatch, or server error).",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The ID of the connection to update. You can find this via the [list connections endpoint](https://docs.withampersand.com/reference/connection/list-connections)."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"apiKey\"\n  ],\n  \"connection\": {\n    \"apiKey\": \"new-api-key-value\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c0142c71-07c8-4c31-8a73-c544c04579f0",
-          "name": "Ampersand Delete a Connection",
-          "request": {
-            "name": "Ampersand Delete a Connection",
-            "description": {},
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "connections",
-                ":connectionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "connectionId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/problem+json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5b329693-6fd3-4d8d-a8b3-ce9e31164a8e",
-              "name": "Deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "213924da-09b8-49c5-b26a-e1fc1eaa5c6e",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "e1afe0bd-a4b5-4c5b-b4fb-c844aee1e376",
+          "createdAt": "2026-10-21T21:12:23.000Z",
+          "updatedAt": "2026-10-21T21:12:23.000Z",
+          "uid": "35240-e1afe0bd-a4b5-4c5b-b4fb-c844aee1e376"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.withampersand.com/v1",
-      "key": "baseUrl"
+      "id": "46b05c7e-4faf-4299-a090-dc3c7ba57152",
+      "createdAt": "2026-10-21T21:12:23.000Z",
+      "updatedAt": "2026-10-21T21:12:23.000Z",
+      "uid": "35240-46b05c7e-4faf-4299-a090-dc3c7ba57152"
     }
   ],
   "auth": {
@@ -1318,25 +1303,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Api-Key"
+        "value": "X-Api-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "6df971ba-a49d-4091-9e4e-0ec8c4bc6457",
-    "name": "Ampersand public API Key Connection API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.withampersand.com/v1"
     }
-  }
+  ]
 }

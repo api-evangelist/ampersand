@@ -1,1430 +1,1374 @@
 {
+  "info": {
+    "_postman_id": "017f4f4c-ae8a-4f25-874d-19ec8062b2c2",
+    "name": "Ampersand public JWT Key API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:12:47.000Z",
+    "updatedAt": "2026-10-21T21:12:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-017f4f4c-ae8a-4f25-874d-19ec8062b2c2"
+  },
   "item": [
     {
-      "id": "436f0a97-35bf-42bb-9d22-e3a98c67c688",
-      "name": "JWT Key",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "projects",
       "item": [
         {
-          "id": "df1f2834-7992-42fe-af25-0aeae91d624e",
-          "name": "Ampersand Create a New JWT Key",
-          "request": {
-            "name": "Ampersand Create a New JWT Key",
-            "description": {
-              "content": "Creates a new JWT key for the specified project with RSA public key for token verification",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "jwt-keys"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) Ampersand Project ID or name."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"label\": \"<string>\",\n  \"algorithm\": \"<string>\",\n  \"publicKeyPem\": \"<pem>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "{projectIdOrName}",
+          "item": [
             {
-              "id": "fa7b8fb4-a1ff-4166-a355-f94e36d9f17d",
-              "name": "JWT key created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "jwt-keys",
+              "item": [
+                {
+                  "name": "{keyId}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                      "name": "Ampersand Get a Specific JWT Key",
+                      "id": "a45659db-45ed-489a-8d6b-eb239a8498ef",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys",
+                            ":keyId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "103226b5-5841-4f8d-96f5-9672ad654640",
+                              "key": "projectIdOrName",
+                              "value": "<string>",
+                              "description": "(Required) Ampersand Project ID or name."
+                            },
+                            {
+                              "id": "c77e896d-7164-4f8d-b7bd-aa6790475638",
+                              "key": "keyId",
+                              "value": "<string>",
+                              "description": "(Required) The JWT key ID."
+                            }
+                          ]
+                        },
+                        "description": "Retrieves a specific JWT key by its ID within the specified project"
+                      },
+                      "response": [
+                        {
+                          "id": "cff7a849-337a-4662-8e06-7991a0777dd3",
+                          "name": "JWT key retrieved successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<uuid>\",\n  \"projectId\": \"<uuid>\",\n  \"label\": \"<string>\",\n  \"algorithm\": \"RSA\",\n  \"publicKeyPem\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-cff7a849-337a-4662-8e06-7991a0777dd3"
+                        },
+                        {
+                          "id": "cd5d0f7a-6975-400d-b148-0fb00e4540a1",
+                          "name": "JWT key not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-cd5d0f7a-6975-400d-b148-0fb00e4540a1"
+                        },
+                        {
+                          "id": "1ea623b3-b971-4f7b-9932-0d720e8b238f",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-1ea623b3-b971-4f7b-9932-0d720e8b238f"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-a45659db-45ed-489a-8d6b-eb239a8498ef"
                     },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                    {
+                      "name": "Ampersand Update a JWT Key",
+                      "id": "16a3bced-deb6-4153-ba5f-d61868757c6c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": \"<boolean>\",\n    \"label\": \"<string>\",\n    \"ad_ee4\": true\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys",
+                            ":keyId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fd7ec15f-ad95-49a3-b4fa-57a7457e5636",
+                              "key": "projectIdOrName",
+                              "value": "<string>",
+                              "description": "(Required) Ampersand Project ID or name."
+                            },
+                            {
+                              "id": "c0951ddf-a38b-471e-9faa-0599419cfd0b",
+                              "key": "keyId",
+                              "value": "<string>",
+                              "description": "(Required) The JWT key ID."
+                            }
+                          ]
+                        },
+                        "description": "Updates specific fields of a JWT key using field masks. Currently supports updating the 'active' status and 'name' field."
+                      },
+                      "response": [
+                        {
+                          "id": "5645a464-b4cc-4a1a-a41f-c721a10afac4",
+                          "name": "JWT key updated successfully",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": \"<boolean>\",\n    \"label\": \"<string>\",\n    \"ad_ee4\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<uuid>\",\n  \"projectId\": \"<uuid>\",\n  \"label\": \"<string>\",\n  \"algorithm\": \"RSA\",\n  \"publicKeyPem\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-5645a464-b4cc-4a1a-a41f-c721a10afac4"
+                        },
+                        {
+                          "id": "e659325d-3481-409e-96cc-0ae247cca7a6",
+                          "name": "Bad request - invalid update mask or missing project/key ID",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": \"<boolean>\",\n    \"label\": \"<string>\",\n    \"ad_ee4\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-e659325d-3481-409e-96cc-0ae247cca7a6"
+                        },
+                        {
+                          "id": "3342b15e-79ea-4f5e-be71-2b118264fac7",
+                          "name": "JWT key not found",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": \"<boolean>\",\n    \"label\": \"<string>\",\n    \"ad_ee4\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-3342b15e-79ea-4f5e-be71-2b118264fac7"
+                        },
+                        {
+                          "id": "f7a7a10d-6abc-4344-94a7-0203baf172a5",
+                          "name": "Unprocessable entity - value not found for mask",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": \"<boolean>\",\n    \"label\": \"<string>\",\n    \"ad_ee4\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-f7a7a10d-6abc-4344-94a7-0203baf172a5"
+                        },
+                        {
+                          "id": "b1df253e-9c21-4657-862d-ab9edbcdcca5",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": \"<boolean>\",\n    \"label\": \"<string>\",\n    \"ad_ee4\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-b1df253e-9c21-4657-862d-ab9edbcdcca5"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-16a3bced-deb6-4153-ba5f-d61868757c6c"
+                    },
+                    {
+                      "name": "Ampersand Delete a JWT Key",
+                      "id": "5768a28f-aa89-411e-bd2a-3eebcbbbf3f4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys",
+                            ":keyId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "bba1bc63-9f1e-4714-a5ac-bcb89079ad06",
+                              "key": "projectIdOrName",
+                              "value": "<string>",
+                              "description": "(Required) Ampersand Project ID or name."
+                            },
+                            {
+                              "id": "4cd2859f-e662-4547-8f9c-256558074acc",
+                              "key": "keyId",
+                              "value": "<string>",
+                              "description": "(Required) The JWT key ID."
+                            }
+                          ]
+                        },
+                        "description": "Permanently deletes a JWT key from the specified project"
+                      },
+                      "response": [
+                        {
+                          "id": "72248db3-448e-4e8c-85be-0ce7d6b0b92a",
+                          "name": "JWT key deleted successfully (no content)",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-72248db3-448e-4e8c-85be-0ce7d6b0b92a"
+                        },
+                        {
+                          "id": "cd334173-e6b6-4ead-8b6f-dbffb0c1d6a3",
+                          "name": "JWT key not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-cd334173-e6b6-4ead-8b6f-dbffb0c1d6a3"
+                        },
+                        {
+                          "id": "92ab552c-475c-4643-8c9c-c3a72ff4c303",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys/:keyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "jwt-keys",
+                                ":keyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "keyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:48.000Z",
+                          "updatedAt": "2026-10-21T21:12:48.000Z",
+                          "uid": "35240-92ab552c-475c-4643-8c9c-c3a72ff4c303"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-5768a28f-aa89-411e-bd2a-3eebcbbbf3f4"
+                    }
+                  ],
+                  "id": "f8a8ed80-c610-485e-a281-d52bf0e7045c",
+                  "createdAt": "2026-10-21T21:12:48.000Z",
+                  "updatedAt": "2026-10-21T21:12:48.000Z",
+                  "uid": "35240-f8a8ed80-c610-485e-a281-d52bf0e7045c"
+                },
+                {
+                  "name": "Ampersand Create a New JWT Key",
+                  "id": "9be83076-a7ee-4fa6-8786-90d8af7851be",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"production-key-1\",\n  \"algorithm\": \"RSA\",\n  \"publicKeyPem\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\\nfGnJm6gOdrj8ym3rFkEjWT2btf2QisEgQG5WQwTfEUvUNR8JW5FQ0mKJ5I4LhXq6\\nV5gN6kSKs2cUdD8Ky7Lj7kqn6I3l3r3F2fK9MFjZ8tU5z4z4yHdF6W2C3k5vf3f\\n-----END PUBLIC KEY-----\\n\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"kid\": \"550e8400-e29b-41d4-a716-446655440000\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "49394041-0461-406d-8b3c-f720da877430",
-              "name": "Bad request - validation error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"label\": \"<string>\",\n  \"algorithm\": \"RS256\",\n  \"publicKeyPem\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName",
+                        "jwt-keys"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1a6ba80e-d3ec-4d60-bb73-ce7080fdf449",
+                          "key": "projectIdOrName",
+                          "value": "<string>",
+                          "description": "(Required) Ampersand Project ID or name."
+                        }
+                      ]
+                    },
+                    "description": "Creates a new JWT key for the specified project with RSA public key for token verification"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"production-key-1\",\n  \"algorithm\": \"RSA\",\n  \"publicKeyPem\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\\nfGnJm6gOdrj8ym3rFkEjWT2btf2QisEgQG5WQwTfEUvUNR8JW5FQ0mKJ5I4LhXq6\\nV5gN6kSKs2cUdD8Ky7Lj7kqn6I3l3r3F2fK9MFjZ8tU5z4z4yHdF6W2C3k5vf3f\\n-----END PUBLIC KEY-----\\n\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"type\": \"https://httpstatuses.com/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"detail\": \"unsupported algorithm\",\n  \"validationIssues\": [\n    {\n      \"field\": \"algorithm\",\n      \"value\": \"ECDSA\",\n      \"detail\": \"only RSA algorithm is supported\",\n      \"remedy\": \"use 'RSA' as the algorithm\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7564180a-c801-4555-b2dc-5bfe0b0b3878",
-              "name": "Project not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                      "id": "5077591d-7865-4a81-ae28-3a851ebf7c40",
+                      "name": "JWT key created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"label\": \"<string>\",\n  \"algorithm\": \"RS256\",\n  \"publicKeyPem\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kid\": \"<uuid>\"\n}",
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-5077591d-7865-4a81-ae28-3a851ebf7c40"
                     },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                    {
+                      "id": "0609c48b-420e-4f80-97df-eca4901b68ee",
+                      "name": "Bad request - validation error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"label\": \"<string>\",\n  \"algorithm\": \"RS256\",\n  \"publicKeyPem\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-0609c48b-420e-4f80-97df-eca4901b68ee"
+                    },
+                    {
+                      "id": "febe6ecb-754c-4df2-bd66-7e1eada0fff8",
+                      "name": "Project not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"label\": \"<string>\",\n  \"algorithm\": \"RS256\",\n  \"publicKeyPem\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-febe6ecb-754c-4df2-bd66-7e1eada0fff8"
+                    },
+                    {
+                      "id": "fbbbaf93-61b6-4e79-9753-91bc395340e8",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"label\": \"<string>\",\n  \"algorithm\": \"RS256\",\n  \"publicKeyPem\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-fbbbaf93-61b6-4e79-9753-91bc395340e8"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:12:48.000Z",
+                  "updatedAt": "2026-10-21T21:12:48.000Z",
+                  "uid": "35240-9be83076-a7ee-4fa6-8786-90d8af7851be"
+                },
+                {
+                  "name": "Ampersand List JWT Keys",
+                  "id": "9a46886f-85f9-499e-beae-4497ccc80eda",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"production-key-1\",\n  \"algorithm\": \"RSA\",\n  \"publicKeyPem\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\\nfGnJm6gOdrj8ym3rFkEjWT2btf2QisEgQG5WQwTfEUvUNR8JW5FQ0mKJ5I4LhXq6\\nV5gN6kSKs2cUdD8Ky7Lj7kqn6I3l3r3F2fK9MFjZ8tU5z4z4yHdF6W2C3k5vf3f\\n-----END PUBLIC KEY-----\\n\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"type\": \"https://httpstatuses.com/404\",\n  \"title\": \"Not Found\",\n  \"status\": 404,\n  \"detail\": \"project not found\",\n  \"validationIssues\": [\n    {\n      \"field\": \"projectId\",\n      \"detail\": \"project not found\",\n      \"remedy\": \"check the project ID and try again\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8b5eb51f-bea6-4a3a-8f37-abfc15e67dde",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys?active=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName",
+                        "jwt-keys"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter to only return active JWT keys",
+                          "key": "active",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "a723f86f-0479-4883-97ab-a27090c67eb8",
+                          "key": "projectIdOrName",
+                          "value": "<string>",
+                          "description": "(Required) Ampersand Project ID or name."
+                        }
+                      ]
                     },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                    "description": "Retrieves all JWT keys for the specified project, with optional filtering for active keys only"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"production-key-1\",\n  \"algorithm\": \"RSA\",\n  \"publicKeyPem\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\\nfGnJm6gOdrj8ym3rFkEjWT2btf2QisEgQG5WQwTfEUvUNR8JW5FQ0mKJ5I4LhXq6\\nV5gN6kSKs2cUdD8Ky7Lj7kqn6I3l3r3F2fK9MFjZ8tU5z4z4yHdF6W2C3k5vf3f\\n-----END PUBLIC KEY-----\\n\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "55b055a1-1e98-4557-ae68-904e3fae7e61",
-          "name": "Ampersand List JWT Keys",
-          "request": {
-            "name": "Ampersand List JWT Keys",
-            "description": {
-              "content": "Retrieves all JWT keys for the specified project, with optional filtering for active keys only",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "jwt-keys"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "active",
-                  "value": "false",
-                  "description": "Filter to only return active JWT keys"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) Ampersand Project ID or name."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "1117fd5a-2fca-418e-ac17-fcddf2861067",
-              "name": "List of JWT keys retrieved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "response": [
                     {
-                      "key": "active",
-                      "value": "true"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                      "id": "8f927ad0-bc87-41dd-9d35-d2d10c383cca",
+                      "name": "List of JWT keys retrieved successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys?active=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter to only return active JWT keys",
+                              "key": "active",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"projectId\": \"<uuid>\",\n    \"label\": \"<string>\",\n    \"algorithm\": \"RSA\",\n    \"publicKeyPem\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"projectId\": \"<uuid>\",\n    \"label\": \"<string>\",\n    \"algorithm\": \"RSA\",\n    \"publicKeyPem\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-8f927ad0-bc87-41dd-9d35-d2d10c383cca"
                     },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"projectId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"label\": \"production-key-1\",\n    \"algorithm\": \"RSA\",\n    \"publicKeyPem\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\\n-----END PUBLIC KEY-----\\n\",\n    \"active\": true,\n    \"createTime\": \"2024-01-15T10:30:00Z\",\n    \"updateTime\": \"2024-01-15T10:30:00Z\"\n  },\n  {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440001\",\n    \"projectId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"label\": \"development-key-1\",\n    \"algorithm\": \"RSA\",\n    \"publicKeyPem\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5g6xh6m3iLtUfOqn/W52\\n-----END PUBLIC KEY-----\\n\",\n    \"active\": false,\n    \"createTime\": \"2024-01-10T08:15:00Z\",\n    \"updateTime\": \"2024-01-12T14:20:00Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b692e654-6243-44da-b0ed-e6191ef7192f",
-              "name": "Bad request - invalid project ID",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
                     {
-                      "key": "active",
-                      "value": "true"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                      "id": "76a66bee-321d-4fb3-a528-0c5a9c4341e1",
+                      "name": "Bad request - invalid project ID",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys?active=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter to only return active JWT keys",
+                              "key": "active",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-76a66bee-321d-4fb3-a528-0c5a9c4341e1"
                     },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "42c61e2c-6642-47cb-a517-76d63d55f83d",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
                     {
-                      "key": "active",
-                      "value": "true"
+                      "id": "22dbceb5-5fa2-4a9f-84ad-71143546cf69",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/jwt-keys?active=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "jwt-keys"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter to only return active JWT keys",
+                              "key": "active",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:48.000Z",
+                      "updatedAt": "2026-10-21T21:12:48.000Z",
+                      "uid": "35240-22dbceb5-5fa2-4a9f-84ad-71143546cf69"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "createdAt": "2026-10-21T21:12:48.000Z",
+                  "updatedAt": "2026-10-21T21:12:48.000Z",
+                  "uid": "35240-9a46886f-85f9-499e-beae-4497ccc80eda"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c9f1bc8d-21c7-424b-bc9a-47ee0ae42fb6",
-          "name": "Ampersand Get a Specific JWT Key",
-          "request": {
-            "name": "Ampersand Get a Specific JWT Key",
-            "description": {
-              "content": "Retrieves a specific JWT key by its ID within the specified project",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "jwt-keys",
-                ":keyId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) Ampersand Project ID or name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "keyId",
-                  "description": "(Required) The JWT key ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "51e47d25-919f-4ebf-8e05-8f030e1b2870",
-              "name": "JWT key retrieved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"projectId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"label\": \"production-key-1\",\n  \"algorithm\": \"RSA\",\n  \"publicKeyPem\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\\n-----END PUBLIC KEY-----\\n\",\n  \"active\": true,\n  \"createTime\": \"2024-01-15T10:30:00Z\",\n  \"updateTime\": \"2024-01-15T10:30:00Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5337e407-c31c-434f-adbb-c702b0410e86",
-              "name": "JWT key not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"type\": \"https://httpstatuses.com/404\",\n  \"title\": \"Not Found\",\n  \"status\": 404,\n  \"detail\": \"JWT key not found\",\n  \"remedy\": \"check the key ID and project ID are both correct, and try again\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f61c117f-355c-4d60-be21-0f14483cff12",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "bdda1646-f0a2-45bd-811e-d5652e7e28f8",
-          "name": "Ampersand Update a JWT Key",
-          "request": {
-            "name": "Ampersand Update a JWT Key",
-            "description": {
-              "content": "Updates specific fields of a JWT key using field masks. Currently supports updating the 'active' status and 'name' field.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "jwt-keys",
-                ":keyId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) Ampersand Project ID or name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "keyId",
-                  "description": "(Required) The JWT key ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"updateMask\": [\n    \"<string>\"\n  ],\n  \"jwtKey\": {\n    \"active\": \"<boolean>\",\n    \"label\": \"<string>\",\n    \"key_0\": 8559\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "486a6d7f-3dc8-4df6-be34-3d6dd1553ecf",
-              "name": "JWT key updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": false\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"projectId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"label\": \"updated-key-name\",\n  \"algorithm\": \"RSA\",\n  \"publicKeyPem\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsTeNem/V41\\n-----END PUBLIC KEY-----\\n\",\n  \"active\": false,\n  \"createTime\": \"2024-01-15T10:30:00Z\",\n  \"updateTime\": \"2024-01-16T15:45:00Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c0ec27bb-a0db-4fbd-a7f0-8ee5a0f888e7",
-              "name": "Bad request - invalid update mask or missing project/key ID",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": false\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"type\": \"https://httpstatuses.com/400\",\n  \"title\": \"Bad Request\",\n  \"status\": 400,\n  \"detail\": \"Invalid update mask\",\n  \"remedy\": \"Allowed masks: 'active' and 'name'\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "524f183d-71eb-43c6-9954-6793ac2e4dfe",
-              "name": "JWT key not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": false\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "af813801-e648-4650-9ec5-410c4cc3eb37",
-              "name": "Unprocessable entity - value not found for mask",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": false\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"type\": \"https://httpstatuses.com/422\",\n  \"title\": \"Unprocessable Entity\",\n  \"status\": 422,\n  \"detail\": \"value not found for mask\",\n  \"validationIssues\": [\n    {\n      \"field\": \"jwtKey\",\n      \"detail\": \"required field missing for specified mask\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "eea905f1-d942-4c20-965e-8513321f6eda",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"updateMask\": [\n    \"active\"\n  ],\n  \"jwtKey\": {\n    \"active\": false\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "035e715d-0ec5-422c-81be-d199f5d1e5f3",
-          "name": "Ampersand Delete a JWT Key",
-          "request": {
-            "name": "Ampersand Delete a JWT Key",
-            "description": {
-              "content": "Permanently deletes a JWT key from the specified project",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "jwt-keys",
-                ":keyId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) Ampersand Project ID or name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "keyId",
-                  "description": "(Required) The JWT key ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b03f88de-2daa-4ac4-8cbd-8534ad109201",
-              "name": "JWT key deleted successfully (no content)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a1843066-3399-4ebd-a1ca-a8d4a9338858",
-              "name": "JWT key not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"type\": \"https://httpstatuses.com/404\",\n  \"title\": \"Not Found\",\n  \"status\": 404,\n  \"detail\": \"JWT key not found\",\n  \"remedy\": \"check the key ID and project ID are both correct, and try again\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "add0e047-a658-4a91-b6a6-5513efb9f8e8",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "jwt-keys",
-                    ":keyId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) Ampersand Project ID or name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "keyId",
-                      "description": "(Required) The JWT key ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "95e97f69-78b6-4c14-9cf2-ccb5aa58d9e9",
+              "createdAt": "2026-10-21T21:12:48.000Z",
+              "updatedAt": "2026-10-21T21:12:48.000Z",
+              "uid": "35240-95e97f69-78b6-4c14-9cf2-ccb5aa58d9e9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "cf7d517d-3bff-4c9f-8ed9-ef736c6eb427",
+          "createdAt": "2026-10-21T21:12:48.000Z",
+          "updatedAt": "2026-10-21T21:12:48.000Z",
+          "uid": "35240-cf7d517d-3bff-4c9f-8ed9-ef736c6eb427"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.withampersand.com/v1",
-      "key": "baseUrl"
+      "id": "7d1af74c-ca05-4549-997b-193949921000",
+      "createdAt": "2026-10-21T21:12:48.000Z",
+      "updatedAt": "2026-10-21T21:12:48.000Z",
+      "uid": "35240-7d1af74c-ca05-4549-997b-193949921000"
     }
   ],
   "auth": {
@@ -1432,25 +1376,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Api-Key"
+        "value": "X-Api-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "40590904-7f52-4fec-9c22-0f5c2275a5af",
-    "name": "Ampersand public API Key JWT Key API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.withampersand.com/v1"
     }
-  }
+  ]
 }

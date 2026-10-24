@@ -1,401 +1,434 @@
 {
+  "info": {
+    "_postman_id": "46f01e0e-8e59-49f1-8e7a-7d0de7d04fa1",
+    "name": "Ampersand public Billing Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:12:16.000Z",
+    "updatedAt": "2026-10-21T21:12:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-46f01e0e-8e59-49f1-8e7a-7d0de7d04fa1"
+  },
   "item": [
     {
-      "id": "51628a57-26cc-4460-850c-197b6bb3e57e",
-      "name": "Billing Account",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "orgs",
       "item": [
         {
-          "id": "9fb6dc9e-296b-40b9-813f-43cd6f5a85ca",
-          "name": "Ampersand Get the Billing Account for an Organization",
-          "request": {
-            "name": "Ampersand Get the Billing Account for an Organization",
-            "description": {},
-            "url": {
-              "path": [
-                "orgs",
-                ":orgId",
-                "billingAccount"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "orgId",
-                  "description": "(Required) ID of the organization."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{orgId}",
+          "item": [
             {
-              "id": "0cb9a560-b191-4326-a64f-17e30bfb38eb",
-              "name": "Billing account",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "orgs",
-                    ":orgId",
-                    "billingAccount"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "orgId",
-                      "description": "(Required) ID of the organization."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "billingAccount",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Ampersand Get the Billing Account for an Organization",
+                  "id": "8529b972-1e66-4249-9053-9e768fd6a1b0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orgs/:orgId/billingAccount",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orgs",
+                        ":orgId",
+                        "billingAccount"
+                      ],
+                      "variable": [
+                        {
+                          "id": "68122806-e611-461d-a1a6-93987461f53a",
+                          "key": "orgId",
+                          "value": "<string>",
+                          "description": "(Required) ID of the organization."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "a7c35e4e-6b4f-4074-9ff1-2f820f89ac8a",
+                      "name": "Billing account",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orgs/:orgId/billingAccount",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orgs",
+                            ":orgId",
+                            "billingAccount"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"billingProvider\": \"<string>\",\n  \"billingProviderRef\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-21T21:12:17.000Z",
+                      "updatedAt": "2026-10-21T21:12:17.000Z",
+                      "uid": "35240-a7c35e4e-6b4f-4074-9ff1-2f820f89ac8a"
+                    },
+                    {
+                      "id": "031e10db-3e02-4652-88d9-f68cd96c9c49",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orgs/:orgId/billingAccount",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orgs",
+                            ":orgId",
+                            "billingAccount"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:17.000Z",
+                      "updatedAt": "2026-10-21T21:12:17.000Z",
+                      "uid": "35240-031e10db-3e02-4652-88d9-f68cd96c9c49"
+                    },
+                    {
+                      "id": "6aad0035-637b-46e6-ba72-2404394a0255",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/orgs/:orgId/billingAccount",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "orgs",
+                            ":orgId",
+                            "billingAccount"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:17.000Z",
+                      "updatedAt": "2026-10-21T21:12:17.000Z",
+                      "uid": "35240-6aad0035-637b-46e6-ba72-2404394a0255"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:12:17.000Z",
+                  "updatedAt": "2026-10-21T21:12:17.000Z",
+                  "uid": "35240-8529b972-1e66-4249-9053-9e768fd6a1b0"
                 }
               ],
-              "body": "{\n  \"id\": \"billing-account-123\",\n  \"displayName\": \"Acme Inc\",\n  \"billingProvider\": \"stripe\",\n  \"billingProviderRef\": \"acct_1J2k3l4m5n6o7p8q9r0s\",\n  \"createTime\": \"1989-12-28T08:50:09.484Z\",\n  \"updateTime\": \"2000-08-08T17:12:38.802Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "73ede18c-5444-452a-855d-86eeb7cfbbdf",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "orgs",
-                    ":orgId",
-                    "billingAccount"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "orgId",
-                      "description": "(Required) ID of the organization."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "50bc7c6f-d69b-48ef-a49b-ad48421e33e1",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "orgs",
-                    ":orgId",
-                    "billingAccount"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "orgId",
-                      "description": "(Required) ID of the organization."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "9d694690-162d-41c0-8e83-261c4cc10b55",
+              "createdAt": "2026-10-21T21:12:17.000Z",
+              "updatedAt": "2026-10-21T21:12:17.000Z",
+              "uid": "35240-9d694690-162d-41c0-8e83-261c4cc10b55"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ddc59764-6917-42a5-9f8a-dcb3d46129d3",
-          "name": "Ampersand Create a Portal Session for a Billing Account",
-          "request": {
-            "name": "Ampersand Create a Portal Session for a Billing Account",
-            "description": {},
-            "url": {
-              "path": [
-                "billingAccounts",
-                ":billingAccountId",
-                "portalSession"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "billingAccountId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"redirectUrl\": \"<string>\",\n  \"timeout\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "67e26935-9afa-4d15-a4e2-c74e82e10d3f",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "billingAccounts",
-                    ":billingAccountId",
-                    "portalSession"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "billingAccountId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"redirectUrl\": \"https://dashboard.withampersand.com/the-current-page\",\n  \"timeout\": 3600\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"url\": \"https://billing.portal.com/customer/session\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d72e8794-d461-40a5-ad48-f188ed0260cd",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "billingAccounts",
-                    ":billingAccountId",
-                    "portalSession"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "billingAccountId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"redirectUrl\": \"https://dashboard.withampersand.com/the-current-page\",\n  \"timeout\": 3600\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "be550126-62d3-46cd-9031-45e6d3170a4b",
+          "createdAt": "2026-10-21T21:12:17.000Z",
+          "updatedAt": "2026-10-21T21:12:17.000Z",
+          "uid": "35240-be550126-62d3-46cd-9031-45e6d3170a4b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "a455ab35-a6c8-4b2c-8029-29cc33db7621",
+      "createdAt": "2026-10-21T21:12:17.000Z",
+      "updatedAt": "2026-10-21T21:12:17.000Z",
+      "uid": "35240-a455ab35-a6c8-4b2c-8029-29cc33db7621"
+    },
     {
-      "type": "string",
-      "value": "https://api.withampersand.com/v1",
-      "key": "baseUrl"
+      "name": "billingAccounts",
+      "item": [
+        {
+          "name": "{billingAccountId}",
+          "item": [
+            {
+              "name": "portalSession",
+              "item": [
+                {
+                  "name": "Ampersand Create a Portal Session for a Billing Account",
+                  "id": "470ca54f-885c-40c8-ab41-db7d67eec6cd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"redirectUrl\": \"<string>\",\n  \"timeout\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/billingAccounts/:billingAccountId/portalSession",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "billingAccounts",
+                        ":billingAccountId",
+                        "portalSession"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e98510bb-dbfa-480e-87df-ced7d43bebac",
+                          "key": "billingAccountId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "18b136c7-be1d-424b-863b-fbb4ea950293",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"redirectUrl\": \"<string>\",\n  \"timeout\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/billingAccounts/:billingAccountId/portalSession",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "billingAccounts",
+                            ":billingAccountId",
+                            "portalSession"
+                          ],
+                          "variable": [
+                            {
+                              "key": "billingAccountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"url\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T21:12:17.000Z",
+                      "updatedAt": "2026-10-21T21:12:17.000Z",
+                      "uid": "35240-18b136c7-be1d-424b-863b-fbb4ea950293"
+                    },
+                    {
+                      "id": "a09cb6ca-d15c-47f7-badc-155053d020e4",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"redirectUrl\": \"<string>\",\n  \"timeout\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/billingAccounts/:billingAccountId/portalSession",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "billingAccounts",
+                            ":billingAccountId",
+                            "portalSession"
+                          ],
+                          "variable": [
+                            {
+                              "key": "billingAccountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:17.000Z",
+                      "updatedAt": "2026-10-21T21:12:17.000Z",
+                      "uid": "35240-a09cb6ca-d15c-47f7-badc-155053d020e4"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:12:17.000Z",
+                  "updatedAt": "2026-10-21T21:12:17.000Z",
+                  "uid": "35240-470ca54f-885c-40c8-ab41-db7d67eec6cd"
+                }
+              ],
+              "id": "798fbba7-341e-4480-86da-bbf026848fb0",
+              "createdAt": "2026-10-21T21:12:17.000Z",
+              "updatedAt": "2026-10-21T21:12:17.000Z",
+              "uid": "35240-798fbba7-341e-4480-86da-bbf026848fb0"
+            }
+          ],
+          "id": "11988ee5-850e-40fb-809e-80537ac778e3",
+          "createdAt": "2026-10-21T21:12:17.000Z",
+          "updatedAt": "2026-10-21T21:12:17.000Z",
+          "uid": "35240-11988ee5-850e-40fb-809e-80537ac778e3"
+        }
+      ],
+      "id": "2db661b6-8ce6-40c3-a94f-995d75a953fb",
+      "createdAt": "2026-10-21T21:12:17.000Z",
+      "updatedAt": "2026-10-21T21:12:17.000Z",
+      "uid": "35240-2db661b6-8ce6-40c3-a94f-995d75a953fb"
     }
   ],
   "auth": {
@@ -403,25 +436,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Api-Key"
+        "value": "X-Api-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "77274a0a-0dcd-4d9a-907e-aaeffe803327",
-    "name": "Ampersand public API Key Billing Account API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.withampersand.com/v1"
     }
-  }
+  ]
 }

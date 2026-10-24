@@ -1,155 +1,168 @@
 {
+  "info": {
+    "_postman_id": "69ecdabd-c9b9-42b5-ac42-02c28447f3c1",
+    "name": "Ampersand public User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:15:14.000Z",
+    "updatedAt": "2026-10-21T21:15:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-69ecdabd-c9b9-42b5-ac42-02c28447f3c1"
+  },
   "item": [
     {
-      "id": "7f8c2b6d-b32f-4931-ab7b-564b0d6ba167",
-      "name": "User",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "my-info",
       "item": [
         {
-          "id": "117f2b40-d722-4298-9501-c36e6f441c69",
           "name": "Ampersand Get Information About the Current User",
+          "id": "9c0a8028-32a5-4b6e-8ebf-51acf3ff0d13",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Ampersand Get Information About the Current User",
-            "description": {},
-            "url": {
-              "path": [
-                "my-info"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
+            "url": {
+              "raw": "{{baseUrl}}/my-info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "my-info"
               ]
             }
           },
           "response": [
             {
-              "id": "3c39c404-8f8d-47ca-95a6-039232a37dd4",
+              "id": "b2221733-07fb-417b-a7db-fc310b7926cf",
               "name": "Information about the current user and their organizations and projects",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "my-info"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/my-info",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "my-info"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"builder\": {\n    \"id\": \"builder-id-123\",\n    \"idpProvider\": \"clerk\",\n    \"idpRef\": \"string\",\n    \"createTime\": \"1976-12-22T05:36:35.980Z\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"fullName\": \"string\",\n    \"primaryEmail\": \"string\"\n  },\n  \"projectRoles\": {\n    \"key_0\": {\n      \"role\": \"admin\",\n      \"principalType\": \"builder\",\n      \"principalId\": \"builder-id-123\",\n      \"project\": {\n        \"appName\": \"MailMonkey\",\n        \"createTime\": \"1987-12-29T21:25:36.339Z\",\n        \"id\": \"proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n        \"name\": \"mailmonkey-staging\",\n        \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n        \"updateTime\": \"2005-04-03T15:37:44.743Z\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": true\n          }\n        }\n      }\n    },\n    \"key_1\": {\n      \"role\": \"admin\",\n      \"principalType\": \"team\",\n      \"principalId\": \"builder-id-123\",\n      \"project\": {\n        \"appName\": \"MailMonkey\",\n        \"createTime\": \"1977-04-22T07:22:34.544Z\",\n        \"id\": \"proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n        \"name\": \"mailmonkey-staging\",\n        \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n        \"updateTime\": \"1988-08-18T07:07:19.401Z\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": true\n          }\n        }\n      }\n    }\n  },\n  \"orgRole\": {\n    \"role\": \"admin\",\n    \"principalType\": \"builder\",\n    \"principalId\": \"builder-id-123\",\n    \"org\": {\n      \"id\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n      \"label\": \"Acme Inc\",\n      \"createTime\": \"1977-10-08T14:26:25.875Z\",\n      \"defaultTeamId\": \"string\",\n      \"updateTime\": \"1999-05-23T22:08:33.170Z\"\n    }\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"builder\": {\n    \"id\": \"<string>\",\n    \"idpProvider\": \"<string>\",\n    \"idpRef\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"primaryEmail\": \"<string>\"\n  },\n  \"projectRoles\": {\n    \"nullad\": {\n      \"role\": \"<string>\",\n      \"principalType\": \"builder\",\n      \"principalId\": \"<string>\",\n      \"project\": {\n        \"appName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgId\": \"<string>\",\n        \"updateTime\": \"<dateTime>\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": \"<boolean>\"\n          }\n        }\n      }\n    },\n    \"dolor734\": {\n      \"role\": \"<string>\",\n      \"principalType\": \"builder\",\n      \"principalId\": \"<string>\",\n      \"project\": {\n        \"appName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgId\": \"<string>\",\n        \"updateTime\": \"<dateTime>\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": \"<boolean>\"\n          }\n        }\n      }\n    },\n    \"dolor6\": {\n      \"role\": \"<string>\",\n      \"principalType\": \"builder\",\n      \"principalId\": \"<string>\",\n      \"project\": {\n        \"appName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgId\": \"<string>\",\n        \"updateTime\": \"<dateTime>\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": \"<boolean>\"\n          }\n        }\n      }\n    }\n  },\n  \"orgRole\": {\n    \"role\": \"<string>\",\n    \"principalType\": \"team\",\n    \"principalId\": \"<string>\",\n    \"org\": {\n      \"id\": \"<string>\",\n      \"label\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"defaultTeamId\": \"<string>\",\n      \"updateTime\": \"<dateTime>\"\n    }\n  }\n}",
+              "createdAt": "2026-10-21T21:15:14.000Z",
+              "updatedAt": "2026-10-21T21:15:14.000Z",
+              "uid": "35240-b2221733-07fb-417b-a7db-fc310b7926cf"
             },
             {
-              "id": "08628737-52d0-4343-a1f3-0e557e828d6f",
+              "id": "0f30d4a3-3a83-46b7-95f3-1fae5a1f29fc",
               "name": "Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "my-info"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/my-info",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "my-info"
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/problem+json"
                 }
               ],
-              "body": "{}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+              "createdAt": "2026-10-21T21:15:14.000Z",
+              "updatedAt": "2026-10-21T21:15:14.000Z",
+              "uid": "35240-0f30d4a3-3a83-46b7-95f3-1fae5a1f29fc"
             }
           ],
-          "event": [],
+          "createdAt": "2026-10-21T21:15:14.000Z",
+          "updatedAt": "2026-10-21T21:15:14.000Z",
+          "uid": "35240-9c0a8028-32a5-4b6e-8ebf-51acf3ff0d13"
+        }
+      ],
+      "id": "07ca17ce-1ce5-4bd3-a707-d21c87246c8f",
+      "createdAt": "2026-10-21T21:15:14.000Z",
+      "updatedAt": "2026-10-21T21:15:14.000Z",
+      "uid": "35240-07ca17ce-1ce5-4bd3-a707-d21c87246c8f"
+    },
+    {
+      "name": "invites:accept",
+      "item": [
+        {
+          "name": "Ampersand Accept an Invite",
+          "id": "22b939c2-844d-45e5-9562-084debf4186d",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "69e1cbea-c1fe-4b12-9f4b-74258a40fc15",
-          "name": "Ampersand Accept an Invite",
+          },
           "request": {
-            "name": "Ampersand Accept an Invite",
-            "description": {},
-            "url": {
-              "path": [
-                "invites:accept"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -160,145 +173,149 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"invitedEmail\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/invites:accept",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invites:accept"
+              ]
             }
           },
           "response": [
             {
-              "id": "64ce3bb4-1642-4652-a645-58f4fef51aa4",
+              "id": "6d7900dd-4ad9-440d-8fb9-c0f5b88667f8",
               "name": "Information about the current user and their organizations and projects",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "invites:accept"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"invitedEmail\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invites:accept",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invites:accept"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"builder\": {\n    \"id\": \"builder-id-123\",\n    \"idpProvider\": \"clerk\",\n    \"idpRef\": \"string\",\n    \"createTime\": \"1976-12-22T05:36:35.980Z\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"fullName\": \"string\",\n    \"primaryEmail\": \"string\"\n  },\n  \"projectRoles\": {\n    \"key_0\": {\n      \"role\": \"admin\",\n      \"principalType\": \"builder\",\n      \"principalId\": \"builder-id-123\",\n      \"project\": {\n        \"appName\": \"MailMonkey\",\n        \"createTime\": \"1987-12-29T21:25:36.339Z\",\n        \"id\": \"proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n        \"name\": \"mailmonkey-staging\",\n        \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n        \"updateTime\": \"2005-04-03T15:37:44.743Z\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": true\n          }\n        }\n      }\n    },\n    \"key_1\": {\n      \"role\": \"admin\",\n      \"principalType\": \"team\",\n      \"principalId\": \"builder-id-123\",\n      \"project\": {\n        \"appName\": \"MailMonkey\",\n        \"createTime\": \"1977-04-22T07:22:34.544Z\",\n        \"id\": \"proj_9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n        \"name\": \"mailmonkey-staging\",\n        \"orgId\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n        \"updateTime\": \"1988-08-18T07:07:19.401Z\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": true\n          }\n        }\n      }\n    }\n  },\n  \"orgRole\": {\n    \"role\": \"admin\",\n    \"principalType\": \"builder\",\n    \"principalId\": \"builder-id-123\",\n    \"org\": {\n      \"id\": \"9f7c3e2a-61b8-4f5c-8d1a-eb24f3b05d79\",\n      \"label\": \"Acme Inc\",\n      \"createTime\": \"1977-10-08T14:26:25.875Z\",\n      \"defaultTeamId\": \"string\",\n      \"updateTime\": \"1999-05-23T22:08:33.170Z\"\n    }\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"builder\": {\n    \"id\": \"<string>\",\n    \"idpProvider\": \"<string>\",\n    \"idpRef\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"primaryEmail\": \"<string>\"\n  },\n  \"projectRoles\": {\n    \"nullad\": {\n      \"role\": \"<string>\",\n      \"principalType\": \"builder\",\n      \"principalId\": \"<string>\",\n      \"project\": {\n        \"appName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgId\": \"<string>\",\n        \"updateTime\": \"<dateTime>\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": \"<boolean>\"\n          }\n        }\n      }\n    },\n    \"dolor734\": {\n      \"role\": \"<string>\",\n      \"principalType\": \"builder\",\n      \"principalId\": \"<string>\",\n      \"project\": {\n        \"appName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgId\": \"<string>\",\n        \"updateTime\": \"<dateTime>\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": \"<boolean>\"\n          }\n        }\n      }\n    },\n    \"dolor6\": {\n      \"role\": \"<string>\",\n      \"principalType\": \"builder\",\n      \"principalId\": \"<string>\",\n      \"project\": {\n        \"appName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgId\": \"<string>\",\n        \"updateTime\": \"<dateTime>\",\n        \"entitlements\": {\n          \"brandingRemoval\": {\n            \"value\": \"<boolean>\"\n          }\n        }\n      }\n    }\n  },\n  \"orgRole\": {\n    \"role\": \"<string>\",\n    \"principalType\": \"team\",\n    \"principalId\": \"<string>\",\n    \"org\": {\n      \"id\": \"<string>\",\n      \"label\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"defaultTeamId\": \"<string>\",\n      \"updateTime\": \"<dateTime>\"\n    }\n  }\n}",
+              "createdAt": "2026-10-21T21:15:14.000Z",
+              "updatedAt": "2026-10-21T21:15:14.000Z",
+              "uid": "35240-6d7900dd-4ad9-440d-8fb9-c0f5b88667f8"
             },
             {
-              "id": "bbe9bd5c-3e47-48db-8092-4e3caeaf4516",
+              "id": "dcb62f6a-ffd3-48a8-9c6f-50731836b784",
               "name": "Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "invites:accept"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"invitedEmail\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invites:accept",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invites:accept"
+                  ]
                 }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/problem+json"
                 }
               ],
-              "body": "{}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+              "createdAt": "2026-10-21T21:15:14.000Z",
+              "updatedAt": "2026-10-21T21:15:14.000Z",
+              "uid": "35240-dcb62f6a-ffd3-48a8-9c6f-50731836b784"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T21:15:14.000Z",
+          "updatedAt": "2026-10-21T21:15:14.000Z",
+          "uid": "35240-22b939c2-844d-45e5-9562-084debf4186d"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.withampersand.com/v1",
-      "key": "baseUrl"
+      "id": "da8cff1c-7220-40ab-bf87-90d3e43fdcbd",
+      "createdAt": "2026-10-21T21:15:14.000Z",
+      "updatedAt": "2026-10-21T21:15:14.000Z",
+      "uid": "35240-da8cff1c-7220-40ab-bf87-90d3e43fdcbd"
     }
   ],
   "auth": {
@@ -306,25 +323,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Api-Key"
+        "value": "X-Api-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "cc047ab7-86f6-4b49-8523-6f61d0edc8fa",
-    "name": "Ampersand public API Key User API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.withampersand.com/v1"
     }
-  }
+  ]
 }

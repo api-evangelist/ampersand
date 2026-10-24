@@ -1,730 +1,726 @@
 {
+  "info": {
+    "_postman_id": "8663b937-fd81-496d-98ba-e380114bfae3",
+    "name": "Ampersand public Notification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:12:54.000Z",
+    "updatedAt": "2026-10-21T21:12:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8663b937-fd81-496d-98ba-e380114bfae3"
+  },
   "item": [
     {
-      "id": "9a9ca5ca-9c3e-4231-9730-a7d6a1402451",
-      "name": "Notification",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "projects",
       "item": [
         {
-          "id": "87769e96-3dde-491e-b6a3-f55317ccc39b",
-          "name": "Ampersand Create a Notification Event-topic Route",
-          "request": {
-            "name": "Ampersand Create a Notification Event-topic Route",
-            "description": {},
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "notification-event-topic-routes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"eventType\": \"<string>\",\n  \"topicId\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "{projectIdOrName}",
+          "item": [
             {
-              "id": "acb2bf2c-a1f6-43b3-8e82-f31b4e51c9f8",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "notification-event-topic-routes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "notification-event-topic-routes",
+              "item": [
+                {
+                  "name": "{routeId}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
+                      "name": "Ampersand Delete a Notification Event-topic Route",
+                      "id": "27ba7fb3-6adf-4c9a-83c6-67371c377afa",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes/:routeId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "notification-event-topic-routes",
+                            ":routeId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6789963b-b6f8-4676-931c-07d5c2c53f1c",
+                              "key": "projectIdOrName",
+                              "value": "<string>",
+                              "description": "(Required) The Ampersand project ID or project name."
+                            },
+                            {
+                              "id": "1b96e1e7-9929-424b-a12d-8c543e42fae3",
+                              "key": "routeId",
+                              "value": "<string>",
+                              "description": "(Required) The event-topic route ID."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e328a9ec-5fb4-4a96-a829-4cce6139bfe6",
+                          "name": "Deleted",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes/:routeId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "notification-event-topic-routes",
+                                ":routeId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "routeId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:12:55.000Z",
+                          "updatedAt": "2026-10-21T21:12:55.000Z",
+                          "uid": "35240-e328a9ec-5fb4-4a96-a829-4cce6139bfe6"
+                        },
+                        {
+                          "id": "a7a9b80f-1c32-4c2a-850f-4855a2505fec",
+                          "name": "Route not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes/:routeId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "notification-event-topic-routes",
+                                ":routeId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "routeId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:55.000Z",
+                          "updatedAt": "2026-10-21T21:12:55.000Z",
+                          "uid": "35240-a7a9b80f-1c32-4c2a-850f-4855a2505fec"
+                        },
+                        {
+                          "id": "088c8f5d-af69-4117-80d3-325d099bddc7",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes/:routeId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectIdOrName",
+                                "notification-event-topic-routes",
+                                ":routeId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectIdOrName"
+                                },
+                                {
+                                  "key": "routeId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-10-21T21:12:55.000Z",
+                          "updatedAt": "2026-10-21T21:12:55.000Z",
+                          "uid": "35240-088c8f5d-af69-4117-80d3-325d099bddc7"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:12:55.000Z",
+                      "updatedAt": "2026-10-21T21:12:55.000Z",
+                      "uid": "35240-27ba7fb3-6adf-4c9a-83c6-67371c377afa"
                     }
-                  ]
+                  ],
+                  "id": "416e13c0-1715-4118-ab5a-8089c2e8bb4e",
+                  "createdAt": "2026-10-21T21:12:55.000Z",
+                  "updatedAt": "2026-10-21T21:12:55.000Z",
+                  "uid": "35240-416e13c0-1715-4118-ab5a-8089c2e8bb4e"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                {
+                  "name": "Ampersand Create a Notification Event-topic Route",
+                  "id": "85061a0d-b0da-48ac-80c7-53d13d0d6ca6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"eventType\": \"installation.created\",\n  \"topicId\": \"1234567890abcdef\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"eventType\": \"read.schedule.paused\",\n  \"topicId\": \"string\",\n  \"projectId\": \"string\",\n  \"createTime\": \"2021-12-26T14:32:46.051Z\",\n  \"updateTime\": \"1991-08-24T03:59:11.117Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e46d6621-6dfb-46ea-b04f-663264af1a89",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "notification-event-topic-routes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"eventType\": \"connection.deleted\",\n  \"topicId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName",
+                        "notification-event-topic-routes"
+                      ],
+                      "variable": [
+                        {
+                          "id": "26da5ea4-f8d3-4115-92c5-18dd55817e2f",
+                          "key": "projectIdOrName",
+                          "value": "<string>",
+                          "description": "(Required) The Ampersand project ID or project name."
+                        }
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"eventType\": \"installation.created\",\n  \"topicId\": \"1234567890abcdef\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "55049f57-54cd-4ce2-ab14-6b6a67c417e8",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "notification-event-topic-routes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                      "id": "d82a1812-43ef-43c7-8f7a-b37a82921261",
+                      "name": "Created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"eventType\": \"connection.deleted\",\n  \"topicId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "notification-event-topic-routes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"eventType\": \"connection.deleted\",\n  \"topicId\": \"<string>\",\n  \"projectId\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-21T21:12:55.000Z",
+                      "updatedAt": "2026-10-21T21:12:55.000Z",
+                      "uid": "35240-d82a1812-43ef-43c7-8f7a-b37a82921261"
                     },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
+                    {
+                      "id": "e4acc987-6225-4c8f-b858-9711673ba896",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"eventType\": \"connection.deleted\",\n  \"topicId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "notification-event-topic-routes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:55.000Z",
+                      "updatedAt": "2026-10-21T21:12:55.000Z",
+                      "uid": "35240-e4acc987-6225-4c8f-b858-9711673ba896"
+                    },
+                    {
+                      "id": "988a7ca6-89c0-4e0f-bf48-66e3281c2452",
+                      "name": "Unprocessable Entity",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"eventType\": \"connection.deleted\",\n  \"topicId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "notification-event-topic-routes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/InputValidationProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:55.000Z",
+                      "updatedAt": "2026-10-21T21:12:55.000Z",
+                      "uid": "35240-988a7ca6-89c0-4e0f-bf48-66e3281c2452"
+                    },
+                    {
+                      "id": "7819c572-f96a-4ecf-b380-8bc13872edf7",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"eventType\": \"connection.deleted\",\n  \"topicId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "notification-event-topic-routes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:55.000Z",
+                      "updatedAt": "2026-10-21T21:12:55.000Z",
+                      "uid": "35240-7819c572-f96a-4ecf-b380-8bc13872edf7"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:12:55.000Z",
+                  "updatedAt": "2026-10-21T21:12:55.000Z",
+                  "uid": "35240-85061a0d-b0da-48ac-80c7-53d13d0d6ca6"
+                },
+                {
+                  "name": "Ampersand List Notification Event-topic Routes",
+                  "id": "1b4d2bb4-486c-459e-94c0-8257d5d6e1b7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"eventType\": \"installation.created\",\n  \"topicId\": \"1234567890abcdef\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes?topicId=<string>&eventType=write.async.done",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectIdOrName",
+                        "notification-event-topic-routes"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by topic ID.",
+                          "key": "topicId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by notification event type.",
+                          "key": "eventType",
+                          "value": "write.async.done"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f885d3bd-73e9-4a14-82cb-39e5e1a4d602",
+                          "key": "projectIdOrName",
+                          "value": "<string>",
+                          "description": "(Required) The Ampersand project ID or project name."
+                        }
+                      ]
                     }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3841cf40-6a63-4242-b920-adcbb7a9d5c3",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "notification-event-topic-routes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"eventType\": \"installation.created\",\n  \"topicId\": \"1234567890abcdef\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5f2d3478-e696-4a54-ab50-108238e21176",
-          "name": "Ampersand List Notification Event-topic Routes",
-          "request": {
-            "name": "Ampersand List Notification Event-topic Routes",
-            "description": {},
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "notification-event-topic-routes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "topicId",
-                  "value": "<string>",
-                  "description": "Filter by topic ID."
-                },
-                {
-                  "disabled": false,
-                  "key": "eventType",
-                  "value": "<string>",
-                  "description": "Filter by notification event type."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "96f9aeb6-b710-471a-abdd-5b124073023b",
-              "name": "List of event-topic routes",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "notification-event-topic-routes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "response": [
                     {
-                      "key": "topicId",
-                      "value": "<string>"
+                      "id": "840d79e2-b330-4d14-9591-fa80f06410c8",
+                      "name": "List of event-topic routes",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes?topicId=<string>&eventType=write.async.done",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "notification-event-topic-routes"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by topic ID.",
+                              "key": "topicId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by notification event type.",
+                              "key": "eventType",
+                              "value": "write.async.done"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"eventType\": \"read.backfill.done\",\n    \"topicId\": \"<string>\",\n    \"projectId\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"eventType\": \"read.backfill.done\",\n    \"topicId\": \"<string>\",\n    \"projectId\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-10-21T21:12:55.000Z",
+                      "updatedAt": "2026-10-21T21:12:55.000Z",
+                      "uid": "35240-840d79e2-b330-4d14-9591-fa80f06410c8"
                     },
                     {
-                      "key": "eventType",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"eventType\": \"<string>\",\n    \"topicId\": \"string\",\n    \"projectId\": \"string\",\n    \"createTime\": \"1966-09-20T03:02:50.359Z\",\n    \"updateTime\": \"1994-08-28T23:30:45.454Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"eventType\": \"<string>\",\n    \"topicId\": \"string\",\n    \"projectId\": \"string\",\n    \"createTime\": \"1982-04-08T02:11:36.993Z\",\n    \"updateTime\": \"2007-12-01T03:46:23.539Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "24be0375-7ce4-4a08-9562-1212f126ed20",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "notification-event-topic-routes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "topicId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "eventType",
-                      "value": "<string>"
+                      "id": "73ea4544-728a-4660-aaf2-c1bcce02a47f",
+                      "name": "Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectIdOrName/notification-event-topic-routes?topicId=<string>&eventType=write.async.done",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectIdOrName",
+                            "notification-event-topic-routes"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by topic ID.",
+                              "key": "topicId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by notification event type.",
+                              "key": "eventType",
+                              "value": "write.async.done"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectIdOrName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference ../problem/problem.yaml#/components/schemas/ApiProblem not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-10-21T21:12:55.000Z",
+                      "updatedAt": "2026-10-21T21:12:55.000Z",
+                      "uid": "35240-73ea4544-728a-4660-aaf2-c1bcce02a47f"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
+                  "createdAt": "2026-10-21T21:12:55.000Z",
+                  "updatedAt": "2026-10-21T21:12:55.000Z",
+                  "uid": "35240-1b4d2bb4-486c-459e-94c0-8257d5d6e1b7"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7fefe180-2adf-4767-a96a-3d3593ff437e",
-          "name": "Ampersand Delete a Notification Event-topic Route",
-          "request": {
-            "name": "Ampersand Delete a Notification Event-topic Route",
-            "description": {},
-            "url": {
-              "path": [
-                "projects",
-                ":projectIdOrName",
-                "notification-event-topic-routes",
-                ":routeId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectIdOrName",
-                  "description": "(Required) The Ampersand project ID or project name."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "routeId",
-                  "description": "(Required) The event-topic route ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/problem+json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "38f0212b-d4c8-42d9-944a-e754026ff9cf",
-              "name": "Deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "notification-event-topic-routes",
-                    ":routeId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "routeId",
-                      "description": "(Required) The event-topic route ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bcf7e995-a143-430d-89a1-fff7ee7899e3",
-              "name": "Route not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "notification-event-topic-routes",
-                    ":routeId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "routeId",
-                      "description": "(Required) The event-topic route ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2855c1f4-9b7c-479a-904b-68228e8d3484",
-              "name": "Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectIdOrName",
-                    "notification-event-topic-routes",
-                    ":routeId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectIdOrName",
-                      "description": "(Required) The Ampersand project ID or project name."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "routeId",
-                      "description": "(Required) The event-topic route ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/problem+json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/problem+json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "ea6c7d6f-863d-4458-b6db-93f2ec83175b",
+              "createdAt": "2026-10-21T21:12:55.000Z",
+              "updatedAt": "2026-10-21T21:12:55.000Z",
+              "uid": "35240-ea6c7d6f-863d-4458-b6db-93f2ec83175b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "913ddbeb-e1d1-469d-9081-801d3c9a053c",
+          "createdAt": "2026-10-21T21:12:55.000Z",
+          "updatedAt": "2026-10-21T21:12:55.000Z",
+          "uid": "35240-913ddbeb-e1d1-469d-9081-801d3c9a053c"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.withampersand.com/v1",
-      "key": "baseUrl"
+      "id": "ff8b7cca-3718-416f-a147-2fac06d21a98",
+      "createdAt": "2026-10-21T21:12:55.000Z",
+      "updatedAt": "2026-10-21T21:12:55.000Z",
+      "uid": "35240-ff8b7cca-3718-416f-a147-2fac06d21a98"
     }
   ],
   "auth": {
@@ -732,25 +728,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Api-Key"
+        "value": "X-Api-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "c34b908c-ce38-49d4-91ea-8c1fff299cd8",
-    "name": "Ampersand public API Key Notification API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.withampersand.com/v1"
     }
-  }
+  ]
 }
