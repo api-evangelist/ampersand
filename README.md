@@ -1,4 +1,4 @@
-# Ampersand (ampersand)
+# Ampersand
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,137 +66,261 @@
 
 Ampersand is a developer-first platform for building native SaaS integrations. It provides an embeddable UI component and managed infrastructure that lets developers add product integrations quickly, handling OAuth, data sync, webhooks, and field mapping out of the box. The platform supports hundreds of SaaS connectors including Salesforce, HubSpot, Marketo, Microsoft Dynamics 365, Zendesk, and Gong with bi-directional sync and declarative configuration.
 
-**URL:** [https://www.withampersand.com](https://www.withampersand.com)
+**Areas:** Developer Tools · Integration · Platform · Software-as-a-Service · Authentication · Data Sync · Webhook
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Ampersand on APIs.io
 
-## Tags:
+Everything profiled for Ampersand is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ampersand/](https://apis.io/providers/ampersand/)** — or go straight to one of the APIs or properties below.
 
- - Developer Tools, Integrations, Platform, SaaS, OAuth, Data Sync, Webhooks
+### APIs (18)
 
-## Timestamps
+- [Ampersand API Key API](https://apis.io/apis/ampersand/ampersand-api-key-api/) — The API Key API from Ampersand — 2 operation(s) for api key.
+- [Ampersand Billing Account API](https://apis.io/apis/ampersand/ampersand-billing-account-api/) — The Billing Account API from Ampersand — 2 operation(s) for billing account.
+- [Ampersand Connection API](https://apis.io/apis/ampersand/ampersand-connection-api/) — The Connection API from Ampersand — 3 operation(s) for connection.
+- [Ampersand Destination API](https://apis.io/apis/ampersand/ampersand-destination-api/) — The Destination API from Ampersand — 6 operation(s) for destination.
+- [Ampersand Installation API](https://apis.io/apis/ampersand/ampersand-installation-api/) — The Installation API from Ampersand — 4 operation(s) for installation.
+- [Ampersand Integration API](https://apis.io/apis/ampersand/ampersand-integration-api/) — The Integration API from Ampersand — 4 operation(s) for integration.
+- [Ampersand JWT Key API](https://apis.io/apis/ampersand/ampersand-jwt-key-api/) — The JWT Key API from Ampersand — 2 operation(s) for jwt key.
+- [Ampersand Notification API](https://apis.io/apis/ampersand/ampersand-notification-api/) — The Notification API from Ampersand — 2 operation(s) for notification.
+- [Ampersand OAuth API](https://apis.io/apis/ampersand/ampersand-oauth-api/) — The OAuth API from Ampersand — 2 operation(s) for oauth.
+- [Ampersand Objects & Fields API](https://apis.io/apis/ampersand/ampersand-objects-fields-api/) — The Objects & Fields API from Ampersand — 4 operation(s) for objects & fields.
+- [Ampersand Operation API](https://apis.io/apis/ampersand/ampersand-operation-api/) — The Operation API from Ampersand — 4 operation(s) for operation.
+- [Ampersand Org API](https://apis.io/apis/ampersand/ampersand-org-api/) — The Org API from Ampersand — 8 operation(s) for org.
+- [Ampersand Project API](https://apis.io/apis/ampersand/ampersand-project-api/) — The Project API from Ampersand — 2 operation(s) for project.
+- [Ampersand Provider API](https://apis.io/apis/ampersand/ampersand-provider-api/) — The Provider API from Ampersand — 2 operation(s) for provider.
+- [Ampersand Provider App API](https://apis.io/apis/ampersand/ampersand-provider-app-api/) — The Provider App API from Ampersand — 2 operation(s) for provider app.
+- [Ampersand Revision API](https://apis.io/apis/ampersand/ampersand-revision-api/) — The Revision API from Ampersand — 2 operation(s) for revision.
+- [Ampersand Upload URL API](https://apis.io/apis/ampersand/ampersand-upload-url-api/) — The Upload URL API from Ampersand — 1 operation(s) for upload url.
+- [Ampersand User API](https://apis.io/apis/ampersand/ampersand-user-api/) — The User API from Ampersand — 2 operation(s) for user.
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Ampersand API
-The Ampersand API enables developers to programmatically manage integrations, connections, installations, destinations, and data flows for SaaS-to-SaaS connectivity. It provides endpoints for managing installations, connections, destinations, API keys, projects, organizations, providers, and integration configurations within the Ampersand platform.
+#### Agentic access (1)
 
-**Human URL:** [https://docs.withampersand.com/](https://docs.withampersand.com/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Ampersand Agentic Access](https://apis.io/agentic-access/ampersand/ampersand-agentic-access/)
 
- - Integrations, Platform, SaaS, OAuth, Data Sync
+#### JSON Schema (50)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://docs.withampersand.com/)
-- [GettingStarted](https://docs.withampersand.com/getting-started)
-- [Authentication](https://docs.withampersand.com/reference/authentication)
-- [OpenAPI](openapi/ampersand-api-openapi-original.yml)
+- [ApiKey](https://apis.io/schemas/ampersand/ampersand-api-api-key/)
+- [ApiKeyRequest](https://apis.io/schemas/ampersand/ampersand-api-api-key-request/)
+- [ApiKeyScopes](https://apis.io/schemas/ampersand/ampersand-api-api-key-scopes/)
+- [AssociationDefinition](https://apis.io/schemas/ampersand/ampersand-api-association-definition/)
+- [AssociationLabels](https://apis.io/schemas/ampersand/ampersand-api-association-labels/)
+- [BackfillProgress](https://apis.io/schemas/ampersand/ampersand-api-backfill-progress/)
+- [BillingAccount](https://apis.io/schemas/ampersand/ampersand-api-billing-account/)
+- [Builder](https://apis.io/schemas/ampersand/ampersand-api-builder/)
+- [BuilderInfo](https://apis.io/schemas/ampersand/ampersand-api-builder-info/)
+- [ClaimedDomainResponse](https://apis.io/schemas/ampersand/ampersand-api-claimed-domain-response/)
+- [Config](https://apis.io/schemas/ampersand/ampersand-api-config/)
+- [ConnectionRequest](https://apis.io/schemas/ampersand/ampersand-api-connection-request/)
+- [CreateJWTKeyRequest](https://apis.io/schemas/ampersand/ampersand-api-create-jwt-key-request/)
+- [Destination](https://apis.io/schemas/ampersand/ampersand-api-destination/)
+- [DestinationWithSecrets](https://apis.io/schemas/ampersand/ampersand-api-destination-with-secrets/)
+- [FieldDefinition](https://apis.io/schemas/ampersand/ampersand-api-field-definition/)
+- [FieldUpsertResult](https://apis.io/schemas/ampersand/ampersand-api-field-upsert-result/)
+- [GenerateConnectionRequest](https://apis.io/schemas/ampersand/ampersand-api-generate-connection-request/)
+- [HydratedRevision](https://apis.io/schemas/ampersand/ampersand-api-hydrated-revision/)
+- [Installation](https://apis.io/schemas/ampersand/ampersand-api-installation/)
+- [Integration](https://apis.io/schemas/ampersand/ampersand-api-integration/)
+- [Invite](https://apis.io/schemas/ampersand/ampersand-api-invite/)
+- [JSONPatchOperation](https://apis.io/schemas/ampersand/ampersand-api-json-patch-operation/)
+- [JWTKey](https://apis.io/schemas/ampersand/ampersand-api-jwt-key/)
+- [JWTKeyResponse](https://apis.io/schemas/ampersand/ampersand-api-jwt-key-response/)
+- …and 25 more published on APIs.io
 
-## Common Properties
+#### JSON Structure (50)
+
+Data models expressed in JSON Structure.
+
+- [Ampersand Api Api Key Request Structure](https://apis.io/json-structure/ampersand/ampersand-api-api-key-request-structure/)
+- [Ampersand Api Api Key Scopes Structure](https://apis.io/json-structure/ampersand/ampersand-api-api-key-scopes-structure/)
+- [Ampersand Api Api Key Structure](https://apis.io/json-structure/ampersand/ampersand-api-api-key-structure/)
+- [Ampersand Api Association Definition Structure](https://apis.io/json-structure/ampersand/ampersand-api-association-definition-structure/)
+- [Ampersand Api Association Labels Structure](https://apis.io/json-structure/ampersand/ampersand-api-association-labels-structure/)
+- [Ampersand Api Backfill Progress Structure](https://apis.io/json-structure/ampersand/ampersand-api-backfill-progress-structure/)
+- [Ampersand Api Billing Account Structure](https://apis.io/json-structure/ampersand/ampersand-api-billing-account-structure/)
+- [Ampersand Api Builder Info Structure](https://apis.io/json-structure/ampersand/ampersand-api-builder-info-structure/)
+- [Ampersand Api Builder Structure](https://apis.io/json-structure/ampersand/ampersand-api-builder-structure/)
+- [Ampersand Api Claimed Domain Response Structure](https://apis.io/json-structure/ampersand/ampersand-api-claimed-domain-response-structure/)
+- [Ampersand Api Config Structure](https://apis.io/json-structure/ampersand/ampersand-api-config-structure/)
+- [Ampersand Api Connection Request Structure](https://apis.io/json-structure/ampersand/ampersand-api-connection-request-structure/)
+- [Ampersand Api Create Jwt Key Request Structure](https://apis.io/json-structure/ampersand/ampersand-api-create-jwt-key-request-structure/)
+- [Ampersand Api Destination Structure](https://apis.io/json-structure/ampersand/ampersand-api-destination-structure/)
+- [Ampersand Api Destination With Secrets Structure](https://apis.io/json-structure/ampersand/ampersand-api-destination-with-secrets-structure/)
+- [Ampersand Api Field Definition Structure](https://apis.io/json-structure/ampersand/ampersand-api-field-definition-structure/)
+- [Ampersand Api Field Upsert Result Structure](https://apis.io/json-structure/ampersand/ampersand-api-field-upsert-result-structure/)
+- [Ampersand Api Generate Connection Request Structure](https://apis.io/json-structure/ampersand/ampersand-api-generate-connection-request-structure/)
+- [Ampersand Api Hydrated Revision Structure](https://apis.io/json-structure/ampersand/ampersand-api-hydrated-revision-structure/)
+- [Ampersand Api Installation Structure](https://apis.io/json-structure/ampersand/ampersand-api-installation-structure/)
+- [Ampersand Api Integration Structure](https://apis.io/json-structure/ampersand/ampersand-api-integration-structure/)
+- [Ampersand Api Invite Structure](https://apis.io/json-structure/ampersand/ampersand-api-invite-structure/)
+- [Ampersand Api Json Patch Operation Structure](https://apis.io/json-structure/ampersand/ampersand-api-json-patch-operation-structure/)
+- [Ampersand Api Jwt Key Response Structure](https://apis.io/json-structure/ampersand/ampersand-api-jwt-key-response-structure/)
+- [Ampersand Api Jwt Key Structure](https://apis.io/json-structure/ampersand/ampersand-api-jwt-key-structure/)
+- …and 25 more published on APIs.io
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Ampersand Api Context](https://apis.io/jsonld/ampersand/ampersand-api-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Ampersand Vocabulary](https://apis.io/vocabularies/ampersand/ampersand-vocabulary/)
+
+#### Examples (47)
+
+Example requests and responses.
+
+- [Ampersand Api Api Key Example](https://apis.io/examples/ampersand/ampersand-api-api-key-example/)
+- [Ampersand Api Api Key Request Example](https://apis.io/examples/ampersand/ampersand-api-api-key-request-example/)
+- [Ampersand Api Association Definition Example](https://apis.io/examples/ampersand/ampersand-api-association-definition-example/)
+- [Ampersand Api Association Labels Example](https://apis.io/examples/ampersand/ampersand-api-association-labels-example/)
+- [Ampersand Api Backfill Progress Example](https://apis.io/examples/ampersand/ampersand-api-backfill-progress-example/)
+- [Ampersand Api Billing Account Example](https://apis.io/examples/ampersand/ampersand-api-billing-account-example/)
+- [Ampersand Api Builder Example](https://apis.io/examples/ampersand/ampersand-api-builder-example/)
+- [Ampersand Api Builder Info Example](https://apis.io/examples/ampersand/ampersand-api-builder-info-example/)
+- [Ampersand Api Claimed Domain Response Example](https://apis.io/examples/ampersand/ampersand-api-claimed-domain-response-example/)
+- [Ampersand Api Config Example](https://apis.io/examples/ampersand/ampersand-api-config-example/)
+- [Ampersand Api Connection Request Example](https://apis.io/examples/ampersand/ampersand-api-connection-request-example/)
+- [Ampersand Api Create Jwt Key Request Example](https://apis.io/examples/ampersand/ampersand-api-create-jwt-key-request-example/)
+- [Ampersand Api Destination Example](https://apis.io/examples/ampersand/ampersand-api-destination-example/)
+- [Ampersand Api Destination With Secrets Example](https://apis.io/examples/ampersand/ampersand-api-destination-with-secrets-example/)
+- [Ampersand Api Field Definition Example](https://apis.io/examples/ampersand/ampersand-api-field-definition-example/)
+- [Ampersand Api Field Upsert Result Example](https://apis.io/examples/ampersand/ampersand-api-field-upsert-result-example/)
+- [Ampersand Api Generate Connection Request Example](https://apis.io/examples/ampersand/ampersand-api-generate-connection-request-example/)
+- [Ampersand Api Hydrated Revision Example](https://apis.io/examples/ampersand/ampersand-api-hydrated-revision-example/)
+- [Ampersand Api Installation Example](https://apis.io/examples/ampersand/ampersand-api-installation-example/)
+- [Ampersand Api Integration Example](https://apis.io/examples/ampersand/ampersand-api-integration-example/)
+- [Ampersand Api Invite Example](https://apis.io/examples/ampersand/ampersand-api-invite-example/)
+- [Ampersand Api Json Patch Operation Example](https://apis.io/examples/ampersand/ampersand-api-json-patch-operation-example/)
+- [Ampersand Api Jwt Key Example](https://apis.io/examples/ampersand/ampersand-api-jwt-key-example/)
+- [Ampersand Api Jwt Key Response Example](https://apis.io/examples/ampersand/ampersand-api-jwt-key-response-example/)
+- [Ampersand Api Notification Event Topic Route Example](https://apis.io/examples/ampersand/ampersand-api-notification-event-topic-route-example/)
+- …and 22 more published on APIs.io
+
+#### Collections (18)
+
+Postman and Open Collection request collections.
+
+- [Ampersand public API Key API](https://apis.io/collections/ampersand/open-ampersand-api-key-api/)
+- [Ampersand public API Key Billing Account API](https://apis.io/collections/ampersand/open-ampersand-billing-account-api/)
+- [Ampersand public API Key Connection API](https://apis.io/collections/ampersand/open-ampersand-connection-api/)
+- [Ampersand public API Key Destination API](https://apis.io/collections/ampersand/open-ampersand-destination-api/)
+- [Ampersand public API Key Installation API](https://apis.io/collections/ampersand/open-ampersand-installation-api/)
+- [Ampersand public API Key Integration API](https://apis.io/collections/ampersand/open-ampersand-integration-api/)
+- [Ampersand public API Key JWT Key API](https://apis.io/collections/ampersand/open-ampersand-jwt-key-api/)
+- [Ampersand public API Key Notification API](https://apis.io/collections/ampersand/open-ampersand-notification-api/)
+- [Ampersand public API Key OAuth API](https://apis.io/collections/ampersand/open-ampersand-oauth-api/)
+- [Ampersand public API Key Objects & Fields API](https://apis.io/collections/ampersand/open-ampersand-objects-fields-api/)
+- [Ampersand public API Key Operation API](https://apis.io/collections/ampersand/open-ampersand-operation-api/)
+- [Ampersand public API Key Org API](https://apis.io/collections/ampersand/open-ampersand-org-api/)
+- [Ampersand public API Key Project API](https://apis.io/collections/ampersand/open-ampersand-project-api/)
+- [Ampersand public API Key Provider API](https://apis.io/collections/ampersand/open-ampersand-provider-api/)
+- [Ampersand public API Key Provider App API](https://apis.io/collections/ampersand/open-ampersand-provider-app-api/)
+- [Ampersand public API Key Revision API](https://apis.io/collections/ampersand/open-ampersand-revision-api/)
+- [Ampersand public API Key Upload URL API](https://apis.io/collections/ampersand/open-ampersand-upload-url-api/)
+- [Ampersand public API Key User API](https://apis.io/collections/ampersand/open-ampersand-user-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Ampersand — jsonschema rules](https://apis.io/rules/ampersand/ampersand-jsonschema-spectral-rules/)
+- [Ampersand API Rules](https://apis.io/rules/ampersand/ampersand-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Ampersand Authentication](https://apis.io/security/ampersand/ampersand-authentication/)
+- [Ampersand Domain Security](https://apis.io/security/ampersand/ampersand-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Ampersand Plans Pricing](https://apis.io/plans/ampersand/ampersand-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Ampersand Rate Limits](https://apis.io/rate-limits/ampersand/ampersand-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Ampersand Finops](https://apis.io/finops/ampersand/ampersand-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.withampersand.com/)
 - [Documentation](https://docs.withampersand.com/)
-- [GitHubOrganization](https://github.com/amp-labs)
 - [Blog](https://www.withampersand.com/blog)
-- [SignUp](https://dashboard.withampersand.com/sign-up)
-- [Login](https://dashboard.withampersand.com/sign-in)
-- [SDK - React UI SDK](https://www.npmjs.com/package/@amp-labs/react)
-- [CLI](https://github.com/amp-labs/cli)
-- [SpectralRules](rules/ampersand-spectral-rules.yml)
-- [NaftikoCapability](capabilities/shared/ampersand-api.yaml)
-- [NaftikoCapability](capabilities/integration-management.yaml)
-- [JSONLD](json-ld/ampersand-api-context.jsonld)
-- [Vocabulary](vocabulary/ampersand-vocabulary.yaml)
+- [GitHub](https://github.com/amp-labs)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Declarative Integration Framework | Code-based, composable integration building that is version-controllable and CI/CD compatible for professional engineering workflows. |
-| Managed OAuth Authentication | Free auth token management with auto-refresh for all supported SaaS providers, eliminating OAuth complexity from product teams. |
-| Bi-directional Data Sync | On-demand read/write operations, scheduled reads, and bulk write capabilities for synchronizing data between SaaS applications. |
-| Proxy API | Authenticated passthrough requests to customer systems enabling direct API calls without managing OAuth tokens. |
-| Backfill Support | Historical data retrieval during customer onboarding to populate integrations with existing customer data. |
-| DevOps Infrastructure | Automated retries, error handling, quota management, detailed logging, and alerting for production-grade integration reliability. |
-| Custom Objects and Fields | Support for custom objects and fields allowing customers to configure integrations without being constrained by inflexible unified APIs. |
-| Embeddable UI Components | React UI library with pre-built integration setup flows enabling customers to configure their own SaaS connections within your product. |
-| AI SDK | Official AI SDK enabling AI agents to read from and write to SaaS applications through natural language via Ampersand integrations. |
+**Kin Score 35.6** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 55.0 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 14.5 |
 
-| Name | Description |
-|------|-------------|
-| CRM Integration | Build native Salesforce, HubSpot, and Dynamics 365 integrations to sync customer data bidirectionally with your SaaS product. |
-| Marketing Automation Integration | Connect Marketo, HubSpot, and other marketing platforms to enable customer data flows for campaign automation and lead management. |
-| Customer Support Integration | Integrate Zendesk and other support platforms to sync tickets, contacts, and customer data with your application. |
-| Conversation Intelligence Integration | Connect Gong and other conversation platforms to access call recordings, transcripts, and insights within your application. |
-| AI Agent Integration | Enable AI agents to read from and write to customer SaaS systems through the Ampersand AI SDK for autonomous workflow automation. |
-| Developer Portal Embedding | Embed Ampersand's React UI components into your product so customers can self-service configure their own SaaS integrations. |
+**Agent readiness 28.7** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Salesforce | Bi-directional CRM integration with Salesforce for contacts, accounts, opportunities, and custom objects. |
-| HubSpot | CRM and marketing automation integration with HubSpot for contacts, deals, companies, and email tracking. |
-| Marketo | Marketing automation integration with Marketo for lead management, campaigns, and activity data. |
-| Microsoft Dynamics 365 | CRM integration with Microsoft Dynamics 365 for enterprise sales and customer service workflows. |
-| Zendesk | Customer support integration with Zendesk for tickets, users, organizations, and support metrics. |
-| Gong | Conversation intelligence integration with Gong for call recordings, transcripts, and revenue insights. |
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ampersand/](https://apis.io/providers/ampersand/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Ampersand API](openapi/ampersand-api-openapi-original.yml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Ampersand: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-50 schema files in the [json-schema/](json-schema/) directory covering all Ampersand API resource types.
-
-### JSON Structure
-
-50 JSON Structure files in the [json-structure/](json-structure/) directory.
-
-### JSON-LD
-
-- [Ampersand API Context](json-ld/ampersand-api-context.jsonld)
-
-### Examples
-
-50 example files in the [examples/](examples/) directory.
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Ampersand API](capabilities/shared/ampersand-api.yaml) — 5 operations for SaaS integration management
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Integration Management](capabilities/integration-management.yaml) | Ampersand API | 6 | Product Developer, Platform Engineer |
-
-## Vocabulary
-
-- [Ampersand Vocabulary](vocabulary/ampersand-vocabulary.yaml) — Unified taxonomy mapping 7 resources, 5 actions, 1 workflow, and 2 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Ampersand Spectral Rules](rules/ampersand-spectral-rules.yml) — 27 rules across 13 categories enforcing Ampersand API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ampersand/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
